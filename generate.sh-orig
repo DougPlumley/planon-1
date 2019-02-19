@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+protoc  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+     --swagger_out=. \
+     --go_out=. go
+    --proto_path=/Users/alphahlee/projects/Planon/planon \
+        planon.proto

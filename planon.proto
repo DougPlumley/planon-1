@@ -1,0 +1,1184 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "shared/site.proto";
+import "shared/project.proto";
+import "shared/requestor.proto";
+import "shared/contact.proto";
+import "shared/building.proto";
+import "shared/floor.proto";
+import "shared/room.proto";
+import "shared/assignedto.proto";
+import "shared/team.proto";
+
+message WorkOrder {
+    int64 id = 1;
+    string RequestNumber = 2;
+    string WorkOrderNumber = 3;
+    string ParentWorkOrderNumber = 4;  /*this may need to be a single relationship attribute to show Parent details.  Should also consider allowing add/update if system will allow user to assign a child to a parent*/
+    // ProjectNumber projectnumber = 5;
+    // ProjectNumber projectphase = 6;
+    Project ReqNumber = 5;
+    Project Phase = 6;
+    string Description = 7;
+    Requestor Requestor = 8; /*this may need to be a lookup to get more requestor contact details*/
+    Contact Contact = 9; /*multiple relationship attribute*/
+    Site site = 10;  /*list*/
+    Building building = 11;  /*list*/
+    Floor floor = 12;  /*list*/
+    Room room = 13;  /*list*/
+    Building address1 = 14;  /*may be able to get this as a lookup on building/room data*/
+    string LocationDescription = 15;  /*concatenated building - floor - room into a single field in the format the customer requests*/
+    string Coordinates = 16;  /*geocoordinates of location/work request*/
+    AssignedTo employee = 17;  /*list*/
+    Team team = 18;  /*list  (FAMIS On Premise CREW)*/
+    Skill skill = 19;  /*list  (FAMIS On Premise CRAFT)*/
+    RequestType requesttype = 20;  /*list  (FAMIS On Premise MAINT_TYPE)*/
+    Procedure procedure = 21;  /*list  (FAMIS On Premise METHOD)*/
+    OutageReason outagereason = 22;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+    Department department = 23;  /*list*/
+    Priority priority = 24;  /*list*/
+    Status status = 25;  /*list*/
+    bool ActiveFlag = 26;  /*true or false value*/
+    google.protobuf.Timestamp EnterDate = 27;
+    int64 EnterUser = 28; /*list*/
+    google.protobuf.Timestamp ModifyDate = 29;
+    int64 ModifyUser = 30; /*list*/
+    google.protobuf.Timestamp RequestDate = 31;
+    google.protobuf.Timestamp ScheduleDate = 32;
+    google.protobuf.Timestamp StartDate = 33;
+    google.protobuf.Timestamp DueDate = 34;
+    google.protobuf.Timestamp CompleteDate = 35;
+    int64 CompletedBy = 36;  /*list*/
+    google.protobuf.Timestamp CloseDate = 37;
+    int64 ClosedBy = 38;  /*list*/
+    bool PMFlag = 39;  /*true or false value*/
+    Asset asset = 40;  /*single relationship attribute to show Asset details (FAMIS On Premise EQUIPMENT) need ability to view and add/update*/
+    google.protobuf.Timestamp AssetWarrantyDate = 41;
+    BillingType billingtype = 42; /*list*/
+    repeated Account accounts = 43; /*relationship attribute to show account details*/
+    string BadgePriority = 44;  /*badge showing P# image that relates to the priority value*/
+    string BadgeDate = 45;  /*badge showing due date factor (ie. past due, within 5 days of due)*/
+    string BadgeParentWO = 46;  /*badge showing the work order is a parent and/or child*/
+    string BadgeProject = 47;  /*badge showing the work order is a project phase*/
+    string BadgeWarning = 48;  /**/
+    string BadgeKey = 49;  /**/
+    string BadgePartRequest = 50;  /*badge showing the work order has part request*/
+    string BadgeWarranty = 51;  /*badge showing asset is under warranty*/
+    string BadgeLabor = 52;  /*badge showing labor exists*/ /* Other Relationship attributes */
+    repeated TimeEntry timeEntries = 53;
+    repeated Note notes = 54;
+    repeated Document documents = 55;
+    repeated WorkOrdersResponse workOrders = 56;
+    repeated EquipmentRental equipmentRentals = 57;
+    repeated PartRequest partRequests = 58;
+    repeated WorkOrderCost workOrderCosts = 59; /*labor, material, miscellaneous, equipment, invoice (billed and unbilled)*/
+    repeated MultiAssignment multiAssignments = 60;
+    repeated UserDefinedField userDefinedFields = 61;
+    repeated PurchaseOrder purchaseOrders = 62;
+    repeated PurchaseRequisition purchaseRequisitions = 63;
+}
+
+/*
+On Create, the following validation is done:
+- If priority is blank, lookup default priority
+- If start date/due date is blank, lookup start date/due date based on priority
+- If request type is blank, lookup default request type
+- For requestor, if additional contact information needs to be sent with request then need to lookup
+- For additional contacts, if additional contact information needs to be sent with request then need to lookup
+- If audit inserts are needed then include this in action steps
+- Create account.  This may be a default based on account order (ie. Building, Crew, Equipment)
+*/
+
+message WorkOrderRequest {
+    string id = 1;
+}
+
+message WorkOrderResponse {
+    string message = 1;
+    WorkOrder workOrder = 2;
+
+}
+
+message WorkOrderQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message WorkOrdersRequest {
+    WorkOrderQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message WorkOrdersResponse {
+    repeated WorkOrder workOrders = 1;
+}
+
+/* CreateWorkOrder Request */
+/* Original Example from Matt
+message CreateWorkOrderRequest {
+    Status status = 1;
+    int64 id = 2;
+}
+*/
+
+// message WorkOrderRequestCreate {
+//     ProjectNumber projectnumber = 1;
+//     ProjectNumber projectphase = 2;
+//     string Description = 3;
+//     Requestor requestor = 4;
+//     Contacts contactname = 5;
+//     Site site = 6;
+//     Building building = 7;
+//     Floor floor = 8;
+//     Room room = 9;
+//     Building address1 = 10;
+//     string LocationDescription = 11;  /*concatenated building - floor - room into a single field in the format the customer requests*/
+//     string Coordinates = 12;  /*geocoordinates of location/work request*/
+//     AssignedTo employee = 13;
+//     Skill skill = 14;  /*list  (FAMIS On Premise CRAFT)*/
+//     Team team = 15;  /*list  (FAMIS On Premise CREW)*/
+//     RequestType requesttype = 16;  /*list  (FAMIS On Premise MAINT_TYPE)*/
+//     Procedure procedure = 17;  /*list  (FAMIS On Premise METHOD)*/
+//     OutageReason outagereason = 18;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+//     Department department = 19;
+//     Priority priority = 20;
+//     Status status = 21;
+//     bool ActiveFlag = 22;
+//     Asset asset = 23;
+//     BillingType billingtype = 24;
+//     Account account =25;
+//     int64 id = 26;
+// }
+
+message WorkOrderRequestCreate {
+    int64 id = 1;
+    string ProjectNumber = 2;
+    string ProjectPhase = 3;
+    string Description = 4;
+    string Requestor = 5;
+    string Contacts = 6;
+    string Site = 7;
+    string Building = 8;
+    string Floor = 9;
+    string Room = 10;
+    string address1 = 11;
+    string LocationDescription = 12;  /*concatenated building - floor - room into a single field in the format the customer requests*/
+    string Coordinates = 13;  /*geocoordinates of location/work request*/
+    string AssignedTo = 14;
+    string Team = 15;  /*list  (FAMIS On Premise CREW)*/
+    string Skill = 16;  /*list  (FAMIS On Premise CRAFT)*/
+    string RequestType = 17;  /*list  (FAMIS On Premise MAINT_TYPE)*/
+    string Procedure = 18;  /*list  (FAMIS On Premise METHOD)*/
+    string OutageReason = 19;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+    string Department = 20;
+    string Priority = 21;
+    string Status = 22;
+    bool ActiveFlag = 23;
+    string Asset = 24;
+    string BillingType = 25;
+    string Account =26;
+}
+
+/* WorkOrderRequestUpdate */
+
+// message WorkOrderRequestUpdate {
+//     ProjectNumber projectnumber = 1;
+//     ProjectNumber projectphase = 2;
+//     string Description = 3;
+//     Requestor requestor = 4;
+//     Contacts contactname = 5;
+//     Site site = 6;
+//     Building building = 7;
+//     Floor floor = 8;
+//     Room room = 9;
+//     Building address1 = 10;
+//     string LocationDescription = 11;  /*concatenated building - floor - room into a single field in the format the customer requests*/
+//     string Coordinates = 12;  /*geocoordinates of location/work request*/
+//     AssignedTo employee = 13;
+//     Skill skill = 14;  /*list  (FAMIS On Premise CRAFT)*/
+//     Team team = 15;  /*list  (FAMIS On Premise CREW)*/
+//     RequestType requesttype = 16;  /*list  (FAMIS On Premise MAINT_TYPE)*/
+//     Procedure procedure = 17;  /*list  (FAMIS On Premise METHOD)*/
+//     OutageReason outagereason = 18;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+//     Department department = 19;
+//     Priority priority = 20;
+//     Status status = 21;
+//     bool ActiveFlag = 22;
+//     Asset asset = 23;
+//     BillingType billingtype = 24;
+//     Account account =25;
+//     int64 id = 26;
+// }
+
+message WorkOrderRequestUpdate {
+    int64 id = 1;
+    string ProjectNumber = 2;
+    string ProjectPhase = 3;
+    string Description = 4;
+    string Requestor = 5;
+    string Contacts = 6;
+    string Site = 7;
+    string Building = 8;
+    string Floor = 9;
+    string Room = 10;
+    string address1 = 11;
+    string LocationDescription = 12;  /*concatenated building - floor - room into a single field in the format the customer requests*/
+    string Coordinates = 13;  /*geocoordinates of location/work request*/
+    string AssignedTo = 14;
+    string Team = 15;  /*list  (FAMIS On Premise CREW)*/
+    string Skill = 16;  /*list  (FAMIS On Premise CRAFT)*/
+    string RequestType = 17;  /*list  (FAMIS On Premise MAINT_TYPE)*/
+    string Procedure = 18;  /*list  (FAMIS On Premise METHOD)*/
+    string OutageReason = 19;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+    string Department = 20;
+    string Priority = 21;
+    string Status = 22;
+    bool ActiveFlag = 23;
+    string Asset = 24;
+    string BillingType = 25;
+    string Account =26;
+}
+
+/* Projects */
+// message ProjectNumber {
+//     int64 id = 1;
+//     string projectnumber = 2;
+//     string projectphase = 3;
+// }
+
+// message ProjectNumberResponse {
+//     string message = 1;
+//     ProjectNumber projectNumber = 2;
+// }
+
+// message ProjectNumberListResponse {
+//     repeated ProjectNumber projectNumbers = 1;
+// }
+
+/* Requestors */
+// message Requestor {
+//     int64 id = 1;
+//     string requestor = 2;
+// }
+
+// message RequestorResponse {
+//     string message = 1;
+//     Requestor requestor = 2;
+// }
+
+// message RequestorListResponse {
+//     repeated Requestor requestors = 1;
+// }
+
+/* Contacts */
+// message Contacts {
+//     int64 id = 1;
+//     string contactname = 2;
+// }
+
+// message ContactsResponse {
+//     string message = 1;
+//     Contacts contactname = 2;
+// }
+
+// message ContactsListResponse {
+//     repeated Contacts contactnames = 1;
+// }
+
+/* Site */
+// message Site {
+//     int64 id = 1;
+//     string site = 2;
+//     string description = 3;
+//     string active = 4;
+//     string status = 5;
+// }
+
+// message SiteResponse {
+//     string message = 1;
+//     Site site = 2;
+// }
+
+// message SiteListResponse {
+//     repeated Site sites = 1;
+// }
+
+/* Building =*/
+// message Building {
+//     int64 id = 1;
+//     string site = 2;
+//     string building = 3;
+//     string description = 4;
+//     string active = 5;
+//     string status = 6;
+//     string address1 = 7;
+//     string address2 = 8;
+//     string address3 = 9;
+// }
+
+// message BuildingResponse {
+//     string message = 1;
+//     Building building = 2;
+// }
+
+// message BuildingListResponse {
+//     repeated Building buildings = 1;
+// }
+
+/* Floor */
+// message Floor {
+//     int64 id = 1;
+//     string site = 2;
+//     string building = 3;
+//     string floor = 4;
+//     string description = 5;
+//     string active = 6;
+//     string status = 7;
+// }
+
+// message FloorResponse {
+//     string message = 1;
+//     Floor floor = 2;
+// }
+
+// message FloorListResponse {
+//     repeated Floor floors = 1;
+// }
+
+/* Room */
+// message Room {
+//     int64 id = 1;
+//     string site = 2;
+//     string building = 3;
+//     string floor = 4;
+//     string room = 5;
+//     string description = 6;
+//     string active = 7;
+//     string status = 8;
+// }
+
+// message RoomResponse {
+//     string message = 1;
+//     Room room = 2;
+// }
+
+// message RoomListResponse {
+//     repeated Room rooms = 1;
+// }
+
+/*
+message BuildingAddr {
+    int64 id = 1;
+    string site = 2;
+    string building = 3;
+    string description = 4;
+    string active = 5;
+    string status = 6;
+    string address1 = 7;
+    string address2 = 8;
+    string address3 = 9;
+}
+*/
+
+/* AssignedTo */
+// message AssignedTo {
+//     int64 id = 1;
+//     string employee = 2;
+//     string name = 3;
+//     string status = 4;
+// }
+
+// message AssignedToResponse {
+//     string message = 1;
+//     AssignedTo employee = 2;
+// }
+
+// message AssginedToListResponse {
+//     repeated AssignedTo employees = 1;
+// }
+
+/* Team */
+// message Team {
+//     int64 id = 1;
+//     string team = 2;
+//     string description = 3;
+//     string manager = 4;
+//     string department = 5;
+
+// }
+
+// message TeamsResponse {
+//     repeated Team team = 1;
+// }
+
+// message TeamListResponse {
+//     repeated Team teams = 1;
+// }
+
+/* Skill */
+message Skill {
+    int64 id = 1;
+    string skill = 2;
+    string description = 3;
+}
+
+message SkillResponse {
+    string message = 1;
+    Skill skill = 2;
+}
+
+/* RequestType */
+message RequestType {
+    int64 id = 1;
+    string requesttype = 2;
+    string description = 3;
+    string defaultindicator = 4;
+    string acct1 = 5;
+    string acct2 = 6;
+    string acct3 = 7;
+    string acct4 = 8;
+    string acct5 = 9;
+    string acct6 = 10;
+}
+
+message RequestTypeResponse {
+    string message = 1;
+    RequestType requesttype = 2;
+}
+
+message RequestTypeListResponse {
+    repeated RequestType requesttypes = 1;
+}
+
+/* Proecdure */
+message Procedure {
+    int64 id = 1;
+    string procedure = 2;
+    string description = 3;
+}
+
+message ProcedureResponse {
+    string message = 1;
+    Procedure procedure = 2;
+}
+
+message ProcedureListResponse {
+    repeated Procedure procedures = 1;
+}
+
+/* OutageReason */
+message OutageReason {
+    int64 id = 1;
+    string outagereason = 2;
+    string description = 3;
+}
+
+message OutageReasonResponse {
+    string message = 1;
+    OutageReason outagereason = 2;
+}
+
+message OutageReasonListResponse {
+    repeated OutageReason outagereasons = 1;
+}
+
+/* Department */
+message Department {
+    int64 id = 1;
+    string department = 2;
+    string description = 3;
+}
+
+message DepartmentResponse {
+    string message = 1;
+    Department department = 2;
+}
+
+message DepartmentListResponse {
+    repeated Department departments = 1;
+}
+
+/* Priority */
+message Priority {
+    int64 id = 1;
+    string Priority = 2;
+    string Description = 3;
+    string Comments = 4;
+    string Criticalflag = 5;
+    int64 Days = 6;
+}
+
+message PriorityResponse {
+    string message = 1;
+    Priority priority = 2;
+}
+
+message PriorityListResponse {
+    repeated Priority priorities = 1;
+}
+
+/* Status */
+message Status {
+    int64 Id = 1;
+    string Status = 2;
+    string Active = 3;
+    string Comments = 4;
+    string CompleteFlag = 5;
+}
+
+message StatusResponse {
+    string message = 1;
+    Status status = 2;
+}
+
+message StatusListResponse {
+    repeated Status statuses = 1;
+}
+
+/* Asset */
+message Asset {
+    int64 id = 1;
+    string Asset = 2;
+    string Description = 3;
+    string Site = 4;
+    string Building = 5;
+    string Floor = 6;
+    string Room = 7;
+    string Status = 8;
+}
+
+message AssetResponse {
+    string message = 1;
+    Asset asset = 2;
+}
+
+message AssetListResponse {
+    repeated Asset assets = 1;
+}
+
+/* BillingType */
+message BillingType {
+    int64 id = 1;
+    string Billingtype = 2;
+    string Description = 3;
+    string DefBillTypeFlag = 4;
+    string DefBillFlag = 5;
+}
+
+message BillingTypeResponse {
+    string message = 1;
+    BillingType billingtype = 2;
+}
+
+message BillingTypeListResponse {
+    repeated BillingType billingtypes = 1;
+}
+
+/* Account */
+message Account {
+    int64 id = 1;
+    string AcctGroupId = 2;
+    string AcctSegment1 = 3;
+    string AcctSegment2 = 4;
+    string AcctSegment3 = 5;
+    string AcctSegment4 = 6;
+    string AcctSegment5 = 7;
+    string AcctSegment6 = 8;
+    int64 Percent = 9;
+    string Attribute1 = 10;
+    string Attribute2 = 11;
+    string Attribute3 = 12;
+    string CoaName = 13;
+}
+
+message AccountResponse {
+    string message = 1;
+}
+
+message AccountsResponse {
+    repeated Account Accounts = 1;
+}
+
+message AccountsRequest {
+    AccountQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message AccountQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* Note */
+message Note {
+    int64 id = 1;
+    string BltExpOption = 2;
+    string Bulletin = 3;
+    google.protobuf.Timestamp ExpireDate = 4;
+    string NoteBuilding = 5;
+    google.protobuf.Timestamp NoteDate = 6;
+    string NoteEntity = 7;
+    string NoteEquip = 8;
+    string NoteFloor = 9;
+    string NoteKey = 10;
+    string NoteKey1 = 11;
+    string NoteKey2 = 12;
+    string NoteKey3 = 13;
+    string NoteKey4 = 14;
+    int64 NotePhase = 15;
+    string NoteRoom = 16;
+    string NoteSite = 17;
+    string NoteUser = 18;
+    int64 NumberOfDays = 19;
+    string PageFlag = 20;
+    string PrintFlag = 21;
+    string PrivateFlag = 22;
+    string Text = 23;
+    string Title = 24;
+    string WoFlag = 25;
+    int64 MobileRow = 26;
+    google.protobuf.Timestamp MobileDate = 27;
+}
+
+message NoteResponse {
+    string message = 1;
+}
+
+message NotesResponse {
+    repeated Note notes = 1;
+}
+
+message NotesRequest {
+    NoteQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message NoteQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* Document */
+message Document {
+    int64 id = 1;
+    string Description = 2;
+    string DocumentName = 3;
+    string DocEntity = 4;
+    string DocKey1 = 5;
+    string DocKey2 = 6;
+    string DocKey3 = 7;
+    string DocKey4 = 8;
+    string DocType = 9;
+	string BlobConent = 10;
+}
+
+message DocumentResponse {
+    string message = 1;
+}
+
+message DocumentsResponse {
+    repeated Document documents = 1;
+}
+
+message DocumentsRequest {
+    DocumentQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message DocumentQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* EquipmentRental */
+message EquipmentRental {
+    int64 id = 1;
+    string Employee = 2;
+    string Equipment = 3;
+    google.protobuf.Timestamp ExtractDate = 4;
+    int64 Hours = 5;
+    int64 RentalRate = 6;
+    string RentalType = 7;
+    google.protobuf.Timestamp RentDate = 8;
+    string ReqType = 9;
+    string WoNumber = 10;
+    int64 FuelCharge = 11;
+    int64 Miles = 12;
+    int64 MileageRate = 13;
+    int64 EquipPercent = 14;
+    google.protobuf.Timestamp MobileDate = 15;
+    string TaskCode = 16;
+}
+
+message EquipmentRentalResponse {
+    string message = 1;
+}
+
+message EquipmentRentalsResponse {
+    repeated EquipmentRental equipmentRentals = 1;
+}
+
+message EquipmentRentalsRequest {
+    EquipmentRentalQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message EquipmentRentalQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* PartRequest */
+message PartRequest {
+    int64 id = 1;
+    string Bin = 2;
+    string Description = 3;
+    google.protobuf.Timestamp ExtractDate = 4;
+    int64 Freight = 5;
+    string IssueNo = 6;
+    string ListType = 7;
+    string MarkupCode = 8;
+    int64 MaterialPercent = 9;
+    string PartLoc1 = 10;
+    string PartLoc2 = 11;
+    string PartLoc3 = 12;
+    string PartLoc4 = 13;
+    string PartLoc5 = 14;
+    string PartNumber = 15;
+    int64 QtyReturned = 16;
+    int64 Quantity = 17;
+    string Um = 18;
+    int64 UnitPrice = 19;
+    string Warehouse = 20;
+    string WoNumber = 21;
+    int64 ReturnedExtracted = 22;
+    int64 PoLineNo = 23;
+    string MatlObjCls = 24;
+    string MatlNuilding = 25;
+    string PoNumber = 26;
+    int64 ReleaseNo = 27;
+    int64 BillingTypeId = 28;
+    int64 LastQtyReturned = 29;
+    google.protobuf.Timestamp MobileDate = 30;
+    string LotNumber = 31;
+}
+
+message PartRequestResponse {
+    string message = 1;
+}
+
+message PartRequestsResponse {
+    repeated PartRequest partRequests = 1;
+}
+
+message PartRequestsRequest {
+    PartRequestQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message PartRequestQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* WorkOrderCost */
+message WorkOrderCost {
+    int64 id = 1;
+    int64 ActAdj = 2;
+    int64 ActEquipment = 3;
+    int64 ActLabor = 4;
+    int64 ActMaterial = 5;
+    int64 ActPo = 6;
+    int64 ActLaborHours = 7;
+    int64 ActMiscCosts = 8;
+}
+
+message WorkOrderCostResponse {
+    string message = 1;
+}
+
+message WorkOrderCostsResponse {
+    repeated WorkOrderCost workOrderCosts = 1;
+}
+
+message WorkOrderCostsRequest {
+    WorkOrderCostQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message WorkOrderCostQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message MultiAssignment {
+    int64 id = 1;
+    string Employee = 2;
+    string Name = 3;
+    string Status = 4;
+}
+
+message MultiAssignmentResponse {
+    string message = 1;
+}
+
+message MultiAssignmentsResponse {
+    repeated MultiAssignment multiAssignments = 1;
+}
+
+message MultiAssignmentsRequest {
+    MultiAssignmentQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message MultiAssignmentQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* UserDefinedField */
+message UserDefinedField {
+    int64 id = 1;
+    string Attribute1 = 2;
+    string Attribute2 = 3;
+    string Attribute3 = 4;
+    string Attribute4 = 5;
+    string Attribute5 = 6;
+    string Attribute6 = 7;
+    string Attribute7 = 8;
+    string Attribute8 = 9;
+    string Attribute9 = 10;
+    string Attribute10 = 11;
+    string Attribute11 = 12;
+    string Attribute12 = 13;
+    string Attribute13 = 14;
+    string Attribute14 = 15;
+    string Attribute15 = 16;
+    string Attribute16 = 17;
+    string Attribute17 = 18;
+    string Attribute18 = 19;
+    string Attribute19 = 20;
+    string Attribute20 = 21;
+    string Attribute21 = 22;
+    string Attribute22 = 23;
+    string Attribute23 = 24;
+    string Attribute24 = 25;
+    string Attribute25 = 26;
+    string Attribute26 = 27;
+    string Attribute27 = 28;
+    string Attribute28 = 29;
+    string Attribute29 = 30;
+    string Attribute30 = 31;
+}
+
+message UserDefinedFieldResponse {
+    string message = 1;
+}
+
+message UserDefinedFieldsResponse {
+    repeated UserDefinedField userDefinedFields = 1;
+}
+
+message UserDefinedFieldsRequest {
+    UserDefinedFieldQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message UserDefinedFieldQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* PurchaseOrder */
+message PurchaseOrder {
+    int64 id = 1;
+    string UnivObjCls = 2;
+    string MatlBuilding = 3;
+    string MatlObjCls = 4;
+    google.protobuf.Timestamp CurRequireDate = 5;
+    string WoNumber = 6;
+    string Warehouse = 7;
+    string VendorPartNumber = 8;
+    string Um = 9;
+    string Taxable = 10;
+    string Status = 11;
+    google.protobuf.Timestamp RequireDatePoco = 12;
+    google.protobuf.Timestamp RequireDate = 13;
+    int64 ReleaseNo = 14;
+    google.protobuf.Timestamp ReceiveDate = 15;
+    int64 QtyReturned = 16;
+    int64 QtyReceived = 17;
+    int64 QtyPoco = 18;
+    int64 QtyOrdered = 19;
+    int64 QtyMatched = 20;
+    int64 QtyInvoiced = 21;
+    int64 QtyCredited = 22;
+    google.protobuf.Timestamp PromiseDate = 23;
+    string Priority = 24;
+    int64 PricePoco = 25;
+    int64 Price = 26;
+    string PreqNo = 27;
+    int64 PreqLineNo = 28;
+    string Ponumber = 29;
+    string PocoNumber = 30;
+    string PlacedUser = 31;
+    google.protobuf.Timestamp PlacedDate = 32;
+    string PartType = 33;
+    string PartNumber = 34;
+    google.protobuf.Timestamp NextContactDate = 35;
+    string MfrSubstitution = 36;
+    string MfrPartNumber = 37;
+    string MfrBrand = 38;
+    string Mfr = 39;
+    int64 LineNo = 40;
+    google.protobuf.Timestamp LastContactDate = 41;
+    int64 Freight = 42;
+    google.protobuf.Timestamp ExtractDate = 43;
+    string Description = 44;
+    string DeliverTo = 45;
+    string Crew = 46;
+    string Commodity = 47;
+    string Comments = 48;
+    string CloseUser = 49;
+    google.protobuf.Timestamp CloseDate = 50;
+    string ByPhone = 51;
+    string ByFaxPhone = 52;
+    string ByFax = 53;
+    int64 AmtPaid = 54;
+    int64 AmtInvoiced = 55;
+    int64 AmtApSent = 56;
+    int64 AmtApproved = 57;
+    string Advise = 58;
+}
+
+message PurchaseOrderResponse {
+    string message = 1;
+}
+
+message PurchaseOrdersResponse {
+    repeated PurchaseOrder purchaseOrders = 1;
+}
+
+message PurchaseOrdersRequest {
+    PurchaseOrderQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message PurchaseOrderQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/* PurchaseRequisition */
+message PurchaseRequisition {
+    int64 id = 1;
+    int64 ReleaseNo = 2;
+    google.protobuf.Timestamp ExportDate = 3;
+    string UnivObjCls = 4;
+    string MatlNuilding = 5;
+    string Matlobjcls = 6;
+    string WoNumber = 7;
+    string Warehouse = 8;
+    string VendorPartNumber = 9;
+    string VendorNo = 10;
+    int64 UnitPrice = 11;
+    string Um = 12;
+    string Substitution = 13;
+    string Status = 14;
+    google.protobuf.Timestamp RequireDate = 15;
+    int64 Quantity = 16;
+    string QreqUser = 17;
+    string QreqItem = 18;
+    google.protobuf.Timestamp QreqDate = 19;
+    string Priority = 20;
+    string PreqNo = 21;
+    int64 PoTag = 22;
+    string PoNumber = 23;
+    string PlacedUser = 24;
+    google.protobuf.Timestamp PlacedDate = 25;
+    string PartType = 26;
+    string PartNumber = 27;
+    string Model = 28;
+    string Manufacturer = 29;
+    int64 LineNo = 30;
+    string Description = 31;
+    string Deliverto = 32;
+    string Commodity = 33;
+    string Comments = 34;
+    string CloseUser = 35;
+    google.protobuf.Timestamp CloseDate = 36;
+    string Buyer = 37;
+    string Brand = 38;
+    string Advise = 39;
+}
+
+message PurchaseRequisitionResponse {
+    string message = 1;
+}
+
+message PurchaseRequisitionsResponse {
+    repeated PurchaseRequisition purchaseRequisitions = 1;
+}
+
+message PurchaseRequisitionsRequest {
+    PurchaseRequisitionQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message PurchaseRequisitionQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+/////////////////////////////////////////////////
+
+/* TimeEntry */
+message TimeEntry {
+    int64 id = 1;
+    string employee = 2;
+    string desciprtion = 3;
+    google.protobuf.Timestamp workdate = 4;
+    int64 hours = 5;
+    google.protobuf.Timestamp enterdate = 6;
+    google.protobuf.Timestamp extractdate = 7;
+    //string workordernumber = 8;
+}
+
+message TimeEntryResponse {
+    string message = 1;
+    // TimeEntries employee = 2;
+    // TimeEntries description = 3;
+    // TimeEntries workdate = 3;
+    // TimeEntries hours = 3;
+}
+
+message TimeEntriesResponse {
+    repeated TimeEntry timeEntries = 1;
+}
+
+message TimeEntriesRequest {
+    TimeEntryQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message TimeEntryQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+service WorkOrderService {
+
+    rpc WorkOrderGet(WorkOrderRequest) returns (WorkOrder) {
+        option (google.api.http) = {
+            get: "/api/workorders/{id}"
+        };
+    };
+
+    rpc WorkOrdersGet(WorkOrdersRequest) returns (WorkOrdersResponse) {
+        option (google.api.http) = {
+            get: "/api/workorders"
+        };
+    };
+
+    rpc WorkOrderCreate(WorkOrderRequestCreate) returns (WorkOrderResponse) {
+        option (google.api.http) = {
+            post: "/api/workorders"
+            body: "*"
+        };
+    };
+
+    rpc WorkOrderUpdate(WorkOrderRequestUpdate) returns (WorkOrderResponse) {
+        option (google.api.http) = {
+            put: "/api/workorders/{id}"
+            body: "*"
+        };
+    };
+
+    // rpc SiteGet(SiteRequest) returns (Site) {
+    //     option (google.api.http) = {
+    //         get: "/api/sites/{id}"
+    //     };
+    // };
+
+    // rpc SitesGet(SitesRequest) returns (SitesResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/sites"
+    //     };
+    // };
+
+    // rpc SiteCreate(SiteRequestCreate) returns (SiteResponse) {
+    //     option (google.api.http) = {
+    //         post: "/api/sites"
+    //         body: "*"
+    //     };
+    // };
+
+    // rpc SiteUpdate(SiteRequestUpdate) returns (SiteResponse) {
+    //     option (google.api.http) = {
+    //         put: "/api/sites/{id}"
+    //         body: "*"
+    //     };
+    // };
+
+    // rpc GetTimeEntries(TimeEntriesRequest) returns (TimeEntriesResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/timeentries"
+    //     };
+    // };
+}
+
+// service SiteService {
+
+//     rpc SiteGet(SiteRequest) returns (Site) {
+//         option (google.api.http) = {
+//             get: "/api/sites/{id}"
+//         };
+//     };
+
+//     rpc SitesGet(SitesRequest) returns (SitesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/sites"
+//         };
+//     };
+
+//     rpc SiteCreate(SiteRequestCreate) returns (SiteResponse) {
+//         option (google.api.http) = {
+//             post: "/api/sites"
+//             body: "*"
+//         };
+//     };
+
+//     rpc SiteUpdate(SiteRequestUpdate) returns (SiteResponse) {
+//         option (google.api.http) = {
+//             put: "/api/sites/{id}"
+//             body: "*"
+//         };
+//     };
+// }
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/workorders
+    GET /api/workorders/:id
+    POST /api/workorders
+    PUT /api/workorders/:id
+    DELETE /api/workorders/:id
+
+    POST /api/workorders/close/:id
+*/
