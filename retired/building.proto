@@ -1,0 +1,353 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message Building {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Description = 4;
+    string Status = 5;
+    string Active = 6;
+    string Address1 = 7;
+    string Address2 = 8;
+    string Address3 = 9;
+    string Billing = 10;
+    string BldgMgrId = 11;
+    string ContactName = 12;	
+    string ContactTelephone = 13;
+    string ContactEmail = 14;
+    string AcctSegment1 = 15;
+    string AcctSegment2 = 16;
+    string AcctSegment3 = 17;
+    string AcctSegment4 = 18;
+    string AcctSegment5 = 19;
+    string AcctSegment6 = 20;
+    string BuildingAbbr = 21;
+    string BuildingType = 22;
+    string BuildingUsage = 23;
+    string BuildMailCode = 24;
+    string HasFloors = 25;
+    string GridCoord = 26;
+    string CadDrawing = 27;	
+    int64 SqrFeet = 28;
+    int64 CoreSqft = 29;
+    int64 NonUsableSqft = 30;
+    int64 UsableSqft = 31;
+    int64 Sqft1 = 32;
+    int64 Sqft2 = 33;
+    int64 Sqft3 = 34;
+    int64 Sqft4 = 35;
+    int64 Sqft5 = 36;
+    int64 AssetClassId = 37;
+    string TaxStatus = 38;
+    string MunZone = 39;
+    int64 AltRequestorId = 40;
+    string AcquisitionCode = 41;
+    string Zone = 42;
+    int64 TravelTime = 43;
+    string Owned = 44;
+    string MarkupCode = 45;
+    int64 InteriorSqft = 46;
+    string Employee = 47;
+    string ChargeSourceId = 48;
+    string FacEntity = 49;
+    string CostRec = 50;
+    string SqrFeetSource = 51;
+    int64 TargetFci = 52;
+    google.protobuf.Timestamp ReplacementCostDate = 53;
+    int64 ReplacementCost = 54;
+    int64 OriginalCost = 55;
+    string CloseUser = 56;
+    google.protobuf.Timestamp CloseDate = 57;
+    int64 EntityId = 58;
+    string Dwf = 59;
+    string WebImage = 60;
+    string ImageName = 61;
+    string Attribute1 = 62;
+    string Attribute2 = 63;
+    string Attribute3 = 64;
+    string Attribute4 = 65;
+    string Attribute5 = 66;
+    string Attribute6 = 67;
+    string Attribute7 = 68;
+    string Attribute8 = 69;
+    string Attribute9 = 70;
+    string Attribute10 = 71;
+    string Attribute11 = 72;
+    string Attribute12 = 73;
+    string Attribute13 = 74;
+    string Attribute14 = 75;
+    string Attribute15 = 76;
+    string Attribute16 = 77;
+    string Attribute17 = 78;
+    string Attribute18 = 79;
+    string Attribute19 = 80;
+    string Attribute20 = 81;
+    string Attribute21 = 82;
+    string Attribute22 = 83;
+    string Attribute23 = 84;
+    string Attribute24 = 85;
+    string Attribute25 = 86;
+    string Attribute26 = 87;
+    string Attribute27 = 88;
+    string Attribute28 = 89;
+    string Attribute29 = 90;
+    string Attribute30 = 91;
+}
+
+message BuildingRequest {
+    string id = 1;
+}
+
+message BuildingResponse {
+    string message = 1;
+    Building building = 2;
+}
+
+message BuildingQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message BuildingsRequest {
+    BuildingQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message BuildingsResponse {
+    repeated Building buildings = 1;
+}
+
+message BuildingRequestCreate {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Description = 4;
+    string Status = 5;
+    string Active = 6;
+    string Address1 = 7;
+    string Address2 = 8;
+    string Address3 = 9;
+    string Billing = 10;
+    string BldgMgrId = 11;
+    string ContactName = 12;	
+    string ContactTelephone = 13;
+    string ContactEmail = 14;
+    string AcctSegment1 = 15;
+    string AcctSegment2 = 16;
+    string AcctSegment3 = 17;
+    string AcctSegment4 = 18;
+    string AcctSegment5 = 19;
+    string AcctSegment6 = 20;
+    string BuildingAbbr = 21;
+    string BuildingType = 22;
+    string BuildingUsage = 23;
+    string BuildMailCode = 24;
+    string HasFloors = 25;
+    string GridCoord = 26;
+    string CadDrawing = 27;	
+    int64 SqrFeet = 28;
+    int64 CoreSqft = 29;
+    int64 NonUsableSqft = 30;
+    int64 UsableSqft = 31;
+    int64 Sqft1 = 32;
+    int64 Sqft2 = 33;
+    int64 Sqft3 = 34;
+    int64 Sqft4 = 35;
+    int64 Sqft5 = 36;
+    int64 AssetClassId = 37;
+    string TaxStatus = 38;
+    string MunZone = 39;
+    int64 AltRequestorId = 40;
+    string AcquisitionCode = 41;
+    string Zone = 42;
+    int64 TravelTime = 43;
+    string Owned = 44;
+    string MarkupCode = 45;
+    int64 InteriorSqft = 46;
+    string Employee = 47;
+    string ChargeSourceId = 48;
+    string FacEntity = 49;
+    string CostRec = 50;
+    string SqrFeetSource = 51;
+    int64 TargetFci = 52;
+    google.protobuf.Timestamp ReplacementCostDate = 53;
+    int64 ReplacementCost = 54;
+    int64 OriginalCost = 55;
+    string CloseUser = 56;
+    google.protobuf.Timestamp CloseDate = 57;
+    int64 EntityId = 58;
+    string Dwf = 59;
+    string WebImage = 60;
+    string ImageName = 61;
+    string Attribute1 = 62;
+    string Attribute2 = 63;
+    string Attribute3 = 64;
+    string Attribute4 = 65;
+    string Attribute5 = 66;
+    string Attribute6 = 67;
+    string Attribute7 = 68;
+    string Attribute8 = 69;
+    string Attribute9 = 70;
+    string Attribute10 = 71;
+    string Attribute11 = 72;
+    string Attribute12 = 73;
+    string Attribute13 = 74;
+    string Attribute14 = 75;
+    string Attribute15 = 76;
+    string Attribute16 = 77;
+    string Attribute17 = 78;
+    string Attribute18 = 79;
+    string Attribute19 = 80;
+    string Attribute20 = 81;
+    string Attribute21 = 82;
+    string Attribute22 = 83;
+    string Attribute23 = 84;
+    string Attribute24 = 85;
+    string Attribute25 = 86;
+    string Attribute26 = 87;
+    string Attribute27 = 88;
+    string Attribute28 = 89;
+    string Attribute29 = 90;
+    string Attribute30 = 91;
+}
+
+/* BuildingRequestUpdate */
+message BuildingRequestUpdate {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Description = 4;
+    string Status = 5;
+    string Active = 6;
+    string Address1 = 7;
+    string Address2 = 8;
+    string Address3 = 9;
+    string Billing = 10;
+    string BldgMgrId = 11;
+    string ContactName = 12;	
+    string ContactTelephone = 13;
+    string ContactEmail = 14;
+    string AcctSegment1 = 15;
+    string AcctSegment2 = 16;
+    string AcctSegment3 = 17;
+    string AcctSegment4 = 18;
+    string AcctSegment5 = 19;
+    string AcctSegment6 = 20;
+    string BuildingAbbr = 21;
+    string BuildingType = 22;
+    string BuildingUsage = 23;
+    string BuildMailCode = 24;
+    string HasFloors = 25;
+    string GridCoord = 26;
+    string CadDrawing = 27;	
+    int64 SqrFeet = 28;
+    int64 CoreSqft = 29;
+    int64 NonUsableSqft = 30;
+    int64 UsableSqft = 31;
+    int64 Sqft1 = 32;
+    int64 Sqft2 = 33;
+    int64 Sqft3 = 34;
+    int64 Sqft4 = 35;
+    int64 Sqft5 = 36;
+    int64 AssetClassId = 37;
+    string TaxStatus = 38;
+    string MunZone = 39;
+    int64 AltRequestorId = 40;
+    string AcquisitionCode = 41;
+    string Zone = 42;
+    int64 TravelTime = 43;
+    string Owned = 44;
+    string MarkupCode = 45;
+    int64 InteriorSqft = 46;
+    string Employee = 47;
+    string ChargeSourceId = 48;
+    string FacEntity = 49;
+    string CostRec = 50;
+    string SqrFeetSource = 51;
+    int64 TargetFci = 52;
+    google.protobuf.Timestamp ReplacementCostDate = 53;
+    int64 ReplacementCost = 54;
+    int64 OriginalCost = 55;
+    string CloseUser = 56;
+    google.protobuf.Timestamp CloseDate = 57;
+    int64 EntityId = 58;
+    string Dwf = 59;
+    string WebImage = 60;
+    string ImageName = 61;
+    string Attribute1 = 62;
+    string Attribute2 = 63;
+    string Attribute3 = 64;
+    string Attribute4 = 65;
+    string Attribute5 = 66;
+    string Attribute6 = 67;
+    string Attribute7 = 68;
+    string Attribute8 = 69;
+    string Attribute9 = 70;
+    string Attribute10 = 71;
+    string Attribute11 = 72;
+    string Attribute12 = 73;
+    string Attribute13 = 74;
+    string Attribute14 = 75;
+    string Attribute15 = 76;
+    string Attribute16 = 77;
+    string Attribute17 = 78;
+    string Attribute18 = 79;
+    string Attribute19 = 80;
+    string Attribute20 = 81;
+    string Attribute21 = 82;
+    string Attribute22 = 83;
+    string Attribute23 = 84;
+    string Attribute24 = 85;
+    string Attribute25 = 86;
+    string Attribute26 = 87;
+    string Attribute27 = 88;
+    string Attribute28 = 89;
+    string Attribute29 = 90;
+    string Attribute30 = 91;
+}
+
+service BuildingService {
+
+    rpc BuildingGet(BuildingRequest) returns (Building) {
+        option (google.api.http) = {
+            get: "/api/buildings/{id}"
+        };
+    };
+
+    rpc BuildingsGet(BuildingsRequest) returns (BuildingsResponse) {
+        option (google.api.http) = {
+            get: "/api/buildings"
+        };
+    };
+
+    rpc BuildingCreate(BuildingRequestCreate) returns (BuildingResponse) {
+        option (google.api.http) = {
+            post: "/api/buildings"
+            body: "*"
+        };
+    };
+
+    rpc BuildingUpdate(BuildingRequestUpdate) returns (BuildingResponse) {
+        option (google.api.http) = {
+            put: "/api/buildings/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/buildings
+    GET /api/buildings/:id
+    POST /api/buildings
+    PUT /api/buildings/:id
+    DELETE /api/buildings/:id
+
+    POST /api/buildings/close/:id
+*/

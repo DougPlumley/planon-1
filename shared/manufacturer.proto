@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Manufacturer {
+    int64 id = 1;
+	string manufacturer = 2;
+    string description = 3;
+}
+
+message ManufacturerParameter {
+    int64 id = 1;
+	string manufacturer = 2;
+    string description = 3;
+}
+
+message ManufacturersRequest {
+    UserInfo userInfo = 1;
+    ManufacturerParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message ManufacturersResponse {
+    Response response = 1;
+    repeated Manufacturer manufacturer = 2;
+}
+
+// service ManufacturerService {
+//     rpc ManufacturersGet(ManufacturersRequest) returns (ManufacturersResponse) {
+//         option (google.api.http) = {
+//             get: "/api/manufacturer"
+//         };
+//     };
+// }

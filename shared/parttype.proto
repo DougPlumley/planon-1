@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message PartType {
+    int64 id = 1;
+	string partType = 2;
+    string comments = 3;
+}
+
+message PartTypeParameter {
+    int64 id = 1;
+	string partType = 2;
+    string comments = 3;
+}
+
+message PartTypesRequest {
+    UserInfo userInfo = 1;
+    PartTypeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PartTypesResponse {
+    Response response = 1;
+    repeated PartType parttypes = 2;
+}
+
+// service PartTypeService {
+//     rpc PartTypesGet(PartTypesRequest) returns (PartTypesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/parttype"
+//         };
+//     };
+// }

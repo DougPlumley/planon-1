@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message PartCategory5 {
+    int64 id = 1;
+	string category = 2;
+    string description = 3;
+}
+
+message PartCategory5Parameter {
+    int64 id = 1;
+	string category = 2;
+    string description = 3;
+}
+
+message PartCategory5sRequest {
+    UserInfo userInfo = 1;
+    PartCategory5Parameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PartCategory5sResponse {
+    Response response = 1;
+    repeated PartCategory5 partcategories = 2;
+}
+
+// service PartCategoryService {
+//     rpc PartCategorysGet(PartCategorysRequest) returns (PartCategorysResponse) {
+//         option (google.api.http) = {
+//             get: "/api/partcategory"
+//         };
+//     };
+// }

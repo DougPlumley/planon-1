@@ -1,0 +1,237 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "procedure.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/procedures": {
+      "get": {
+        "operationId": "ProceduresGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProceduresResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ProcedureService"
+        ]
+      },
+      "post": {
+        "operationId": "ProcedureCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProcedureResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProcedureRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "ProcedureService"
+        ]
+      }
+    },
+    "/api/procedures/{id}": {
+      "get": {
+        "operationId": "ProcedureGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Procedure"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProcedureService"
+        ]
+      },
+      "put": {
+        "operationId": "ProcedureUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProcedureResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProcedureRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "ProcedureService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Procedure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Procedure": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      }
+    },
+    "ProcedureQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProcedureRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Procedure": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      }
+    },
+    "ProcedureRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Procedure": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      },
+      "title": "ProcedureRequestUpdate"
+    },
+    "ProcedureResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "procedure": {
+          "$ref": "#/definitions/Procedure"
+        }
+      }
+    },
+    "ProceduresResponse": {
+      "type": "object",
+      "properties": {
+        "procedures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Procedure"
+          }
+        }
+      }
+    }
+  }
+}

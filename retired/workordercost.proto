@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+
+message WorkOrderCost {
+    int64 id = 1;
+    int64 ActAdj = 2;
+    int64 ActEquipment = 3;
+    int64 ActLabor = 4;
+    int64 ActMaterial = 5;
+    int64 ActPo = 6;
+    int64 ActLaborHours = 7;
+    int64 ActMiscCosts = 8;
+}
+
+message WorkOrderCostRequest {
+    string id = 1;
+}
+
+message WorkOrderCostResponse {
+    string message = 1;
+    WorkOrderCost workOrderCost = 2;
+}
+
+message WorkOrderCostQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message WorkOrderCostsRequest {
+    WorkOrderCostQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message WorkOrderCostsResponse {
+    repeated WorkOrderCost workOrderCosts = 1;
+}
+
+message WorkOrderCostRequestCreate {
+    int64 id = 1;
+    int64 ActAdj = 2;
+    int64 ActEquipment = 3;
+    int64 ActLabor = 4;
+    int64 ActMaterial = 5;
+    int64 ActPo = 6;
+    int64 ActLaborHours = 7;
+    int64 ActMiscCosts = 8;
+}
+
+/* WorkOrderCostRequestUpdate */
+message WorkOrderCostRequestUpdate {
+    int64 id = 1;
+    int64 ActAdj = 2;
+    int64 ActEquipment = 3;
+    int64 ActLabor = 4;
+    int64 ActMaterial = 5;
+    int64 ActPo = 6;
+    int64 ActLaborHours = 7;
+    int64 ActMiscCosts = 8;
+}
+
+service WorkOrderCostService {
+
+    rpc WorkOrderCostGet(WorkOrderCostRequest) returns (WorkOrderCost) {
+        option (google.api.http) = {
+            get: "/api/workordercosts/{id}"
+        };
+    };
+
+    rpc WorkOrderCostsGet(WorkOrderCostsRequest) returns (WorkOrderCostsResponse) {
+        option (google.api.http) = {
+            get: "/api/workordercosts"
+        };
+    };
+
+    rpc WorkOrderCostCreate(WorkOrderCostRequestCreate) returns (WorkOrderCostResponse) {
+        option (google.api.http) = {
+            post: "/api/workordercosts"
+            body: "*"
+        };
+    };
+
+    rpc WorkOrderCostUpdate(WorkOrderCostRequestUpdate) returns (WorkOrderCostResponse) {
+        option (google.api.http) = {
+            put: "/api/workordercosts/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/workordercosts
+    GET /api/workordercosts/:id
+    POST /api/workordercosts
+    PUT /api/workordercosts/:id
+    DELETE /api/workordercosts/:id
+
+    POST /api/workordercosts/close/:id
+*/

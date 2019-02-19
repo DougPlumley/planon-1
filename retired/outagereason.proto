@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+message OutageReason {
+	int64 id = 1;
+    string OutageReason = 2;
+    string Comments = 3;
+}
+
+message OutageReasonRequest {
+    string id = 1;
+}
+
+message OutageReasonResponse {
+    string message = 1;
+    OutageReason outagereason = 2;
+}
+
+message OutageReasonQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message OutageReasonsRequest {
+    OutageReasonQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message OutageReasonsResponse {
+    repeated OutageReason outagereasons = 1;
+}
+
+message OutageReasonRequestCreate {
+	int64 id = 1;
+    string OutageReason = 2;
+    string Comments = 3;
+}
+
+/* OutageReasonRequestUpdate */
+message OutageReasonRequestUpdate {
+	int64 id = 1;
+    string OutageReason = 2;
+    string Comments = 3;
+}
+
+service OutageReasonService {
+
+    rpc OutageReasonGet(OutageReasonRequest) returns (OutageReason) {
+        option (google.api.http) = {
+            get: "/api/outagereasons/{id}"
+        };
+    };
+
+    rpc OutageReasonsGet(OutageReasonsRequest) returns (OutageReasonsResponse) {
+        option (google.api.http) = {
+            get: "/api/outagereasons"
+        };
+    };
+
+    rpc OutageReasonCreate(OutageReasonRequestCreate) returns (OutageReasonResponse) {
+        option (google.api.http) = {
+            post: "/api/outagereasons"
+            body: "*"
+        };
+    };
+
+    rpc OutageReasonUpdate(OutageReasonRequestUpdate) returns (OutageReasonResponse) {
+        option (google.api.http) = {
+            put: "/api/outagereasons/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/outagereasons
+    GET /api/outagereasons/:id
+    POST /api/outagereasons
+    PUT /api/outagereasons/:id
+    DELETE /api/outagereasons/:id
+
+    POST /api/outagereasons/close/:id
+*/

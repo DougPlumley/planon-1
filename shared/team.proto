@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Team {
+    int64 id = 1;
+	string team = 2;
+    string description = 3;
+    string chief = 4;
+}
+
+message TeamParameter {
+    int64 id = 1;
+	string team = 2;
+    string description = 3;
+    string chief = 4;
+}
+
+message TeamsRequest {
+    UserInfo userInfo = 1;
+    TeamParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message TeamsResponse {
+    Response response = 1;
+    repeated Team teams = 2;
+}
+
+// service TeamService {
+//     rpc TaskCodeGet(TeamsRequest) returns (TeamsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/team"
+//         };
+//     };
+// }

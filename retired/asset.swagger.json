@@ -1,0 +1,1326 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "asset.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/assets": {
+      "get": {
+        "operationId": "AssetesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.assetFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetService"
+        ]
+      },
+      "post": {
+        "operationId": "AssetCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "AssetService"
+        ]
+      }
+    },
+    "/api/assets/{id}": {
+      "get": {
+        "operationId": "AssetGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Asset"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetService"
+        ]
+      },
+      "put": {
+        "operationId": "AssetUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "AssetService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "AcquisitionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AcquisitionDescription": {
+          "type": "string"
+        },
+        "AcquisitionPoNumber": {
+          "type": "string"
+        },
+        "AcquisitionVendor": {
+          "type": "string"
+        },
+        "AssetNo": {
+          "type": "string"
+        },
+        "BaseUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "Color": {
+          "type": "string"
+        },
+        "Cost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Criticality": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DownTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DriverAddress1": {
+          "type": "string"
+        },
+        "DriverAddress2": {
+          "type": "string"
+        },
+        "DriverAddress3": {
+          "type": "string"
+        },
+        "DriverCard": {
+          "type": "string"
+        },
+        "DriverDepartment": {
+          "type": "string"
+        },
+        "DriverEmail": {
+          "type": "string"
+        },
+        "DriverFax": {
+          "type": "string"
+        },
+        "DriverName": {
+          "type": "string"
+        },
+        "DriverTelephone": {
+          "type": "string"
+        },
+        "Asset": {
+          "type": "string"
+        },
+        "EquipGroup": {
+          "type": "string"
+        },
+        "EquipType": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Keyword": {
+          "type": "string"
+        },
+        "LastUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LicenseNumber": {
+          "type": "string"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "Mfr": {
+          "type": "string"
+        },
+        "MfrPartNo": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "ModelYear": {
+          "type": "string"
+        },
+        "Nomenclature": {
+          "type": "string"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Noteuser": {
+          "type": "string"
+        },
+        "OverhaulDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "OwnerAddress1": {
+          "type": "string"
+        },
+        "OwnerAddress2": {
+          "type": "string"
+        },
+        "OwnerAddress3": {
+          "type": "string"
+        },
+        "OwnerDepartment": {
+          "type": "string"
+        },
+        "OwnerEmail": {
+          "type": "string"
+        },
+        "OwnerFax": {
+          "type": "string"
+        },
+        "OwnerName": {
+          "type": "string"
+        },
+        "OwnerTelephone": {
+          "type": "string"
+        },
+        "Parent": {
+          "type": "string"
+        },
+        "PmGroup": {
+          "type": "string"
+        },
+        "RecordType": {
+          "type": "string"
+        },
+        "RentalRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalType": {
+          "type": "string"
+        },
+        "RequestorType": {
+          "type": "string"
+        },
+        "Room": {
+          "type": "string"
+        },
+        "SerialNo": {
+          "type": "string"
+        },
+        "ServiceGuide": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "UsageUnits": {
+          "type": "string"
+        },
+        "VehicleCard": {
+          "type": "string"
+        },
+        "WarrantyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "WarrantyDescription": {
+          "type": "string"
+        },
+        "WarrantyPoNumber": {
+          "type": "string"
+        },
+        "WarrantyProjectAlert": {
+          "type": "string"
+        },
+        "WarrantySrAlert": {
+          "type": "string"
+        },
+        "WarrantyUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WarrantyVendor": {
+          "type": "string"
+        },
+        "Zone": {
+          "type": "string"
+        },
+        "AssessmentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CondReadDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EquipCond": {
+          "type": "string"
+        },
+        "MileageRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReplaceCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OverallRate": {
+          "type": "string"
+        },
+        "CategoryId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        },
+        "Attribute25": {
+          "type": "string"
+        },
+        "Attribute26": {
+          "type": "string"
+        },
+        "Attribute27": {
+          "type": "string"
+        },
+        "Attribute28": {
+          "type": "string"
+        },
+        "Attribute29": {
+          "type": "string"
+        },
+        "Attribute30": {
+          "type": "string"
+        },
+        "AcquisitionReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WarrantyReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AssetClassId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AssetQuery": {
+      "type": "object",
+      "properties": {
+        "assetFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AssetRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "AcquisitionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AcquisitionDescription": {
+          "type": "string"
+        },
+        "AcquisitionPoNumber": {
+          "type": "string"
+        },
+        "AcquisitionVendor": {
+          "type": "string"
+        },
+        "AssetNo": {
+          "type": "string"
+        },
+        "BaseUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "Color": {
+          "type": "string"
+        },
+        "Cost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Criticality": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DownTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DriverAddress1": {
+          "type": "string"
+        },
+        "DriverAddress2": {
+          "type": "string"
+        },
+        "DriverAddress3": {
+          "type": "string"
+        },
+        "DriverCard": {
+          "type": "string"
+        },
+        "DriverDepartment": {
+          "type": "string"
+        },
+        "DriverEmail": {
+          "type": "string"
+        },
+        "DriverFax": {
+          "type": "string"
+        },
+        "DriverName": {
+          "type": "string"
+        },
+        "DriverTelephone": {
+          "type": "string"
+        },
+        "Asset": {
+          "type": "string"
+        },
+        "EquipGroup": {
+          "type": "string"
+        },
+        "EquipType": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Keyword": {
+          "type": "string"
+        },
+        "LastUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LicenseNumber": {
+          "type": "string"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "Mfr": {
+          "type": "string"
+        },
+        "MfrPartNo": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "ModelYear": {
+          "type": "string"
+        },
+        "Nomenclature": {
+          "type": "string"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Noteuser": {
+          "type": "string"
+        },
+        "OverhaulDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "OwnerAddress1": {
+          "type": "string"
+        },
+        "OwnerAddress2": {
+          "type": "string"
+        },
+        "OwnerAddress3": {
+          "type": "string"
+        },
+        "OwnerDepartment": {
+          "type": "string"
+        },
+        "OwnerEmail": {
+          "type": "string"
+        },
+        "OwnerFax": {
+          "type": "string"
+        },
+        "OwnerName": {
+          "type": "string"
+        },
+        "OwnerTelephone": {
+          "type": "string"
+        },
+        "Parent": {
+          "type": "string"
+        },
+        "PmGroup": {
+          "type": "string"
+        },
+        "RecordType": {
+          "type": "string"
+        },
+        "RentalRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalType": {
+          "type": "string"
+        },
+        "RequestorType": {
+          "type": "string"
+        },
+        "Room": {
+          "type": "string"
+        },
+        "SerialNo": {
+          "type": "string"
+        },
+        "ServiceGuide": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "UsageUnits": {
+          "type": "string"
+        },
+        "VehicleCard": {
+          "type": "string"
+        },
+        "WarrantyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "WarrantyDescription": {
+          "type": "string"
+        },
+        "WarrantyPoNumber": {
+          "type": "string"
+        },
+        "WarrantyProjectAlert": {
+          "type": "string"
+        },
+        "WarrantySrAlert": {
+          "type": "string"
+        },
+        "WarrantyUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WarrantyVendor": {
+          "type": "string"
+        },
+        "Zone": {
+          "type": "string"
+        },
+        "AssessmentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CondReadDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EquipCond": {
+          "type": "string"
+        },
+        "MileageRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReplaceCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OverallRate": {
+          "type": "string"
+        },
+        "CategoryId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        },
+        "Attribute25": {
+          "type": "string"
+        },
+        "Attribute26": {
+          "type": "string"
+        },
+        "Attribute27": {
+          "type": "string"
+        },
+        "Attribute28": {
+          "type": "string"
+        },
+        "Attribute29": {
+          "type": "string"
+        },
+        "Attribute30": {
+          "type": "string"
+        },
+        "AcquisitionReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WarrantyReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AssetClassId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AssetRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "AcquisitionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AcquisitionDescription": {
+          "type": "string"
+        },
+        "AcquisitionPoNumber": {
+          "type": "string"
+        },
+        "AcquisitionVendor": {
+          "type": "string"
+        },
+        "AssetNo": {
+          "type": "string"
+        },
+        "BaseUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "Color": {
+          "type": "string"
+        },
+        "Cost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Criticality": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DownTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DriverAddress1": {
+          "type": "string"
+        },
+        "DriverAddress2": {
+          "type": "string"
+        },
+        "DriverAddress3": {
+          "type": "string"
+        },
+        "DriverCard": {
+          "type": "string"
+        },
+        "DriverDepartment": {
+          "type": "string"
+        },
+        "DriverEmail": {
+          "type": "string"
+        },
+        "DriverFax": {
+          "type": "string"
+        },
+        "DriverName": {
+          "type": "string"
+        },
+        "DriverTelephone": {
+          "type": "string"
+        },
+        "Asset": {
+          "type": "string"
+        },
+        "EquipGroup": {
+          "type": "string"
+        },
+        "EquipType": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Keyword": {
+          "type": "string"
+        },
+        "LastUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LicenseNumber": {
+          "type": "string"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "Mfr": {
+          "type": "string"
+        },
+        "MfrPartNo": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "ModelYear": {
+          "type": "string"
+        },
+        "Nomenclature": {
+          "type": "string"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Noteuser": {
+          "type": "string"
+        },
+        "OverhaulDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "OwnerAddress1": {
+          "type": "string"
+        },
+        "OwnerAddress2": {
+          "type": "string"
+        },
+        "OwnerAddress3": {
+          "type": "string"
+        },
+        "OwnerDepartment": {
+          "type": "string"
+        },
+        "OwnerEmail": {
+          "type": "string"
+        },
+        "OwnerFax": {
+          "type": "string"
+        },
+        "OwnerName": {
+          "type": "string"
+        },
+        "OwnerTelephone": {
+          "type": "string"
+        },
+        "Parent": {
+          "type": "string"
+        },
+        "PmGroup": {
+          "type": "string"
+        },
+        "RecordType": {
+          "type": "string"
+        },
+        "RentalRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalType": {
+          "type": "string"
+        },
+        "RequestorType": {
+          "type": "string"
+        },
+        "Room": {
+          "type": "string"
+        },
+        "SerialNo": {
+          "type": "string"
+        },
+        "ServiceGuide": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "UsageUnits": {
+          "type": "string"
+        },
+        "VehicleCard": {
+          "type": "string"
+        },
+        "WarrantyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "WarrantyDescription": {
+          "type": "string"
+        },
+        "WarrantyPoNumber": {
+          "type": "string"
+        },
+        "WarrantyProjectAlert": {
+          "type": "string"
+        },
+        "WarrantySrAlert": {
+          "type": "string"
+        },
+        "WarrantyUsage": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WarrantyVendor": {
+          "type": "string"
+        },
+        "Zone": {
+          "type": "string"
+        },
+        "AssessmentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CondReadDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EquipCond": {
+          "type": "string"
+        },
+        "MileageRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReplaceCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OverallRate": {
+          "type": "string"
+        },
+        "CategoryId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        },
+        "Attribute25": {
+          "type": "string"
+        },
+        "Attribute26": {
+          "type": "string"
+        },
+        "Attribute27": {
+          "type": "string"
+        },
+        "Attribute28": {
+          "type": "string"
+        },
+        "Attribute29": {
+          "type": "string"
+        },
+        "Attribute30": {
+          "type": "string"
+        },
+        "AcquisitionReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WarrantyReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AssetClassId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "title": "AssetRequestUpdate"
+    },
+    "AssetResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "asset": {
+          "$ref": "#/definitions/Asset"
+        }
+      }
+    },
+    "AssetesResponse": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Asset"
+          }
+        }
+      }
+    }
+  }
+}

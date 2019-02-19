@@ -1,0 +1,606 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "userinfo.proto";
+import "response.proto";
+import "common.proto";
+import "site.proto";
+import "requester.proto";
+import "building.proto";
+import "floor.proto";
+import "room.proto";
+import "employee.proto";
+import "team.proto";
+import "skill.proto";
+import "requesttype.proto";
+import "procedure.proto";
+import "outagereason.proto";
+import "department.proto";
+import "priority.proto";
+import "assetlist.proto";
+import "billingtype.proto";
+import "account.proto";
+import "note.proto";
+import "document.proto";
+import "attachment.proto";
+import "workorderstatus.proto";
+import "maintenancetype.proto";
+import "requeststatus.proto";
+
+//relationships
+import "workorderproject.proto";
+import "workorderprojectphase.proto";
+import "assetdetail.proto";
+//import "timeentry.proto";
+import "timeapproval.proto";
+import "workordermultiassignment.proto";
+import "contact.proto";
+import "workordercost.proto";
+import "purchaseorder.proto";
+import "purchaserequisition.proto";
+import "assetrental.proto";
+import "userdefinedfield.proto";
+import "partrequest.proto";
+
+message WorkOrder {
+    int64 id = 1;
+    string requestNumber = 2;
+    string workOrderNumber = 3;
+    string parentWorkOrderNumber = 4;
+    string reqNumber = 5;
+    string phase = 6;
+    string description = 7;
+    Requester requester = 8; /*list*/
+    Site site = 9;  /*list*/
+    Building building = 10;  /*list*/
+    Floor floor = 11;  /*list*/
+    Room room = 12;  /*list*/
+    AssetList asset = 13; /*List Item*/
+    Employee assignedTo = 14;  /*list*/
+    Team team = 15;  /*list  (FAMIS On Premise CREW)*/
+    Skill skill = 16;  /*list  (FAMIS On Premise CRAFT)*/
+    MaintenanceType maintenanceType = 17 ; /*List Item*/
+    RequestType requestType = 18; /*FAMIS On Premise REQ_TYPE (S,W,P,T)*/
+    Procedure procedure = 19;  /*list  (FAMIS On Premise METHOD)*/
+    OutageReason outageReason = 20;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+    Department department = 21;  /*list*/
+    Priority priority = 22;  /*list*/
+    WorkOrderStatus workOrderStatus = 23;  /*list*/
+    bool activeFlag = 24;  /*true or false value*/
+    google.protobuf.Timestamp enterDate = 25;
+    int64 EnterUser = 26; /*list*/
+    google.protobuf.Timestamp modifyDate = 27;
+    int64 ModifyUser = 28; /*list*/
+    google.protobuf.Timestamp requestDate = 29;
+    google.protobuf.Timestamp scheduleDate = 30;
+    google.protobuf.Timestamp startDate = 31;
+    google.protobuf.Timestamp dueDate = 32;
+    google.protobuf.Timestamp completeDate = 33;
+    int64 completedBy = 34;  /*list*/
+    google.protobuf.Timestamp closeDate = 35;
+    int64 closedBy = 36;  /*list*/
+    RequestStatus requestStatus =37;
+    string taskList = 38;
+    string coordinate = 39;  /*geocoordinates of location/work request*/
+    //Billing Information
+    BillingType billingType = 40; /*list*/
+    repeated Account accounts = 41; /*relationship attribute to show account details*/
+    //Documents
+    repeated Attachment attachments = 42;
+    repeated Note notes = 43;
+    repeated Document documents = 44;
+    /*Folloing attribute will be used for determining badges by Apptree connector*/
+    google.protobuf.Timestamp assetWarrantyDate = 45;
+    bool hasTimeEntry = 46;
+    bool hasActivePartRequest = 47;
+    
+    /*
+    // Folloiwng item are relationship (singled or repeated), will implement by lazyload.
+    AssetDetail assetDetail = 54; 
+    String parentWorkOrderDetail = 55
+    ProjectNumber projectnumber = 56;
+    ProjectNumber projectphase = 57;
+    repeated Contact contact = 58;
+    repeated TimeEntry timeEntries = 59;
+    repeated WorkOrdersResponse workOrders = 60;
+    repeated EquipmentRental equipmentRentals = 61;
+    repeated PartRequest partRequests = 62;
+    repeated WorkOrderCost workOrderCosts = 63; 
+    repeated MultiAssignment multiAssignments = 64;
+    repeated UserDefinedField userDefinedFields = 65;
+    repeated PurchaseOrder purchaseOrders = 66;
+    repeated PurchaseRequisition purchaseRequisitions = 67;
+    */
+}
+
+message WorkOrderUpdate{
+    int64 id = 1; // Primary key. Will be null when CREATE
+    string parentWorkOrderNumber = 2; //For Child Work Order Only
+    string requestNumber = 3;
+    string workOrderNumber = 4;
+    string phase = 5;
+    string description = 6;
+    string requestor = 7;
+    string site = 8;
+    string building = 9;
+    string floor = 10;
+    string room = 11;
+    string coordinate = 12;  /*geocoordinate of location/work request*/
+    string assignedTo = 13;
+    string team = 14;  /*list  (FAMIS On Premise CREW)*/
+    string skill = 15;  /*list  (FAMIS On Premise CRAFT)*/
+    string requestType = 16;
+    string maintenanceType = 17;  
+    string procedure = 18;  /*list  (FAMIS On Premise METHOD)*/
+    string outageReason = 19;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+    string department = 20;
+    string priority = 21;
+    string workOrderStatus = 22;
+    string asset = 23;
+    string BillingType = 24;
+    google.protobuf.Timestamp dueDate =25;
+    string requestStatus =26;
+    repeated AccountUpdate accounts =27;
+    repeated AttachmentUpdate attachments = 28;
+    //string Note = 28;
+    //string Document = 29;
+    //repeated NoteUpdate notes = 27;
+    //repeated DocumentUpdate attachments = 28;
+}
+
+message WorkOrderQueryParameter {
+    bool active = 1;
+    string parentWorkOrderNumber = 2;
+    string requestNumber = 3;
+    string workOrderNumber = 4;
+    string description = 5;
+    string requestor = 6;
+    string site = 7;
+    string building = 8;
+    string floor = 9;
+    string room = 10;
+    string assignedTo = 11;
+    string team = 12;  /*list  (FAMIS On Premise CREW)*/
+    string skill = 13;  /*list  (FAMIS On Premise CRAFT)*/
+    string requestType = 14;
+    string maintenanceType = 15;  
+    string procedure = 16;  /*list  (FAMIS On Premise METHOD)*/
+    string outageReason = 17;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+    string department = 18;
+    string priority = 19;
+    string workOrderStatus = 20;
+    string asset = 21;
+    bool   IncludePMWorkOrder = 22;
+    DateRange dueDate = 23;
+    DateRange enterDate = 24;
+    string requestStatus =25;
+}
+
+/*
+On Create, the following validation is done:
+- If priority is blank, lookup default priority
+- If start date/due date is blank, lookup start date/due date based on priority
+- If request type is blank, lookup default request type
+- For requestor, if additional contact information needs to be sent with request then need to lookup
+- For additional contacts, if additional contact information needs to be sent with request then need to lookup
+- If audit inserts are needed then include this in action steps
+- Create account.  This may be a default based on account order (ie. Building, Crew, Equipment)
+*/
+
+/* Fetch Work Order by ID*/
+
+message WorkOrderRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+}
+
+message WorkOrderResponse {
+    Response response = 1 ;
+    WorkOrder workOrder = 2;
+
+}
+
+/*Ftech WOrk Order workbenches*/
+// message WorkOrderParameter{
+//   string filter = 1;
+// }
+
+// message WorkOrdersRequest {
+//     UserInfo userInfo = 1;
+//     WorkOrderParameter parameter = 2;
+//     int64 pageSize = 3;
+//     int64 pageOffset = 4;
+// }
+
+// message WorkOrdersResponse {
+//     Response response = 1 ;
+//     repeated WorkOrder workOrders = 2;
+// }
+
+/*For Search Work Order*/
+message WorkOrdersRequest {
+    UserInfo userInfo = 1;
+    WorkOrderQueryParameter paremeter = 2;
+}
+
+message WorkOrdersResponse {
+    Response response = 1 ;
+    repeated WorkOrder workOrders =2;
+}
+
+/*For Create*/
+
+message WorkOrderCreateRequest {
+    UserInfo userInfo = 1;
+    WorkOrderUpdate workOrder = 2;
+}
+
+message WorkOrderCreateResponse {
+    Response response = 1 ;
+    WorkOrder workOrder =2;
+}
+
+/*For Update*/
+
+message WorkOrderUpdateRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+    WorkOrderUpdate workOrder = 3;
+}
+
+message WorkOrderUpdateResponse {
+    Response response = 1 ;
+    WorkOrder workOrder =2;
+}
+
+/*Lazy Load For child work Order*/
+
+message WorkOrderChildsGetResponse {
+    Response response = 1 ;
+    repeated WorkOrder workOrder =2;
+}
+
+/*Lazy load for Parent Work Order */
+message WorkOrderParentGetResponse {
+    Response response = 1 ;
+    WorkOrder workOrder =2;
+}
+
+/*Lazy load for Project*/
+
+message WorkOrderProjectGetResponse {
+    Response response = 1 ;
+    WorkOrderProject project =2;
+}
+
+/*Lazy load for Project Phase*/
+message WorkOrderProjectPhaseGetResponse {
+    Response response = 1 ;
+    WorkOrderProjectPhase projectPhase =2;
+}
+
+/*Lazy load for Asset Detail*/
+message WorkOrderAssetGetResponse {
+    Response response = 1 ;
+    AssetDetail asset =2;
+}
+
+/*Lazy load for Time entry*/
+message WorkOrderTimeEntriesGetResponse {
+    Response response = 1 ;
+    repeated TimeEntry timeEntries =2;
+}
+
+
+/*Lazy load for Assignments*/
+message WorkOrderMultiAssignmentsGetResponse {
+    Response response = 1 ;
+    repeated WorkOrderMultiAssignment multiAssignments =2;
+}
+
+/*Lazy load for Contacts*/
+message WorkOrderContactsGetResponse {
+    Response response = 1 ;
+    repeated Contact contacts =2;
+}
+
+/*Lazy load for Cost*/
+message WorkOrderCostGetResponse {
+    Response response = 1 ;
+    WorkOrderCost workOrderCost =2;
+}
+
+/*Lazy load for PO*/
+message WorkOrderPOGetResponse {
+    Response response = 1 ;
+    repeated PurchaseOrder purchaseOrders =2;
+}
+
+
+/*Lazy load for Purchase Requisition*/
+message WorkOrderPREQGetResponse {
+    Response response = 1 ;
+    repeated PurchaseRequisition purchaseRequisitions =2;
+}
+
+/*Lazy load for Asset Rentals*/
+message WorkOrderAssetRentalGetResponse {
+    Response response = 1 ;
+    repeated AssetRental assetRentals =2;
+}
+
+/*Lazy load for Asset Rentals*/
+message WorkOrderUserDefinedFieldGetResponse {
+    Response response = 1 ;
+    UserDefinedField userDefinedField =2;
+}
+
+/*Lazy load for Asset Rentals*/
+message WorkOrderPartRequestGetResponse {
+    Response response = 1 ;
+    repeated PartRequest partRequests =2;
+}
+
+service WorkOrderService {
+
+    /*Obtain Single Work Order by ID*/
+    rpc WorkOrderGet(WorkOrderRequest) returns (WorkOrder) {
+        option (google.api.http) = {
+            get: "/api/workorder/{id}"
+        };
+    };
+    
+    // remove, this should be implement by search feature
+    // /*Obtain list of Work Orders*/
+    // rpc WorkOrdersGet(WorkOrdersRequest) returns (WorkOrdersResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorder"
+    //     };
+    // };
+
+    /* Create Work Order*/
+    rpc WorkOrderCreate(WorkOrderCreateRequest) returns (WorkOrderCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/workorder"
+            body: "*"
+        };
+    };
+
+    /*Update Work Order*/
+    rpc WorkOrderUpdate(WorkOrderUpdateRequest) returns (WorkOrderUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/workorder/{id}"
+            body: "*"
+        };
+    };
+
+    /* Obtain List Of Work Orders*/
+    rpc WorkOrdersGet(WorkOrdersRequest) returns (WorkOrdersResponse) {
+        option (google.api.http) = {
+            get: "/api/workorder"
+        };
+    };
+    
+    //Lazy Load
+    /* Obtain list of Child Work Orders by Work Order Id*/
+    rpc WorkOrderChildsGet(WorkOrderRequest) returns (WorkOrderChildsGetResponse) {
+        option (google.api.http) = {
+            get: "/api/childworkorder/{id}"
+        };
+    };
+    /* Obtain Parent Work Order by Work Order Id*/
+    rpc WorkOrderParentGet(WorkOrderRequest) returns (WorkOrderParentGetResponse) {
+        option (google.api.http) = {
+            get: "/api/parentworkorder/{id}"
+        };
+    };
+
+    // //Lazy Load
+    // /* Obtain Project associated with the Work Order*/
+    // rpc WorkOrderProjectGet(WorkOrderRequest) returns (WorkOrderProjectGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorderproject/{id}"
+    //     };
+    // };
+
+    // //Lazy Load
+    // /* Obtain Project Phase associated with the Work Order*/
+    // rpc WorkOrderProjectPhaseGet(WorkOrderRequest) returns (WorkOrderProjectPhaseGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorderprojectphase/{id}"
+    //     };
+    // };
+
+    //Lazy Load
+    /* Obtain Asset associated with the Work Order*/
+    // rpc WorkOrderAssetGet(WorkOrderRequest) returns (WorkOrderAssetGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorderasset/{id}"
+    //     };
+    // };
+
+    /* Obtain associated Time Entries of Work Order*/
+    // rpc WorkOrderTimeEntriesGet(WorkOrderRequest) returns (WorkOrderTimeEntriesGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workordertimeentry/{id}"
+    //     };
+    // };
+
+    /* Obtain Multiple Assignments of Work Order*/
+    // rpc WorkOrderMultiAssignmentsGet(WorkOrderRequest) returns (WorkOrderMultiAssignmentsGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workordermultiassignment/{id}"
+    //     };
+    // };
+
+    /* Obtain Contacts of Work Order*/
+    // rpc WorkOrderContactsGet(WorkOrderRequest) returns (WorkOrderContactsGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workordercontact/{id}"
+    //     };
+    // };
+    /* Obtain Cost of Work Order*/
+    // rpc WorkOrderCostGet(WorkOrderRequest) returns (WorkOrderCostGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workordercost/{id}"
+    //     };
+    // };
+    /* Obtain Purchase Orders of Work Order*/
+    // rpc WorkOrderPOGet(WorkOrderRequest) returns (WorkOrderPOGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorderpurchaseorder/{id}"
+    //     };
+    // };
+    // /* Obtain Purchase Requisition of Work Order*/
+    // rpc WorkOrderPREQGet(WorkOrderRequest) returns (WorkOrderPREQGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorderpurchaserequisition/{id}"
+    //     };
+    // };
+
+    // /* Obtain Asset Rentals of Work Order*/
+    // rpc WorkOrderAssetRentalGet(WorkOrderRequest) returns (WorkOrderAssetRentalGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorderassetrental/{id}"
+    //     };
+    // };
+
+    // /* Obtain Part Requests of Work Order*/
+    // rpc WorkOrderPartRequestGet(WorkOrderRequest) returns (WorkOrderPartRequestGetResponse) {
+    //     option (google.api.http) = {
+    //         get: "/api/workorderpartrequest/{id}"
+    //         };
+    // };
+    
+}
+
+service WorkOrderProjectService{
+    /*Obtail Project Detail By Work Order Id*/
+    rpc WorkOrderProjectGet(WorkOrderRequest) returns (WorkOrderProjectGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderproject/{id}"
+        };
+    };
+
+    //Lazy Load
+    /* Obtain Project Phase detail by Work Order Id*/
+    rpc WorkOrderProjectPhaseGet(WorkOrderRequest) returns (WorkOrderProjectPhaseGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderprojectphase/{id}"
+        };
+    };
+
+}
+
+service WorkOrderAssetDetailService{
+    rpc WorkOrderAssetDetailGet(WorkOrderRequest) returns (WorkOrderAssetGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderasset/{id}"
+        };
+    };
+}
+
+
+service WorkOrderTimeEntryService{
+     /* Obtain associated Time Entries by Work Order Id*/
+     rpc WorkOrderTimeEntriesGet(WorkOrderRequest) returns (WorkOrderTimeEntriesGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workordertimeentry/{id}"
+        };
+    };   
+}
+
+
+service WorkOrderMultipleAssignmentService{
+    /* Obtain Multiple Assignments by Work Order Id*/
+    rpc WorkOrderMultiAssignmentsGet(WorkOrderRequest) returns (WorkOrderMultiAssignmentsGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workordermultiassignment/{id}"
+        };
+    };    
+}
+
+
+service WorkOrderContactService{
+    /* Obtain Contacts by Work Order Id*/
+    rpc WorkOrderContactsGet(WorkOrderRequest) returns (WorkOrderContactsGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workordercontact/{id}"
+        };
+    };   
+}
+
+service WorkOrderCostService{
+    /* Obtain Cost by Work Order Id*/
+    rpc WorkOrderCostGet(WorkOrderRequest) returns (WorkOrderCostGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workordercost/{id}"
+        };
+    };    
+}
+
+
+service WorkOrderPurchaseOrderService{
+    /* Obtain Purchase Orders by Work Order Id*/
+    rpc WorkOrderPurchaseOrderGet(WorkOrderRequest) returns (WorkOrderPOGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderpurchaseorder/{id}"
+        };
+    };
+}
+
+service WorkOrderPurchaseRequisitionService{
+    /* Obtain Purchase Requisition By Work Order ID*/
+    rpc WorkOrderPurchaseRequisitionGet(WorkOrderRequest) returns (WorkOrderPREQGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderpurchaserequisition/{id}"
+        };
+    };    
+}
+
+
+service WorkOrderAssetRentalService {
+    /* Obtain Asset Rental by Work Order Id*/
+    rpc WorkOrderAssetRentalGet(WorkOrderRequest) returns (WorkOrderAssetRentalGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderassetrental/{id}"
+        };
+    };    
+}
+
+
+service WorkOrderPartRequestService{
+    /* Obtain Part Requests by Work Order ID*/
+    rpc WorkOrderPartRequestGet(WorkOrderRequest) returns (WorkOrderPartRequestGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderpartrequest/{id}"
+            };
+    };    
+}
+
+
+service WorkOrderUserDefinedFieldService {
+ 
+    /* Obtain User Defined Field By Work Order ID*/
+    rpc WorkOrderUserDefinedFieldGet(WorkOrderRequest) returns (WorkOrderUserDefinedFieldGetResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderuserdefinedfield/{id}"
+        };
+    };
+
+    /*Create a new user defined field (attribute)*/
+    rpc WorkOrderUserDefinedFieldCreate(UserDefinedFieldCreateRequest) returns (UserDefinedFieldCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/userdefinedfields"
+            body: "*"
+        };
+    };
+    /*Update a user define field (attribute) for a work order*/
+    rpc WorkOrderUserDefinedFieldUpdate(UserDefinedFieldCreateRequest) returns (UserDefinedFieldUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/userdefinedfield/{workOrderId}"
+            body: "*"
+        };
+    };
+}

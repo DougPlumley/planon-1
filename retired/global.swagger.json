@@ -1,0 +1,7307 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "global.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/asset": {
+      "post": {
+        "summary": "Create an asset",
+        "operationId": "AssetCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateAssetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      }
+    },
+    "/api/asset/search": {
+      "post": {
+        "summary": "Search for asset(s)",
+        "operationId": "AssetSearch",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetSearchResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetSearchRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      }
+    },
+    "/api/asset/{id}": {
+      "get": {
+        "summary": "Obtain an asset by id",
+        "operationId": "AssetGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      },
+      "put": {
+        "summary": "Update an asset",
+        "operationId": "AssetUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateAssetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateAssetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      }
+    },
+    "/api/assetassetrental/{assetId}": {
+      "get": {
+        "summary": "This call is for lazyload to fetch the list asset rental for an asset with asset id",
+        "operationId": "AssetAssetRentalsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalFetchByAssetIDResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      }
+    },
+    "/api/assetclass": {
+      "get": {
+        "summary": "Obtain the list of asset classes",
+        "operationId": "AssetClassesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetClassesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetClassService"
+        ]
+      }
+    },
+    "/api/assetcondition": {
+      "get": {
+        "summary": "Obtain the list of asset conditions",
+        "operationId": "AssetConditionsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetConditionsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetConditionService"
+        ]
+      }
+    },
+    "/api/assetconditionum": {
+      "get": {
+        "summary": "Obtain the list of asset condition UM",
+        "operationId": "AssetConditionUMsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetConditionUMsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetConditionUMService"
+        ]
+      }
+    },
+    "/api/assetgroup": {
+      "get": {
+        "summary": "Obtain the list of asset groups",
+        "operationId": "AssetGroupsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetGroupsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetGroupService"
+        ]
+      }
+    },
+    "/api/assetkeyword": {
+      "get": {
+        "summary": "Obtain the list of asset keywords",
+        "operationId": "AssetKeywordsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetKeywordsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetKeywordService"
+        ]
+      }
+    },
+    "/api/assetlist": {
+      "get": {
+        "summary": "Obtain the list of assets",
+        "operationId": "AssetsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/assetsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetService"
+        ]
+      }
+    },
+    "/api/assetreading/{assetId}": {
+      "get": {
+        "summary": "This call is for lazyload to obtain readings of an asset with asset id",
+        "operationId": "AssetReadingGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetReadingGetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userinfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userinfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetReadingService"
+        ]
+      }
+    },
+    "/api/assetrental": {
+      "post": {
+        "summary": "Create a new asset rental",
+        "operationId": "AssetRentalRentalCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetRentalCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      }
+    },
+    "/api/assetrental/search": {
+      "post": {
+        "summary": "Search for asset rental(s)",
+        "operationId": "AssetRentalsSearch",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalSearchResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetRentalSearchRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      }
+    },
+    "/api/assetrental/{id}": {
+      "get": {
+        "summary": "Obtain rental information for an asset with asset rental id",
+        "operationId": "AssetRentalGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalFetchByIDResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      },
+      "put": {
+        "summary": "Update rental information for an asset",
+        "operationId": "AssetRentalUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetRentalUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      }
+    },
+    "/api/assetstatus": {
+      "get": {
+        "summary": "Obtain the list of asset statuses",
+        "operationId": "AssetStatusesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetStatusesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetStatusService"
+        ]
+      }
+    },
+    "/api/assettype": {
+      "get": {
+        "summary": "Obtain the list of asset types",
+        "operationId": "AssetTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetTypeService"
+        ]
+      }
+    },
+    "/api/attachment/{id}": {
+      "get": {
+        "summary": "Obtain an attachment by id",
+        "operationId": "AttachmentView",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ViewAttachmentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AttachmentService"
+        ]
+      }
+    },
+    "/api/billingtype": {
+      "get": {
+        "summary": "Obtain the list of billing types",
+        "operationId": "BillingTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillingTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BillingTypeService"
+        ]
+      }
+    },
+    "/api/building": {
+      "get": {
+        "summary": "Obtain the list of buildings",
+        "operationId": "BuildingsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BuildingsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BuildingService"
+        ]
+      }
+    },
+    "/api/commodity": {
+      "get": {
+        "summary": "Obtain the list of commodities",
+        "operationId": "CommoditysGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CommoditiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "CommodityService"
+        ]
+      }
+    },
+    "/api/contact": {
+      "get": {
+        "summary": "Obtain a list of contacts",
+        "operationId": "ContactsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactsGetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      },
+      "post": {
+        "summary": "Add a new contact",
+        "operationId": "ContactCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContactCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      }
+    },
+    "/api/contact/{id}": {
+      "get": {
+        "summary": "Obtain a contact by id",
+        "operationId": "ContactGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactGetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      },
+      "put": {
+        "summary": "Update a contact",
+        "operationId": "ContactUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContactUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      }
+    },
+    "/api/department": {
+      "get": {
+        "summary": "Obtain the list of departments",
+        "operationId": "DepartmentsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DepartmentsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "DepartmentService"
+        ]
+      }
+    },
+    "/api/documents": {
+      "get": {
+        "summary": "Obtain a list of documents",
+        "operationId": "DocumentsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DocumentsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "DocumentService"
+        ]
+      },
+      "post": {
+        "summary": "Add a new document",
+        "operationId": "DocumentCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DocumentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DocumentRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "DocumentService"
+        ]
+      }
+    },
+    "/api/documents/{id}": {
+      "get": {
+        "summary": "Obtain a document by id",
+        "operationId": "DocumentGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DocumentService"
+        ]
+      },
+      "put": {
+        "summary": "Update a document",
+        "operationId": "DocumentUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DocumentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DocumentRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "DocumentService"
+        ]
+      }
+    },
+    "/api/employee": {
+      "get": {
+        "summary": "Obtain the list of employees",
+        "operationId": "EmployeesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EmployeesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "EmployeeService"
+        ]
+      }
+    },
+    "/api/equipmentrentals": {
+      "get": {
+        "summary": "Obtain the list of equipment rentals",
+        "operationId": "EquipmentRentalsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EquipmentRentalsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "EquipmentRentalService"
+        ]
+      },
+      "post": {
+        "summary": "Add a new equipment rental",
+        "operationId": "EquipmentRentalCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EquipmentRentalResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EquipmentRentalRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "EquipmentRentalService"
+        ]
+      }
+    },
+    "/api/equipmentrentals/{id}": {
+      "get": {
+        "summary": "Obtain an equipment rental by id",
+        "operationId": "EquipmentRentalGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EquipmentRental"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "EquipmentRentalService"
+        ]
+      },
+      "put": {
+        "summary": "Update an equipment rental",
+        "operationId": "EquipmentRentalUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EquipmentRentalResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EquipmentRentalRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "EquipmentRentalService"
+        ]
+      }
+    },
+    "/api/floor": {
+      "get": {
+        "summary": "Obtain the list of floors",
+        "operationId": "FloorsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/FloorsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "FloorService"
+        ]
+      }
+    },
+    "/api/laborclass": {
+      "get": {
+        "summary": "Obtain the list of labor classes",
+        "operationId": "LaborClassGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LaborClassResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "LaborClassService"
+        ]
+      }
+    },
+    "/api/laborstatus": {
+      "get": {
+        "summary": "Obtain the list of labor statuses",
+        "operationId": "LaborStatusGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LaborStatusResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "LaborStatusService"
+        ]
+      }
+    },
+    "/api/maintenancetype": {
+      "get": {
+        "summary": "Obtain the list of maintenance types",
+        "operationId": "MaintenanceTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MaintenanceTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "MaintenanceTypeService"
+        ]
+      }
+    },
+    "/api/manufacturer": {
+      "get": {
+        "summary": "Obtain the list of manufacturers",
+        "operationId": "ManufacturersGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ManufacturersResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ManufacturerService"
+        ]
+      }
+    },
+    "/api/notes": {
+      "get": {
+        "summary": "Obtain a list of notes",
+        "operationId": "NotesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/NotesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "NoteService"
+        ]
+      },
+      "post": {
+        "summary": "Add a new note",
+        "operationId": "NoteCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/NoteResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NoteRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "NoteService"
+        ]
+      }
+    },
+    "/api/notes/{id}": {
+      "get": {
+        "summary": "Obtain a note by id",
+        "operationId": "NoteGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "NoteService"
+        ]
+      },
+      "put": {
+        "summary": "Update a note",
+        "operationId": "NoteUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/NoteResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NoteRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "NoteService"
+        ]
+      }
+    },
+    "/api/outagereason": {
+      "get": {
+        "summary": "Obtain the list of outage reasons",
+        "operationId": "OutageReasonsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutageReasonsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "OutageReasonService"
+        ]
+      }
+    },
+    "/api/partbin": {
+      "get": {
+        "summary": "Obtain the list of part bins",
+        "operationId": "PartBinsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartBinListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartBinService"
+        ]
+      }
+    },
+    "/api/partcategory1": {
+      "get": {
+        "summary": "Obtain the list of part category1",
+        "operationId": "PartCategory1sGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartCategory1sResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartCategoryService"
+        ]
+      }
+    },
+    "/api/partcategory2": {
+      "get": {
+        "summary": "Obtain the list of part category2",
+        "operationId": "PartCategory2sGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartCategory2sResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartCategoryService"
+        ]
+      }
+    },
+    "/api/partcategory3": {
+      "get": {
+        "summary": "Obtain the list of part category3",
+        "operationId": "PartCategory3sGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartCategory3sResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartCategoryService"
+        ]
+      }
+    },
+    "/api/partcategory4": {
+      "get": {
+        "summary": "Obtain the list of part category4",
+        "operationId": "PartCategory4sGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartCategory4sResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartCategoryService"
+        ]
+      }
+    },
+    "/api/partcategory5": {
+      "get": {
+        "summary": "Obtain the list of part category5",
+        "operationId": "PartCategory5sGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartCategory5sResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartCategoryService"
+        ]
+      }
+    },
+    "/api/partsearchlist": {
+      "get": {
+        "operationId": "PartSearchList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartSearchListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userinfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userinfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.searchTerm",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.warehouse",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.category1",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.category2",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.category3",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.category4",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.category5",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.commodity",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartListService"
+        ]
+      }
+    },
+    "/api/partstatus": {
+      "get": {
+        "summary": "Obtain the list of part statuses",
+        "operationId": "ParStatusesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartStatusesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartStatusService"
+        ]
+      }
+    },
+    "/api/parttype": {
+      "get": {
+        "summary": "Obtain the list of part types",
+        "operationId": "PartTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartTypeService"
+        ]
+      }
+    },
+    "/api/paycode": {
+      "get": {
+        "summary": "Obtain the list of pay codes",
+        "operationId": "PayCodesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PayCodesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PayCodeService"
+        ]
+      }
+    },
+    "/api/priority": {
+      "get": {
+        "summary": "Obtain the list of priorities",
+        "operationId": "PrioritiesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PrioritiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PriorityService"
+        ]
+      }
+    },
+    "/api/procedure": {
+      "get": {
+        "summary": "Obtain the list of procedures",
+        "operationId": "ProceduresGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProceduresResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ProcedureService"
+        ]
+      }
+    },
+    "/api/rentaltype": {
+      "get": {
+        "summary": "Obtain the list of rental types",
+        "operationId": "RentalTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RentalTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RentalTypeService"
+        ]
+      }
+    },
+    "/api/requester": {
+      "get": {
+        "summary": "Obtain the list of requesters",
+        "operationId": "RequestersGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestersResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RequesterService"
+        ]
+      }
+    },
+    "/api/requeststatus": {
+      "get": {
+        "summary": "Obtain the list of request status",
+        "operationId": "RequestStatusesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestStatusesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RequestStatusService"
+        ]
+      }
+    },
+    "/api/requesttype": {
+      "get": {
+        "summary": "Obtain the list of request types",
+        "operationId": "RequestTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RequestTypeService"
+        ]
+      }
+    },
+    "/api/room": {
+      "get": {
+        "summary": "Obtain the list of rooms",
+        "operationId": "RoomsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RoomsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RoomService"
+        ]
+      }
+    },
+    "/api/shift": {
+      "get": {
+        "summary": "Obtain the list of shifts",
+        "operationId": "ShiftGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ShiftResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "ShiftService"
+        ]
+      }
+    },
+    "/api/site": {
+      "get": {
+        "summary": "Obtain the list of sites",
+        "operationId": "SitesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SitesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "SiteService"
+        ]
+      }
+    },
+    "/api/skill": {
+      "get": {
+        "summary": "Obtain the list of skills",
+        "operationId": "SkillsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SkillsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "SkillService"
+        ]
+      }
+    },
+    "/api/taskCode": {
+      "get": {
+        "summary": "Obtain the list of task codes",
+        "operationId": "TaskCodeGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TaskCodeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TaskCodeService"
+        ]
+      }
+    },
+    "/api/team": {
+      "get": {
+        "summary": "Obtain the list of teams",
+        "operationId": "TaskCodeGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TeamService"
+        ]
+      }
+    },
+    "/api/unitofmeasure": {
+      "get": {
+        "summary": "Obtain the list of unit of measures",
+        "operationId": "UnitOfMeasuresGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UnitOfMeasuresResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "UnitOfMeasureService"
+        ]
+      }
+    },
+    "/api/userdefinedfield/{workOrderId}": {
+      "put": {
+        "summary": "Update a user define field (attribute) for a work order",
+        "operationId": "UserDefinedFieldUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserDefinedFieldUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "workOrderId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDefinedFieldCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserDefinedFieldService"
+        ]
+      }
+    },
+    "/api/userdefinedfields": {
+      "post": {
+        "summary": "Create a new user defined field (attribute)",
+        "operationId": "UserDefinedFieldCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserDefinedFieldCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDefinedFieldCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserDefinedFieldService"
+        ]
+      }
+    },
+    "/api/vendorlist": {
+      "get": {
+        "summary": "Obtain the list of vendors",
+        "operationId": "VendorListGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/VendorListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "VendorListService"
+        ]
+      }
+    },
+    "/api/warehouses": {
+      "get": {
+        "summary": "Obtain a list of warehouses",
+        "operationId": "WarehousesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WarehousesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WarehouseService"
+        ]
+      }
+    },
+    "/api/workorderlist": {
+      "get": {
+        "summary": "Obtain a list of work orders",
+        "operationId": "WorkOrderListGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WorkOrderListService"
+        ]
+      }
+    },
+    "/api/workorderstatus": {
+      "get": {
+        "summary": "Obtain the list of work order statuses",
+        "operationId": "WorkOrderStatusesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderStatusesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WorkOrderStatusService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetType": {
+          "type": "string"
+        },
+        "rentalType": {
+          "type": "string"
+        },
+        "rentalRate": {
+          "type": "string"
+        },
+        "assetClass": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetClass": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "class": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetClassParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetClassesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetClasses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetClass"
+          }
+        }
+      }
+    },
+    "AssetCondition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "group": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetConditionParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetConditionUM": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "um": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetConditionUMParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetConditionUMsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "unitOfMeasures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetConditionUM"
+          }
+        }
+      }
+    },
+    "AssetConditionsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetConditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetCondition"
+          }
+        }
+      }
+    },
+    "AssetDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "Primary key, will be null when Create"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetype": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "assetKeyword": {
+          "$ref": "#/definitions/AssetKeyword"
+        },
+        "assetClass": {
+          "$ref": "#/definitions/AssetClass"
+        },
+        "manufacturer": {
+          "$ref": "#/definitions/Manufacturer"
+        },
+        "model": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "assetNo": {
+          "type": "string"
+        },
+        "site": {
+          "$ref": "#/definitions/Site",
+          "title": "Location"
+        },
+        "building": {
+          "$ref": "#/definitions/Building"
+        },
+        "floor": {
+          "$ref": "#/definitions/Floor"
+        },
+        "room": {
+          "$ref": "#/definitions/Room"
+        },
+        "zone": {
+          "$ref": "#/definitions/Zone"
+        },
+        "assetGroup": {
+          "$ref": "#/definitions/AssetGroup"
+        },
+        "criticality": {
+          "type": "string"
+        },
+        "condition": {
+          "$ref": "#/definitions/AssetCondition"
+        },
+        "status": {
+          "$ref": "#/definitions/AssetStatus"
+        },
+        "rentalType": {
+          "$ref": "#/definitions/RentalType"
+        },
+        "rentalRate": {
+          "type": "number",
+          "format": "float"
+        },
+        "cost": {
+          "type": "number",
+          "format": "float"
+        },
+        "warrantyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Attachment"
+          }
+        }
+      }
+    },
+    "AssetDetailSearch": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetype": {
+          "type": "string"
+        },
+        "assetKeyword": {
+          "type": "string"
+        },
+        "assetClass": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "assetNo": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "assetGroup": {
+          "type": "string"
+        },
+        "criticality": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "rentalType": {
+          "type": "string"
+        }
+      },
+      "title": "For Asset Serach"
+    },
+    "AssetDetailUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetype": {
+          "type": "string"
+        },
+        "assetKeyword": {
+          "type": "string"
+        },
+        "assetClass": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "assetNo": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "assetGroup": {
+          "type": "string"
+        },
+        "criticality": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "rentalType": {
+          "type": "string"
+        },
+        "rentalRate": {
+          "type": "number",
+          "format": "float"
+        },
+        "cost": {
+          "type": "number",
+          "format": "float"
+        },
+        "warrantyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AttachmentUpdate"
+          }
+        },
+        "reading": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetReadingUpdate"
+          }
+        }
+      },
+      "title": "For Create and Update Asset"
+    },
+    "AssetGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "group": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetGroupParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetGroupsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetGroup"
+          }
+        }
+      }
+    },
+    "AssetKeyword": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetKeywordParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetKeywordsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetKeywords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetKeyword"
+          }
+        }
+      }
+    },
+    "AssetParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetReading": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "conditionType": {
+          "$ref": "#/definitions/AssetCondition"
+        },
+        "conditionUM": {
+          "$ref": "#/definitions/AssetConditionUM"
+        },
+        "readingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "asFoundReading": {
+          "type": "number",
+          "format": "float"
+        },
+        "reading": {
+          "type": "number",
+          "format": "float"
+        },
+        "enterDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "enterUser": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetReadingGetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetReadings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetReading"
+          }
+        }
+      }
+    },
+    "AssetReadingUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "conditionType": {
+          "type": "string"
+        },
+        "conditionUM": {
+          "type": "string"
+        },
+        "readingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "asFoundReading": {
+          "type": "number",
+          "format": "float"
+        },
+        "reading": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "title": "For Craete and Update"
+    },
+    "AssetRental": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "$ref": "#/definitions/Asset"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "workOrder": {
+          "$ref": "#/definitions/WorkOrderList"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "rate": {
+          "type": "number",
+          "format": "float"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rentType": {
+          "$ref": "#/definitions/RentalType"
+        },
+        "requestType": {
+          "$ref": "#/definitions/RequestType"
+        },
+        "taskCode": {
+          "$ref": "#/definitions/TaskCode"
+        },
+        "percent": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "AssetRentalCreateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      }
+    },
+    "AssetRentalCreateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      }
+    },
+    "AssetRentalFetchByAssetIDResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetRental"
+          }
+        }
+      }
+    },
+    "AssetRentalFetchByIDResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRental"
+        }
+      }
+    },
+    "AssetRentalSearch": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "workOrder": {
+          "type": "string"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "rate": {
+          "type": "number",
+          "format": "float"
+        },
+        "date": {
+          "$ref": "#/definitions/DateRange"
+        },
+        "rentType": {
+          "type": "string"
+        },
+        "requestType": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetRentalSearchRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalSearch"
+        }
+      },
+      "title": "Rental Search"
+    },
+    "AssetRentalSearchResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRentals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetRental"
+          }
+        }
+      }
+    },
+    "AssetRentalUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "workOrder": {
+          "type": "string"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "rate": {
+          "type": "number",
+          "format": "float"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rentType": {
+          "type": "string"
+        },
+        "requestType": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "percent": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "AssetRentalUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      },
+      "title": "Rental Update"
+    },
+    "AssetRentalUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      }
+    },
+    "AssetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetail"
+        }
+      }
+    },
+    "AssetSearchRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetailSearch"
+        }
+      },
+      "title": "Search for Asset"
+    },
+    "AssetSearchResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetDetail"
+          }
+        }
+      }
+    },
+    "AssetStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "AssetStatusParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetStatusesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetStatus"
+          }
+        }
+      }
+    },
+    "AssetType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetTypeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetTypesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetType"
+          }
+        }
+      }
+    },
+    "Attachment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        }
+      }
+    },
+    "AttachmentUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "fileInfo": {
+          "$ref": "#/definitions/FileInfo"
+        },
+        "CRUDStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "BillingType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "BillingTypeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "BillingTypesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "billingTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillingType"
+          }
+        }
+      }
+    },
+    "Building": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "building": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "abbrevation": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "siteId": {
+          "type": "string"
+        }
+      }
+    },
+    "BuildingParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "BuildingsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "buildings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Building"
+          }
+        }
+      }
+    },
+    "CommoditiesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "Commodities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Commodity"
+          }
+        }
+      }
+    },
+    "Commodity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "commodity": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "CommodityParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "defaultHolderCode": {
+          "type": "string"
+        },
+        "webPassword": {
+          "type": "string"
+        },
+        "webUsername": {
+          "type": "string"
+        },
+        "keyHolder": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "housingBuilding": {
+          "type": "string"
+        },
+        "housingRoom": {
+          "type": "string"
+        },
+        "pager": {
+          "type": "string"
+        },
+        "needNotification": {
+          "type": "string"
+        },
+        "mailCode": {
+          "type": "string"
+        },
+        "keyContact": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "empId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "cellular": {
+          "type": "string"
+        },
+        "onCampusHousing": {
+          "type": "string"
+        },
+        "importDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ContactCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "defaultHolderCode": {
+          "type": "string"
+        },
+        "webPassword": {
+          "type": "string"
+        },
+        "webUsername": {
+          "type": "string"
+        },
+        "keyHolder": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "housingBuilding": {
+          "type": "string"
+        },
+        "housingRoom": {
+          "type": "string"
+        },
+        "pager": {
+          "type": "string"
+        },
+        "needNotification": {
+          "type": "string"
+        },
+        "mailCode": {
+          "type": "string"
+        },
+        "keyContact": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "empId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "cellular": {
+          "type": "string"
+        },
+        "onCampusHousing": {
+          "type": "string"
+        },
+        "importDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ContactCreateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "contact": {
+          "$ref": "#/definitions/ContactCreate"
+        }
+      },
+      "title": "Create Contact"
+    },
+    "ContactCreateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "ContactGetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "ContactParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "ContactUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "defaultHolderCode": {
+          "type": "string"
+        },
+        "webPassword": {
+          "type": "string"
+        },
+        "webUsername": {
+          "type": "string"
+        },
+        "keyHolder": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "housingBuilding": {
+          "type": "string"
+        },
+        "housingRoom": {
+          "type": "string"
+        },
+        "pager": {
+          "type": "string"
+        },
+        "needNotification": {
+          "type": "string"
+        },
+        "mailCode": {
+          "type": "string"
+        },
+        "keyContact": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "empId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "cellular": {
+          "type": "string"
+        },
+        "onCampusHousing": {
+          "type": "string"
+        },
+        "importDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "crudStatus": {
+          "type": "string"
+        }
+      },
+      "title": "ContactRequestUpdate"
+    },
+    "ContactUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "$ref": "#/definitions/ContactUpdate"
+        }
+      },
+      "title": "Update Contact"
+    },
+    "ContactUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "ContactsGetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "CreateAssetRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetailUpdate"
+        }
+      },
+      "title": "Create Asset"
+    },
+    "CreateAssetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetail"
+        }
+      }
+    },
+    "DateRange": {
+      "type": "object",
+      "properties": {
+        "dateFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dateTo": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Department": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "department": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "DepartmentParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "DepartmentsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "departments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Department"
+          }
+        }
+      }
+    },
+    "Document": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DocumentName": {
+          "type": "string"
+        },
+        "DocEntity": {
+          "type": "string"
+        },
+        "DocKey1": {
+          "type": "string"
+        },
+        "DocKey2": {
+          "type": "string"
+        },
+        "DocKey3": {
+          "type": "string"
+        },
+        "DocKey4": {
+          "type": "string"
+        },
+        "DocType": {
+          "type": "string"
+        },
+        "BlobConent": {
+          "type": "string"
+        }
+      }
+    },
+    "DocumentQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DocumentRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DocumentName": {
+          "type": "string"
+        },
+        "DocEntity": {
+          "type": "string"
+        },
+        "DocKey1": {
+          "type": "string"
+        },
+        "DocKey2": {
+          "type": "string"
+        },
+        "DocKey3": {
+          "type": "string"
+        },
+        "DocKey4": {
+          "type": "string"
+        },
+        "DocType": {
+          "type": "string"
+        },
+        "BlobConent": {
+          "type": "string"
+        }
+      }
+    },
+    "DocumentRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DocumentName": {
+          "type": "string"
+        },
+        "DocEntity": {
+          "type": "string"
+        },
+        "DocKey1": {
+          "type": "string"
+        },
+        "DocKey2": {
+          "type": "string"
+        },
+        "DocKey3": {
+          "type": "string"
+        },
+        "DocKey4": {
+          "type": "string"
+        },
+        "DocType": {
+          "type": "string"
+        },
+        "BlobConent": {
+          "type": "string"
+        }
+      },
+      "title": "DocumentRequestUpdate"
+    },
+    "DocumentResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "document": {
+          "$ref": "#/definitions/Document"
+        }
+      }
+    },
+    "DocumentsResponse": {
+      "type": "object",
+      "properties": {
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Document"
+          }
+        }
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        }
+      }
+    },
+    "EmployeeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "EmployeesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "employees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Employee"
+          }
+        }
+      }
+    },
+    "EquipmentRental": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "Equipment": {
+          "type": "string"
+        },
+        "ExtractDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Hours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalType": {
+          "type": "string"
+        },
+        "RentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReqType": {
+          "type": "string"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "FuelCharge": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Miles": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MileageRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EquipPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TaskCode": {
+          "type": "string"
+        }
+      }
+    },
+    "EquipmentRentalQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "EquipmentRentalRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "Equipment": {
+          "type": "string"
+        },
+        "ExtractDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Hours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalType": {
+          "type": "string"
+        },
+        "RentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReqType": {
+          "type": "string"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "FuelCharge": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Miles": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MileageRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EquipPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TaskCode": {
+          "type": "string"
+        }
+      }
+    },
+    "EquipmentRentalRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "Equipment": {
+          "type": "string"
+        },
+        "ExtractDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Hours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "RentalType": {
+          "type": "string"
+        },
+        "RentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReqType": {
+          "type": "string"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "FuelCharge": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Miles": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MileageRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EquipPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TaskCode": {
+          "type": "string"
+        }
+      },
+      "title": "EquipmentRentalRequestUpdate"
+    },
+    "EquipmentRentalResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "equipmentrental": {
+          "$ref": "#/definitions/EquipmentRental"
+        }
+      }
+    },
+    "EquipmentRentalsResponse": {
+      "type": "object",
+      "properties": {
+        "equipmentrentals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EquipmentRental"
+          }
+        }
+      }
+    },
+    "FileInfo": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "fileBinary": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "Floor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "buildingId": {
+          "type": "string"
+        }
+      }
+    },
+    "FloorParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "FloorsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "floors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Floor"
+          }
+        }
+      }
+    },
+    "LaborClass": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "LaborClassParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "LaborClassResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "laborStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LaborClass"
+          }
+        }
+      }
+    },
+    "LaborStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "supervisorRejection": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "LaborStatusParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "LaborStatusResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "laborStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LaborStatus"
+          }
+        }
+      }
+    },
+    "MaintenanceType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "MaintenanceTypeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "MaintenanceTypesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "maintenanceTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaintenanceType"
+          }
+        }
+      }
+    },
+    "Manufacturer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "ManufacturerParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "ManufacturersResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "manufacturer": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Manufacturer"
+          }
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BltExpOption": {
+          "type": "string"
+        },
+        "Bulletin": {
+          "type": "string"
+        },
+        "ExpireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteBuilding": {
+          "type": "string"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteEntity": {
+          "type": "string"
+        },
+        "NoteEquip": {
+          "type": "string"
+        },
+        "NoteFloor": {
+          "type": "string"
+        },
+        "NoteKey": {
+          "type": "string"
+        },
+        "NoteKey1": {
+          "type": "string"
+        },
+        "NoteKey2": {
+          "type": "string"
+        },
+        "NoteKey3": {
+          "type": "string"
+        },
+        "NoteKey4": {
+          "type": "string"
+        },
+        "NotePhase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NoteRoom": {
+          "type": "string"
+        },
+        "NoteSite": {
+          "type": "string"
+        },
+        "NoteUser": {
+          "type": "string"
+        },
+        "NumberOfDays": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PageFlag": {
+          "type": "string"
+        },
+        "PrintFlag": {
+          "type": "string"
+        },
+        "PrivateFlag": {
+          "type": "string"
+        },
+        "Text": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "WoFlag": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "NoteQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "NoteRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BltExpOption": {
+          "type": "string"
+        },
+        "Bulletin": {
+          "type": "string"
+        },
+        "ExpireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteBuilding": {
+          "type": "string"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteEntity": {
+          "type": "string"
+        },
+        "NoteEquip": {
+          "type": "string"
+        },
+        "NoteFloor": {
+          "type": "string"
+        },
+        "NoteKey": {
+          "type": "string"
+        },
+        "NoteKey1": {
+          "type": "string"
+        },
+        "NoteKey2": {
+          "type": "string"
+        },
+        "NoteKey3": {
+          "type": "string"
+        },
+        "NoteKey4": {
+          "type": "string"
+        },
+        "NotePhase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NoteRoom": {
+          "type": "string"
+        },
+        "NoteSite": {
+          "type": "string"
+        },
+        "NoteUser": {
+          "type": "string"
+        },
+        "NumberOfDays": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PageFlag": {
+          "type": "string"
+        },
+        "PrintFlag": {
+          "type": "string"
+        },
+        "PrivateFlag": {
+          "type": "string"
+        },
+        "Text": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "WoFlag": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "NoteRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BltExpOption": {
+          "type": "string"
+        },
+        "Bulletin": {
+          "type": "string"
+        },
+        "ExpireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteBuilding": {
+          "type": "string"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteEntity": {
+          "type": "string"
+        },
+        "NoteEquip": {
+          "type": "string"
+        },
+        "NoteFloor": {
+          "type": "string"
+        },
+        "NoteKey": {
+          "type": "string"
+        },
+        "NoteKey1": {
+          "type": "string"
+        },
+        "NoteKey2": {
+          "type": "string"
+        },
+        "NoteKey3": {
+          "type": "string"
+        },
+        "NoteKey4": {
+          "type": "string"
+        },
+        "NotePhase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NoteRoom": {
+          "type": "string"
+        },
+        "NoteSite": {
+          "type": "string"
+        },
+        "NoteUser": {
+          "type": "string"
+        },
+        "NumberOfDays": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PageFlag": {
+          "type": "string"
+        },
+        "PrintFlag": {
+          "type": "string"
+        },
+        "PrivateFlag": {
+          "type": "string"
+        },
+        "Text": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "WoFlag": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "title": "NoteRequestUpdate"
+    },
+    "NoteResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "note": {
+          "$ref": "#/definitions/Note"
+        }
+      }
+    },
+    "NotesResponse": {
+      "type": "object",
+      "properties": {
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Note"
+          }
+        }
+      }
+    },
+    "OutageReason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "outageReason": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "OutageReasonParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "OutageReasonsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "outageReasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OutageReason"
+          }
+        }
+      }
+    },
+    "PartBinList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "bin": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "quantityOnHand": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "PartBinListParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartBinListResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partBins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartBinList"
+          }
+        }
+      }
+    },
+    "PartCategory1": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory1Parameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory1sResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partcategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartCategory1"
+          }
+        }
+      }
+    },
+    "PartCategory2": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory2Parameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory2sResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partcategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartCategory2"
+          }
+        }
+      }
+    },
+    "PartCategory3": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory3Parameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory3sResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partcategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartCategory3"
+          }
+        }
+      }
+    },
+    "PartCategory4": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory4Parameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory4sResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partcategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartCategory4"
+          }
+        }
+      }
+    },
+    "PartCategory5": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory5Parameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory5sResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partcategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartCategory5"
+          }
+        }
+      }
+    },
+    "PartSearchList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "partDescription": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "commodity": {
+          "type": "string"
+        },
+        "um": {
+          "type": "string"
+        },
+        "partType": {
+          "type": "string"
+        },
+        "partStatus": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityReserved": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnHand": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnOrder": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityAvaialble": {
+          "type": "number",
+          "format": "float"
+        },
+        "category1": {
+          "type": "string"
+        },
+        "category2": {
+          "type": "string"
+        },
+        "category3": {
+          "type": "string"
+        },
+        "category4": {
+          "type": "string"
+        },
+        "category5": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "vebdorPartNumber": {
+          "type": "string"
+        },
+        "hasPartImage": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "defaultBin": {
+          "type": "string"
+        }
+      }
+    },
+    "PartSearchListParameter": {
+      "type": "object",
+      "properties": {
+        "searchTerm": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "category1": {
+          "type": "string"
+        },
+        "category2": {
+          "type": "string"
+        },
+        "category3": {
+          "type": "string"
+        },
+        "category4": {
+          "type": "string"
+        },
+        "category5": {
+          "type": "string"
+        },
+        "commodity": {
+          "type": "string"
+        }
+      }
+    },
+    "PartSearchListResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartSearchList"
+          }
+        }
+      }
+    },
+    "PartStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "PartStatusParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartStatusesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartStatus"
+          }
+        }
+      }
+    },
+    "PartType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "partType": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "PartTypeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PartTypesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "parttypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartType"
+          }
+        }
+      }
+    },
+    "PayCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payCode": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "PayCodeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "PayCodesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "paycodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PayCode"
+          }
+        }
+      }
+    },
+    "PrioritiesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "priorities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Priority"
+          }
+        }
+      }
+    },
+    "Priority": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "PriorityParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "Procedure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "procedure": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "ProcedureParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "ProceduresResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "procedures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Procedure"
+          }
+        }
+      }
+    },
+    "RentalType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "RentalTypeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "RentalTypesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "rentalTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RentalType"
+          }
+        }
+      }
+    },
+    "RequestStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "RequestStatusParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestStatusesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "RequestStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RequestStatus"
+          }
+        }
+      }
+    },
+    "RequestType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestTypeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestTypesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "requestTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RequestType"
+          }
+        }
+      }
+    },
+    "Requester": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        }
+      }
+    },
+    "RequesterParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestersResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "requesters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Requester"
+          }
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "responseCode": {
+          "$ref": "#/definitions/ResponseCode"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseCode": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "EXCEPTION",
+        "UNKNOW"
+      ],
+      "default": "SUCCESS"
+    },
+    "Room": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "room": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "floorId": {
+          "type": "string"
+        }
+      }
+    },
+    "RoomParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "RoomsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "rooms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Room"
+          }
+        }
+      }
+    },
+    "Shift": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "ShiftParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "ShiftResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "shifts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Shift"
+          }
+        }
+      }
+    },
+    "Site": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "site": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "SiteParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "SitesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "sites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Site"
+          }
+        }
+      }
+    },
+    "Skill": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "skill": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "SkillParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "SkillsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Skill"
+          }
+        }
+      }
+    },
+    "TaskCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "crew": {
+          "type": "string"
+        }
+      }
+    },
+    "TaskCodeParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "TaskCodeResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "taskCodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaskCode"
+          }
+        }
+      }
+    },
+    "Team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "team": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "chief": {
+          "type": "string"
+        }
+      }
+    },
+    "TeamParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "TeamsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Team"
+          }
+        }
+      }
+    },
+    "UnitOfMeasure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "um": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "UnitOfMeasureParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "UnitOfMeasuresResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "unitOfMeasures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UnitOfMeasure"
+          }
+        }
+      }
+    },
+    "UpdateAssetRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetailUpdate"
+        }
+      },
+      "title": "Update Asset"
+    },
+    "UpdateAssetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetail"
+        }
+      }
+    },
+    "UserDefinedField": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "attribute1": {
+          "type": "string"
+        },
+        "attribute2": {
+          "type": "string"
+        },
+        "attribute3": {
+          "type": "string"
+        },
+        "attribute4": {
+          "type": "string"
+        },
+        "attribute5": {
+          "type": "string"
+        },
+        "attribute6": {
+          "type": "string"
+        },
+        "attribute7": {
+          "type": "string"
+        },
+        "attribute8": {
+          "type": "string"
+        },
+        "attribute9": {
+          "type": "string"
+        },
+        "attribute10": {
+          "type": "string"
+        },
+        "attribute11": {
+          "type": "string"
+        },
+        "attribute12": {
+          "type": "string"
+        },
+        "attribute13": {
+          "type": "string"
+        },
+        "attribute14": {
+          "type": "string"
+        },
+        "attribute15": {
+          "type": "string"
+        },
+        "attribute16": {
+          "type": "string"
+        },
+        "attribute17": {
+          "type": "string"
+        },
+        "attribute18": {
+          "type": "string"
+        },
+        "attribute19": {
+          "type": "string"
+        },
+        "attribute20": {
+          "type": "string"
+        },
+        "attribute21": {
+          "type": "string"
+        },
+        "attribute22": {
+          "type": "string"
+        },
+        "attribute23": {
+          "type": "string"
+        },
+        "attribute24": {
+          "type": "string"
+        },
+        "attribute25": {
+          "type": "string"
+        },
+        "attribute26": {
+          "type": "string"
+        },
+        "attribute27": {
+          "type": "string"
+        },
+        "attribute28": {
+          "type": "string"
+        },
+        "attribute29": {
+          "type": "string"
+        },
+        "attribute30": {
+          "type": "string"
+        }
+      }
+    },
+    "UserDefinedFieldCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "attribute1": {
+          "type": "string"
+        },
+        "attribute2": {
+          "type": "string"
+        },
+        "attribute3": {
+          "type": "string"
+        },
+        "attribute4": {
+          "type": "string"
+        },
+        "attribute5": {
+          "type": "string"
+        },
+        "attribute6": {
+          "type": "string"
+        },
+        "attribute7": {
+          "type": "string"
+        },
+        "attribute8": {
+          "type": "string"
+        },
+        "attribute9": {
+          "type": "string"
+        },
+        "attribute10": {
+          "type": "string"
+        },
+        "attribute11": {
+          "type": "string"
+        },
+        "attribute12": {
+          "type": "string"
+        },
+        "attribute13": {
+          "type": "string"
+        },
+        "attribute14": {
+          "type": "string"
+        },
+        "attribute15": {
+          "type": "string"
+        },
+        "attribute16": {
+          "type": "string"
+        },
+        "attribute17": {
+          "type": "string"
+        },
+        "attribute18": {
+          "type": "string"
+        },
+        "attribute19": {
+          "type": "string"
+        },
+        "attribute20": {
+          "type": "string"
+        },
+        "attribute21": {
+          "type": "string"
+        },
+        "attribute22": {
+          "type": "string"
+        },
+        "attribute23": {
+          "type": "string"
+        },
+        "attribute24": {
+          "type": "string"
+        },
+        "attribute25": {
+          "type": "string"
+        },
+        "attribute26": {
+          "type": "string"
+        },
+        "attribute27": {
+          "type": "string"
+        },
+        "attribute28": {
+          "type": "string"
+        },
+        "attribute29": {
+          "type": "string"
+        },
+        "attribute30": {
+          "type": "string"
+        }
+      }
+    },
+    "UserDefinedFieldCreateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "workOrderId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userDefinedField": {
+          "$ref": "#/definitions/UserDefinedFieldCreate"
+        }
+      },
+      "title": "Create"
+    },
+    "UserDefinedFieldCreateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "userDefinedField": {
+          "$ref": "#/definitions/UserDefinedField"
+        }
+      }
+    },
+    "UserDefinedFieldUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "userDefinedField": {
+          "$ref": "#/definitions/UserDefinedField"
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        }
+      }
+    },
+    "VendorList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "vendorNo": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "VendorListParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "VendorListResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "vendors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VendorList"
+          }
+        }
+      }
+    },
+    "ViewAttachmentResponse": {
+      "type": "object",
+      "properties": {
+        "fileInfo": {
+          "$ref": "#/definitions/FileInfo"
+        }
+      }
+    },
+    "Warehouse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "WarehouseQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "WarehousesResponse": {
+      "type": "object",
+      "properties": {
+        "warehouses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Warehouse"
+          }
+        }
+      }
+    },
+    "WorkOrderList": {
+      "type": "object",
+      "properties": {
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "crew": {
+          "type": "string"
+        },
+        "assignedTo": {
+          "type": "string"
+        },
+        "payCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "equipment": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "reqType": {
+          "type": "string"
+        }
+      }
+    },
+    "WorkOrderListParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "WorkOrderListResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "workOrders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WorkOrderList"
+          }
+        }
+      }
+    },
+    "WorkOrderStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "completeIndicator": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "WorkOrderStatusParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "WorkOrderStatusesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "workOrderStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WorkOrderStatus"
+          }
+        }
+      }
+    },
+    "Zone": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "assetsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Asset"
+          }
+        }
+      }
+    }
+  }
+}

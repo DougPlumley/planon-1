@@ -1,0 +1,246 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "multiassignment.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/multiassignments": {
+      "get": {
+        "operationId": "MultiAssignmentsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MultiAssignmentsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "MultiAssignmentService"
+        ]
+      },
+      "post": {
+        "operationId": "MultiAssignmentCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MultiAssignmentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MultiAssignmentRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "MultiAssignmentService"
+        ]
+      }
+    },
+    "/api/multiassignments/{id}": {
+      "get": {
+        "operationId": "MultiAssignmentGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MultiAssignment"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MultiAssignmentService"
+        ]
+      },
+      "put": {
+        "operationId": "MultiAssignmentUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MultiAssignmentResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MultiAssignmentRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "MultiAssignmentService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "MultiAssignment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        }
+      }
+    },
+    "MultiAssignmentQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MultiAssignmentRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        }
+      }
+    },
+    "MultiAssignmentRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        }
+      },
+      "title": "MultiAssignmentRequestUpdate"
+    },
+    "MultiAssignmentResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "multiAssignment": {
+          "$ref": "#/definitions/MultiAssignment"
+        }
+      }
+    },
+    "MultiAssignmentsResponse": {
+      "type": "object",
+      "properties": {
+        "multiAssignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MultiAssignment"
+          }
+        }
+      }
+    }
+  }
+}

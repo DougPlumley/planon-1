@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "projectphasestatus.proto";
+import "projectphasetasklist.proto";
+import "team.proto";
+import "skill.proto";
+import "document.proto";
+import "billingtype.proto";
+import "account.proto";
+
+message WorkOrderProjectPhase {
+    int64 id = 1;
+    string reqNumber = 2;
+    int64 phase = 3;
+    string description = 4;
+    ProjectPhaseStatus projectStatus = 5;
+    Team team = 6;  /*list  (FAMIS On Premise CREW)*/
+    Skill skill = 7;  /*list  (FAMIS On Premise CRAFT)*/
+    google.protobuf.Timestamp customerStartDate = 8;
+    google.protobuf.Timestamp customerDueDate = 9;
+    ProjectPhaseTaskList projectphasetasklist = 10;
+    int64 contingency = 11;
+    int64 estHours = 12;
+    int64 estEquipment = 13;
+    int64 estimate = 14;
+    int64 estPo = 15;
+    int64 estRate = 16;
+    string woNumber = 17;
+    repeated Document documents = 18;
+    bool phaseBilling = 19;
+    BillingType billingtype = 20;
+    repeated Account accounts = 21; /*relationship attribute to show account details*/
+}

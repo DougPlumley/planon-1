@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message WorkOrderList {
+	string workOrderNumber = 1;
+    string description = 2;
+    string crew = 3;
+    string assignedTo =4;
+    string payCode = 5;
+    string status = 6;
+    string site = 7;
+    string building = 8;
+    string floor = 9;
+    string room =10;
+    string equipment = 11;
+    string taskCode = 12;
+    string reqType = 13;
+}
+
+
+message WorkOrderListParameter {
+	string workOrderNumber = 1;
+    string description = 2;
+    string crew = 3;
+    string assignedTo =4;
+    string payCode = 5;
+    string status = 6;
+    string site = 7;
+    string building = 8;
+    string floor = 9;
+    string room =10;
+    string equipment = 11;
+    string taskCode = 12;
+    string reqType = 13;
+}
+
+message WorkOrderListRequest {
+    UserInfo userInfo = 1;
+    WorkOrderListParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message WorkOrderListResponse {
+    Response response = 1;
+    repeated WorkOrderList workOrders = 2;
+}
+
+// service WorkOrderListService {
+//     rpc WorkOrderListGet(WorkOrderListRequest) returns (WorkOrderListResponse) {
+//         option (google.api.http) = {
+//             get: "/api/workorderlist"
+//         };
+//     };
+// }

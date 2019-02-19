@@ -1,0 +1,423 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "requestor.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/requestors": {
+      "get": {
+        "operationId": "RequestorsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestorsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RequestorService"
+        ]
+      },
+      "post": {
+        "operationId": "RequestorCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RequestorRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "RequestorService"
+        ]
+      }
+    },
+    "/api/requestors/{id}": {
+      "get": {
+        "operationId": "RequestorGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Requestor"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RequestorService"
+        ]
+      },
+      "put": {
+        "operationId": "RequestorUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RequestorRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "RequestorService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Requestor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Requestor": {
+          "type": "string"
+        },
+        "RequestorType": {
+          "type": "string"
+        },
+        "PersonId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DefaultHolderCode": {
+          "type": "string"
+        },
+        "WebPassword": {
+          "type": "string"
+        },
+        "WebUsername": {
+          "type": "string"
+        },
+        "KeyHolder": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "Shift": {
+          "type": "string"
+        },
+        "HousingBuilding": {
+          "type": "string"
+        },
+        "HousingRoom": {
+          "type": "string"
+        },
+        "Pager": {
+          "type": "string"
+        },
+        "NeedNotification": {
+          "type": "string"
+        },
+        "MailCode": {
+          "type": "string"
+        },
+        "KeyRequestor": {
+          "type": "string"
+        },
+        "Fax": {
+          "type": "string"
+        },
+        "EmpId": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "Cellular": {
+          "type": "string"
+        },
+        "OnCampusHousing": {
+          "type": "string"
+        },
+        "ImportDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "RequestorQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RequestorRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Requestor": {
+          "type": "string"
+        },
+        "RequestorType": {
+          "type": "string"
+        },
+        "PersonId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DefaultHolderCode": {
+          "type": "string"
+        },
+        "WebPassword": {
+          "type": "string"
+        },
+        "WebUsername": {
+          "type": "string"
+        },
+        "KeyHolder": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "Shift": {
+          "type": "string"
+        },
+        "HousingBuilding": {
+          "type": "string"
+        },
+        "HousingRoom": {
+          "type": "string"
+        },
+        "Pager": {
+          "type": "string"
+        },
+        "NeedNotification": {
+          "type": "string"
+        },
+        "MailCode": {
+          "type": "string"
+        },
+        "KeyRequestor": {
+          "type": "string"
+        },
+        "Fax": {
+          "type": "string"
+        },
+        "EmpId": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "Cellular": {
+          "type": "string"
+        },
+        "OnCampusHousing": {
+          "type": "string"
+        },
+        "ImportDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "RequestorRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Requestor": {
+          "type": "string"
+        },
+        "RequestorType": {
+          "type": "string"
+        },
+        "PersonId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DefaultHolderCode": {
+          "type": "string"
+        },
+        "WebPassword": {
+          "type": "string"
+        },
+        "WebUsername": {
+          "type": "string"
+        },
+        "KeyHolder": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "Shift": {
+          "type": "string"
+        },
+        "HousingBuilding": {
+          "type": "string"
+        },
+        "HousingRoom": {
+          "type": "string"
+        },
+        "Pager": {
+          "type": "string"
+        },
+        "NeedNotification": {
+          "type": "string"
+        },
+        "MailCode": {
+          "type": "string"
+        },
+        "KeyRequestor": {
+          "type": "string"
+        },
+        "Fax": {
+          "type": "string"
+        },
+        "EmpId": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "Cellular": {
+          "type": "string"
+        },
+        "OnCampusHousing": {
+          "type": "string"
+        },
+        "ImportDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "title": "RequestorRequestUpdate"
+    },
+    "RequestorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "requestor": {
+          "$ref": "#/definitions/Requestor"
+        }
+      }
+    },
+    "RequestorsResponse": {
+      "type": "object",
+      "properties": {
+        "requestors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Requestor"
+          }
+        }
+      }
+    }
+  }
+}

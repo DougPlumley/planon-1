@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message AssetConditionUM {
+    int64 id = 1;
+	string um = 2;
+    string description = 3;
+}
+
+message AssetConditionUMParameter {
+    int64 id = 1;
+	string um = 2;
+    string description = 3;
+}
+
+message AssetConditionUMsRequest {
+    UserInfo userInfo = 1;
+    AssetConditionUMParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message AssetConditionUMsResponse {
+    Response response = 1;
+    repeated AssetConditionUM unitOfMeasures = 2;
+}

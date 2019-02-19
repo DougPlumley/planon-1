@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+import "employee.proto";
+import "assetlist.proto";
+import "workorderlist.proto";
+import "requesttype.proto";
+import "rentaltype.proto";
+import "taskcode.proto";
+import "common.proto";
+
+
+message AssetRental {
+    int64 id = 1;
+    AssetList asset = 2;
+    Employee employee = 3;
+    WorkOrderList workOrder = 4;
+    float hours = 5;
+    float rate = 6;
+    google.protobuf.Timestamp date = 7;
+    RentalType rentType = 8;
+    RequestType requestType = 9;
+    TaskCode taskCode = 10;
+    float percent = 11;
+    float FuelCharge = 12;
+    float Miles = 13;
+    float MileageRate = 14;
+
+}
+
+message AssetRentalUpdate {
+    int64 id = 1;
+    string asset = 2;
+    string employee = 3;
+    string workOrder = 4;
+    float hours = 5;
+    float rate = 6;
+    google.protobuf.Timestamp date = 7;
+    string rentType = 8;
+    string requestType = 9;
+    string taskCode = 10;
+    float percent = 11;
+    float FuelCharge = 12;
+    float Miles = 13;
+    float MileageRate = 14;
+}
+
+message AssetRentalSearch {
+    string asset = 2;
+    string employee = 3;
+    string workOrder = 4;
+    float hours = 5;
+    float rate = 6;
+    DateRange date = 7;
+    string rentType = 8;
+    string requestType = 9;
+    string taskCode = 10;
+}
+
+
+/* Rental Create*/
+
+message AssetRentalCreateRequest {
+    UserInfo userInfo =1;
+    AssetRentalUpdate assetRental = 2;
+}
+
+message AssetRentalCreateResponse {
+    Response response =1;
+    AssetRentalUpdate assetRental = 2;
+}
+
+
+/* Rental Update*/
+message AssetRentalUpdateRequest {
+    UserInfo userInfo =1;
+    int64 id =2;
+    AssetRentalUpdate assetRental = 3;
+}
+
+message AssetRentalUpdateResponse {
+    Response response =1;
+    AssetRentalUpdate assetRental = 2;
+}
+
+/*Rental Search */
+message AssetRentalSearchRequest {
+    UserInfo userInfo =1;
+    AssetRentalSearch assetRental = 2;
+}
+
+message AssetRentalSearchResponse {
+    Response response =1;
+    repeated AssetRental assetRentals = 2;
+}
+
+/* Fetch single retal By ID*/
+
+message AssetRentalFetchByIDRequest {
+    UserInfo userInfo =1;
+    int64 id =2;
+}
+
+message AssetRentalFetchByIDResponse {
+    Response response =1;
+    AssetRental assetRental = 2;
+}
+
+
+/*Lazyload by Asset ID*/
+
+message AssetRentalFetchByAssetIDRequest {
+    UserInfo userInfo = 1;
+    int64 assetId = 2;
+}
+
+message AssetRentalFetchByAssetIDResponse {
+    Response response = 1;
+    repeated AssetRental assetRental = 2;
+}
+
+
+// service AssetRentalService {
+    
+//     /*Obtain rental information for an asset with asset rental id*/
+//     rpc AssetRentalGet(AssetRentalFetchByIDRequest) returns (AssetRentalFetchByIDResponse) {
+//         option (google.api.http) = {
+//             get: "/api/assetrental/{id}"
+//         };
+//     };
+
+//     /*Search for asset rental(s)*/
+//     rpc AssetRentalsSearch(AssetRentalSearchRequest) returns (AssetRentalSearchResponse) {
+//         option (google.api.http) = {
+//             post: "/api/assetrental/search"
+//             body: "*"
+//         };
+//     };
+
+//     /*Update rental information for an asset*/
+//     rpc AssetRentalUpdate(AssetRentalUpdateRequest) returns (AssetRentalUpdateResponse) {
+//         option (google.api.http) = {
+//             put: "/api/assetrental/{id}"
+//             body: "*"
+//         };
+//     };
+    
+//     /*Create a new asset rental*/
+//     rpc AssetRentalRentalCreate(AssetRentalCreateRequest) returns (AssetRentalCreateResponse) {
+//         option (google.api.http) = {
+//             post: "/api/assetrental"
+//             body: "*"
+//         };
+//     };
+
+//     /*This call is for lazyload to fetch the list asset rental for an asset with asset id*/
+//     rpc AssetAssetRentalsGet(AssetRentalFetchByAssetIDRequest) returns (AssetRentalFetchByAssetIDResponse) {
+//         option (google.api.http) = {
+//             get: "/api/assetassetrental/{assetId}"
+//         };
+//     };
+
+// }

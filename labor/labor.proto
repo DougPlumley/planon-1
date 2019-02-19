@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+import "timeapproval.proto";
+import "timeentry.proto";
+
+service TimeEntryService {
+
+    /*Obtain time entries*/
+    rpc TimeEntriesGet(FetchTimeEntryRequest) returns (FetchTimeEntriesResponse) {
+        option (google.api.http) = {
+            get: "/api/timeentry"
+        };
+    };
+
+    /*Obtain a time entry by id*/
+    rpc TimeEntryGet(FetchTimeEntryRequest) returns (FetchTimeEntryResponse) {
+        option (google.api.http) = {
+            get: "/api/timeentry/{id}"
+        };
+    };
+    
+    /*Create a new time(labor) entry*/
+    rpc TimeEntryCreate(CreateTimeEntryRequest) returns (CreateTimeEntryResponse) {
+        option (google.api.http) = {
+            post: "/api/timeentry"
+            body: "*"
+        };
+    };
+    
+    /*Update a time(labor) entry*/
+    rpc TimeEntryUpdate(UpdateTimeEntryRequest) returns (UpdateTimeEntryResponse) {
+        option (google.api.http) = {
+            put: "/api/timeentry"
+            body: "*"
+        };
+    };
+
+    /*Bulk update time entries*/
+    rpc TimeEntryBulkUpdate(BulkUpdateTimeEntryRequest) returns (BulkUpdateTimeEntryResponse) {
+        option (google.api.http) = {
+            put: "/api/timeentry/bulk"
+            body: "*"
+        };
+    };
+
+    /*Delete a time entry*/
+    rpc TimeEntryDelete(DeleteTimeEntryRequest) returns (DeleteTimeEntryResponse) {
+        option (google.api.http) = {
+            delete: "/api/timeentry/{id}"
+        };
+    };
+}
+
+service TimeApprovalService {
+
+    /*Obtain a list of time approval requests*/
+    rpc TimeApprovalsGet(TimeApprovalsRequest) returns (TimeApprovalsResponse) {
+        option (google.api.http) = {
+            get: "/api/timeapproval"
+        };
+    };
+    
+    /*Obtain a time approval request by id*/
+    rpc TimeApprovalGet(TimeApprovalRequest) returns (TimeApprovalResponse) {
+        option (google.api.http) = {
+            get: "/api/timeapproval/{id}"
+        };
+    };
+        
+    /*Approve or reject a time approval request*/
+    rpc TimeApprovalUpdate(UpdateTimeApprovalRequest) returns (UpdateTimeApprovalResponse) {
+        option (google.api.http) = {
+            put: "/api/timeapproval"
+            body: "*"
+        };
+    };
+}

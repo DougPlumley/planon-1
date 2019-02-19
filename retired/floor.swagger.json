@@ -1,0 +1,750 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "floor.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/floors": {
+      "get": {
+        "operationId": "FloorsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/FloorsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "FloorService"
+        ]
+      },
+      "post": {
+        "operationId": "FloorCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/FloorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FloorRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "FloorService"
+        ]
+      }
+    },
+    "/api/floors/{id}": {
+      "get": {
+        "operationId": "FloorGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Floor"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FloorService"
+        ]
+      },
+      "put": {
+        "operationId": "FloorUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/FloorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FloorRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "FloorService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Floor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "FloorType": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SqrFeetSource": {
+          "type": "string"
+        },
+        "Sqft1": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft2": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft4": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft5": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonCarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "GrossSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "AvailDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PlanId": {
+          "type": "string"
+        },
+        "Owned": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      }
+    },
+    "FloorQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "FloorRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "FloorType": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SqrFeetSource": {
+          "type": "string"
+        },
+        "Sqft1": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft2": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft4": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft5": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonCarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "GrossSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "AvailDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PlanId": {
+          "type": "string"
+        },
+        "Owned": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      }
+    },
+    "FloorRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "FloorType": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SqrFeetSource": {
+          "type": "string"
+        },
+        "Sqft1": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft2": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft4": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft5": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonCarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "GrossSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "AvailDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PlanId": {
+          "type": "string"
+        },
+        "Owned": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      },
+      "title": "FloorRequestUpdate"
+    },
+    "FloorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "floor": {
+          "$ref": "#/definitions/Floor"
+        }
+      }
+    },
+    "FloorsResponse": {
+      "type": "object",
+      "properties": {
+        "floors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Floor"
+          }
+        }
+      }
+    }
+  }
+}

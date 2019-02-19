@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message RentalType {
+    int64 id = 1;
+    string type = 2;
+    string description = 3;
+}
+
+message RentalTypeParameter {
+    int64 id = 1;
+    string type = 2;
+    string description = 3;
+}
+
+message RentalTypesRequest {
+    UserInfo userInfo = 1;
+    RentalTypeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message RentalTypesResponse {
+    Response response = 1;
+    repeated RentalType rentalTypes = 2;
+}
+
+
+// service RentalTypeService {
+//     rpc RentalTypesGet(RentalTypesRequest) returns (RentalTypesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/rentaltype"
+//         };
+//     };
+// }

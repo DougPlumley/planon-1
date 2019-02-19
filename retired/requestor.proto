@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message Requestor {
+	int64 id = 1;
+    string Requestor = 2;
+    string RequestorType = 3;
+    int64 PersonId = 4;
+    string DefaultHolderCode = 5;
+    string WebPassword = 6;
+    string WebUsername = 7;
+    string KeyHolder = 8;
+    string Telephone = 9;
+    string Shift = 10;
+    string HousingBuilding = 11;
+    string HousingRoom = 12;
+    string Pager = 13;
+    string NeedNotification = 14;
+    string MailCode = 15;
+    string KeyRequestor = 16;
+    string Fax = 17;
+    string EmpId = 18;
+    string Email = 19;
+    string Department = 20;
+    string Cellular = 21;
+    string OnCampusHousing = 22;
+    google.protobuf.Timestamp ImportDate = 23;
+}
+
+message RequestorRequest {
+    string id = 1;
+}
+
+message RequestorResponse {
+    string message = 1;
+    Requestor requestor = 2;
+}
+
+message RequestorQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message RequestorsRequest {
+    RequestorQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message RequestorsResponse {
+    repeated Requestor requestors = 1;
+}
+
+message RequestorRequestCreate {
+	int64 id = 1;
+    string Requestor = 2;
+    string RequestorType = 3;
+    int64 PersonId = 4;
+    string DefaultHolderCode = 5;
+    string WebPassword = 6;
+    string WebUsername = 7;
+    string KeyHolder = 8;
+    string Telephone = 9;
+    string Shift = 10;
+    string HousingBuilding = 11;
+    string HousingRoom = 12;
+    string Pager = 13;
+    string NeedNotification = 14;
+    string MailCode = 15;
+    string KeyRequestor = 16;
+    string Fax = 17;
+    string EmpId = 18;
+    string Email = 19;
+    string Department = 20;
+    string Cellular = 21;
+    string OnCampusHousing = 22;
+    google.protobuf.Timestamp ImportDate = 23;
+}
+
+/* RequestorRequestUpdate */
+message RequestorRequestUpdate {
+	int64 id = 1;
+    string Requestor = 2;
+    string RequestorType = 3;
+    int64 PersonId = 4;
+    string DefaultHolderCode = 5;
+    string WebPassword = 6;
+    string WebUsername = 7;
+    string KeyHolder = 8;
+    string Telephone = 9;
+    string Shift = 10;
+    string HousingBuilding = 11;
+    string HousingRoom = 12;
+    string Pager = 13;
+    string NeedNotification = 14;
+    string MailCode = 15;
+    string KeyRequestor = 16;
+    string Fax = 17;
+    string EmpId = 18;
+    string Email = 19;
+    string Department = 20;
+    string Cellular = 21;
+    string OnCampusHousing = 22;
+    google.protobuf.Timestamp ImportDate = 23;
+}
+
+service RequestorService {
+
+    rpc RequestorGet(RequestorRequest) returns (Requestor) {
+        option (google.api.http) = {
+            get: "/api/requestors/{id}"
+        };
+    };
+
+    rpc RequestorsGet(RequestorsRequest) returns (RequestorsResponse) {
+        option (google.api.http) = {
+            get: "/api/requestors"
+        };
+    };
+
+    rpc RequestorCreate(RequestorRequestCreate) returns (RequestorResponse) {
+        option (google.api.http) = {
+            post: "/api/requestors"
+            body: "*"
+        };
+    };
+
+    rpc RequestorUpdate(RequestorRequestUpdate) returns (RequestorResponse) {
+        option (google.api.http) = {
+            put: "/api/requestors/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/requestors
+    GET /api/requestors/:id
+    POST /api/requestors
+    PUT /api/requestors/:id
+    DELETE /api/requestors/:id
+
+    POST /api/requestors/close/:id
+*/

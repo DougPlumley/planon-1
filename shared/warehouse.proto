@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+ import "userinfo.proto";
+ import "response.proto";
+
+message Warehouse {
+    int64 id = 1;
+	string warehouse = 2;
+    string description = 3;
+}
+
+message WarehouseParameter {
+    int64 id = 1;
+	string warehouse = 2;
+    string description = 3;
+}
+
+message WarehousesRequest {
+    UserInfo userInfo = 1;
+    WarehouseParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message WarehousesResponse {
+    Response response = 1;
+    repeated Warehouse warehou = 2;
+}

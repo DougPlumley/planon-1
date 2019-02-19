@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+message Procedure {
+	int64 id = 1;
+    string Procedure = 2;
+    string Comments = 3;
+}
+
+message ProcedureRequest {
+    string id = 1;
+}
+
+message ProcedureResponse {
+    string message = 1;
+    Procedure procedure = 2;
+}
+
+message ProcedureQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message ProceduresRequest {
+    ProcedureQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message ProceduresResponse {
+    repeated Procedure procedures = 1;
+}
+
+message ProcedureRequestCreate {
+	int64 id = 1;
+    string Procedure = 2;
+    string Comments = 3;
+}
+
+/* ProcedureRequestUpdate */
+message ProcedureRequestUpdate {
+	int64 id = 1;
+    string Procedure = 2;
+    string Comments = 3;
+}
+
+service ProcedureService {
+
+    rpc ProcedureGet(ProcedureRequest) returns (Procedure) {
+        option (google.api.http) = {
+            get: "/api/procedures/{id}"
+        };
+    };
+
+    rpc ProceduresGet(ProceduresRequest) returns (ProceduresResponse) {
+        option (google.api.http) = {
+            get: "/api/procedures"
+        };
+    };
+
+    rpc ProcedureCreate(ProcedureRequestCreate) returns (ProcedureResponse) {
+        option (google.api.http) = {
+            post: "/api/procedures"
+            body: "*"
+        };
+    };
+
+    rpc ProcedureUpdate(ProcedureRequestUpdate) returns (ProcedureResponse) {
+        option (google.api.http) = {
+            put: "/api/procedures/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/procedures
+    GET /api/procedures/:id
+    POST /api/procedures
+    PUT /api/procedures/:id
+    DELETE /api/procedures/:id
+
+    POST /api/procedures/close/:id
+*/

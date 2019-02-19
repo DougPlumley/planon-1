@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+//import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+//import "userinfo.proto";
+//import "response.proto";
+import "unitofmeasure.proto";
+import "partcategory1.proto";
+import "partcategory2.proto";
+import "partcategory3.proto";
+import "partcategory4.proto";
+import "partcategory5.proto";
+import "parttype.proto";
+import "commodity.proto";
+import "partbinlist.proto";
+import "partlist.proto";
+
+message PartIssueItem {
+    int64 id =1;
+    string issueNo =2;
+    PartList partNumber =3;
+    string partDescription =4;
+    UnitOfMeasure unitOfMeasure =5;
+    float quantityIssued =6;
+    float quantityReturned =7;
+    float quantityRequest =8;
+    float quantityReserved =9;
+    float quantityOnHand =10;
+    float quantityOnOrder =11;
+    float quantityAvailable =12;
+    float unitPrice = 13;
+    Commodity commodity = 14;
+    PartBinList bin =15;
+    PartType partType =16;
+    PartCategory1 partCategory1 =17;
+    PartCategory2 partCategory2 =18;
+    PartCategory3 partCategory3 =19;
+    PartCategory4 partCategory4 =20;
+    PartCategory5 partCategory5 =21;
+
+    int64 partId =22;//id of part, used for generate part image url
+    bool  hasImage =23;
+}
+
+message PartIssueItemUpdate {
+    int64 id =1;
+    string issueNo =2;
+    string partNumber =3;
+    string partDescription =4;
+    string unitOfMeasure =5;
+    float quantityIssued =6;
+    float quantityReturned =7;
+    float quantityToReturn =8;
+    float quantityRequest =9;
+    float quantityReserved =10;
+    float quantityOnHand =11;
+    float quantityOnOrder =12;
+    float quantityAvailable =13;
+    float unitPrice = 14;
+    string bin =15;
+    string binToReturn =16; 
+    string crudStatus =17;
+}

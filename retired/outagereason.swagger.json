@@ -1,0 +1,237 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "outagereason.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/outagereasons": {
+      "get": {
+        "operationId": "OutageReasonsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutageReasonsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "OutageReasonService"
+        ]
+      },
+      "post": {
+        "operationId": "OutageReasonCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutageReasonResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OutageReasonRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "OutageReasonService"
+        ]
+      }
+    },
+    "/api/outagereasons/{id}": {
+      "get": {
+        "operationId": "OutageReasonGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutageReason"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "OutageReasonService"
+        ]
+      },
+      "put": {
+        "operationId": "OutageReasonUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutageReasonResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OutageReasonRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "OutageReasonService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "OutageReason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OutageReason": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      }
+    },
+    "OutageReasonQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "OutageReasonRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OutageReason": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      }
+    },
+    "OutageReasonRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OutageReason": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      },
+      "title": "OutageReasonRequestUpdate"
+    },
+    "OutageReasonResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "outagereason": {
+          "$ref": "#/definitions/OutageReason"
+        }
+      }
+    },
+    "OutageReasonsResponse": {
+      "type": "object",
+      "properties": {
+        "outagereasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OutageReason"
+          }
+        }
+      }
+    }
+  }
+}

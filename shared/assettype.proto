@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message AssetType {
+    int64 id = 1;
+	string type = 2;
+    string comments = 3;
+}
+
+message AssetTypeParameter {
+    int64 id = 1;
+	string type = 2;
+    string comments = 3;
+}
+
+message AssetTypesRequest {
+    UserInfo userInfo = 1;
+    AssetTypeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message AssetTypesResponse {
+    Response response = 1;
+    repeated AssetType assetTypes = 2;
+}
+
+// service AssetTypeService {
+//     rpc AssetTypesGet(AssetTypesRequest) returns (AssetTypesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/assettype"
+//         };
+//     };
+// }

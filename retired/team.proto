@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+message Team {
+	int64 id = 1;
+    string Team = 2;
+    string Chief = 3;
+    string Comments = 4;
+    string AcctSegment1 = 5;
+    string AcctSegment2 = 6;
+    string AcctSegment3 = 7;
+    string AcctSegment4 = 8;
+    string AcctSegment5 = 9;
+    string AcctSegment6 = 10;
+    int64 Hours = 11;
+    int64 Rate = 12;
+    string SplitRevenueFlag = 13;
+    string DepartmentGrouping = 14;
+    int64 BaseMarkupRate = 15;
+    int64 MarkupForSupv = 16;
+    int64 BaseFringeRate = 17;
+    int64 FringeForOt = 18;
+    string AbsenceWoNumber = 19;
+    string AbsenceBuilding = 20;
+    string Department = 21;
+    string TaskCodeFlag = 22;
+    string MobileWoFilter = 23;
+    int64 HocId = 24;
+}
+
+message TeamRequest {
+    string id = 1;
+}
+
+message TeamResponse {
+    string message = 1;
+    Team team = 2;
+}
+
+message TeamQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message TeamsRequest {
+    TeamQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message TeamsResponse {
+    repeated Team teams = 1;
+}
+
+message TeamRequestCreate {
+	int64 id = 1;
+    string Team = 2;
+    string Chief = 3;
+    string Comments = 4;
+    string AcctSegment1 = 5;
+    string AcctSegment2 = 6;
+    string AcctSegment3 = 7;
+    string AcctSegment4 = 8;
+    string AcctSegment5 = 9;
+    string AcctSegment6 = 10;
+    int64 Hours = 11;
+    int64 Rate = 12;
+    string SplitRevenueFlag = 13;
+    string DepartmentGrouping = 14;
+    int64 BaseMarkupRate = 15;
+    int64 MarkupForSupv = 16;
+    int64 BaseFringeRate = 17;
+    int64 FringeForOt = 18;
+    string AbsenceWoNumber = 19;
+    string AbsenceBuilding = 20;
+    string Department = 21;
+    string TaskCodeFlag = 22;
+    string MobileWoFilter = 23;
+    int64 HocId = 24;
+}
+
+/* TeamRequestUpdate */
+message TeamRequestUpdate {
+	int64 id = 1;
+    string Team = 2;
+    string Chief = 3;
+    string Comments = 4;
+    string AcctSegment1 = 5;
+    string AcctSegment2 = 6;
+    string AcctSegment3 = 7;
+    string AcctSegment4 = 8;
+    string AcctSegment5 = 9;
+    string AcctSegment6 = 10;
+    int64 Hours = 11;
+    int64 Rate = 12;
+    string SplitRevenueFlag = 13;
+    string DepartmentGrouping = 14;
+    int64 BaseMarkupRate = 15;
+    int64 MarkupForSupv = 16;
+    int64 BaseFringeRate = 17;
+    int64 FringeForOt = 18;
+    string AbsenceWoNumber = 19;
+    string AbsenceBuilding = 20;
+    string Department = 21;
+    string TaskCodeFlag = 22;
+    string MobileWoFilter = 23;
+    int64 HocId = 24;
+}
+
+service TeamService {
+
+    rpc TeamGet(TeamRequest) returns (Team) {
+        option (google.api.http) = {
+            get: "/api/teams/{id}"
+        };
+    };
+
+    rpc TeamsGet(TeamsRequest) returns (TeamsResponse) {
+        option (google.api.http) = {
+            get: "/api/teams"
+        };
+    };
+
+    rpc TeamCreate(TeamRequestCreate) returns (TeamResponse) {
+        option (google.api.http) = {
+            post: "/api/teams"
+            body: "*"
+        };
+    };
+
+    rpc TeamUpdate(TeamRequestUpdate) returns (TeamResponse) {
+        option (google.api.http) = {
+            put: "/api/teams/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/teams
+    GET /api/teams/:id
+    POST /api/teams
+    PUT /api/teams/:id
+    DELETE /api/teams/:id
+
+    POST /api/teams/close/:id
+*/

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Site {
+    int64 id = 1;
+    string site = 2;
+    string description = 3;
+    string status = 4;
+}
+
+message SiteParameter {
+    int64 id = 1;
+    string site = 2;
+    string description = 3;
+    string status = 4;
+}
+
+message SitesRequest {
+    UserInfo userInfo = 1;
+    SiteParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message SitesResponse {
+    Response response = 1;
+    repeated Site sites = 2;
+}
+
+
+// service SiteService {
+//     rpc SitesGet(SitesRequest) returns (SitesResponse) {
+//         option (google.api.http) = {
+//             get: "/list/site"
+//         };
+//     };
+// }

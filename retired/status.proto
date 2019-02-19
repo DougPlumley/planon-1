@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+<<<<<<< HEAD:status.proto
+
+=======
+/*
+drop sequence columnseq;
+create sequence columnseq start with 2;
+
+select '    ' || decode(data_type,'NUMBER','int64','VARCHAR2','string','DATE','google.protobuf.Timestamp','LONG','string') || ' ' ||  initcap(lower(replace(column_name,'_',''))) || ' = ' || ';'
+from user_tab_columns
+where table_name = 'FAMIS_WO_STATUS'
+and column_name != 'ORG_ID'
+and column_name != 'STATUS'
+and column_name not in ('ENTER_DATE','ENTER_USER','MODIFY_DATE','MODIFY_USER')
+order by column_id asc;
+*/
+>>>>>>> 12993c737f465d27448e23f2a22bac7007951a5a:retired/status.proto
+message Status {
+	int64 id = 1;
+    string Active = 2;
+    string Comments = 3;
+    string CompleteIndicator = 4;
+    google.protobuf.Timestamp MobileDate = 5;
+}
+
+message StatusRequest {
+    string id = 1;
+}
+
+message StatusResponse {
+    string message = 1;
+    Status status = 2;
+}
+
+message StatusQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message StatusesRequest {
+    StatusQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message StatusesResponse {
+    repeated Status statuses = 1;
+}
+
+message StatusRequestCreate {
+	int64 id = 1;
+    string Active = 2;
+    string Comments = 3;
+    string CompleteIndicator = 4;
+    google.protobuf.Timestamp MobileDate = 5;
+}
+
+/* StatusRequestUpdate */
+message StatusRequestUpdate {
+	int64 id = 1;
+    string Active = 2;
+    string Comments = 3;
+    string CompleteIndicator = 4;
+    google.protobuf.Timestamp MobileDate = 5;
+}
+
+service StatusService {
+
+    rpc StatusGet(StatusRequest) returns (Status) {
+        option (google.api.http) = {
+            get: "/api/statuses/{id}"
+        };
+    };
+
+    rpc StatusesGet(StatusesRequest) returns (StatusesResponse) {
+        option (google.api.http) = {
+            get: "/api/statuses"
+        };
+    };
+
+    rpc StatusCreate(StatusRequestCreate) returns (StatusResponse) {
+        option (google.api.http) = {
+            post: "/api/statuses"
+            body: "*"
+        };
+    };
+
+    rpc StatusUpdate(StatusRequestUpdate) returns (StatusResponse) {
+        option (google.api.http) = {
+            put: "/api/statuses/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/statuses
+    GET /api/statuses/:id
+    POST /api/statuses
+    PUT /api/statuses/:id
+    DELETE /api/statuses/:id
+
+    POST /api/statuses/close/:id
+*/

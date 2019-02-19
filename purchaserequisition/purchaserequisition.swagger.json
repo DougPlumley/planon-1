@@ -1,0 +1,595 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "purchaserequisition.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/purchaserequisitions": {
+      "get": {
+        "summary": "Obtain a list of purchase requisitions",
+        "operationId": "PurchaseRequisitionsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseRequisitionsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PurchaseRequisitionService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new purchase requisition",
+        "operationId": "PurchaseRequisitionCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseRequisitionResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PurchaseRequisitionRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "PurchaseRequisitionService"
+        ]
+      }
+    },
+    "/api/purchaserequisitions/{id}": {
+      "get": {
+        "summary": "Obtain a purchase requisition by id",
+        "operationId": "PurchaseRequisitionGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseRequisition"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PurchaseRequisitionService"
+        ]
+      },
+      "put": {
+        "summary": "Update a purchase requisition",
+        "operationId": "PurchaseRequisitionUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseRequisitionResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PurchaseRequisitionRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "PurchaseRequisitionService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PurchaseRequisition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ExportDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "UnivObjCls": {
+          "type": "string"
+        },
+        "MatlNuilding": {
+          "type": "string"
+        },
+        "Matlobjcls": {
+          "type": "string"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "VendorPartNumber": {
+          "type": "string"
+        },
+        "VendorNo": {
+          "type": "string"
+        },
+        "UnitPrice": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Um": {
+          "type": "string"
+        },
+        "Substitution": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "RequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QreqUser": {
+          "type": "string"
+        },
+        "QreqItem": {
+          "type": "string"
+        },
+        "QreqDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "PreqNo": {
+          "type": "string"
+        },
+        "PoTag": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PoNumber": {
+          "type": "string"
+        },
+        "PlacedUser": {
+          "type": "string"
+        },
+        "PlacedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PartType": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "Manufacturer": {
+          "type": "string"
+        },
+        "LineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Deliverto": {
+          "type": "string"
+        },
+        "Commodity": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Buyer": {
+          "type": "string"
+        },
+        "Brand": {
+          "type": "string"
+        },
+        "Advise": {
+          "type": "string"
+        }
+      }
+    },
+    "PurchaseRequisitionQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PurchaseRequisitionRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ExportDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "UnivObjCls": {
+          "type": "string"
+        },
+        "MatlNuilding": {
+          "type": "string"
+        },
+        "Matlobjcls": {
+          "type": "string"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "VendorPartNumber": {
+          "type": "string"
+        },
+        "VendorNo": {
+          "type": "string"
+        },
+        "UnitPrice": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Um": {
+          "type": "string"
+        },
+        "Substitution": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "RequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QreqUser": {
+          "type": "string"
+        },
+        "QreqItem": {
+          "type": "string"
+        },
+        "QreqDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "PreqNo": {
+          "type": "string"
+        },
+        "PoTag": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PoNumber": {
+          "type": "string"
+        },
+        "PlacedUser": {
+          "type": "string"
+        },
+        "PlacedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PartType": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "Manufacturer": {
+          "type": "string"
+        },
+        "LineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Deliverto": {
+          "type": "string"
+        },
+        "Commodity": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Buyer": {
+          "type": "string"
+        },
+        "Brand": {
+          "type": "string"
+        },
+        "Advise": {
+          "type": "string"
+        }
+      }
+    },
+    "PurchaseRequisitionRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ExportDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "UnivObjCls": {
+          "type": "string"
+        },
+        "MatlNuilding": {
+          "type": "string"
+        },
+        "Matlobjcls": {
+          "type": "string"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "VendorPartNumber": {
+          "type": "string"
+        },
+        "VendorNo": {
+          "type": "string"
+        },
+        "UnitPrice": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Um": {
+          "type": "string"
+        },
+        "Substitution": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "RequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Quantity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QreqUser": {
+          "type": "string"
+        },
+        "QreqItem": {
+          "type": "string"
+        },
+        "QreqDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "PreqNo": {
+          "type": "string"
+        },
+        "PoTag": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PoNumber": {
+          "type": "string"
+        },
+        "PlacedUser": {
+          "type": "string"
+        },
+        "PlacedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PartType": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "Model": {
+          "type": "string"
+        },
+        "Manufacturer": {
+          "type": "string"
+        },
+        "LineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Deliverto": {
+          "type": "string"
+        },
+        "Commodity": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Buyer": {
+          "type": "string"
+        },
+        "Brand": {
+          "type": "string"
+        },
+        "Advise": {
+          "type": "string"
+        }
+      },
+      "title": "PurchaseRequisitionRequestUpdate"
+    },
+    "PurchaseRequisitionResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "purchaseRequisition": {
+          "$ref": "#/definitions/PurchaseRequisition"
+        }
+      }
+    },
+    "PurchaseRequisitionsResponse": {
+      "type": "object",
+      "properties": {
+        "purchaseRequisitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PurchaseRequisition"
+          }
+        }
+      }
+    }
+  }
+}

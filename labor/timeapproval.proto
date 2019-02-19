@@ -1,0 +1,164 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "paycode.proto";
+import "taskcode.proto";
+import "shift.proto";
+import "laborstatus.proto";
+import "laborclass.proto";
+import "userinfo.proto";
+import "response.proto";
+import "workorderlist.proto";
+import "employee.proto";
+import "common.proto";
+
+message TimeApproval{
+    int64 id = 1 ;
+    string dateDescription = 2;
+    Employee employee = 3;
+    float totalHours = 4;
+    string status = 5;
+    string approvalOrRejectAll = 6;
+    LaborStatus rejectReason = 7;
+    Employee supervisor=8;
+    repeated TimeEntry timeEntries = 9;
+
+}
+
+// message TimeEntry {
+// 	int64 id = 1;
+//     Employee employee = 2;
+//     WorkOrderList workOrderNumber = 3;
+//     google.protobuf.Timestamp workDate = 4;
+//     float hours = 5;
+//     LaborStatus laborStatus = 6;
+//     PayCode payCode = 7; /*List Item*/
+//     TaskCode taskCode = 8; /*List Item*/
+//     Shift shift = 9; /*List Item*/
+//     LaborClass laborClass = 10; /*List Item*/
+//     string commets = 11;
+//     string approvalOrReject = 12;
+//     LaborStatus rejectReason = 13;
+// }
+
+message TimeEntry {
+	int64 id = 1;
+    Employee employee = 2;
+    WorkOrderList workOrderNumber = 3;
+    google.protobuf.Timestamp workDate = 4;
+    float hours = 5;
+    LaborStatus laborStatus = 6;
+    PayCode payCode = 7; /*List Item*/
+    TaskCode taskCode = 8; /*List Item*/
+    Shift shift = 9; /*List Item*/
+    LaborClass laborClass = 10; /*List Item*/
+    bool  workDone = 11;
+    string commets = 12;
+    string approvalOrReject = 13;
+    LaborStatus rejectReason = 14;
+}
+
+message TimeApprovalUpdate{
+    int64 id = 1 ;
+    string dateDescription = 2;
+    string employee = 3;
+    float totalHours = 4;
+    string status = 5;
+    string approvalOrRejectAll = 6;
+    string rejectReason = 7;
+    repeated TimeEntryUpdate timeEntries = 8;
+}
+
+message TimeEntryUpdate {
+	int64 id = 1;
+    string employee = 2;
+    string workOrderNumber = 3;
+    google.protobuf.Timestamp workDate = 4;
+    float hours = 5;
+    string laborStatus = 6;
+    string payCode = 7; /*List Item*/
+    string taskCode = 8; /*List Item*/
+    string shift = 9; /*List Item*/
+    string laborClass = 10; /*List Item*/
+    bool  workDone = 11;
+    string commets = 12;
+    string approvalOrReject = 13;
+    string rejectReason = 14;
+}
+
+/* Fetch Time Approval workbench*/
+
+message TimeApprovalQueryParameter {
+    int64 id = 1 ;
+    DateRange workDate = 2;
+    string employee = 3;
+    float totalHours = 4;
+    string status = 5;
+    string supervisor=8;
+}
+
+message TimeApprovalsRequest {
+    UserInfo userInfo = 1;
+    TimeApprovalQueryParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message TimeApprovalsResponse {
+    Response response = 1;
+    repeated TimeApproval timeApprovals = 2;
+}
+
+/* Fetch Time Approval by ID */
+
+message TimeApprovalRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message TimeApprovalResponse {
+    Response response = 1;
+    TimeApproval timeApproval = 2;
+}
+
+/* Update Time Approval*/
+
+message UpdateTimeApprovalResponse {
+    Response response = 1;
+    TimeApproval timeApproval =2;
+}
+
+message UpdateTimeApprovalRequest {
+    UserInfo userInfo = 1;
+    TimeApprovalUpdate timeApproval = 2;
+}
+
+// // service LaborService {
+// service TimeApprovalService {
+
+//     /*Obtain a list of time approval requests*/
+//     rpc TimeApprovalsGet(TimeApprovalsRequest) returns (TimeApprovalsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/timeapproval"
+//         };
+//     };
+
+//     /*Obtain a time approval request by id*/
+//     //rpc LaborGet(TimeApprovalRequest) returns (TimeApprovalResponse) {
+//     rpc TimeApprovalGet(TimeApprovalRequest) returns (TimeApprovalResponse) {
+//         option (google.api.http) = {
+//             get: "/api/timeapproval/{id}"
+//         };
+//     };
+    
+//     /*Approve or reject a time approval request*/
+//     rpc TimeApprovalUpdate(UpdateTimeApprovalRequest) returns (UpdateTimeApprovalResponse) {
+//         option (google.api.http) = {
+//             put: "/api/timeapproval"
+//             body: "*"
+//         };
+//     };
+// }

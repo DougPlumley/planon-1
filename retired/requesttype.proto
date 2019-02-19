@@ -1,0 +1,272 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+message RequestType {
+	int64 id = 1;
+    string Comments = 2;
+    string PrintTicket = 3;
+    string AttributeLabel1 = 4;
+    string AttributeLabel2 = 5;
+    string AttributeLabel3 = 6;
+    string AttributeLabel4 = 7;
+    string AttributeLabel5 = 8;
+    string AttributeLabel6 = 9;
+    string AttributeLabel7 = 10;
+    string AttributeLabel8 = 11;
+    string AttributeLabel9 = 12;
+    string AttributeLabel10 = 13;
+    string AttributeLabel11 = 14;
+    string AttributeLabel12 = 15;
+    string AttributeLabel13 = 16;
+    string AttributeLabel14 = 17;
+    string AttributeLabel15 = 18;
+    string AttributeLabel16 = 19;
+    string AttributeLabel17 = 20;
+    string AttributeLabel18 = 21;
+    string AttributeLabel19 = 22;
+    string AttributeLabel20 = 23;
+    string AttributeLabel21 = 24;
+    string AttributeLabel22 = 25;
+    string AttributeLabel23 = 26;
+    string AttributeLabel24 = 27;
+    string AttributeLabel25 = 28;
+    string AttributeLabel26 = 29;
+    string AttributeLabel27 = 30;
+    string AttributeLabel28 = 31;
+    string AttributeLabel29 = 32;
+    string AttributeLabel30 = 33;
+    string AttributeMandatory1 = 34;
+    string AttributeMandatory2 = 35;
+    string AttributeMandatory3 = 36;
+    string AttributeMandatory4 = 37;
+    string AttributeMandatory5 = 38;
+    string AttributeMandatory6 = 39;
+    string AttributeMandatory7 = 40;
+    string AttributeMandatory8 = 41;
+    string AttributeMandatory9 = 42;
+    string AttributeMandatory10 = 43;
+    string AttributeMandatory11 = 44;
+    string AttributeMandatory12 = 45;
+    string AttributeMandatory13 = 46;
+    string AttributeMandatory14 = 47;
+    string AttributeMandatory15 = 48;
+    string AttributeMandatory16 = 49;
+    string AttributeMandatory17 = 50;
+    string AttributeMandatory18 = 51;
+    string AttributeMandatory19 = 52;
+    string AttributeMandatory20 = 53;
+    string AttributeMandatory21 = 54;
+    string AttributeMandatory22 = 55;
+    string AttributeMandatory23 = 56;
+    string AttributeMandatory24 = 57;
+    string AttributeMandatory25 = 58;
+    string AttributeMandatory26 = 59;
+    string AttributeMandatory27 = 60;
+    string AttributeMandatory28 = 61;
+    string AttributeMandatory29 = 62;
+    string AttributeMandatory30 = 63;
+    int64 BillingId = 64;
+}
+
+message RequestTypeRequest {
+    string id = 1;
+}
+
+message RequestTypeResponse {
+    string message = 1;
+    RequestType requesttype = 2;
+}
+
+message RequestTypeQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message RequestTypesRequest {
+    RequestTypeQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message RequestTypesResponse {
+    repeated RequestType requesttypes = 1;
+}
+
+message RequestTypeRequestCreate {
+	int64 id = 1;
+    string Comments = 2;
+    string PrintTicket = 3;
+    string AttributeLabel1 = 4;
+    string AttributeLabel2 = 5;
+    string AttributeLabel3 = 6;
+    string AttributeLabel4 = 7;
+    string AttributeLabel5 = 8;
+    string AttributeLabel6 = 9;
+    string AttributeLabel7 = 10;
+    string AttributeLabel8 = 11;
+    string AttributeLabel9 = 12;
+    string AttributeLabel10 = 13;
+    string AttributeLabel11 = 14;
+    string AttributeLabel12 = 15;
+    string AttributeLabel13 = 16;
+    string AttributeLabel14 = 17;
+    string AttributeLabel15 = 18;
+    string AttributeLabel16 = 19;
+    string AttributeLabel17 = 20;
+    string AttributeLabel18 = 21;
+    string AttributeLabel19 = 22;
+    string AttributeLabel20 = 23;
+    string AttributeLabel21 = 24;
+    string AttributeLabel22 = 25;
+    string AttributeLabel23 = 26;
+    string AttributeLabel24 = 27;
+    string AttributeLabel25 = 28;
+    string AttributeLabel26 = 29;
+    string AttributeLabel27 = 30;
+    string AttributeLabel28 = 31;
+    string AttributeLabel29 = 32;
+    string AttributeLabel30 = 33;
+    string AttributeMandatory1 = 34;
+    string AttributeMandatory2 = 35;
+    string AttributeMandatory3 = 36;
+    string AttributeMandatory4 = 37;
+    string AttributeMandatory5 = 38;
+    string AttributeMandatory6 = 39;
+    string AttributeMandatory7 = 40;
+    string AttributeMandatory8 = 41;
+    string AttributeMandatory9 = 42;
+    string AttributeMandatory10 = 43;
+    string AttributeMandatory11 = 44;
+    string AttributeMandatory12 = 45;
+    string AttributeMandatory13 = 46;
+    string AttributeMandatory14 = 47;
+    string AttributeMandatory15 = 48;
+    string AttributeMandatory16 = 49;
+    string AttributeMandatory17 = 50;
+    string AttributeMandatory18 = 51;
+    string AttributeMandatory19 = 52;
+    string AttributeMandatory20 = 53;
+    string AttributeMandatory21 = 54;
+    string AttributeMandatory22 = 55;
+    string AttributeMandatory23 = 56;
+    string AttributeMandatory24 = 57;
+    string AttributeMandatory25 = 58;
+    string AttributeMandatory26 = 59;
+    string AttributeMandatory27 = 60;
+    string AttributeMandatory28 = 61;
+    string AttributeMandatory29 = 62;
+    string AttributeMandatory30 = 63;
+    int64 BillingId = 64;
+}
+
+/* RequestTypeRequestUpdate */
+message RequestTypeRequestUpdate {
+	int64 id = 1;
+    string Comments = 2;
+    string PrintTicket = 3;
+    string AttributeLabel1 = 4;
+    string AttributeLabel2 = 5;
+    string AttributeLabel3 = 6;
+    string AttributeLabel4 = 7;
+    string AttributeLabel5 = 8;
+    string AttributeLabel6 = 9;
+    string AttributeLabel7 = 10;
+    string AttributeLabel8 = 11;
+    string AttributeLabel9 = 12;
+    string AttributeLabel10 = 13;
+    string AttributeLabel11 = 14;
+    string AttributeLabel12 = 15;
+    string AttributeLabel13 = 16;
+    string AttributeLabel14 = 17;
+    string AttributeLabel15 = 18;
+    string AttributeLabel16 = 19;
+    string AttributeLabel17 = 20;
+    string AttributeLabel18 = 21;
+    string AttributeLabel19 = 22;
+    string AttributeLabel20 = 23;
+    string AttributeLabel21 = 24;
+    string AttributeLabel22 = 25;
+    string AttributeLabel23 = 26;
+    string AttributeLabel24 = 27;
+    string AttributeLabel25 = 28;
+    string AttributeLabel26 = 29;
+    string AttributeLabel27 = 30;
+    string AttributeLabel28 = 31;
+    string AttributeLabel29 = 32;
+    string AttributeLabel30 = 33;
+    string AttributeMandatory1 = 34;
+    string AttributeMandatory2 = 35;
+    string AttributeMandatory3 = 36;
+    string AttributeMandatory4 = 37;
+    string AttributeMandatory5 = 38;
+    string AttributeMandatory6 = 39;
+    string AttributeMandatory7 = 40;
+    string AttributeMandatory8 = 41;
+    string AttributeMandatory9 = 42;
+    string AttributeMandatory10 = 43;
+    string AttributeMandatory11 = 44;
+    string AttributeMandatory12 = 45;
+    string AttributeMandatory13 = 46;
+    string AttributeMandatory14 = 47;
+    string AttributeMandatory15 = 48;
+    string AttributeMandatory16 = 49;
+    string AttributeMandatory17 = 50;
+    string AttributeMandatory18 = 51;
+    string AttributeMandatory19 = 52;
+    string AttributeMandatory20 = 53;
+    string AttributeMandatory21 = 54;
+    string AttributeMandatory22 = 55;
+    string AttributeMandatory23 = 56;
+    string AttributeMandatory24 = 57;
+    string AttributeMandatory25 = 58;
+    string AttributeMandatory26 = 59;
+    string AttributeMandatory27 = 60;
+    string AttributeMandatory28 = 61;
+    string AttributeMandatory29 = 62;
+    string AttributeMandatory30 = 63;
+    int64 BillingId = 64;
+}
+
+service RequestTypeService {
+
+    rpc RequestTypeGet(RequestTypeRequest) returns (RequestType) {
+        option (google.api.http) = {
+            get: "/api/requesttypes/{id}"
+        };
+    };
+
+    rpc RequestTypesGet(RequestTypesRequest) returns (RequestTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/requesttypes"
+        };
+    };
+
+    rpc RequestTypeCreate(RequestTypeRequestCreate) returns (RequestTypeResponse) {
+        option (google.api.http) = {
+            post: "/api/requesttypes"
+            body: "*"
+        };
+    };
+
+    rpc RequestTypeUpdate(RequestTypeRequestUpdate) returns (RequestTypeResponse) {
+        option (google.api.http) = {
+            put: "/api/requesttypes/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/requesttypes
+    GET /api/requesttypes/:id
+    POST /api/requesttypes
+    PUT /api/requesttypes/:id
+    DELETE /api/requesttypes/:id
+
+    POST /api/requesttypes/close/:id
+*/

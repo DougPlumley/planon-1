@@ -1,0 +1,43 @@
+
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message WorkOrderStatus {
+    int64 id = 1;
+    string Status = 2;
+    string description = 3;
+    bool active = 4;
+    bool completeIndicator = 5;
+}
+
+message WorkOrderStatusParameter {
+    int64 id = 1;
+    string Status = 2;
+    string description = 3;
+    bool active = 4;
+    bool completeIndicator = 5;
+}
+
+message WorkOrderStatusesRequest {
+    UserInfo userInfo = 1;
+    WorkOrderStatusParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message WorkOrderStatusesResponse {
+    Response response = 1;
+    repeated WorkOrderStatus workOrderStatuses = 2;
+}
+
+
+// service WorkOrderStatusService {
+//     rpc WorkOrderStatusesGet(WorkOrderStatusesRequest) returns (WorkOrderStatusesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/workorderstatus"
+//         };
+//     };
+// }

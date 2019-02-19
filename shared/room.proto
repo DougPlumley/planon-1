@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Room {
+    int64 id = 1;
+    string room = 2;
+    string description = 3;
+    string status = 5;
+    string floorId = 7 ; // Parent ID
+}
+
+message RoomParameter {
+    int64 id = 1;
+    string room = 2;
+    string description = 3;
+    string status = 5;
+    string floorId = 7 ; // Parent ID
+}
+
+message RoomsRequest {
+    UserInfo userInfo = 1;
+    RoomParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message RoomsResponse {
+    Response response = 1;
+    repeated Room rooms = 2;
+}
+
+
+// service RoomService {
+//     rpc RoomsGet(RoomsRequest) returns (RoomsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/room"
+//         };
+//     };
+// }

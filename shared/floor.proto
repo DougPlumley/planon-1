@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Floor {
+    int64 id = 1;
+    string floor = 2;
+    string description = 3;
+    string status = 5;
+    string buildingId = 7 ; // Parent ID
+}
+
+message FloorParameter {
+    int64 id = 1;
+    string floor = 2;
+    string description = 3;
+    string status = 5;
+    string buildingId = 7 ; // Parent ID
+    bool active =8;
+}
+
+message FloorsRequest {
+    UserInfo userInfo = 1;
+    FloorParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message FloorsResponse {
+    Response response = 1;
+    repeated Floor floors = 2;
+}
+
+
+// service FloorService {
+//     rpc FloorsGet(FloorsRequest) returns (FloorsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/floor"
+//         };
+//     };
+// }

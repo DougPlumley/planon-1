@@ -1,0 +1,190 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+import "employee.proto";
+import "paycode.proto";
+import "laborclass.proto";
+import "unitofmeasure.proto";
+import "assetlist.proto";
+import "common.proto";
+
+message WorkOrderCost {
+    /* id is same as Work Order Id*/
+    int64 id = 1;
+    string workOrderNumber = 2;
+    float estimateLabor = 3;
+    float actualLabor = 4;
+    float balanceLabor = 5;
+    float estimateMaterial = 6;
+    float actualMaterial = 7;
+    float committedMaterial = 8;
+    float balanceMaterial = 9;
+    float estimateInvoice = 10;
+    float actualInvoice = 11;
+    float committedInvoice = 12;
+    float balanceInvoice = 13;
+    float estimateAsset= 14;
+    float actualAsset = 15;
+    float balanceAsset = 16;
+    float estimateContingency = 17;
+    float actualContingency = 18;
+    float balanceContingency = 19;
+    float estimateTotal = 20;
+    float actualTotal = 21;
+    float balanceTotal = 22;
+    /*relationships */
+    repeated CostLabor laborCosts = 30;
+    repeated CostMaterial materialCosts =31;
+    repeated CostAsset assetCosts =32;
+    repeated CostMisc msicCosts=33;
+    repeated CostInvoice invoiceCosts =34;
+    repeated CostCreditVoucher creditVoucherCosts =35;
+}
+
+//Costs are used here only. Not in anywhere. Defined it in same file 
+
+message CostLabor{
+    int64 id = 1;
+    google.protobuf.Timestamp workDate = 2;
+    float amount = 3;
+    Employee employee = 4;
+    float hours= 5;
+    float rate = 6;
+    float factor = 7;
+    string description = 8;
+    PayCode paycode = 9;
+    LaborClass laborClass = 10;
+}
+
+message CostMaterial{
+    int64 id =1 ;
+    google.protobuf.Timestamp issueDate = 2;
+    float amount = 3;
+    Employee issueTo =4;
+    string partNumber =5;
+    string partDescription =6;
+    UnitOfMeasure unitOfMeasure =7;
+    float quantity=8;
+}
+
+
+message CostAsset{
+    int64 id = 1;
+    google.protobuf.Timestamp rentDate = 2;
+    float amount = 3;
+    AssetList asset = 4;
+    Employee employee = 5;
+    float hours = 6;
+    float rate = 7;
+}
+
+
+message CostMisc{
+    int64 id = 1;
+    google.protobuf.Timestamp date = 2;
+    float amount = 3;
+    string costNumber = 4;
+    string costType = 5;
+    string description = 6;
+}
+
+message CostInvoice{
+    int64 id = 1;
+    float amount = 2;
+    string purchaseOrderNo = 3;
+    string lineNo = 4;
+    string releaseNo = 5;
+    string vendorNo = 6;
+    string description = 7;
+}
+
+message CostCreditVoucher{
+    int64 id = 1;
+    float amount = 2;
+    string purchaseOrderNo = 3;
+    string lineNo = 4;
+    string releaseNo = 5;
+    string voucherNumber = 6;
+    string description = 7;
+    float quantity = 8;
+    float restocking = 9;
+    float unitPrice = 10;
+}
+
+
+message WorkOrderCostSearch {
+    bool active = 1;
+    string parentWorkOrderNumber = 2;
+    string requestNumber = 3;
+    string workOrderNumber = 4;
+    string phase = 5;
+    string description = 6;
+    string requestor = 7;
+    string site = 8;
+    string building = 9;
+    string floor = 10;
+    string room = 11;
+    string coordinate = 12;  /*geocoordinates of location/work request*/
+    string assignedTo = 13;
+    string team = 14;  /*list  (FAMIS On Premise CREW)*/
+    string skill = 15;  /*list  (FAMIS On Premise CRAFT)*/
+    string requestType = 16;
+    string maintenanceType = 17;  
+    string procedure = 18;  /*list  (FAMIS On Premise METHOD)*/
+    string outageReason = 19;  /*list  (FAMIS On Premise OUTAGE_CLASS)*/
+    string department = 20;
+    string priority = 21;
+    string workOrderStatus = 22;
+    string asset = 23;
+    bool   IncludePMWorkOrder = 24;
+    DateRange dueDate = 25;
+    DateRange enterDate = 26;
+}
+
+// Currently we do not support CREATE or UPDATE cost or subset of cost
+
+/*Lazy load from Work Order detail*/
+/*
+message WorkOrderCostGetRequest{
+    UserInfo userInfo = 1;
+    int64 id = 2;
+}
+
+message WorkOrderCostGetResponse{
+    UserInfo userInfo = 1;
+    WorkOrderCost cost = 2;
+}
+*/
+/*Search Work Order Cost*/
+message WorkOrderCostSearchRequest{
+    UserInfo userInfo = 1;
+    WorkOrderCostSearch workOrder = 2;
+}
+
+message WorkOrderCostSearchResponse{
+    Response response = 1;
+    repeated WorkOrderCost workOrderCosts = 2;
+}
+
+
+// service WorkOrderCostService {
+//     /*Fetch Work Order Cost by feeding Work Order Id. This also can be used for lazy load*/
+//     /*
+//     rpc WorkOrderCostGet(WorkOrderCostGetRequest) returns (WorkOrderCostGetResponse) {
+//         option (google.api.http) = {
+//             get: "/api/workordercost/{id}"
+//         };
+//     };
+//     */
+//     /* Search for Work Order Cost*/
+//     rpc WorkOrderCostSearch(WorkOrderCostSearchRequest) returns (WorkOrderCostSearchResponse) {
+//         option (google.api.http) = {
+//             post: "/api/workordercost/search"
+//             body: "*"
+//         };
+//     };
+// }
+

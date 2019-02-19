@@ -1,0 +1,447 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "team.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/teams": {
+      "get": {
+        "operationId": "TeamsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TeamService"
+        ]
+      },
+      "post": {
+        "operationId": "TeamCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TeamRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "TeamService"
+        ]
+      }
+    },
+    "/api/teams/{id}": {
+      "get": {
+        "operationId": "TeamGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Team"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TeamService"
+        ]
+      },
+      "put": {
+        "operationId": "TeamUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TeamResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TeamRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "TeamService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Chief": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "Hours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Rate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SplitRevenueFlag": {
+          "type": "string"
+        },
+        "DepartmentGrouping": {
+          "type": "string"
+        },
+        "BaseMarkupRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupForSupv": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BaseFringeRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FringeForOt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AbsenceWoNumber": {
+          "type": "string"
+        },
+        "AbsenceBuilding": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "TaskCodeFlag": {
+          "type": "string"
+        },
+        "MobileWoFilter": {
+          "type": "string"
+        },
+        "HocId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "TeamQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TeamRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Chief": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "Hours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Rate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SplitRevenueFlag": {
+          "type": "string"
+        },
+        "DepartmentGrouping": {
+          "type": "string"
+        },
+        "BaseMarkupRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupForSupv": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BaseFringeRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FringeForOt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AbsenceWoNumber": {
+          "type": "string"
+        },
+        "AbsenceBuilding": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "TaskCodeFlag": {
+          "type": "string"
+        },
+        "MobileWoFilter": {
+          "type": "string"
+        },
+        "HocId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "TeamRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Chief": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "Hours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Rate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SplitRevenueFlag": {
+          "type": "string"
+        },
+        "DepartmentGrouping": {
+          "type": "string"
+        },
+        "BaseMarkupRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupForSupv": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BaseFringeRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FringeForOt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AbsenceWoNumber": {
+          "type": "string"
+        },
+        "AbsenceBuilding": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "TaskCodeFlag": {
+          "type": "string"
+        },
+        "MobileWoFilter": {
+          "type": "string"
+        },
+        "HocId": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "title": "TeamRequestUpdate"
+    },
+    "TeamResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "team": {
+          "$ref": "#/definitions/Team"
+        }
+      }
+    },
+    "TeamsResponse": {
+      "type": "object",
+      "properties": {
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Team"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "warehouse.proto";
+import "partlist.proto";
+
+
+message PartBin{
+    int64 id =1;
+    Warehouse warehouse =2;
+    PartList partNumber =3;
+    string bin=4;
+    string quantityOnHand =5;
+    google.protobuf.Timestamp lastLockDate = 6;
+    google.protobuf.Timestamp lastUnlockDate = 7;
+    string lastLockUser =8;
+    string lastUnlockUser =9;
+    string partLoc1 =10;
+    string partLoc2 =11;
+    string partLoc3 =12;
+    string partLoc4 =13;
+    string partLoc5 =14;
+    bool physicalInventory =15;    
+}
+
+message PartBinUpdate{
+    int64 id =1;
+    string warehouse =2;
+    string partNumber =3;
+    string bin=4;
+    string quantityOnHand =5;
+    google.protobuf.Timestamp lastLockDate = 6;
+    google.protobuf.Timestamp lastUnlockDate = 7;
+    string lastLockUser =8;
+    string lastUnlockUser =9;
+    string partLoc1 =10;
+    string partLoc2 =11;
+    string partLoc3 =12;
+    string partLoc4 =13;
+    string partLoc5 =14;
+    bool physicalInventory =15;
+    //float quantityAdjustTo = 16;   
+}

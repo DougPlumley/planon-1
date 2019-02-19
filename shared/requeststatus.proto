@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message RequestStatus {
+    int64 id = 1;
+    string Status = 2;
+    string description = 3;
+    bool active = 4;
+}
+
+message RequestStatusParameter {
+    int64 id = 1;
+    string Status = 2;
+    string description = 3;
+    bool active = 4;
+}
+
+message RequestStatusesRequest {
+    UserInfo userInfo = 1;
+    RequestStatusParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message RequestStatusesResponse {
+    Response response = 1;
+    repeated RequestStatus RequestStatuses = 2;
+}

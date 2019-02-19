@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+message Skill {
+	int64 id = 1;
+    string Skill = 2;
+    string Comments = 3;
+}
+
+message SkillRequest {
+    string id = 1;
+}
+
+message SkillResponse {
+    string message = 1;
+    Skill skill = 2;
+}
+
+message SkillQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message SkillsRequest {
+    SkillQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message SkillsResponse {
+    repeated Skill skills = 1;
+}
+
+message SkillRequestCreate {
+	int64 id = 1;
+    string Skill = 2;
+    string Comments = 3;
+}
+
+/* SkillRequestUpdate */
+message SkillRequestUpdate {
+	int64 id = 1;
+    string Skill = 2;
+    string Comments = 3;
+}
+
+service SkillService {
+
+    rpc SkillGet(SkillRequest) returns (Skill) {
+        option (google.api.http) = {
+            get: "/api/skills/{id}"
+        };
+    };
+
+    rpc SkillsGet(SkillsRequest) returns (SkillsResponse) {
+        option (google.api.http) = {
+            get: "/api/skills"
+        };
+    };
+
+    rpc SkillCreate(SkillRequestCreate) returns (SkillResponse) {
+        option (google.api.http) = {
+            post: "/api/skills"
+            body: "*"
+        };
+    };
+
+    rpc SkillUpdate(SkillRequestUpdate) returns (SkillResponse) {
+        option (google.api.http) = {
+            put: "/api/skills/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/skills
+    GET /api/skills/:id
+    POST /api/skills
+    PUT /api/skills/:id
+    DELETE /api/skills/:id
+
+    POST /api/skills/close/:id
+*/

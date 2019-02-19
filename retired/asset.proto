@@ -1,0 +1,473 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message Asset {
+	int64 id = 1;
+    string AcctSegment1 = 2;
+    string AcctSegment2 = 3;
+    string AcctSegment3 = 4;
+    string AcctSegment4 = 5;
+    string AcctSegment5 = 6;
+    string AcctSegment6 = 7;
+    google.protobuf.Timestamp AcquisitionDate = 8;
+    string AcquisitionDescription = 9;
+    string AcquisitionPoNumber = 10;
+    string AcquisitionVendor = 11;
+    string AssetNo = 12;
+    int64 BaseUsage = 13;
+    string Billing = 14;
+    string Building = 15;
+    string ChargeSourceId = 16;
+    google.protobuf.Timestamp CloseDate = 17;
+    string CloseUser = 18;
+    string Color = 19;
+    int64 Cost = 20;
+    int64 Criticality = 21;
+    int64 DownTime = 22;
+    string DriverAddress1 = 23;
+    string DriverAddress2 = 24;
+    string DriverAddress3 = 25;
+    string DriverCard = 26;
+    string DriverDepartment = 27;
+    string DriverEmail = 28;
+    string DriverFax = 29;
+    string DriverName = 30;
+    string DriverTelephone = 31;
+    string Asset = 32;
+    string EquipGroup = 33;
+    string EquipType = 34;
+    string Floor = 35;
+    string Keyword = 36;
+    int64 LastUsage = 37;
+    string LicenseNumber = 38;
+    string MarkupCode = 39;
+    string Mfr = 40;
+    string MfrPartNo = 41;
+    string Model = 42;
+    string ModelYear = 43;
+    string Nomenclature = 44;
+    google.protobuf.Timestamp NoteDate = 45;
+    string Noteuser = 46;
+    google.protobuf.Timestamp OverhaulDate = 47;
+    string OwnerAddress1 = 48;
+    string OwnerAddress2 = 49;
+    string OwnerAddress3 = 50;
+    string OwnerDepartment = 51;
+    string OwnerEmail = 52;
+    string OwnerFax = 53;
+    string OwnerName = 54;
+    string OwnerTelephone = 55;
+    string Parent = 56;
+    string PmGroup = 57;
+    string RecordType = 58;
+    int64 RentalRate = 59;
+    string RentalType = 60;
+    string RequestorType = 61;
+    string Room = 62;
+    string SerialNo = 63;
+    string ServiceGuide = 64;
+    string Site = 65;
+    string Status = 66;
+    string UsageUnits = 67;
+    string VehicleCard = 68;
+    google.protobuf.Timestamp WarrantyDate = 69;
+    string WarrantyDescription = 70;
+    string WarrantyPoNumber = 71;
+    string WarrantyProjectAlert = 72;
+    string WarrantySrAlert = 73;
+    int64 WarrantyUsage = 74;
+    string WarrantyVendor = 75;
+    string Zone = 76;
+    google.protobuf.Timestamp AssessmentDate = 77;
+    google.protobuf.Timestamp CondReadDate = 78;
+    string EquipCond = 79;
+    int64 MileageRate = 80;
+    int64 ReplaceCost = 81;
+    string OverallRate = 82;
+    int64 CategoryId = 83;
+    string Attribute1 = 84;
+    string Attribute2 = 85;
+    string Attribute3 = 86;
+    string Attribute4 = 87;
+    string Attribute5 = 88;
+    string Attribute6 = 89;
+    string Attribute7 = 90;
+    string Attribute8 = 91;
+    string Attribute9 = 92;
+    string Attribute10 = 93;
+    string Attribute11 = 94;
+    string Attribute12 = 95;
+    string Attribute13 = 96;
+    string Attribute14 = 97;
+    string Attribute15 = 98;
+    string Attribute16 = 99;
+    string Attribute17 = 100;
+    string Attribute18 = 101;
+    string Attribute19 = 102;
+    string Attribute20 = 103;
+    string Attribute21 = 104;
+    string Attribute22 = 105;
+    string Attribute23 = 106;
+    string Attribute24 = 107;
+    string Attribute25 = 108;
+    string Attribute26 = 109;
+    string Attribute27 = 110;
+    string Attribute28 = 111;
+    string Attribute29 = 1112;
+    string Attribute30 = 113;
+    int64 AcquisitionReleaseNo = 114;
+    int64 WarrantyReleaseNo = 115;
+    int64 AssetClassId = 116;
+    google.protobuf.Timestamp MobileDate = 117;
+}
+
+message AssetRequest {
+    string id = 1;
+}
+
+message AssetResponse {
+    string message = 1;
+    Asset asset = 2;
+}
+
+message AssetQuery {
+    repeated int64 assetFilters = 1;
+    repeated string type = 2;
+}
+
+message AssetesRequest {
+    AssetQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message AssetesResponse {
+    repeated Asset assets = 1;
+}
+
+message AssetRequestCreate {
+	int64 id = 1;
+    string AcctSegment1 = 2;
+    string AcctSegment2 = 3;
+    string AcctSegment3 = 4;
+    string AcctSegment4 = 5;
+    string AcctSegment5 = 6;
+    string AcctSegment6 = 7;
+    google.protobuf.Timestamp AcquisitionDate = 8;
+    string AcquisitionDescription = 9;
+    string AcquisitionPoNumber = 10;
+    string AcquisitionVendor = 11;
+    string AssetNo = 12;
+    int64 BaseUsage = 13;
+    string Billing = 14;
+    string Building = 15;
+    string ChargeSourceId = 16;
+    google.protobuf.Timestamp CloseDate = 17;
+    string CloseUser = 18;
+    string Color = 19;
+    int64 Cost = 20;
+    int64 Criticality = 21;
+    int64 DownTime = 22;
+    string DriverAddress1 = 23;
+    string DriverAddress2 = 24;
+    string DriverAddress3 = 25;
+    string DriverCard = 26;
+    string DriverDepartment = 27;
+    string DriverEmail = 28;
+    string DriverFax = 29;
+    string DriverName = 30;
+    string DriverTelephone = 31;
+    string Asset = 32;
+    string EquipGroup = 33;
+    string EquipType = 34;
+    string Floor = 35;
+    string Keyword = 36;
+    int64 LastUsage = 37;
+    string LicenseNumber = 38;
+    string MarkupCode = 39;
+    string Mfr = 40;
+    string MfrPartNo = 41;
+    string Model = 42;
+    string ModelYear = 43;
+    string Nomenclature = 44;
+    google.protobuf.Timestamp NoteDate = 45;
+    string Noteuser = 46;
+    google.protobuf.Timestamp OverhaulDate = 47;
+    string OwnerAddress1 = 48;
+    string OwnerAddress2 = 49;
+    string OwnerAddress3 = 50;
+    string OwnerDepartment = 51;
+    string OwnerEmail = 52;
+    string OwnerFax = 53;
+    string OwnerName = 54;
+    string OwnerTelephone = 55;
+    string Parent = 56;
+    string PmGroup = 57;
+    string RecordType = 58;
+    int64 RentalRate = 59;
+    string RentalType = 60;
+    string RequestorType = 61;
+    string Room = 62;
+    string SerialNo = 63;
+    string ServiceGuide = 64;
+    string Site = 65;
+    string Status = 66;
+    string UsageUnits = 67;
+    string VehicleCard = 68;
+    google.protobuf.Timestamp WarrantyDate = 69;
+    string WarrantyDescription = 70;
+    string WarrantyPoNumber = 71;
+    string WarrantyProjectAlert = 72;
+    string WarrantySrAlert = 73;
+    int64 WarrantyUsage = 74;
+    string WarrantyVendor = 75;
+    string Zone = 76;
+    google.protobuf.Timestamp AssessmentDate = 77;
+    google.protobuf.Timestamp CondReadDate = 78;
+    string EquipCond = 79;
+    int64 MileageRate = 80;
+    int64 ReplaceCost = 81;
+    string OverallRate = 82;
+    int64 CategoryId = 83;
+    string Attribute1 = 84;
+    string Attribute2 = 85;
+    string Attribute3 = 86;
+    string Attribute4 = 87;
+    string Attribute5 = 88;
+    string Attribute6 = 89;
+    string Attribute7 = 90;
+    string Attribute8 = 91;
+    string Attribute9 = 92;
+    string Attribute10 = 93;
+    string Attribute11 = 94;
+    string Attribute12 = 95;
+    string Attribute13 = 96;
+    string Attribute14 = 97;
+    string Attribute15 = 98;
+    string Attribute16 = 99;
+    string Attribute17 = 100;
+    string Attribute18 = 101;
+    string Attribute19 = 102;
+    string Attribute20 = 103;
+    string Attribute21 = 104;
+    string Attribute22 = 105;
+    string Attribute23 = 106;
+    string Attribute24 = 107;
+    string Attribute25 = 108;
+    string Attribute26 = 109;
+    string Attribute27 = 110;
+    string Attribute28 = 111;
+    string Attribute29 = 1112;
+    string Attribute30 = 113;
+    int64 AcquisitionReleaseNo = 114;
+    int64 WarrantyReleaseNo = 115;
+    int64 AssetClassId = 116;
+    google.protobuf.Timestamp MobileDate = 117;
+}
+
+/* AssetRequestUpdate */
+message AssetRequestUpdate {
+	int64 id = 1;
+    string AcctSegment1 = 2;
+    string AcctSegment2 = 3;
+    string AcctSegment3 = 4;
+    string AcctSegment4 = 5;
+    string AcctSegment5 = 6;
+    string AcctSegment6 = 7;
+    google.protobuf.Timestamp AcquisitionDate = 8;
+    string AcquisitionDescription = 9;
+    string AcquisitionPoNumber = 10;
+    string AcquisitionVendor = 11;
+    string AssetNo = 12;
+    int64 BaseUsage = 13;
+    string Billing = 14;
+    string Building = 15;
+    string ChargeSourceId = 16;
+    google.protobuf.Timestamp CloseDate = 17;
+    string CloseUser = 18;
+    string Color = 19;
+    int64 Cost = 20;
+    int64 Criticality = 21;
+    int64 DownTime = 22;
+    string DriverAddress1 = 23;
+    string DriverAddress2 = 24;
+    string DriverAddress3 = 25;
+    string DriverCard = 26;
+    string DriverDepartment = 27;
+    string DriverEmail = 28;
+    string DriverFax = 29;
+    string DriverName = 30;
+    string DriverTelephone = 31;
+    string Asset = 32;
+    string EquipGroup = 33;
+    string EquipType = 34;
+    string Floor = 35;
+    string Keyword = 36;
+    int64 LastUsage = 37;
+    string LicenseNumber = 38;
+    string MarkupCode = 39;
+    string Mfr = 40;
+    string MfrPartNo = 41;
+    string Model = 42;
+    string ModelYear = 43;
+    string Nomenclature = 44;
+    google.protobuf.Timestamp NoteDate = 45;
+    string Noteuser = 46;
+    google.protobuf.Timestamp OverhaulDate = 47;
+    string OwnerAddress1 = 48;
+    string OwnerAddress2 = 49;
+    string OwnerAddress3 = 50;
+    string OwnerDepartment = 51;
+    string OwnerEmail = 52;
+    string OwnerFax = 53;
+    string OwnerName = 54;
+    string OwnerTelephone = 55;
+    string Parent = 56;
+    string PmGroup = 57;
+    string RecordType = 58;
+    int64 RentalRate = 59;
+    string RentalType = 60;
+    string RequestorType = 61;
+    string Room = 62;
+    string SerialNo = 63;
+    string ServiceGuide = 64;
+    string Site = 65;
+    string Status = 66;
+    string UsageUnits = 67;
+    string VehicleCard = 68;
+    google.protobuf.Timestamp WarrantyDate = 69;
+    string WarrantyDescription = 70;
+    string WarrantyPoNumber = 71;
+    string WarrantyProjectAlert = 72;
+    string WarrantySrAlert = 73;
+    int64 WarrantyUsage = 74;
+    string WarrantyVendor = 75;
+    string Zone = 76;
+    google.protobuf.Timestamp AssessmentDate = 77;
+    google.protobuf.Timestamp CondReadDate = 78;
+    string EquipCond = 79;
+    int64 MileageRate = 80;
+    int64 ReplaceCost = 81;
+    string OverallRate = 82;
+    int64 CategoryId = 83;
+    string Attribute1 = 84;
+    string Attribute2 = 85;
+    string Attribute3 = 86;
+    string Attribute4 = 87;
+    string Attribute5 = 88;
+    string Attribute6 = 89;
+    string Attribute7 = 90;
+    string Attribute8 = 91;
+    string Attribute9 = 92;
+    string Attribute10 = 93;
+    string Attribute11 = 94;
+    string Attribute12 = 95;
+    string Attribute13 = 96;
+    string Attribute14 = 97;
+    string Attribute15 = 98;
+    string Attribute16 = 99;
+    string Attribute17 = 100;
+    string Attribute18 = 101;
+    string Attribute19 = 102;
+    string Attribute20 = 103;
+    string Attribute21 = 104;
+    string Attribute22 = 105;
+    string Attribute23 = 106;
+    string Attribute24 = 107;
+    string Attribute25 = 108;
+    string Attribute26 = 109;
+    string Attribute27 = 110;
+    string Attribute28 = 111;
+    string Attribute29 = 1112;
+    string Attribute30 = 113;
+    int64 AcquisitionReleaseNo = 114;
+    int64 WarrantyReleaseNo = 115;
+    int64 AssetClassId = 116;
+    google.protobuf.Timestamp MobileDate = 117;
+}
+
+service AssetService {
+
+    rpc AssetGet(AssetRequest) returns (Asset) {
+        option (google.api.http) = {
+            get: "/api/assets/{id}"
+        };
+    };
+
+    rpc AssetesGet(AssetesRequest) returns (AssetesResponse) {
+        option (google.api.http) = {
+            get: "/api/assets"
+        };
+    };
+
+    rpc AssetCreate(AssetRequestCreate) returns (AssetResponse) {
+        option (google.api.http) = {
+            post: "/api/assets"
+            body: "*"
+        };
+    };
+
+    rpc AssetUpdate(AssetRequestUpdate) returns (AssetResponse) {
+        option (google.api.http) = {
+            put: "/api/assets/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/assets
+    GET /api/assets/:id
+    POST /api/assets
+    PUT /api/assets/:id
+    DELETE /api/assets/:id
+
+    POST /api/assets/close/:id
+*/
+// import "userinfo.proto";
+// import "response.proto";
+
+// message Asset {
+//     int64 id = 1;
+//     string asset = 2;
+//     string description = 3 ;
+//     string assetType = 4;
+//     string rentalType = 5;
+//     string assetClass = 6;
+//     string barcode = 7;
+//     string site = 8;
+//     string building = 9;
+//     string floor = 10;
+//     string room =11; 
+// }
+
+
+// message AssetParameter {
+//     string filter = 1;
+// }
+
+// message AssetsRequest {
+//     UserInfo userInfo = 1;
+//     AssetParameter parameter = 2;
+//     int64 pageSize = 3;
+//     int64 pageOffset = 4;
+// }
+
+// message assetsResponse {
+//     Response response = 1;
+//     repeated Asset assets = 2;
+// }
+
+
+// service AssetService {
+//     rpc AssetssGet(AssetsRequest) returns (assetsResponse) {
+//         option (google.api.http) = {
+//             get: "/list/asset"
+//         };
+//     };
+// }

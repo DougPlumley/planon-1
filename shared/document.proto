@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+
+message Document {
+    int64 id = 1;
+    string Description = 2;
+    string DocumentName = 3;
+    string DocEntity = 4;
+    string DocKey1 = 5;
+    string DocKey2 = 6;
+    string DocKey3 = 7;
+    string DocKey4 = 8;
+    string DocType = 9;
+	string BlobConent = 10;
+}
+
+message DocumentRequest {
+    string id = 1;
+}
+
+message DocumentResponse {
+    string message = 1;
+    Document document = 2;
+}
+
+message DocumentQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message DocumentsRequest {
+    DocumentQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message DocumentsResponse {
+    repeated Document documents = 1;
+}
+
+message DocumentRequestCreate {
+    int64 id = 1;
+    string Description = 2;
+    string DocumentName = 3;
+    string DocEntity = 4;
+    string DocKey1 = 5;
+    string DocKey2 = 6;
+    string DocKey3 = 7;
+    string DocKey4 = 8;
+    string DocType = 9;
+	string BlobConent = 10;
+}
+
+/* DocumentRequestUpdate */
+message DocumentRequestUpdate {
+    int64 id = 1;
+    string Description = 2;
+    string DocumentName = 3;
+    string DocEntity = 4;
+    string DocKey1 = 5;
+    string DocKey2 = 6;
+    string DocKey3 = 7;
+    string DocKey4 = 8;
+    string DocType = 9;
+	string BlobConent = 10;
+}
+
+// service DocumentService {
+
+//     rpc DocumentGet(DocumentRequest) returns (Document) {
+//         option (google.api.http) = {
+//             get: "/api/documents/{id}"
+//         };
+//     };
+
+//     rpc DocumentsGet(DocumentsRequest) returns (DocumentsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/documents"
+//         };
+//     };
+
+//     rpc DocumentCreate(DocumentRequestCreate) returns (DocumentResponse) {
+//         option (google.api.http) = {
+//             post: "/api/documents"
+//             body: "*"
+//         };
+//     };
+
+//     rpc DocumentUpdate(DocumentRequestUpdate) returns (DocumentResponse) {
+//         option (google.api.http) = {
+//             put: "/api/documents/{id}"
+//             body: "*"
+//         };
+//     };
+// }
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/documents
+    GET /api/documents/:id
+    POST /api/documents
+    PUT /api/documents/:id
+    DELETE /api/documents/:id
+
+    POST /api/documents/close/:id
+*/

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message VendorList {
+    int64 id = 1;
+	string vendorNo = 2;
+    string description = 3;
+}
+
+message VendorListParameter {
+    int64 id = 1;
+	string vendorNo = 2;
+    string description = 3;
+}
+
+message VendorListRequest {
+    UserInfo userInfo = 1;
+    VendorListParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message VendorListResponse {
+    Response response = 1;
+    repeated VendorList vendors = 2;
+}

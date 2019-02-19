@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message TaskCode {
+    int64 id = 1;
+	string taskCode = 2;
+    string description = 3;
+    string crew = 4;
+}
+
+message TaskCodeParameter {
+    int64 id = 1;
+	string taskCode = 2;
+    string description = 3;
+    string crew = 4;
+}
+
+message TaskCodeRequest {
+    UserInfo userInfo = 1;
+    TaskCodeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message TaskCodeResponse {
+    Response response = 1;
+    repeated TaskCode taskCodes = 2;
+}
+
+// service TaskCodeService {
+//     rpc TaskCodeGet(TaskCodeRequest) returns (TaskCodeResponse) {
+//         option (google.api.http) = {
+//             get: "/api/taskCode"
+//         };
+//     };
+// }
+

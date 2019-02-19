@@ -1,0 +1,201 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message PurchaseRequisition {
+    int64 id = 1;
+    int64 ReleaseNo = 2;
+    google.protobuf.Timestamp ExportDate = 3;
+    string UnivObjCls = 4;
+    string MatlNuilding = 5;
+    string Matlobjcls = 6;
+    string WoNumber = 7;
+    string Warehouse = 8;
+    string VendorPartNumber = 9;
+    string VendorNo = 10;
+    int64 UnitPrice = 11;
+    string Um = 12;
+    string Substitution = 13;
+    string Status = 14;
+    google.protobuf.Timestamp RequireDate = 15;
+    int64 Quantity = 16;
+    string QreqUser = 17;
+    string QreqItem = 18;
+    google.protobuf.Timestamp QreqDate = 19;
+    string Priority = 20;
+    string PreqNo = 21;
+    int64 PoTag = 22;
+    string PoNumber = 23;
+    string PlacedUser = 24;
+    google.protobuf.Timestamp PlacedDate = 25;
+    string PartType = 26;
+    string PartNumber = 27;
+    string Model = 28;
+    string Manufacturer = 29;
+    int64 LineNo = 30;
+    string Description = 31;
+    string Deliverto = 32;
+    string Commodity = 33;
+    string Comments = 34;
+    string CloseUser = 35;
+    google.protobuf.Timestamp CloseDate = 36;
+    string Buyer = 37;
+    string Brand = 38;
+    string Advise = 39;
+}
+
+message PurchaseRequisitionRequest {
+    string id = 1;
+}
+
+message PurchaseRequisitionResponse {
+    string message = 1;
+    PurchaseRequisition purchaseRequisition = 2;
+}
+
+message PurchaseRequisitionQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message PurchaseRequisitionsRequest {
+    PurchaseRequisitionQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message PurchaseRequisitionsResponse {
+    repeated PurchaseRequisition purchaseRequisitions = 1;
+}
+
+message PurchaseRequisitionRequestCreate {
+    int64 id = 1;
+    int64 ReleaseNo = 2;
+    google.protobuf.Timestamp ExportDate = 3;
+    string UnivObjCls = 4;
+    string MatlNuilding = 5;
+    string Matlobjcls = 6;
+    string WoNumber = 7;
+    string Warehouse = 8;
+    string VendorPartNumber = 9;
+    string VendorNo = 10;
+    int64 UnitPrice = 11;
+    string Um = 12;
+    string Substitution = 13;
+    string Status = 14;
+    google.protobuf.Timestamp RequireDate = 15;
+    int64 Quantity = 16;
+    string QreqUser = 17;
+    string QreqItem = 18;
+    google.protobuf.Timestamp QreqDate = 19;
+    string Priority = 20;
+    string PreqNo = 21;
+    int64 PoTag = 22;
+    string PoNumber = 23;
+    string PlacedUser = 24;
+    google.protobuf.Timestamp PlacedDate = 25;
+    string PartType = 26;
+    string PartNumber = 27;
+    string Model = 28;
+    string Manufacturer = 29;
+    int64 LineNo = 30;
+    string Description = 31;
+    string Deliverto = 32;
+    string Commodity = 33;
+    string Comments = 34;
+    string CloseUser = 35;
+    google.protobuf.Timestamp CloseDate = 36;
+    string Buyer = 37;
+    string Brand = 38;
+    string Advise = 39;
+}
+
+/* PurchaseRequisitionRequestUpdate */
+message PurchaseRequisitionRequestUpdate {
+    int64 id = 1;
+    int64 ReleaseNo = 2;
+    google.protobuf.Timestamp ExportDate = 3;
+    string UnivObjCls = 4;
+    string MatlNuilding = 5;
+    string Matlobjcls = 6;
+    string WoNumber = 7;
+    string Warehouse = 8;
+    string VendorPartNumber = 9;
+    string VendorNo = 10;
+    int64 UnitPrice = 11;
+    string Um = 12;
+    string Substitution = 13;
+    string Status = 14;
+    google.protobuf.Timestamp RequireDate = 15;
+    int64 Quantity = 16;
+    string QreqUser = 17;
+    string QreqItem = 18;
+    google.protobuf.Timestamp QreqDate = 19;
+    string Priority = 20;
+    string PreqNo = 21;
+    int64 PoTag = 22;
+    string PoNumber = 23;
+    string PlacedUser = 24;
+    google.protobuf.Timestamp PlacedDate = 25;
+    string PartType = 26;
+    string PartNumber = 27;
+    string Model = 28;
+    string Manufacturer = 29;
+    int64 LineNo = 30;
+    string Description = 31;
+    string Deliverto = 32;
+    string Commodity = 33;
+    string Comments = 34;
+    string CloseUser = 35;
+    google.protobuf.Timestamp CloseDate = 36;
+    string Buyer = 37;
+    string Brand = 38;
+    string Advise = 39;
+}
+
+service PurchaseRequisitionService {
+
+    /*Obtain a purchase requisition by id*/
+    rpc PurchaseRequisitionGet(PurchaseRequisitionRequest) returns (PurchaseRequisition) {
+        option (google.api.http) = {
+            get: "/api/purchaserequisitions/{id}"
+        };
+    };
+
+    /*Obtain a list of purchase requisitions*/
+    rpc PurchaseRequisitionsGet(PurchaseRequisitionsRequest) returns (PurchaseRequisitionsResponse) {
+        option (google.api.http) = {
+            get: "/api/purchaserequisitions"
+        };
+    };
+
+    /*Update a purchase requisition*/
+    rpc PurchaseRequisitionUpdate(PurchaseRequisitionRequestUpdate) returns (PurchaseRequisitionResponse) {
+        option (google.api.http) = {
+            put: "/api/purchaserequisitions/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create a new purchase requisition*/
+    rpc PurchaseRequisitionCreate(PurchaseRequisitionRequestCreate) returns (PurchaseRequisitionResponse) {
+        option (google.api.http) = {
+            post: "/api/purchaserequisitions"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/purchaserequisitions
+    GET /api/purchaserequisitions/:id
+    POST /api/purchaserequisitions
+    PUT /api/purchaserequisitions/:id
+    DELETE /api/purchaserequisitions/:id
+
+    POST /api/purchaserequisitions/close/:id
+*/

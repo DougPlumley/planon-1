@@ -1,0 +1,171 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Contact {
+	int64 id = 1;
+    string contact = 2;
+    string contactType = 3;
+    int64  personId = 4;
+    string defaultHolderCode = 5;
+    string webPassword = 6;
+    string webUsername = 7;
+    string keyHolder = 8;
+    string telephone = 9;
+    string shift = 10;
+    string housingBuilding = 11;
+    string housingRoom = 12;
+    string pager = 13;
+    string needNotification = 14;
+    string mailCode = 15;
+    string keyContact = 16;
+    string fax = 17;
+    string empId = 18;
+    string email = 19;
+    string department = 20;
+    string cellular = 21;
+    string onCampusHousing = 22;
+    google.protobuf.Timestamp importDate = 23;
+}
+
+/* ContactRequestUpdate */
+message ContactUpdate {
+	int64 id = 1;
+    string contact = 2;
+    string contactType = 3;
+    int64  personId = 4;
+    string defaultHolderCode = 5;
+    string webPassword = 6;
+    string webUsername = 7;
+    string keyHolder = 8;
+    string telephone = 9;
+    string shift = 10;
+    string housingBuilding = 11;
+    string housingRoom = 12;
+    string pager = 13;
+    string needNotification = 14;
+    string mailCode = 15;
+    string keyContact = 16;
+    string fax = 17;
+    string empId = 18;
+    string email = 19;
+    string department = 20;
+    string cellular = 21;
+    string onCampusHousing = 22;
+    google.protobuf.Timestamp importDate = 23;
+    string crudStatus = 24;
+}
+
+message ContactCreate {
+	int64 id = 1;
+    string contact = 2;
+    string contactType = 3;
+    int64 personId = 4;
+    string defaultHolderCode = 5;
+    string webPassword = 6;
+    string webUsername = 7;
+    string keyHolder = 8;
+    string telephone = 9;
+    string shift = 10;
+    string housingBuilding = 11;
+    string housingRoom = 12;
+    string pager = 13;
+    string needNotification = 14;
+    string mailCode = 15;
+    string keyContact = 16;
+    string fax = 17;
+    string empId = 18;
+    string email = 19;
+    string department = 20;
+    string cellular = 21;
+    string onCampusHousing = 22;
+    google.protobuf.Timestamp importDate = 23;
+}
+
+
+/*Get contact workbench*/
+
+message ContactParameter {
+    string filter = 1;
+}
+
+message ContactsGetRequest {
+    UserInfo userInfo = 1;
+    ContactParameter parameter =2;
+}
+
+message ContactsGetResponse {
+    Response response = 1;
+    Contact contact = 2;
+}
+
+/*Get a single contact*/
+message ContactGetRequest {
+    UserInfo userInfo = 1;
+    int64 id =2;
+}
+
+message ContactGetResponse {
+    Response response = 1;
+    Contact contact = 2;
+}
+
+/*Create Contact*/
+message ContactCreateRequest {
+    UserInfo userInfo = 1;
+    ContactCreate contact = 2;
+}
+
+message ContactCreateResponse {
+    Response response = 1;
+    Contact contact = 2;
+}
+
+/*Update Contact*/
+message ContactUpdateRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+    ContactUpdate contact = 3;
+}
+
+message ContactUpdateResponse {
+    Response response = 1;
+    Contact contact = 2;
+}
+
+
+service ContactService {
+
+    /*Obtain a contact by id*/
+    rpc ContactGet(ContactGetRequest) returns (ContactGetResponse) {
+        option (google.api.http) = {
+            get: "/api/contact/{id}"
+        };
+    };
+
+    /*Obtain a list of contacts*/
+    rpc ContactsGet(ContactsGetRequest) returns (ContactsGetResponse) {
+        option (google.api.http) = {
+            get: "/api/contact"
+        };
+    };
+
+    /*Add a new contact*/
+    rpc ContactCreate(ContactCreateRequest) returns (ContactCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/contact"
+            body: "*"
+        };
+    };
+
+    /*Update a contact*/
+    rpc ContactUpdate(ContactUpdateRequest) returns (ContactUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/contact/{id}"
+            body: "*"
+        };
+    };
+}

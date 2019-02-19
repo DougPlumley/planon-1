@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+import "employee.proto";
+import "workorderlist.proto";
+import "warehouse.proto";
+import "team.proto";
+import "partrequestitem.proto";
+import "common.proto";
+
+message PartRequest{
+    int64 id = 1;
+    string mdNumber = 2;
+    Employee requester = 3;
+    WorkOrderList workOrder = 4;
+    Warehouse warehouse =5;
+    string deliveryInstruction =6;
+    google.protobuf.Timestamp pickupDate = 7;
+    Team team = 8;
+    string status =9;
+    google.protobuf.Timestamp enterDate = 10;
+    string enterUser =11;
+    repeated PartRequestItem items =12;
+}
+
+message PartRequestUpdate{
+    int64 id = 1;
+    string mdNumber = 2;
+    string requester = 3;
+    string workOrder = 4;
+    string warehouse =5;
+    string deliveryInstruction =6;
+    google.protobuf.Timestamp pickupDate = 7;
+    string team = 8;
+    string status =9;
+    repeated PartRequestItemUpdate items =10;
+}
+
+message PartRequestQueryParameter{
+    int64 id = 1;
+    string mdNumber = 2;
+    string requester = 3;
+    string workOrder = 4;
+    string warehouse =5;
+    string deliveryInstruction =6;
+    DateRange pickupDate = 7;
+    string team = 8;
+    string status =9;
+}
+
+
+/* Retrieve Part Requests */
+
+message PartRequestsRequest {
+    UserInfo userInfo = 1;
+    PartRequestQueryParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PartRequestsResponse {
+    Response response = 1;
+    repeated PartRequest partRequests = 2;
+}
+
+/*Get Part Request By ID*/
+message PartRequestRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+}
+message PartRequestResponse {
+    Response response = 1;
+    PartRequest partRequest = 2;
+}
+
+/*Create Part Request*/
+message PartRequestCreateRequest {
+    UserInfo userInfo = 1;
+    PartRequestUpdate partRequest = 2;
+}
+message PartRequestCreateResponse {
+    Response response = 1;
+    PartRequest partRequest = 2;
+}
+
+/*Update part Request*/
+message PartRequestUpdateRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+    PartRequestUpdate partRequest = 3;
+}
+
+message PartRequestUpdateResponse {
+    Response response = 1;
+    PartRequest partRequest = 2;
+}
+
+service PartRequestService {
+    /*Obtain a list of part requests*/
+    rpc PartRequestsGet(PartRequestsRequest) returns (PartRequestsResponse) {
+        option (google.api.http) = {
+            get: "/api/partrequest"
+        };
+    };
+    /*Obtain a part request by id*/
+    rpc PartRequestGet(PartRequestRequest) returns (PartRequestResponse) {
+        option (google.api.http) = {
+            get: "/api/partrequest/{id}"
+        };
+    };
+
+    /*Update a part request*/
+    rpc PartRequestUpdate(PartRequestUpdateRequest) returns (PartRequestUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/partrequest/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create a new part request*/
+    rpc PartRequestCreate(PartRequestCreateRequest) returns (PartRequestCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/partrequest"
+            body: "*"
+        };
+    };
+}
+

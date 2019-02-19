@@ -1,0 +1,1086 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "building.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/buildings": {
+      "get": {
+        "operationId": "BuildingsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BuildingsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BuildingService"
+        ]
+      },
+      "post": {
+        "operationId": "BuildingCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BuildingResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BuildingRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "BuildingService"
+        ]
+      }
+    },
+    "/api/buildings/{id}": {
+      "get": {
+        "operationId": "BuildingGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Building"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BuildingService"
+        ]
+      },
+      "put": {
+        "operationId": "BuildingUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BuildingResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BuildingRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "BuildingService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Building": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Address3": {
+          "type": "string"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "BldgMgrId": {
+          "type": "string"
+        },
+        "ContactName": {
+          "type": "string"
+        },
+        "ContactTelephone": {
+          "type": "string"
+        },
+        "ContactEmail": {
+          "type": "string"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "BuildingAbbr": {
+          "type": "string"
+        },
+        "BuildingType": {
+          "type": "string"
+        },
+        "BuildingUsage": {
+          "type": "string"
+        },
+        "BuildMailCode": {
+          "type": "string"
+        },
+        "HasFloors": {
+          "type": "string"
+        },
+        "GridCoord": {
+          "type": "string"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "SqrFeet": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft1": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft2": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft4": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft5": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AssetClassId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TaxStatus": {
+          "type": "string"
+        },
+        "MunZone": {
+          "type": "string"
+        },
+        "AltRequestorId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcquisitionCode": {
+          "type": "string"
+        },
+        "Zone": {
+          "type": "string"
+        },
+        "TravelTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Owned": {
+          "type": "string"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "FacEntity": {
+          "type": "string"
+        },
+        "CostRec": {
+          "type": "string"
+        },
+        "SqrFeetSource": {
+          "type": "string"
+        },
+        "TargetFci": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReplacementCostDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReplacementCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OriginalCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EntityId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        },
+        "Attribute25": {
+          "type": "string"
+        },
+        "Attribute26": {
+          "type": "string"
+        },
+        "Attribute27": {
+          "type": "string"
+        },
+        "Attribute28": {
+          "type": "string"
+        },
+        "Attribute29": {
+          "type": "string"
+        },
+        "Attribute30": {
+          "type": "string"
+        }
+      }
+    },
+    "BuildingQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BuildingRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Address3": {
+          "type": "string"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "BldgMgrId": {
+          "type": "string"
+        },
+        "ContactName": {
+          "type": "string"
+        },
+        "ContactTelephone": {
+          "type": "string"
+        },
+        "ContactEmail": {
+          "type": "string"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "BuildingAbbr": {
+          "type": "string"
+        },
+        "BuildingType": {
+          "type": "string"
+        },
+        "BuildingUsage": {
+          "type": "string"
+        },
+        "BuildMailCode": {
+          "type": "string"
+        },
+        "HasFloors": {
+          "type": "string"
+        },
+        "GridCoord": {
+          "type": "string"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "SqrFeet": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft1": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft2": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft4": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft5": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AssetClassId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TaxStatus": {
+          "type": "string"
+        },
+        "MunZone": {
+          "type": "string"
+        },
+        "AltRequestorId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcquisitionCode": {
+          "type": "string"
+        },
+        "Zone": {
+          "type": "string"
+        },
+        "TravelTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Owned": {
+          "type": "string"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "FacEntity": {
+          "type": "string"
+        },
+        "CostRec": {
+          "type": "string"
+        },
+        "SqrFeetSource": {
+          "type": "string"
+        },
+        "TargetFci": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReplacementCostDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReplacementCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OriginalCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EntityId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        },
+        "Attribute25": {
+          "type": "string"
+        },
+        "Attribute26": {
+          "type": "string"
+        },
+        "Attribute27": {
+          "type": "string"
+        },
+        "Attribute28": {
+          "type": "string"
+        },
+        "Attribute29": {
+          "type": "string"
+        },
+        "Attribute30": {
+          "type": "string"
+        }
+      }
+    },
+    "BuildingRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Address3": {
+          "type": "string"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "BldgMgrId": {
+          "type": "string"
+        },
+        "ContactName": {
+          "type": "string"
+        },
+        "ContactTelephone": {
+          "type": "string"
+        },
+        "ContactEmail": {
+          "type": "string"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "BuildingAbbr": {
+          "type": "string"
+        },
+        "BuildingType": {
+          "type": "string"
+        },
+        "BuildingUsage": {
+          "type": "string"
+        },
+        "BuildMailCode": {
+          "type": "string"
+        },
+        "HasFloors": {
+          "type": "string"
+        },
+        "GridCoord": {
+          "type": "string"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "SqrFeet": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft1": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft2": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft3": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft4": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Sqft5": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AssetClassId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TaxStatus": {
+          "type": "string"
+        },
+        "MunZone": {
+          "type": "string"
+        },
+        "AltRequestorId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcquisitionCode": {
+          "type": "string"
+        },
+        "Zone": {
+          "type": "string"
+        },
+        "TravelTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Owned": {
+          "type": "string"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "FacEntity": {
+          "type": "string"
+        },
+        "CostRec": {
+          "type": "string"
+        },
+        "SqrFeetSource": {
+          "type": "string"
+        },
+        "TargetFci": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReplacementCostDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReplacementCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OriginalCost": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EntityId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        },
+        "Attribute25": {
+          "type": "string"
+        },
+        "Attribute26": {
+          "type": "string"
+        },
+        "Attribute27": {
+          "type": "string"
+        },
+        "Attribute28": {
+          "type": "string"
+        },
+        "Attribute29": {
+          "type": "string"
+        },
+        "Attribute30": {
+          "type": "string"
+        }
+      },
+      "title": "BuildingRequestUpdate"
+    },
+    "BuildingResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "building": {
+          "$ref": "#/definitions/Building"
+        }
+      }
+    },
+    "BuildingsResponse": {
+      "type": "object",
+      "properties": {
+        "buildings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Building"
+          }
+        }
+      }
+    }
+  }
+}

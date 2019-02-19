@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message TimeEntry {
+    int64 id = 1;
+    string employee = 2;
+    string desciprtion = 3;
+    google.protobuf.Timestamp workdate = 4;
+    int64 hours = 5;
+    google.protobuf.Timestamp enterdate = 6;
+    google.protobuf.Timestamp extractdate = 7;
+    string workordernumber = 8;
+}
+
+message TimeEntryRequest {
+    string id = 1;
+}
+
+message TimeEntryResponse {
+    string message = 1;
+    TimeEntry timeEntry = 2;
+}
+
+message TimeEntryQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message TimeEntriesRequest {
+    TimeEntryQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message TimeEntriesResponse {
+    repeated TimeEntry timeEntries = 1;
+}
+
+message TimeEntryRequestCreate {
+    int64 id = 1;
+    string employee = 2;
+    string desciprtion = 3;
+    google.protobuf.Timestamp workdate = 4;
+    int64 hours = 5;
+    google.protobuf.Timestamp enterdate = 6;
+    google.protobuf.Timestamp extractdate = 7;
+    string workordernumber = 8;
+}
+
+/* TimeEntryRequestUpdate */
+message TimeEntryRequestUpdate {
+    int64 id = 1;
+    string employee = 2;
+    string desciprtion = 3;
+    google.protobuf.Timestamp workdate = 4;
+    int64 hours = 5;
+    google.protobuf.Timestamp enterdate = 6;
+    google.protobuf.Timestamp extractdate = 7;
+    string workordernumber = 8;
+}
+
+service TimeEntryService {
+
+    rpc TimeEntryGet(TimeEntryRequest) returns (TimeEntry) {
+        option (google.api.http) = {
+            get: "/api/timeentries/{id}"
+        };
+    };
+
+    rpc TimeEntriesGet(TimeEntriesRequest) returns (TimeEntriesResponse) {
+        option (google.api.http) = {
+            get: "/api/timeentries"
+        };
+    };
+
+    rpc TimeEntryCreate(TimeEntryRequestCreate) returns (TimeEntryResponse) {
+        option (google.api.http) = {
+            post: "/api/timeentries"
+            body: "*"
+        };
+    };
+
+    rpc TimeEntryUpdate(TimeEntryRequestUpdate) returns (TimeEntryResponse) {
+        option (google.api.http) = {
+            put: "/api/timeentries/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/timeentries
+    GET /api/timeentries/:id
+    POST /api/timeentries
+    PUT /api/timeentries/:id
+    DELETE /api/timeentries/:id
+
+    POST /api/timeentries/close/:id
+*/

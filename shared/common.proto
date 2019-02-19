@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+
+
+message CRUDStatus {
+    CRUDStatusCode status = 1; 
+}
+
+enum CRUDStatusCode {
+    Create = 0;
+    Ready = 1;
+    Update = 2;
+    Delete =3;
+  }
+
+
+
+message DateRange {
+    google.protobuf.Timestamp dateFrom = 1;
+    google.protobuf.Timestamp dateTo = 2;
+}
+
+

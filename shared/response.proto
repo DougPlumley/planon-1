@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+message Response {
+	ResponseCode responseCode = 1;
+    string message =2;
+}
+
+
+enum ResponseCode {
+    SUCCESS = 0;
+    EXCEPTION = 1;
+    UNKNOW = 2;
+  }

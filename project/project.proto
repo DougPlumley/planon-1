@@ -1,0 +1,478 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "userinfo.proto";
+import "response.proto";
+import "employee.proto";
+import "site.proto";
+import "building.proto";
+import "requester.proto";
+import "assetlist.proto";
+import "maintenancetype.proto";
+import "priority.proto";
+import "billingtype.proto";
+import "account.proto";
+//import "attachment.proto";
+import "document.proto";
+import "note.proto";
+import "projectphase.proto";
+import "projectphasestatus.proto";
+import "projectphasetasklist.proto";
+import "projectstatus.proto";
+// import "global.proto";
+import "common.proto";
+// import "floor.proto";
+// import "room.proto";
+
+message Project {
+    int64 id = 1;
+    string Active = 2; /* from projectstatus active flag*/
+    string ReqNumber = 3;
+    string Description = 4;
+    string ProjectManager = 5;
+    Employee assignedTo = 6; /* list */
+    Site site = 7; /* list */
+    Building building = 8; /* list */
+    Requester requester = 9; /* list */
+    string Email = 10;
+    string Telephone = 11;
+    google.protobuf.Timestamp DueDate = 12;
+    AssetList asset = 13; /* list */
+    google.protobuf.Timestamp CustomerStartDate = 14;
+    google.protobuf.Timestamp CustomerDueDate = 15;
+    MaintenanceType maintenanceType = 16 ; /* list */
+    Priority priority = 17;  /* list */
+    ProjectStatus projectstatus = 18; /* from projectstatus status*/
+    BillingType billingType = 19; /*list*/
+    repeated Account accounts = 20; /*relationship attribute to show account details*/
+    repeated ProjectPhase projectPhases = 21;
+    //repeated Attachment attachments = 22;
+    repeated Document documents = 22;
+    //repeated Attachment attachments = 23;
+    repeated Note notes = 24;
+}
+
+message ProjectRequest {
+    string id = 1;
+}
+
+message ProjectResponse {
+    string message = 1;
+    Project project = 2;
+}
+
+
+message ProjectsRequest{
+    UserInfo userInfo =1;
+    ProjectQueryParameter parameter =2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message ProjectsResponse{
+    Response response =1;
+    repeated Project projects=2;
+}
+
+
+
+
+message ProjectRequestCreate {
+    int64 id = 1;
+    string Active = 2; /* from projectstatus active flag*/
+    string ReqNumber = 3;
+    string Description = 4;
+    string ProjectManager = 5;
+    string AssignedTo = 6; /* list */
+    string Site = 7; /* list */
+    string Building = 8; /* list */
+    string Requester = 9; /* list */
+    string Email = 10;
+    string Telephone = 11;
+    google.protobuf.Timestamp DueDate = 12;
+    string Asset = 13; /* list */
+    google.protobuf.Timestamp CustomerStartDate = 14;
+    google.protobuf.Timestamp CustomerDueDate = 15;
+    string MaintenanceType = 16 ; /* list */
+    string Priority = 17;  /* list */
+    string ProjectStatus = 18; /* from projectstatus status*/
+    string BillingType = 19; /*list*/
+    string Account = 20; /*relationship attribute to show account details*/
+    string ProjectPhase = 21;
+    string Document = 22;
+    string Attachment = 23;
+    string Note = 24;
+    // int64 id = 1;
+    // string ReqNumber = 2;
+    // int64 Phase = 3;
+    // string PhaseType = 4;
+    // string WoNumber = 5;
+    // int64 MaintBillingId = 6;
+    // string Description = 7;
+    // string Status = 8;
+    // string PhaseBilling = 9;
+    // string ReqSource = 10;
+    // string Billing = 11;
+    // string Team = 12;
+    // int64 TeamSize = 13;
+    // string Skill = 14;
+    // google.protobuf.Timestamp DueDate = 15;
+    // google.protobuf.Timestamp CustomerStartDate = 16;
+    // google.protobuf.Timestamp CustomerDueDate = 17;
+    // google.protobuf.Timestamp StartDate = 18;
+    // string ScheduleUser = 19;
+    // google.protobuf.Timestamp ScheduleDate = 20;
+    // string CloseUser = 21;
+    // google.protobuf.Timestamp CloseDate = 22;
+    // string NomenclatureOverride = 23;
+    // string SiteOverride = 24;
+    // string RoomOverride = 25;
+    // int64 PriorityOverride = 26;
+    // string MaintTypeOverride = 27;
+    // string FloorOverride = 28;
+    // string EquipmentOverride = 29;
+    // string BuildingOverride = 30;
+    // string AssignedToOverride = 31;
+    // string BudgetCode = 32;
+    // int64 AssetClassidOverride = 33;
+    // int64 Quantity = 34;
+    // string Um = 35;
+    // string PlNumber = 36;
+    // string Permit = 37;
+    // string OutageReason = 38;
+    // string OriginatorApproved = 39;
+    // string NoteUser = 40;
+    // google.protobuf.Timestamp NoteDate = 41;
+    // string Method = 42;
+    // string MarkupCode = 43;
+    // int64 EstRate = 44;
+    // int64 EstPo = 45;
+    // int64 EstMaterial = 46;
+    // int64 EstHours = 47;
+    // int64 EstEquipment = 48;
+    // string EstimateNo = 49;
+    // string Encumber = 50;
+    // int64 Contingency = 51;
+    // string NoAssetClassFlag = 52;
+    // string FreezeWoEstFlag = 53;
+    // string NoRoomFlag = 54;
+    // string NoFloorFlag = 55;
+    // string NoEquipmentFlag = 56;
+    // string NoBuildingFlag = 57;
+    // string NoAssignedToFlag = 58;
+    // string Attribute1 = 59;
+    // string Attribute2 = 60;
+    // string Attribute3 = 61;
+    // string Attribute4 = 62;
+    // string Attribute5 = 63;
+    // string Attribute6 = 64;
+    // string Attribute7 = 65;
+    // string Attribute8 = 66;
+    // string Attribute9 = 67;
+    // string Attribute10 = 68;
+    // string Attribute11 = 69;
+    // string Attribute12 = 70;
+    // string Attribute13 = 71;
+    // string Attribute14 = 72;
+    // string Attribute15 = 73;
+    // string Attribute16 = 74;
+    // string Attribute17 = 75;
+    // string Attribute18 = 76;
+    // string Attribute19 = 77;
+    // string Attribute20 = 78;
+    // string Attribute21 = 79;
+    // string Attribute22 = 80;
+    // string Attribute23 = 81;
+    // string Attribute24 = 82;
+    // string Attribute25 = 83;
+    // string Attribute26 = 84;
+    // string Attribute27 = 85;
+    // string Attribute28 = 86;
+    // string Attribute29 = 87;
+    // string Attribute30 = 88;
+}
+
+/* ProjectRequestUpdate */
+message ProjectRequestUpdate {
+    int64 id = 1;
+    string Active = 2; /* from projectstatus active flag*/
+    string ReqNumber = 3;
+    string Description = 4;
+    string ProjectManager = 5;
+    string AssignedTo = 6; /* list */
+    string Site = 7; /* list */
+    string Building = 8; /* list */
+    string Requester = 9; /* list */
+    string Email = 10;
+    string Telephone = 11;
+    google.protobuf.Timestamp DueDate = 12;
+    string Asset = 13; /* list */
+    google.protobuf.Timestamp CustomerStartDate = 14;
+    google.protobuf.Timestamp CustomerDueDate = 15;
+    string MaintenanceType = 16 ; /* list */
+    string Priority = 17;  /* list */
+    string ProjectStatus = 18; /* from projectstatus status*/
+    string BillingType = 19; /*list*/
+    string Account = 20; /*relationship attribute to show account details*/
+    string ProjectPhase = 21;
+    string Document = 22;
+    string Attachment = 23;
+    string Note = 24;
+    // int64 id = 1;
+    // string ReqNumber = 2;
+    // int64 Phase = 3;
+    // string PhaseType = 4;
+    // string WoNumber = 5;
+    // int64 MaintBillingId = 6;
+    // string Description = 7;
+    // string Status = 8;
+    // string PhaseBilling = 9;
+    // string ReqSource = 10;
+    // string Billing = 11;
+    // string Team = 12;
+    // int64 TeamSize = 13;
+    // string Skill = 14;
+    // google.protobuf.Timestamp DueDate = 15;
+    // google.protobuf.Timestamp CustomerStartDate = 16;
+    // google.protobuf.Timestamp CustomerDueDate = 17;
+    // google.protobuf.Timestamp StartDate = 18;
+    // string ScheduleUser = 19;
+    // google.protobuf.Timestamp ScheduleDate = 20;
+    // string CloseUser = 21;
+    // google.protobuf.Timestamp CloseDate = 22;
+    // string NomenclatureOverride = 23;
+    // string SiteOverride = 24;
+    // string RoomOverride = 25;
+    // int64 PriorityOverride = 26;
+    // string MaintTypeOverride = 27;
+    // string FloorOverride = 28;
+    // string EquipmentOverride = 29;
+    // string BuildingOverride = 30;
+    // string AssignedToOverride = 31;
+    // string BudgetCode = 32;
+    // int64 AssetClassidOverride = 33;
+    // int64 Quantity = 34;
+    // string Um = 35;
+    // string PlNumber = 36;
+    // string Permit = 37;
+    // string OutageReason = 38;
+    // string OriginatorApproved = 39;
+    // string NoteUser = 40;
+    // google.protobuf.Timestamp NoteDate = 41;
+    // string Method = 42;
+    // string MarkupCode = 43;
+    // int64 EstRate = 44;
+    // int64 EstPo = 45;
+    // int64 EstMaterial = 46;
+    // int64 EstHours = 47;
+    // int64 EstEquipment = 48;
+    // string EstimateNo = 49;
+    // string Encumber = 50;
+    // int64 Contingency = 51;
+    // string NoAssetClassFlag = 52;
+    // string FreezeWoEstFlag = 53;
+    // string NoRoomFlag = 54;
+    // string NoFloorFlag = 55;
+    // string NoEquipmentFlag = 56;
+    // string NoBuildingFlag = 57;
+    // string NoAssignedToFlag = 58;
+    // string Attribute1 = 59;
+    // string Attribute2 = 60;
+    // string Attribute3 = 61;
+    // string Attribute4 = 62;
+    // string Attribute5 = 63;
+    // string Attribute6 = 64;
+    // string Attribute7 = 65;
+    // string Attribute8 = 66;
+    // string Attribute9 = 67;
+    // string Attribute10 = 68;
+    // string Attribute11 = 69;
+    // string Attribute12 = 70;
+    // string Attribute13 = 71;
+    // string Attribute14 = 72;
+    // string Attribute15 = 73;
+    // string Attribute16 = 74;
+    // string Attribute17 = 75;
+    // string Attribute18 = 76;
+    // string Attribute19 = 77;
+    // string Attribute20 = 78;
+    // string Attribute21 = 79;
+    // string Attribute22 = 80;
+    // string Attribute23 = 81;
+    // string Attribute24 = 82;
+    // string Attribute25 = 83;
+    // string Attribute26 = 84;
+    // string Attribute27 = 85;
+    // string Attribute28 = 86;
+    // string Attribute29 = 87;
+    // string Attribute30 = 88;
+}
+
+
+message ProjectQueryParameter {
+    string Active = 1; /* from projectstatus active flag*/
+    string ReqNumber = 2;
+    string Description = 3;
+    string ProjectManager = 4;
+    string AssignedTo = 5; /* list */
+    string Site = 6; /* list */
+    string Building = 7; /* list */
+    string Requester = 8; /* list */
+    DateRange DueDate = 9;
+    string Asset = 10; /* list */
+    DateRange CustomerStartDate = 11;
+    DateRange CustomerDueDate = 12;
+    string MaintenanceType = 13 ; /* list */
+    string Priority = 14;  /* list */
+    string ProjectStatus = 15; /* from projectstatus status*/
+}
+
+
+service ProjectPhaseService {
+
+    /*Obtain a project phase by id*/
+    rpc ProjectPhaseGet(ProjectPhaseRequest) returns (ProjectPhase) {
+        option (google.api.http) = {
+            get: "/api/projectphases/{id}"
+        };
+    };
+    
+    /*Obtain all project phases for a project*/
+    rpc ProjectPhasesGet(ProjectPhasesRequest) returns (ProjectPhasesResponse) {
+        option (google.api.http) = {
+            get: "/api/projectphases"
+        };
+    };
+    
+    /*Create a project phase*/
+    rpc ProjectPhaseCreate(ProjectPhaseRequestCreate) returns (ProjectPhaseResponse) {
+        option (google.api.http) = {
+            post: "/api/projectphases"
+            body: "*"
+        };
+    };
+
+    
+    
+    /*Update a project phase by id*/
+    rpc ProjectPhaseUpdate(ProjectPhaseRequestUpdate) returns (ProjectPhaseResponse) {
+        option (google.api.http) = {
+            put: "/api/projectphases/{id}"
+            body: "*"
+        };
+    };
+}
+
+service ProjectPhaseStatusService {
+
+    /*Obtain a project phase status by id*/
+    rpc ProjectPhaseStatusGet(ProjectPhaseStatusRequest) returns (ProjectPhaseStatus) {
+        option (google.api.http) = {
+            get: "/api/projectphasestatuses/{id}"
+        };
+    };
+
+    /*Obtain a list of project phase statuses*/
+    rpc ProjectPhaseStatusesGet(ProjectPhaseStatusesRequest) returns (ProjectPhaseStatusesResponse) {
+        option (google.api.http) = {
+            get: "/api/projectphasestatuses"
+        };
+    };
+}
+
+service ProjectPhaseTaskListService {
+
+    /*Obtain a task list for a project phase*/
+    rpc ProjectPhaseTaskListGet(ProjectPhaseTaskListRequest) returns (ProjectPhaseTaskList) {
+        option (google.api.http) = {
+            get: "/api/projectphasetasklists/{id}"
+        };
+    };
+
+    /*Obtain all task lists for a project phase*/
+    rpc ProjectPhaseTaskListsGet(ProjectPhaseTaskListsRequest) returns (ProjectPhaseTaskListsResponse) {
+        option (google.api.http) = {
+            get: "/api/projectphasetasklists"
+        };
+    };
+
+    /*Create a task list for a project phase*/
+    rpc ProjectPhaseTaskListCreate(ProjectPhaseTaskListRequestCreate) returns (ProjectPhaseTaskListResponse) {
+        option (google.api.http) = {
+            post: "/api/projectphasetasklists"
+            body: "*"
+        };
+    };
+
+    /*Update the task list for a project phase*/
+    rpc ProjectPhaseTaskListUpdate(ProjectPhaseTaskListRequestUpdate) returns (ProjectPhaseTaskListResponse) {
+        option (google.api.http) = {
+            put: "/api/projectphasetasklists/{id}"
+            body: "*"
+        };
+    };
+}
+
+service ProjectStatusService {
+
+    /*Obtain a project status by id*/
+    rpc ProjectStausGet(ProjectStatusRequest) returns (ProjectStatus) {
+        option (google.api.http) = {
+            get: "/api/projectstatuses/{id}"
+        };
+    };
+
+    /*Obtain the list of project statuses*/
+    rpc ProjectStatusesGet(ProjectStatusesRequest) returns (ProjectStatusesResponse) {
+        option (google.api.http) = {
+            get: "/api/projectstatuses"
+        };
+    };
+}
+
+service ProjectService {
+
+    /*Obtain a project by id*/
+    rpc ProjectGet(ProjectRequest) returns (Project) {
+        option (google.api.http) = {
+            get: "/api/projects/{id}"
+        };
+    };
+
+    /*Obtain a list of projects*/
+    rpc ProjectsGet(ProjectsRequest) returns (ProjectsResponse) {
+        option (google.api.http) = {
+            get: "/api/projects"
+        };
+    };
+
+    /*Create a project*/
+    rpc ProjectCreate(ProjectRequestCreate) returns (ProjectResponse) {
+        option (google.api.http) = {
+            post: "/api/projects"
+            body: "*"
+        };
+    };
+
+    /*Update a project*/
+    rpc ProjectUpdate(ProjectRequestUpdate) returns (ProjectResponse) {
+        option (google.api.http) = {
+            put: "/api/projects/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/projects
+    GET /api/projects/:id
+    POST /api/projects
+    PUT /api/projects/:id
+    DELETE /api/projects/:id
+
+    POST /api/projects/close/:id
+*/

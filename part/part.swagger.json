@@ -1,0 +1,830 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "part.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/part": {
+      "get": {
+        "summary": "Obtain list os part",
+        "operationId": "PartsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.id",
+            "description": "The id now in FAMIS Mobile is Part + warehouse.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "parameter.partNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.description",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.longDescription",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.active",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "format": "boolean"
+          },
+          {
+            "name": "parameter.partType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.partStatus",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.conmodity",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.um",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.warehouse",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.abcClass",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.manufacturer",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.vendorNo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.vendorPartNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.partCategory1",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.partCategory2",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.partCategory3",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.partCategory4",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.partCategory5",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PartService"
+        ]
+      }
+    },
+    "/part/{id}": {
+      "get": {
+        "summary": "Obtain a part by id",
+        "operationId": "PartGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartGetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PartService"
+        ]
+      },
+      "put": {
+        "summary": "Update a part",
+        "operationId": "PartUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PartService"
+        ]
+      }
+    },
+    "/partimage/{id}": {
+      "get": {
+        "summary": "View image of part",
+        "operationId": "PartImageView",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ViewPartImageResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Commodity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "commodity": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "FileInfo": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "blobContent": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "title": "To display file"
+    },
+    "Part": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "The id now in FAMIS Mobile is Part + warehouse"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "longDescription": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "partType": {
+          "$ref": "#/definitions/PartType"
+        },
+        "partStatus": {
+          "$ref": "#/definitions/PartStatus"
+        },
+        "conmodity": {
+          "$ref": "#/definitions/Commodity"
+        },
+        "um": {
+          "$ref": "#/definitions/UnitOfMeasure"
+        },
+        "warehouse": {
+          "$ref": "#/definitions/Warehouse"
+        },
+        "abcClass": {
+          "type": "string"
+        },
+        "reorderPoint": {
+          "type": "number",
+          "format": "float"
+        },
+        "economicOrderQuantity": {
+          "type": "number",
+          "format": "float"
+        },
+        "stafyStock": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnOrder": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnHand": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityReserved": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityAvailable": {
+          "type": "number",
+          "format": "float"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "partCategory1": {
+          "$ref": "#/definitions/PartCategory1"
+        },
+        "partCategory2": {
+          "$ref": "#/definitions/PartCategory2"
+        },
+        "partCategory3": {
+          "$ref": "#/definitions/PartCategory3"
+        },
+        "partCategory4": {
+          "$ref": "#/definitions/PartCategory4"
+        },
+        "partCategory5": {
+          "$ref": "#/definitions/PartCategory5"
+        },
+        "partId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "hasImage": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "miltipleBin": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "bins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartBin"
+          }
+        }
+      }
+    },
+    "PartBin": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "warehouse": {
+          "$ref": "#/definitions/Warehouse"
+        },
+        "partNumber": {
+          "$ref": "#/definitions/PartList"
+        },
+        "bin": {
+          "type": "string"
+        },
+        "quantityOnHand": {
+          "type": "string"
+        },
+        "lastLockDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUnlockDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastLockUser": {
+          "type": "string"
+        },
+        "lastUnlockUser": {
+          "type": "string"
+        },
+        "partLoc1": {
+          "type": "string"
+        },
+        "partLoc2": {
+          "type": "string"
+        },
+        "partLoc3": {
+          "type": "string"
+        },
+        "partLoc4": {
+          "type": "string"
+        },
+        "partLoc5": {
+          "type": "string"
+        },
+        "physicalInventory": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "PartCategory1": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory2": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory3": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory4": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory5": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartGetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "part": {
+          "$ref": "#/definitions/Part"
+        }
+      }
+    },
+    "PartList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "partDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "PartQueryParameter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "The id now in FAMIS Mobile is Part + warehouse"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "longDescription": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "partType": {
+          "type": "string"
+        },
+        "partStatus": {
+          "type": "string"
+        },
+        "conmodity": {
+          "type": "string"
+        },
+        "um": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "abcClass": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "vendorNo": {
+          "type": "string"
+        },
+        "vendorPartNumber": {
+          "type": "string"
+        },
+        "partCategory1": {
+          "type": "string"
+        },
+        "partCategory2": {
+          "type": "string"
+        },
+        "partCategory3": {
+          "type": "string"
+        },
+        "partCategory4": {
+          "type": "string"
+        },
+        "partCategory5": {
+          "type": "string"
+        }
+      }
+    },
+    "PartStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "PartType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "partType": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "PartUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "The id now in FAMIS Mobile is Part + warehouse"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "longDescription": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "partType": {
+          "type": "string"
+        },
+        "partStatus": {
+          "type": "string"
+        },
+        "conmodity": {
+          "type": "string"
+        },
+        "um": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "abcClass": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "vendorNo": {
+          "type": "string"
+        },
+        "vendorPartNumber": {
+          "type": "string"
+        },
+        "partCategory1": {
+          "type": "string"
+        },
+        "partCategory2": {
+          "type": "string"
+        },
+        "partCategory3": {
+          "type": "string"
+        },
+        "partCategory4": {
+          "type": "string"
+        },
+        "partCategory5": {
+          "type": "string"
+        }
+      }
+    },
+    "PartUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "part": {
+          "$ref": "#/definitions/PartUpdate"
+        }
+      }
+    },
+    "PartUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "part": {
+          "$ref": "#/definitions/Part"
+        }
+      }
+    },
+    "PartsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Part"
+          }
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "responseCode": {
+          "$ref": "#/definitions/ResponseCode"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseCode": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "EXCEPTION",
+        "UNKNOW"
+      ],
+      "default": "SUCCESS"
+    },
+    "UnitOfMeasure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "um": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        }
+      }
+    },
+    "ViewPartImageResponse": {
+      "type": "object",
+      "properties": {
+        "fileInfo": {
+          "$ref": "#/definitions/FileInfo"
+        }
+      }
+    },
+    "Warehouse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

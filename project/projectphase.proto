@@ -1,0 +1,197 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "projectphasestatus.proto";
+import "projectphasetasklist.proto";
+import "team.proto";
+import "skill.proto";
+//import "attachment.proto";
+import "billingtype.proto";
+import "account.proto";
+import "document.proto";
+import "note.proto";
+import "workorder.proto";
+// import "projectstatus.proto";
+// import "employee.proto";
+// import "site.proto";
+// import "building.proto";
+// import "requester.proto";
+// import "asset.proto";
+// import "maintenacetype.proto";
+// import "priority.proto";
+// import "floor.proto";
+// import "room.proto";
+
+message ProjectPhase {
+    int64 id = 1;
+    string reqNumber = 2;
+    int64 phase = 3;
+    string description = 4;
+    ProjectPhaseStatus projectStatus = 5;
+    Team team = 6;  /*list  (FAMIS On Premise CREW)*/
+    Skill skill = 7;  /*list  (FAMIS On Premise CRAFT)*/
+    google.protobuf.Timestamp CustomerStartDate = 8;
+    google.protobuf.Timestamp CustomerDueDate = 9;
+    ProjectPhaseTaskList projectphasetasklist = 10;
+    int64 Contingency = 11;
+    int64 EstHours = 12;
+    int64 EstEquipment = 13;
+    int64 Estimate = 14;
+    int64 EstPo = 15;
+    int64 EstRate = 16;
+    string WoNumber = 17;
+    // repeated Attachment attachments = 18;
+    repeated Document documents = 18;
+    repeated Note note = 19;
+    bool PhaseBilling = 20;
+    BillingType billingtype = 21;
+    repeated Account accounts = 22; /*relationship attribute to show account details*/
+    WorkOrder workOder =23;
+}
+
+// /* Get Phase associated with a Work Order*/
+// message GetProjectPhaseByWorkOrderIdRequest {
+//     UserInfo userInfo = 1;
+//     int64 workOrderId =2; 
+//   }
+  
+//   message GetProjectPhaseByWorkOrderIdResponse {
+//     Response response = 1;
+//     ProjectPhaseWithoutWO projectPhase = 2;
+//   }
+
+//   service ProjectPhaseService {
+
+//     /*Get Project Phase associated with a Work Order by feeding Work Order Id*/
+//     rpc ProjectPhaseGet(GetProjectPhaseByWorkOrderIdRequest) returns (GetProjectPhaseByWorkOrderIdResponse) {
+//         option (google.api.http) = {
+//             get: "/api/workorderprojectphase/{workOrderId}"
+//         };
+//     };
+
+//     /*Create a new Project Phase*/
+//     rpc ProjectPhaseCreate(CreateProjectPhaseRequest) returns (CreateProjectPhaseResponse) {
+//         option (google.api.http) = {
+//             post: "/api/projectphase"
+//             body: "*"
+//         };
+//     };
+
+message ProjectPhaseRequest {
+    string id = 1;
+}
+
+message ProjectPhaseResponse {
+    string message = 1;
+    ProjectPhase projectPhase = 2;
+}
+
+message ProjectPhaseQuery {
+    repeated int64 statusFilters = 1;
+    repeated string projectphase = 2;
+}
+
+message ProjectPhasesRequest {
+    ProjectPhaseQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message ProjectPhasesResponse {
+    repeated ProjectPhase projectPhases = 1;
+}
+
+/* Project Phase Create */
+message ProjectPhaseRequestCreate {
+    int64 id = 1;
+    string ReqNumber = 2;
+    int64 Phase = 3;
+    string Description = 4;
+    string ProjectPhaseStatus = 5;
+    string Team = 6;  /*list  (FAMIS On Premise CREW)*/
+    string Skill = 7;  /*list  (FAMIS On Premise CRAFT)*/
+    google.protobuf.Timestamp CustomerStartDate = 8;
+    google.protobuf.Timestamp CustomerDueDate = 9;
+    string ProjectPhaseTaskList = 10;
+    int64 Contingency = 11;
+    int64 EstHours = 12;
+    int64 EstEquipment = 13;
+    int64 Estimate = 14;
+    int64 EstPo = 15;
+    int64 EstRate = 16;
+    string WoNumber = 17;
+    string Document = 18;
+    string Attachment = 19;
+    bool PhaseBilling = 20;
+    string BillingType = 21;
+    repeated AccountUpdate accounts = 22;
+}
+
+/* ProjectPhaseRequestUpdate */
+message ProjectPhaseRequestUpdate {
+    int64 id = 1;
+    string ReqNumber = 2;
+    int64 Phase = 3;
+    string Description = 4;
+    string ProjectPhaseStatus = 5;
+    string Team = 6;  /*list  (FAMIS On Premise CREW)*/
+    string Skill = 7;  /*list  (FAMIS On Premise CRAFT)*/
+    google.protobuf.Timestamp CustomerStartDate = 8;
+    google.protobuf.Timestamp CustomerDueDate = 9;
+    string ProjectPhaseTaskList = 10;
+    int64 Contingency = 11;
+    int64 EstHours = 12;
+    int64 EstEquipment = 13;
+    int64 Estimate = 14;
+    int64 EstPo = 15;
+    int64 EstRate = 16;
+    string WoNumber = 17;
+    string Document = 18;
+    string Attachment = 19;
+    bool PhaseBilling = 20;
+    string BillingType = 21;
+    repeated AccountUpdate accounts = 23;
+}
+
+// service ProjectPhaseService {
+
+//     rpc ProjectPhaseGet(ProjectPhaseRequest) returns (ProjectPhase) {
+//         option (google.api.http) = {
+//             get: "/api/projectphases/{id}"
+//         };
+//     };
+
+//     rpc ProjectPhasesGet(ProjectPhasesRequest) returns (ProjectPhasesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/projectphases"
+//         };
+//     };
+
+//     rpc ProjectPhaseCreate(ProjectPhaseRequestCreate) returns (ProjectPhaseResponse) {
+//         option (google.api.http) = {
+//             post: "/api/projectphases"
+//             body: "*"
+//         };
+//     };
+
+//     rpc ProjectPhaseUpdate(ProjectPhaseRequestUpdate) returns (ProjectPhaseResponse) {
+//         option (google.api.http) = {
+//             put: "/api/projectphases/{id}"
+//             body: "*"
+//         };
+//     };
+// }
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/projectphases
+    GET /api/projectphases/:id
+    POST /api/projectphases
+    PUT /api/projectphases/:id
+    DELETE /api/projectphases/:id
+
+    POST /api/projectphases/close/:id
+*/

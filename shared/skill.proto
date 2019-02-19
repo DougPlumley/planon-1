@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Skill {
+    int64 id = 1;
+    string skill = 2;
+    string description = 3;
+}
+
+message SkillParameter {
+    int64 id = 1;
+    string skill = 2;
+    string description = 3;
+}
+
+message skillsRequest {
+    UserInfo userInfo = 1;
+    SkillParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message SkillsResponse {
+    Response response = 1;
+    repeated Skill skills = 2;
+}
+
+
+// service SkillService {
+//     rpc SkillsGet(skillsRequest) returns (SkillsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/skill"
+//         };
+//     };
+// }

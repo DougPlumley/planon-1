@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message PartBinList {
+    int64 id = 1;
+	string bin = 2;
+    string warehouse = 3;
+    string partNumber = 4;
+    float  quantityOnHand =5;
+}
+
+message PartBinListParameter {
+    int64 id = 1;
+	string bin = 2;
+    string warehouse = 3;
+    string partNumber = 4;
+}
+
+message PartBinListRequest {
+    UserInfo userInfo = 1;
+    PartBinListParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PartBinListResponse {
+    Response response = 1;
+    repeated PartBinList partBins = 2;
+}
+
+service PartBinListService {
+    rpc PartBinListGet(PartBinListRequest) returns (PartBinListResponse) {
+        option (google.api.http) = {
+            get: "/api/partbinlist"
+        };
+    };
+}

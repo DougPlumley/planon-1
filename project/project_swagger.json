@@ -1,0 +1,1701 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API's for Michigan State University's FAMIS On-Premise Mobile Application.",
+    "version": "1.0.0",
+    "title": "AppTree MSU Mobile API's for Planon",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "support@apptreesoftware.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "apptreesoftware.github.io",
+  "basePath": "/planon",
+  "tags": [
+    {
+      "name": "AppTree Software",
+      "description": "AppTree Software",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://apptreesoftware.com"
+      }
+    },
+    {
+      "name": "Projects",
+      "description": "Projects"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/api/projectstatuses": {
+      "get": {
+        "operationId": "ProjectStatusesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectStatusesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectStatusService"
+        ]
+      }
+    },
+    "/api/projectstatuses/{id}": {
+      "get": {
+        "operationId": "ProjectStausGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectStatusService"
+        ]
+      }
+    },
+    "/api/projectphasestatuses": {
+      "get": {
+        "operationId": "ProjectPhaseStatusesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseStatusesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseStatusService"
+        ]
+      }
+    },
+    "/api/projectphasestatuses/{id}": {
+      "get": {
+        "operationId": "ProjectPhaseStatusGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseStatusService"
+        ]
+      }
+    },
+    "/api/projectphasetasklists": {
+      "get": {
+        "operationId": "ProjectPhaseTaskListesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseTaskListesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseTaskListService"
+        ]
+      },
+      "post": {
+        "operationId": "ProjectPhaseTaskListCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseTaskListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseTaskListRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseTaskListService"
+        ]
+      }
+    },
+    "/api/projectphasetasklists/{id}": {
+      "get": {
+        "operationId": "ProjectPhaseTaskListGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseTaskList"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseTaskListService"
+        ]
+      },
+      "put": {
+        "operationId": "ProjectPhaseTaskListUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseTaskListResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseTaskListRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseTaskListService"
+        ]
+      }
+    },
+    "/api/projectphases": {
+      "get": {
+        "operationId": "ProjectPhasesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhasesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.projectphase",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseService"
+        ]
+      },
+      "post": {
+        "operationId": "ProjectPhaseCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseService"
+        ]
+      }
+    },
+    "/api/projectphases/{id}": {
+      "get": {
+        "operationId": "ProjectPhaseGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhase"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseService"
+        ]
+      },
+      "put": {
+        "operationId": "ProjectPhaseUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectPhaseRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectPhaseService"
+        ]
+      }
+    },
+    "/api/projects": {
+      "get": {
+        "operationId": "ProjectsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectService"
+        ]
+      },
+      "post": {
+        "operationId": "ProjectCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectService"
+        ]
+      }
+    },
+    "/api/projects/{id}": {
+      "get": {
+        "operationId": "ProjectGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectService"
+        ]
+      },
+      "put": {
+        "operationId": "ProjectUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProjectRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "Projects",
+          "ProjectService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ProjectStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Active": {
+          "type": "string"
+        }
+      }
+    },
+    "ProjectStatusesResponse": {
+      "type": "object",
+      "properties": {
+        "projectStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProjectStatus"
+          }
+        }
+      }
+    },
+    "ProjectPhaseStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Active": {
+          "type": "string"
+        }
+      }
+    },
+    "ProjectPhaseStatusesResponse": {
+      "type": "object",
+      "properties": {
+        "projectPhaseStatuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProjectPhaseStatus"
+          }
+        }
+      }
+    },
+    "ProjectPhaseTaskList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TaskList": {
+          "type": "string"
+        },
+        "Phase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReqNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ProjectPhaseTaskListRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TaskList": {
+          "type": "string"
+        },
+        "Phase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReqNumber": {
+          "type": "string"
+        }
+      },
+      "title": "ProjectPhaseTaskListRequestUpdate"
+    },
+    "ProjectPhaseTaskListRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TaskList": {
+          "type": "string"
+        },
+        "Phase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReqNumber": {
+          "type": "string"
+        }
+      },
+      "title": "ProjectPhaseTaskListRequestUpdate"
+    },
+    "ProjectPhaseTaskListResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "projectphasetasklist": {
+          "$ref": "#/definitions/ProjectPhaseTaskList"
+        }
+      }
+    },
+    "ProjectPhaseTaskListesResponse": {
+      "type": "object",
+      "properties": {
+        "projectPhaseTaskLists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProjectPhaseTaskList"
+          }
+        }
+      }
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "objectId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "acctSegment1": {
+          "$ref": "#/definitions/AccountSegment"
+        },
+        "acctSegment2": {
+          "$ref": "#/definitions/AccountSegment"
+        },
+        "acctSegment3": {
+          "$ref": "#/definitions/AccountSegment"
+        },
+        "acctSegment4": {
+          "$ref": "#/definitions/AccountSegment"
+        },
+        "acctSegment5": {
+          "$ref": "#/definitions/AccountSegment"
+        },
+        "acctSegment6": {
+          "$ref": "#/definitions/AccountSegment"
+        },
+        "percent": {
+          "type": "number",
+          "format": "float"
+        },
+        "attribute1": {
+          "type": "string"
+        },
+        "attribute2": {
+          "type": "string"
+        },
+        "attribute3": {
+          "type": "string"
+        },
+        "coaName": {
+          "type": "string"
+        }
+      }
+    },
+    "AccountSegment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "accountSegment": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Attachment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        }
+      }
+    },
+    "BillingType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Document": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DocumentName": {
+          "type": "string"
+        },
+        "DocEntity": {
+          "type": "string"
+        },
+        "DocKey1": {
+          "type": "string"
+        },
+        "DocKey2": {
+          "type": "string"
+        },
+        "DocKey3": {
+          "type": "string"
+        },
+        "DocKey4": {
+          "type": "string"
+        },
+        "DocType": {
+          "type": "string"
+        },
+        "BlobConent": {
+          "type": "string"
+        }
+      }
+    },
+    "ProjectPhase": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "reqNumber": {
+          "type": "string"
+        },
+        "phase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string"
+        },
+        "projectStatus": {
+          "$ref": "#/definitions/ProjectPhaseStatus"
+        },
+        "team": {
+          "$ref": "#/definitions/Team"
+        },
+        "skill": {
+          "$ref": "#/definitions/Skill"
+        },
+        "CustomerStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerDueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "projectphasetasklist": {
+          "$ref": "#/definitions/ProjectPhaseTaskList"
+        },
+        "Contingency": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstHours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstEquipment": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Estimate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstPo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Document"
+          },
+          "title": "repeated Attachment attachments = 18;"
+        },
+        "attachments": {
+          "$ref": "#/definitions/Attachment"
+        },
+        "PhaseBilling": {
+          "type": "string"
+        },
+        "billingtype": {
+          "$ref": "#/definitions/BillingType"
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Account"
+          }
+        }
+      }
+    },
+    "ProjectPhaseQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "projectphase": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProjectPhaseRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReqNumber": {
+          "type": "string"
+        },
+        "Phase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "ProjectPhaseStatus": {
+          "type": "string"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Skill": {
+          "type": "string"
+        },
+        "CustomerStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerDueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ProjectPhaseTaskList": {
+          "type": "string"
+        },
+        "Contingency": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstHours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstEquipment": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Estimate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstPo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Document": {
+          "type": "string"
+        },
+        "Attachment": {
+          "type": "string"
+        },
+        "PhaseBilling": {
+          "type": "string"
+        },
+        "BillingType": {
+          "type": "string"
+        },
+        "Account": {
+          "type": "string"
+        }
+      },
+      "title": "Project Phase Create"
+    },
+    "ProjectPhaseRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReqNumber": {
+          "type": "string"
+        },
+        "Phase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "ProjectPhaseStatus": {
+          "type": "string"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Skill": {
+          "type": "string"
+        },
+        "CustomerStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerDueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ProjectPhaseTaskList": {
+          "type": "string"
+        },
+        "Contingency": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstHours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstEquipment": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Estimate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstPo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "EstRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Document": {
+          "type": "string"
+        },
+        "Attachment": {
+          "type": "string"
+        },
+        "PhaseBilling": {
+          "type": "string"
+        },
+        "BillingType": {
+          "type": "string"
+        },
+        "Account": {
+          "type": "string"
+        }
+      },
+      "title": "ProjectPhaseRequestUpdate"
+    },
+    "ProjectPhaseResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "projectPhase": {
+          "$ref": "#/definitions/ProjectPhase"
+        }
+      }
+    },
+    "ProjectPhasesResponse": {
+      "type": "object",
+      "properties": {
+        "projectPhases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProjectPhase"
+          }
+        }
+      }
+    },
+    "Skill": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "skill": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "team": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "chief": {
+          "type": "string"
+        }
+      }
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetType": {
+          "type": "string"
+        },
+        "rentalType": {
+          "type": "string"
+        },
+        "rentalRate": {
+          "type": "string"
+        },
+        "assetClass": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        }
+      }
+    },
+    "Building": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "building": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "abbrevation": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "siteId": {
+          "type": "string"
+        }
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        }
+      }
+    },
+    "MaintenanceType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BltExpOption": {
+          "type": "string"
+        },
+        "Bulletin": {
+          "type": "string"
+        },
+        "ExpireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteBuilding": {
+          "type": "string"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteEntity": {
+          "type": "string"
+        },
+        "NoteEquip": {
+          "type": "string"
+        },
+        "NoteFloor": {
+          "type": "string"
+        },
+        "NoteKey": {
+          "type": "string"
+        },
+        "NoteKey1": {
+          "type": "string"
+        },
+        "NoteKey2": {
+          "type": "string"
+        },
+        "NoteKey3": {
+          "type": "string"
+        },
+        "NoteKey4": {
+          "type": "string"
+        },
+        "NotePhase": {
+          "type": "string",
+          "format": "int64"
+        },
+        "NoteRoom": {
+          "type": "string"
+        },
+        "NoteSite": {
+          "type": "string"
+        },
+        "NoteUser": {
+          "type": "string"
+        },
+        "NumberOfDays": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PageFlag": {
+          "type": "string"
+        },
+        "PrintFlag": {
+          "type": "string"
+        },
+        "PrivateFlag": {
+          "type": "string"
+        },
+        "Text": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "WoFlag": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Priority": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "ReqNumber": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "ProjectManager": {
+          "type": "string"
+        },
+        "assignedTo": {
+          "$ref": "#/definitions/Employee"
+        },
+        "site": {
+          "$ref": "#/definitions/Site"
+        },
+        "building": {
+          "$ref": "#/definitions/Building"
+        },
+        "requester": {
+          "$ref": "#/definitions/Requester"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "DueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "asset": {
+          "$ref": "#/definitions/Asset"
+        },
+        "CustomerStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerDueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "maintenanceType": {
+          "$ref": "#/definitions/MaintenanceType"
+        },
+        "priority": {
+          "$ref": "#/definitions/Priority"
+        },
+        "projectstatus": {
+          "$ref": "#/definitions/ProjectStatus"
+        },
+        "billingType": {
+          "$ref": "#/definitions/BillingType"
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Account"
+          }
+        },
+        "projectPhases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProjectPhase"
+          }
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Document"
+          },
+          "title": "repeated Attachment attachments = 22;"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Attachment"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Note"
+          }
+        }
+      }
+    },
+    "ProjectQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProjectRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "ReqNumber": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "ProjectManager": {
+          "type": "string"
+        },
+        "AssignedTo": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Requester": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "DueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Asset": {
+          "type": "string"
+        },
+        "CustomerStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerDueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "MaintenanceType": {
+          "type": "string"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "ProjectStatus": {
+          "type": "string"
+        },
+        "BillingType": {
+          "type": "string"
+        },
+        "Account": {
+          "type": "string"
+        },
+        "ProjectPhase": {
+          "type": "string"
+        },
+        "Document": {
+          "type": "string"
+        },
+        "Attachment": {
+          "type": "string"
+        },
+        "Note": {
+          "type": "string"
+        }
+      }
+    },
+    "ProjectRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "ReqNumber": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "ProjectManager": {
+          "type": "string"
+        },
+        "AssignedTo": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Requester": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "DueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Asset": {
+          "type": "string"
+        },
+        "CustomerStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerDueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "MaintenanceType": {
+          "type": "string"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "ProjectStatus": {
+          "type": "string"
+        },
+        "BillingType": {
+          "type": "string"
+        },
+        "Account": {
+          "type": "string"
+        },
+        "ProjectPhase": {
+          "type": "string"
+        },
+        "Document": {
+          "type": "string"
+        },
+        "Attachment": {
+          "type": "string"
+        },
+        "Note": {
+          "type": "string"
+        }
+      },
+      "title": "ProjectRequestUpdate"
+    },
+    "ProjectResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "project": {
+          "$ref": "#/definitions/Project"
+        }
+      }
+    },
+    "ProjectsResponse": {
+      "type": "object",
+      "properties": {
+        "projects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Project"
+          }
+        }
+      }
+    },
+    "Requester": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        }
+      }
+    },
+    "Site": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "site": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

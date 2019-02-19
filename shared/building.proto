@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Building {
+    int64 id = 1;
+    string building = 2;
+    string description = 3;
+    string status = 4;
+    string abbrevation = 5;
+    string address = 6;
+    string siteId = 7 ; // Parent ID
+}
+
+message BuildingParameter {
+    int64 id = 1;
+    string building = 2;
+    string description = 3;
+    string status = 4;
+    string abbrevation = 5;
+    string address = 6;
+    string siteId = 7 ; // Parent ID
+    bool active =8;
+}
+
+message BuildingsRequest {
+    UserInfo userInfo = 1;
+    BuildingParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message BuildingsResponse {
+    Response response = 1;
+    repeated Building buildings = 2;
+}
+
+// service BuildingService {
+//     rpc BuildingsGet(BuildingsRequest) returns (BuildingsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/building"
+//         };
+//     };
+// }

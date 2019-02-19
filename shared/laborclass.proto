@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message LaborClass {
+    int64 id = 1;
+	string status = 2;
+    string comments = 3;
+}
+
+
+message LaborClassParameter {
+    int64 id = 1;
+	string status = 2;
+    string comments = 3;
+}
+
+message LaborClassRequest {
+    UserInfo userInfo = 1;
+    LaborClassParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message LaborClassResponse {
+    Response response = 1;
+    repeated LaborClass laborStatuses = 2;
+}
+
+
+// service LaborClassService {
+//     rpc LaborClassGet(LaborClassRequest) returns (LaborClassResponse) {
+//         option (google.api.http) = {
+//             get: "/api/laborclass"
+//         };
+//     };
+// }

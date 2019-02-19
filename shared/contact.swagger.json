@@ -1,0 +1,499 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "contact.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/contact": {
+      "get": {
+        "summary": "Obtain a list of contacts",
+        "operationId": "ContactsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactsGetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      },
+      "post": {
+        "summary": "Add a new contact",
+        "operationId": "ContactCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContactCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      }
+    },
+    "/api/contact/{id}": {
+      "get": {
+        "summary": "Obtain a contact by id",
+        "operationId": "ContactGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactGetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      },
+      "put": {
+        "summary": "Update a contact",
+        "operationId": "ContactUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ContactUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContactUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ContactService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "defaultHolderCode": {
+          "type": "string"
+        },
+        "webPassword": {
+          "type": "string"
+        },
+        "webUsername": {
+          "type": "string"
+        },
+        "keyHolder": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "housingBuilding": {
+          "type": "string"
+        },
+        "housingRoom": {
+          "type": "string"
+        },
+        "pager": {
+          "type": "string"
+        },
+        "needNotification": {
+          "type": "string"
+        },
+        "mailCode": {
+          "type": "string"
+        },
+        "keyContact": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "empId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "cellular": {
+          "type": "string"
+        },
+        "onCampusHousing": {
+          "type": "string"
+        },
+        "importDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ContactCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "defaultHolderCode": {
+          "type": "string"
+        },
+        "webPassword": {
+          "type": "string"
+        },
+        "webUsername": {
+          "type": "string"
+        },
+        "keyHolder": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "housingBuilding": {
+          "type": "string"
+        },
+        "housingRoom": {
+          "type": "string"
+        },
+        "pager": {
+          "type": "string"
+        },
+        "needNotification": {
+          "type": "string"
+        },
+        "mailCode": {
+          "type": "string"
+        },
+        "keyContact": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "empId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "cellular": {
+          "type": "string"
+        },
+        "onCampusHousing": {
+          "type": "string"
+        },
+        "importDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ContactCreateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "contact": {
+          "$ref": "#/definitions/ContactCreate"
+        }
+      },
+      "title": "Create Contact"
+    },
+    "ContactCreateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "ContactGetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "ContactParameter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string"
+        }
+      }
+    },
+    "ContactUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "personId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "defaultHolderCode": {
+          "type": "string"
+        },
+        "webPassword": {
+          "type": "string"
+        },
+        "webUsername": {
+          "type": "string"
+        },
+        "keyHolder": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "housingBuilding": {
+          "type": "string"
+        },
+        "housingRoom": {
+          "type": "string"
+        },
+        "pager": {
+          "type": "string"
+        },
+        "needNotification": {
+          "type": "string"
+        },
+        "mailCode": {
+          "type": "string"
+        },
+        "keyContact": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "empId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "cellular": {
+          "type": "string"
+        },
+        "onCampusHousing": {
+          "type": "string"
+        },
+        "importDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "crudStatus": {
+          "type": "string"
+        }
+      },
+      "title": "ContactRequestUpdate"
+    },
+    "ContactUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "contact": {
+          "$ref": "#/definitions/ContactUpdate"
+        }
+      },
+      "title": "Update Contact"
+    },
+    "ContactUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "ContactsGetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "contact": {
+          "$ref": "#/definitions/Contact"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "responseCode": {
+          "$ref": "#/definitions/ResponseCode"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseCode": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "EXCEPTION",
+        "UNKNOW"
+      ],
+      "default": "SUCCESS"
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

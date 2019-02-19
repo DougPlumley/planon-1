@@ -1,0 +1,833 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "asset.proto";
+import "assetclass.proto";
+import "assetcondition.proto";
+import "assetconditionum.proto";
+
+import "assetdetail.proto";
+
+import "assetgroup.proto";
+import "assetkeyword.proto";
+import "assetreading.proto";
+import "assetrental.proto";
+
+import "assetstatus.proto";
+import "assettype.proto";
+import "attachment.proto";
+import "billingtype.proto";
+import "building.proto";
+import "commodity.proto";
+import "contact.proto";
+import "department.proto";
+import "document.proto";
+import "employee.proto";
+import "equipmentrental.proto";
+import "floor.proto";
+import "laborclass.proto";
+import "laborstatus.proto";
+import "maintenancetype.proto";
+import "manufacturer.proto";
+import "note.proto";
+import "outagereason.proto";
+import "partbinlist.proto";
+import "partcategory1.proto";
+import "partcategory2.proto";
+import "partcategory3.proto";
+import "partcategory4.proto";
+import "partcategory5.proto";
+import "partstatus.proto";
+import "parttype.proto";
+import "paycode.proto";
+import "priority.proto";
+import "procedure.proto";
+// import "projectphasestatus.proto";
+// import "projectphasetasklist.proto";
+// import "projectstatus.proto";
+import "rentaltype.proto";
+import "requester.proto";
+import "requesttype.proto";
+import "requeststatus.proto";
+import "room.proto";
+import "shift.proto";
+import "site.proto";
+import "skill.proto";
+import "taskcode.proto";
+import "team.proto";
+import "unitofmeasure.proto";
+import "userdefinedfield.proto";
+import "warehouse.proto";
+import "workorderlist.proto";
+import "workorderstatus.proto";
+import "partlist.proto";
+import "vendorlist.proto";
+// import "x.proto";
+// import "y.proto";
+
+service AssetService {
+
+    /*Obtain the list of assets*/
+    rpc AssetsGet(AssetsRequest) returns (assetsResponse) {
+        option (google.api.http) = {
+            get: "/api/assetlist"
+        };
+    };
+}
+
+service AssetClassService {
+
+    /*Obtain the list of asset classes*/
+    rpc AssetClassesGet(AssetClassesRequest) returns (AssetClassesResponse) {
+        option (google.api.http) = {
+            get: "/api/assetclass"
+        };
+    };
+}
+
+service AssetConditionService {
+
+    /*Obtain the list of asset conditions*/
+    rpc AssetConditionsGet(AssetConditionsRequest) returns (AssetConditionsResponse) {
+        option (google.api.http) = {
+            get: "/api/assetcondition"
+        };
+    };
+}
+
+service AssetConditionUMService {
+
+    /*Obtain the list of asset condition UM*/
+    rpc AssetConditionUMsGet(AssetConditionUMsRequest) returns (AssetConditionUMsResponse) {
+        option (google.api.http) = {
+            get: "/api/assetconditionum"
+        };
+    };
+}
+
+service AssetDetailService {
+    
+    /*Obtain an asset by id*/
+    rpc AssetGet(AssetRequest) returns (AssetResponse) {
+        option (google.api.http) = {
+            get: "/api/asset/{id}"
+        };
+    };
+
+    /*Search for asset(s)*/
+    rpc AssetSearch(AssetSearchRequest) returns (AssetSearchResponse) {
+        option (google.api.http) = {
+            post: "/api/asset/search"
+            body: "*"
+        };
+    };
+
+    /*Update an asset*/
+    rpc AssetUpdate(UpdateAssetRequest) returns (UpdateAssetResponse) {
+        option (google.api.http) = {
+            put: "/api/asset/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create an asset*/
+    rpc AssetCreate(CreateAssetRequest) returns (CreateAssetResponse) {
+        option (google.api.http) = {
+            post: "/api/asset"
+            body: "*"
+        };
+    };
+
+}
+
+service AssetGroupService {
+
+    /*Obtain the list of asset groups*/
+    rpc AssetGroupsGet(AssetGroupsRequest) returns (AssetGroupsResponse) {
+        option (google.api.http) = {
+            get: "/api/assetgroup"
+        };
+    };
+}
+
+service AssetKeywordService {
+
+    /*Obtain the list of asset keywords*/
+    rpc AssetKeywordsGet(AssetKeywordsRequest) returns (AssetKeywordsResponse) {
+        option (google.api.http) = {
+            get: "/api/assetkeyword"
+        };
+    };
+}
+
+service AssetReadingService {
+    
+    /*This call is for lazyload to obtain readings of an asset with asset id*/
+    rpc AssetReadingGet(AssetReadingGetRequest) returns (AssetReadingGetResponse) {
+        option (google.api.http) = {
+            get: "/api/assetreading/{assetId}"
+        };
+    };
+}
+
+service AssetRentalService {
+    
+    /*Obtain rental information for an asset with asset rental id*/
+    rpc AssetRentalGet(AssetRentalFetchByIDRequest) returns (AssetRentalFetchByIDResponse) {
+        option (google.api.http) = {
+            get: "/api/assetrental/{id}"
+        };
+    };
+
+    /*Search for asset rental(s)*/
+    rpc AssetRentalsSearch(AssetRentalSearchRequest) returns (AssetRentalSearchResponse) {
+        option (google.api.http) = {
+            post: "/api/assetrental/search"
+            body: "*"
+        };
+    };
+
+    /*Update rental information for an asset*/
+    rpc AssetRentalUpdate(AssetRentalUpdateRequest) returns (AssetRentalUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/assetrental/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create a new asset rental*/
+    rpc AssetRentalRentalCreate(AssetRentalCreateRequest) returns (AssetRentalCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/assetrental"
+            body: "*"
+        };
+    };
+
+    /*This call is for lazyload to fetch the list asset rental for an asset with asset id*/
+    rpc AssetAssetRentalsGet(AssetRentalFetchByAssetIDRequest) returns (AssetRentalFetchByAssetIDResponse) {
+        option (google.api.http) = {
+            get: "/api/assetassetrental/{assetId}"
+        };
+    };
+
+}
+
+service AssetStatusService {
+
+    /*Obtain the list of asset statuses*/
+    rpc AssetStatusesGet(AssetStatusesRequest) returns (AssetStatusesResponse) {
+        option (google.api.http) = {
+            get: "/api/assetstatus"
+        };
+    };
+}
+
+service AssetTypeService {
+
+    /*Obtain the list of asset types*/
+    rpc AssetTypesGet(AssetTypesRequest) returns (AssetTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/assettype"
+        };
+    };
+}
+
+service AttachmentService {
+
+    /*Obtain an attachment by id*/
+    rpc AttachmentView(ViewAttachmentRequest) returns (ViewAttachmentResponse) {
+        option (google.api.http) = {
+            get: "/api/attachment/{id}"
+        };
+    };
+}
+
+service BillingTypeService {
+
+    /*Obtain the list of billing types*/
+    rpc BillingTypesGet(BillingTypesRequest) returns (BillingTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/billingtype"
+        };
+    };
+}
+
+service BuildingService {
+
+    /*Obtain the list of buildings*/
+    rpc BuildingsGet(BuildingsRequest) returns (BuildingsResponse) {
+        option (google.api.http) = {
+            get: "/api/building"
+        };
+    };
+}
+
+service CommodityService {
+
+    /*Obtain the list of commodities*/
+    rpc CommoditysGet(CommoditiesRequest) returns (CommoditiesResponse) {
+        option (google.api.http) = {
+            get: "/api/commodity"
+        };
+    };
+}
+
+service ContactService {
+
+    /*Obtain a contact by id*/
+    rpc ContactGet(ContactGetRequest) returns (ContactGetResponse) {
+        option (google.api.http) = {
+            get: "/api/contact/{id}"
+        };
+    };
+
+    /*Obtain a list of contacts*/
+    rpc ContactsGet(ContactsGetRequest) returns (ContactsGetResponse) {
+        option (google.api.http) = {
+            get: "/api/contact"
+        };
+    };
+
+    /*Add a new contact*/
+    rpc ContactCreate(ContactCreateRequest) returns (ContactCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/contact"
+            body: "*"
+        };
+    };
+
+    /*Update a contact*/
+    rpc ContactUpdate(ContactUpdateRequest) returns (ContactUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/contact/{id}"
+            body: "*"
+        };
+    };
+}
+
+service DepartmentService {
+
+    /*Obtain the list of departments*/
+    rpc DepartmentsGet(DepartmentsRequest) returns (DepartmentsResponse) {
+        option (google.api.http) = {
+            get: "/api/department"
+        };
+    };
+}
+
+service DocumentService {
+
+    /*Obtain a document by id*/
+    rpc DocumentGet(DocumentRequest) returns (Document) {
+        option (google.api.http) = {
+            get: "/api/documents/{id}"
+        };
+    };
+
+    /*Obtain a list of documents*/
+    rpc DocumentsGet(DocumentsRequest) returns (DocumentsResponse) {
+        option (google.api.http) = {
+            get: "/api/documents"
+        };
+    };
+
+    /*Add a new document*/
+    rpc DocumentCreate(DocumentRequestCreate) returns (DocumentResponse) {
+        option (google.api.http) = {
+            post: "/api/documents"
+            body: "*"
+        };
+    };
+
+    /*Update a document*/
+    rpc DocumentUpdate(DocumentRequestUpdate) returns (DocumentResponse) {
+        option (google.api.http) = {
+            put: "/api/documents/{id}"
+            body: "*"
+        };
+    };
+}
+
+service EmployeeService {
+
+    /*Obtain the list of employees*/
+    rpc EmployeesGet(EmployeesRequest) returns (EmployeesResponse) {
+        option (google.api.http) = {
+            get: "/api/employee"
+        };
+    };
+}
+
+service EquipmentRentalService {
+
+    /*Obtain an equipment rental by id*/
+    rpc EquipmentRentalGet(EquipmentRentalRequest) returns (EquipmentRental) {
+        option (google.api.http) = {
+            get: "/api/equipmentrentals/{id}"
+        };
+    };
+
+    /*Obtain the list of equipment rentals*/
+    rpc EquipmentRentalsGet(EquipmentRentalsRequest) returns (EquipmentRentalsResponse) {
+        option (google.api.http) = {
+            get: "/api/equipmentrentals"
+        };
+    };
+
+    /*Add a new equipment rental*/
+    rpc EquipmentRentalCreate(EquipmentRentalRequestCreate) returns (EquipmentRentalResponse) {
+        option (google.api.http) = {
+            post: "/api/equipmentrentals"
+            body: "*"
+        };
+    };
+
+    /*Update an equipment rental*/
+    rpc EquipmentRentalUpdate(EquipmentRentalRequestUpdate) returns (EquipmentRentalResponse) {
+        option (google.api.http) = {
+            put: "/api/equipmentrentals/{id}"
+            body: "*"
+        };
+    };
+}
+
+service FloorService {
+
+    /*Obtain the list of floors*/
+    rpc FloorsGet(FloorsRequest) returns (FloorsResponse) {
+        option (google.api.http) = {
+            get: "/api/floor"
+        };
+    };
+}
+
+service LaborClassService {
+
+    /*Obtain the list of labor classes*/
+    rpc LaborClassGet(LaborClassRequest) returns (LaborClassResponse) {
+        option (google.api.http) = {
+            get: "/api/laborclass"
+        };
+    };
+}
+
+service LaborStatusService {
+
+    /*Obtain the list of labor statuses*/
+    rpc LaborStatusGet(LaborStatusRequest) returns (LaborStatusResponse) {
+        option (google.api.http) = {
+            get: "/api/laborstatus"
+        };
+    };
+}
+
+service MaintenanceTypeService {
+
+    /*Obtain the list of maintenance types*/
+    rpc MaintenanceTypesGet(MaintenanceTypesRequest) returns (MaintenanceTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/maintenancetype"
+        };
+    };
+}
+
+service ManufacturerService {
+
+    /*Obtain the list of manufacturers*/
+    rpc ManufacturersGet(ManufacturersRequest) returns (ManufacturersResponse) {
+        option (google.api.http) = {
+            get: "/api/manufacturer"
+        };
+    };
+}
+
+service NoteService {
+
+    /*Obtain a note by id*/
+    rpc NoteGet(NoteRequest) returns (Note) {
+        option (google.api.http) = {
+            get: "/api/notes/{id}"
+        };
+    };
+
+    /*Obtain a list of notes*/
+    rpc NotesGet(NotesRequest) returns (NotesResponse) {
+        option (google.api.http) = {
+            get: "/api/notes"
+        };
+    };
+
+    /*Add a new note*/
+    rpc NoteCreate(NoteRequestCreate) returns (NoteResponse) {
+        option (google.api.http) = {
+            post: "/api/notes"
+            body: "*"
+        };
+    };
+
+    /*Update a note*/
+    rpc NoteUpdate(NoteRequestUpdate) returns (NoteResponse) {
+        option (google.api.http) = {
+            put: "/api/notes/{id}"
+            body: "*"
+        };
+    };
+}
+
+service OutageReasonService {
+
+    /*Obtain the list of outage reasons*/
+    rpc OutageReasonsGet(OutageReasonsRequest) returns (OutageReasonsResponse) {
+        option (google.api.http) = {
+            get: "/api/outagereason"
+        };
+    };
+}
+
+service PartBinService {
+
+    /*Obtain the list of part bins*/
+    rpc PartBinsGet(PartBinListRequest) returns (PartBinListResponse) {
+        option (google.api.http) = {
+            get: "/api/partbin"
+        };
+    };
+}
+
+service PartCategoryService {
+
+    /*Obtain the list of part category1*/
+    rpc PartCategory1sGet(PartCategory1sRequest) returns (PartCategory1sResponse) {
+        option (google.api.http) = {
+            get: "/api/partcategory1"
+        };
+    };
+
+    /*Obtain the list of part category2*/
+    rpc PartCategory2sGet(PartCategory2sRequest) returns (PartCategory2sResponse) {
+        option (google.api.http) = {
+            get: "/api/partcategory2"
+        };
+    };
+    /*Obtain the list of part category3*/
+    rpc PartCategory3sGet(PartCategory3sRequest) returns (PartCategory3sResponse) {
+        option (google.api.http) = {
+            get: "/api/partcategory3"
+        };
+    };
+    /*Obtain the list of part category4*/
+    rpc PartCategory4sGet(PartCategory4sRequest) returns (PartCategory4sResponse) {
+        option (google.api.http) = {
+            get: "/api/partcategory4"
+        };
+    };
+    /*Obtain the list of part category5*/
+    rpc PartCategory5sGet(PartCategory5sRequest) returns (PartCategory5sResponse) {
+        option (google.api.http) = {
+            get: "/api/partcategory5"
+        };
+    };
+}
+
+service PartListService {
+    rpc PartSearchList(PartSearchListRequest) returns (PartSearchListResponse) {
+        option (google.api.http) = {
+            get: "/api/partsearchlist"
+        };
+    };
+}
+
+service PartStatusService {
+
+    /*Obtain the list of part statuses*/
+    rpc ParStatusesGet(PartStatusesRequest) returns (PartStatusesResponse) {
+        option (google.api.http) = {
+            get: "/api/partstatus"
+        };
+    };
+}
+
+service PartTypeService {
+
+    /*Obtain the list of part types*/
+    rpc PartTypesGet(PartTypesRequest) returns (PartTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/parttype"
+        };
+    };
+}
+
+service PayCodeService {
+
+    /*Obtain the list of pay codes*/
+    rpc PayCodesGet(PayCodesRequest) returns (PayCodesResponse) {
+        option (google.api.http) = {
+            get: "/api/paycode"
+        };
+    };
+}
+
+service PriorityService {
+
+    /*Obtain the list of priorities*/
+    rpc PrioritiesGet(PrioritiesRequest) returns (PrioritiesResponse) {
+        option (google.api.http) = {
+            get: "/api/priority"
+        };
+    };
+}
+
+service ProcedureService {
+
+    /*Obtain the list of procedures*/
+    rpc ProceduresGet(ProceduresRequest) returns (ProceduresResponse) {
+        option (google.api.http) = {
+            get: "/api/procedure"
+        };
+    };
+}
+
+// service ProjectPhaseStatusService {
+
+//     rpc ProjectPhaseStatusGet(ProjectPhaseStatusRequest) returns (ProjectPhaseStatus) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasestatuses/{id}"
+//         };
+//     };
+
+//     rpc ProjectPhaseStatusesGet(ProjectPhaseStatusesRequest) returns (ProjectPhaseStatusesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasestatuses"
+//         };
+//     };
+// }
+
+// service ProjectPhaseTaskListService {
+
+//     rpc ProjectPhaseTaskListGet(ProjectPhaseTaskListRequest) returns (ProjectPhaseTaskList) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasetasklists/{id}"
+//         };
+//     };
+
+//     rpc ProjectPhaseTaskListesGet(ProjectPhaseTaskListesRequest) returns (ProjectPhaseTaskListesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasetasklists"
+//         };
+//     };
+
+//     rpc ProjectPhaseTaskListCreate(ProjectPhaseTaskListRequestCreate) returns (ProjectPhaseTaskListResponse) {
+//         option (google.api.http) = {
+//             post: "/api/projectphasetasklists"
+//             body: "*"
+//         };
+//     };
+
+//     rpc ProjectPhaseTaskListUpdate(ProjectPhaseTaskListRequestUpdate) returns (ProjectPhaseTaskListResponse) {
+//         option (google.api.http) = {
+//             put: "/api/projectphasetasklists/{id}"
+//             body: "*"
+//         };
+//     };
+// }
+
+// service ProjectStatusService {
+
+//     rpc ProjectStausGet(ProjectStatusRequest) returns (ProjectStatus) {
+//         option (google.api.http) = {
+//             get: "/api/projectstatuses/{id}"
+//         };
+//     };
+
+//     rpc ProjectStatusesGet(ProjectStatusesRequest) returns (ProjectStatusesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/projectstatuses"
+//         };
+//     };
+// }
+
+service RentalTypeService {
+
+    /*Obtain the list of rental types*/
+    rpc RentalTypesGet(RentalTypesRequest) returns (RentalTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/rentaltype"
+        };
+    };
+}
+
+service RequesterService {
+
+    /*Obtain the list of requesters*/
+    rpc RequestersGet(RequestersRequest) returns (RequestersResponse) {
+        option (google.api.http) = {
+            get: "/api/requester"
+        };
+    };
+}
+
+service RequestStatusService {
+
+    /*Obtain the list of request status*/
+    rpc RequestStatusesGet(RequestStatusesRequest) returns (RequestStatusesResponse) {
+        option (google.api.http) = {
+            get: "/api/requeststatus"
+        };
+    };
+}
+
+service RequestTypeService {
+
+    /*Obtain the list of request types*/
+    rpc RequestTypesGet(RequestTypesRequest) returns (RequestTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/requesttype"
+        };
+    };
+}
+
+service RoomService {
+
+    /*Obtain the list of rooms*/
+    rpc RoomsGet(RoomsRequest) returns (RoomsResponse) {
+        option (google.api.http) = {
+            get: "/api/room"
+        };
+    };
+}
+
+service ShiftService {
+
+    /*Obtain the list of shifts*/
+    rpc ShiftGet(ShiftRequest) returns (ShiftResponse) {
+        option (google.api.http) = {
+            get: "/api/shift"
+        };
+    };
+}
+
+service SiteService {
+
+    /*Obtain the list of sites*/
+    rpc SitesGet(SitesRequest) returns (SitesResponse) {
+        option (google.api.http) = {
+            get: "/api/site"
+        };
+    };
+}
+
+service SkillService {
+
+    /*Obtain the list of skills*/
+    rpc SkillsGet(skillsRequest) returns (SkillsResponse) {
+        option (google.api.http) = {
+            get: "/api/skill"
+        };
+    };
+}
+
+service TaskCodeService {
+
+    /*Obtain the list of task codes*/
+    rpc TaskCodeGet(TaskCodeRequest) returns (TaskCodeResponse) {
+        option (google.api.http) = {
+            get: "/api/taskCode"
+        };
+    };
+}
+
+service TeamService {
+
+    /*Obtain the list of teams*/
+    rpc TaskCodeGet(TeamsRequest) returns (TeamsResponse) {
+        option (google.api.http) = {
+            get: "/api/team"
+        };
+    };
+}
+
+service UnitOfMeasureService {
+
+    /*Obtain the list of unit of measures*/
+    rpc UnitOfMeasuresGet(UnitOfMeasuresRequest) returns (UnitOfMeasuresResponse) {
+        option (google.api.http) = {
+            get: "/api/unitofmeasure"
+        };
+    };
+}
+
+service UserDefinedFieldService {
+ 
+    /*Create a new user defined field (attribute)*/
+    rpc UserDefinedFieldCreate(UserDefinedFieldCreateRequest) returns (UserDefinedFieldCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/userdefinedfields"
+            body: "*"
+        };
+    };
+    /*Update a user define field (attribute) for a work order*/
+    rpc UserDefinedFieldUpdate(UserDefinedFieldCreateRequest) returns (UserDefinedFieldUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/userdefinedfield/{workOrderId}"
+            body: "*"
+        };
+    };
+}
+
+service VendorListService {
+
+    /*Obtain the list of vendors*/
+    rpc VendorListGet(VendorListRequest) returns (VendorListResponse) {
+        option (google.api.http) = {
+            get: "/api/vendorlist"
+        };
+    };
+}
+
+service WarehouseService {
+
+    /*Obtain a warehouse by id*/
+    /*
+    rpc WarehouseGet(WarehouseRequest) returns (Warehouse) {
+        option (google.api.http) = {
+            get: "/api/warehouses/{id}"
+        };
+    };
+    */
+
+    /*Obtain a list of warehouses*/
+    rpc WarehousesGet(WarehousesRequest) returns (WarehousesResponse) {
+        option (google.api.http) = {
+            get: "/api/warehouses"
+        };
+    };
+}
+
+service WorkOrderListService {
+
+    /*Obtain a list of work orders*/
+    rpc WorkOrderListGet(WorkOrderListRequest) returns (WorkOrderListResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderlist"
+        };
+    };
+}
+
+service WorkOrderStatusService {
+
+    /*Obtain the list of work order statuses*/
+    rpc WorkOrderStatusesGet(WorkOrderStatusesRequest) returns (WorkOrderStatusesResponse) {
+        option (google.api.http) = {
+            get: "/api/workorderstatus"
+        };
+    };
+}
+
+
+
+
+
+
+
+
+

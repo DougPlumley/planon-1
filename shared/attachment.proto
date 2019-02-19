@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "document.proto";
+import "note.proto";
+
+message Attachment {
+    int64 id = 1;
+    string title = 2;
+    string text = 3; // the note text if this is a note
+    string url  = 4; // the URL if it is an web link
+    string fileName = 5; // The file name if it is file or image attachment
+    string contentType = 6; // the MIME type if it is file or image attachment
+}
+
+message AttachmentUpdate {
+    int64 id = 1;
+    string title = 2;
+    string text = 3; /*the note text if this is a note*/
+    string url  = 4; /*the URL if it is a web link*/
+    FileInfo fileInfo =5; /*Only when it is file*/
+    string CRUDStatus =6; 
+
+}
+
+
+message FileInfo {
+    string fileName = 1; // The file name if it is file or image attachment
+    string contentType = 2; // the MIME type if it is file or image attachment
+    bytes  blobContent =3;  
+}
+
+
+
+message ViewAttachmentRequest{
+  int64 id = 1;
+}
+
+message ViewAttachmentResponse{
+    FileInfo fileInfo =7 ;
+  }
+
+
+
+service AttachmentService {
+    /*Obtain file attachment*/
+    rpc AttachmentView(ViewAttachmentRequest) returns (ViewAttachmentResponse) {
+        option (google.api.http) = {
+            get: "/attachment/{id}"
+        };
+    };
+}
+
+service DocumentService {
+
+  /*Obtain a document by id*/
+  rpc DocumentGet(DocumentRequest) returns (Document) {
+      option (google.api.http) = {
+          get: "/api/document/{id}"
+      };
+  };
+
+  /*Obtain a list of documents*/
+  rpc DocumentsGet(DocumentsRequest) returns (DocumentsResponse) {
+      option (google.api.http) = {
+          get: "/api/document"
+      };
+  };
+
+  /*Add a new document*/
+  rpc DocumentCreate(DocumentRequestCreate) returns (DocumentResponse) {
+      option (google.api.http) = {
+          post: "/api/document"
+          body: "*"
+      };
+  };
+
+  /*Update a document*/
+  rpc DocumentUpdate(DocumentRequestUpdate) returns (DocumentResponse) {
+      option (google.api.http) = {
+          put: "/api/document/{id}"
+          body: "*"
+      };
+  };
+}
+
+service NoteService {
+
+  /*Obtain a note by id*/
+  rpc NoteGet(NoteRequest) returns (Note) {
+      option (google.api.http) = {
+          get: "/api/note/{id}"
+      };
+  };
+
+  /*Obtain a list of notes*/
+  rpc NotesGet(NotesRequest) returns (NotesResponse) {
+      option (google.api.http) = {
+          get: "/api/note"
+      };
+  };
+
+  /*Add a new note*/
+  rpc NoteCreate(NoteRequestCreate) returns (NoteResponse) {
+      option (google.api.http) = {
+          post: "/api/note"
+          body: "*"
+      };
+  };
+
+  /*Update a note*/
+  rpc NoteUpdate(NoteRequestUpdate) returns (NoteResponse) {
+      option (google.api.http) = {
+          put: "/api/note/{id}"
+          body: "*"
+      };
+  };
+}

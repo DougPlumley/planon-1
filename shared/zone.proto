@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Zone {
+    int64 id = 1;
+    string zone = 2;
+    string description = 3;
+    string status = 4;
+}
+
+message ZoneParameter {
+    int64 id = 1;
+    string zone = 2;
+    string description = 3;
+    string status = 4;
+}
+
+message ZonesRequest {
+    UserInfo userInfo = 1;
+    ZoneParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message ZonesResponse {
+    Response response = 1;
+    repeated Zone zones = 2;
+}
+
+/*
+service ZoneService {
+    rpc ZonesGet(ZonesRequest) returns (ZonesResponse) {
+        option (google.api.http) = {
+            get: "/api/zone"
+        };
+    };
+}
+*/

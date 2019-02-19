@@ -1,0 +1,789 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "requesttype.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/requesttypes": {
+      "get": {
+        "operationId": "RequestTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RequestTypeService"
+        ]
+      },
+      "post": {
+        "operationId": "RequestTypeCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestTypeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RequestTypeRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "RequestTypeService"
+        ]
+      }
+    },
+    "/api/requesttypes/{id}": {
+      "get": {
+        "operationId": "RequestTypeGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestType"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RequestTypeService"
+        ]
+      },
+      "put": {
+        "operationId": "RequestTypeUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RequestTypeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RequestTypeRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "RequestTypeService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "RequestType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "PrintTicket": {
+          "type": "string"
+        },
+        "AttributeLabel1": {
+          "type": "string"
+        },
+        "AttributeLabel2": {
+          "type": "string"
+        },
+        "AttributeLabel3": {
+          "type": "string"
+        },
+        "AttributeLabel4": {
+          "type": "string"
+        },
+        "AttributeLabel5": {
+          "type": "string"
+        },
+        "AttributeLabel6": {
+          "type": "string"
+        },
+        "AttributeLabel7": {
+          "type": "string"
+        },
+        "AttributeLabel8": {
+          "type": "string"
+        },
+        "AttributeLabel9": {
+          "type": "string"
+        },
+        "AttributeLabel10": {
+          "type": "string"
+        },
+        "AttributeLabel11": {
+          "type": "string"
+        },
+        "AttributeLabel12": {
+          "type": "string"
+        },
+        "AttributeLabel13": {
+          "type": "string"
+        },
+        "AttributeLabel14": {
+          "type": "string"
+        },
+        "AttributeLabel15": {
+          "type": "string"
+        },
+        "AttributeLabel16": {
+          "type": "string"
+        },
+        "AttributeLabel17": {
+          "type": "string"
+        },
+        "AttributeLabel18": {
+          "type": "string"
+        },
+        "AttributeLabel19": {
+          "type": "string"
+        },
+        "AttributeLabel20": {
+          "type": "string"
+        },
+        "AttributeLabel21": {
+          "type": "string"
+        },
+        "AttributeLabel22": {
+          "type": "string"
+        },
+        "AttributeLabel23": {
+          "type": "string"
+        },
+        "AttributeLabel24": {
+          "type": "string"
+        },
+        "AttributeLabel25": {
+          "type": "string"
+        },
+        "AttributeLabel26": {
+          "type": "string"
+        },
+        "AttributeLabel27": {
+          "type": "string"
+        },
+        "AttributeLabel28": {
+          "type": "string"
+        },
+        "AttributeLabel29": {
+          "type": "string"
+        },
+        "AttributeLabel30": {
+          "type": "string"
+        },
+        "AttributeMandatory1": {
+          "type": "string"
+        },
+        "AttributeMandatory2": {
+          "type": "string"
+        },
+        "AttributeMandatory3": {
+          "type": "string"
+        },
+        "AttributeMandatory4": {
+          "type": "string"
+        },
+        "AttributeMandatory5": {
+          "type": "string"
+        },
+        "AttributeMandatory6": {
+          "type": "string"
+        },
+        "AttributeMandatory7": {
+          "type": "string"
+        },
+        "AttributeMandatory8": {
+          "type": "string"
+        },
+        "AttributeMandatory9": {
+          "type": "string"
+        },
+        "AttributeMandatory10": {
+          "type": "string"
+        },
+        "AttributeMandatory11": {
+          "type": "string"
+        },
+        "AttributeMandatory12": {
+          "type": "string"
+        },
+        "AttributeMandatory13": {
+          "type": "string"
+        },
+        "AttributeMandatory14": {
+          "type": "string"
+        },
+        "AttributeMandatory15": {
+          "type": "string"
+        },
+        "AttributeMandatory16": {
+          "type": "string"
+        },
+        "AttributeMandatory17": {
+          "type": "string"
+        },
+        "AttributeMandatory18": {
+          "type": "string"
+        },
+        "AttributeMandatory19": {
+          "type": "string"
+        },
+        "AttributeMandatory20": {
+          "type": "string"
+        },
+        "AttributeMandatory21": {
+          "type": "string"
+        },
+        "AttributeMandatory22": {
+          "type": "string"
+        },
+        "AttributeMandatory23": {
+          "type": "string"
+        },
+        "AttributeMandatory24": {
+          "type": "string"
+        },
+        "AttributeMandatory25": {
+          "type": "string"
+        },
+        "AttributeMandatory26": {
+          "type": "string"
+        },
+        "AttributeMandatory27": {
+          "type": "string"
+        },
+        "AttributeMandatory28": {
+          "type": "string"
+        },
+        "AttributeMandatory29": {
+          "type": "string"
+        },
+        "AttributeMandatory30": {
+          "type": "string"
+        },
+        "BillingId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "RequestTypeQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RequestTypeRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "PrintTicket": {
+          "type": "string"
+        },
+        "AttributeLabel1": {
+          "type": "string"
+        },
+        "AttributeLabel2": {
+          "type": "string"
+        },
+        "AttributeLabel3": {
+          "type": "string"
+        },
+        "AttributeLabel4": {
+          "type": "string"
+        },
+        "AttributeLabel5": {
+          "type": "string"
+        },
+        "AttributeLabel6": {
+          "type": "string"
+        },
+        "AttributeLabel7": {
+          "type": "string"
+        },
+        "AttributeLabel8": {
+          "type": "string"
+        },
+        "AttributeLabel9": {
+          "type": "string"
+        },
+        "AttributeLabel10": {
+          "type": "string"
+        },
+        "AttributeLabel11": {
+          "type": "string"
+        },
+        "AttributeLabel12": {
+          "type": "string"
+        },
+        "AttributeLabel13": {
+          "type": "string"
+        },
+        "AttributeLabel14": {
+          "type": "string"
+        },
+        "AttributeLabel15": {
+          "type": "string"
+        },
+        "AttributeLabel16": {
+          "type": "string"
+        },
+        "AttributeLabel17": {
+          "type": "string"
+        },
+        "AttributeLabel18": {
+          "type": "string"
+        },
+        "AttributeLabel19": {
+          "type": "string"
+        },
+        "AttributeLabel20": {
+          "type": "string"
+        },
+        "AttributeLabel21": {
+          "type": "string"
+        },
+        "AttributeLabel22": {
+          "type": "string"
+        },
+        "AttributeLabel23": {
+          "type": "string"
+        },
+        "AttributeLabel24": {
+          "type": "string"
+        },
+        "AttributeLabel25": {
+          "type": "string"
+        },
+        "AttributeLabel26": {
+          "type": "string"
+        },
+        "AttributeLabel27": {
+          "type": "string"
+        },
+        "AttributeLabel28": {
+          "type": "string"
+        },
+        "AttributeLabel29": {
+          "type": "string"
+        },
+        "AttributeLabel30": {
+          "type": "string"
+        },
+        "AttributeMandatory1": {
+          "type": "string"
+        },
+        "AttributeMandatory2": {
+          "type": "string"
+        },
+        "AttributeMandatory3": {
+          "type": "string"
+        },
+        "AttributeMandatory4": {
+          "type": "string"
+        },
+        "AttributeMandatory5": {
+          "type": "string"
+        },
+        "AttributeMandatory6": {
+          "type": "string"
+        },
+        "AttributeMandatory7": {
+          "type": "string"
+        },
+        "AttributeMandatory8": {
+          "type": "string"
+        },
+        "AttributeMandatory9": {
+          "type": "string"
+        },
+        "AttributeMandatory10": {
+          "type": "string"
+        },
+        "AttributeMandatory11": {
+          "type": "string"
+        },
+        "AttributeMandatory12": {
+          "type": "string"
+        },
+        "AttributeMandatory13": {
+          "type": "string"
+        },
+        "AttributeMandatory14": {
+          "type": "string"
+        },
+        "AttributeMandatory15": {
+          "type": "string"
+        },
+        "AttributeMandatory16": {
+          "type": "string"
+        },
+        "AttributeMandatory17": {
+          "type": "string"
+        },
+        "AttributeMandatory18": {
+          "type": "string"
+        },
+        "AttributeMandatory19": {
+          "type": "string"
+        },
+        "AttributeMandatory20": {
+          "type": "string"
+        },
+        "AttributeMandatory21": {
+          "type": "string"
+        },
+        "AttributeMandatory22": {
+          "type": "string"
+        },
+        "AttributeMandatory23": {
+          "type": "string"
+        },
+        "AttributeMandatory24": {
+          "type": "string"
+        },
+        "AttributeMandatory25": {
+          "type": "string"
+        },
+        "AttributeMandatory26": {
+          "type": "string"
+        },
+        "AttributeMandatory27": {
+          "type": "string"
+        },
+        "AttributeMandatory28": {
+          "type": "string"
+        },
+        "AttributeMandatory29": {
+          "type": "string"
+        },
+        "AttributeMandatory30": {
+          "type": "string"
+        },
+        "BillingId": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "RequestTypeRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "PrintTicket": {
+          "type": "string"
+        },
+        "AttributeLabel1": {
+          "type": "string"
+        },
+        "AttributeLabel2": {
+          "type": "string"
+        },
+        "AttributeLabel3": {
+          "type": "string"
+        },
+        "AttributeLabel4": {
+          "type": "string"
+        },
+        "AttributeLabel5": {
+          "type": "string"
+        },
+        "AttributeLabel6": {
+          "type": "string"
+        },
+        "AttributeLabel7": {
+          "type": "string"
+        },
+        "AttributeLabel8": {
+          "type": "string"
+        },
+        "AttributeLabel9": {
+          "type": "string"
+        },
+        "AttributeLabel10": {
+          "type": "string"
+        },
+        "AttributeLabel11": {
+          "type": "string"
+        },
+        "AttributeLabel12": {
+          "type": "string"
+        },
+        "AttributeLabel13": {
+          "type": "string"
+        },
+        "AttributeLabel14": {
+          "type": "string"
+        },
+        "AttributeLabel15": {
+          "type": "string"
+        },
+        "AttributeLabel16": {
+          "type": "string"
+        },
+        "AttributeLabel17": {
+          "type": "string"
+        },
+        "AttributeLabel18": {
+          "type": "string"
+        },
+        "AttributeLabel19": {
+          "type": "string"
+        },
+        "AttributeLabel20": {
+          "type": "string"
+        },
+        "AttributeLabel21": {
+          "type": "string"
+        },
+        "AttributeLabel22": {
+          "type": "string"
+        },
+        "AttributeLabel23": {
+          "type": "string"
+        },
+        "AttributeLabel24": {
+          "type": "string"
+        },
+        "AttributeLabel25": {
+          "type": "string"
+        },
+        "AttributeLabel26": {
+          "type": "string"
+        },
+        "AttributeLabel27": {
+          "type": "string"
+        },
+        "AttributeLabel28": {
+          "type": "string"
+        },
+        "AttributeLabel29": {
+          "type": "string"
+        },
+        "AttributeLabel30": {
+          "type": "string"
+        },
+        "AttributeMandatory1": {
+          "type": "string"
+        },
+        "AttributeMandatory2": {
+          "type": "string"
+        },
+        "AttributeMandatory3": {
+          "type": "string"
+        },
+        "AttributeMandatory4": {
+          "type": "string"
+        },
+        "AttributeMandatory5": {
+          "type": "string"
+        },
+        "AttributeMandatory6": {
+          "type": "string"
+        },
+        "AttributeMandatory7": {
+          "type": "string"
+        },
+        "AttributeMandatory8": {
+          "type": "string"
+        },
+        "AttributeMandatory9": {
+          "type": "string"
+        },
+        "AttributeMandatory10": {
+          "type": "string"
+        },
+        "AttributeMandatory11": {
+          "type": "string"
+        },
+        "AttributeMandatory12": {
+          "type": "string"
+        },
+        "AttributeMandatory13": {
+          "type": "string"
+        },
+        "AttributeMandatory14": {
+          "type": "string"
+        },
+        "AttributeMandatory15": {
+          "type": "string"
+        },
+        "AttributeMandatory16": {
+          "type": "string"
+        },
+        "AttributeMandatory17": {
+          "type": "string"
+        },
+        "AttributeMandatory18": {
+          "type": "string"
+        },
+        "AttributeMandatory19": {
+          "type": "string"
+        },
+        "AttributeMandatory20": {
+          "type": "string"
+        },
+        "AttributeMandatory21": {
+          "type": "string"
+        },
+        "AttributeMandatory22": {
+          "type": "string"
+        },
+        "AttributeMandatory23": {
+          "type": "string"
+        },
+        "AttributeMandatory24": {
+          "type": "string"
+        },
+        "AttributeMandatory25": {
+          "type": "string"
+        },
+        "AttributeMandatory26": {
+          "type": "string"
+        },
+        "AttributeMandatory27": {
+          "type": "string"
+        },
+        "AttributeMandatory28": {
+          "type": "string"
+        },
+        "AttributeMandatory29": {
+          "type": "string"
+        },
+        "AttributeMandatory30": {
+          "type": "string"
+        },
+        "BillingId": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "title": "RequestTypeRequestUpdate"
+    },
+    "RequestTypeResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "requesttype": {
+          "$ref": "#/definitions/RequestType"
+        }
+      }
+    },
+    "RequestTypesResponse": {
+      "type": "object",
+      "properties": {
+        "requesttypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RequestType"
+          }
+        }
+      }
+    }
+  }
+}

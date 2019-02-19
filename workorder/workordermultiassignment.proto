@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+import "userinfo.proto";
+import "response.proto";
+import "employee.proto";
+
+message WorkOrderMultiAssignment {
+    int64 id = 1;
+    Employee Employee = 2;
+}
+
+message WorkOrderMultiAssignmentUpdate {
+    int64 id = 1;
+    string Employee = 2;
+    string crudStatus = 3;
+}
+
+
+
+/* Get assignments of a Work Order*/
+/*
+message GetWorkOrderMultiAssignmentRequest{
+    UserInfo userinfo = 1;
+    int64 workOrderId = 2;
+}
+
+message GetWorkOrderMultiAssignmentResponase{
+    Response response = 1;
+    repeated WorkOrderMultiAssignment multiAssignments = 2;
+}
+*/
+/* Update / create  assignments*/
+message UpdateWorkOrderMultiAssignmentRequest{
+    UserInfo userinfo = 1;
+    int64 workOrderId = 2;
+    repeated WorkOrderMultiAssignmentUpdate  multiAssignments = 3;
+}
+
+message UpdateWorkOrderMultiAssignmentResponase{
+    Response response = 1;
+}
+
+
+// service WorkOrderMultiAssignmentService {
+//     /*Get assignments for a Work Order  by feeding Work Order Id*/
+//     /*
+//     rpc WorkOrderMultiAssignmentsGet(GetWorkOrderMultiAssignmentRequest) returns (GetWorkOrderMultiAssignmentResponase) {
+//         option (google.api.http) = {
+//             get: "/api/workordermultiassignment/{workOrderId}"
+//         };
+//     };
+//     */
+
+//     /*Update assignments for a Work Order*/
+//     rpc WorkOrderMultiAssignmentsPost(UpdateWorkOrderMultiAssignmentRequest) returns (UpdateWorkOrderMultiAssignmentResponase) {
+//         option (google.api.http) = {
+//             post: "/api/workordermultiassignment/{workOrderId}"
+//             body: "*"
+//         };
+//     };
+// }
+
+
+

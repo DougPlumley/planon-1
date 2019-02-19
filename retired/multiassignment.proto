@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+
+message MultiAssignment {
+    int64 id = 1;
+    string Employee = 2;
+    string Name = 3;
+    string Status = 4;
+}
+
+message MultiAssignmentRequest {
+    string id = 1;
+}
+
+message MultiAssignmentResponse {
+    string message = 1;
+    MultiAssignment multiAssignment = 2;
+}
+
+message MultiAssignmentQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message MultiAssignmentsRequest {
+    MultiAssignmentQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message MultiAssignmentsResponse {
+    repeated MultiAssignment multiAssignments = 1;
+}
+
+message MultiAssignmentRequestCreate {
+    int64 id = 1;
+    string Employee = 2;
+    string Name = 3;
+    string Status = 4;
+}
+
+/* MultiAssignmentRequestUpdate */
+message MultiAssignmentRequestUpdate {
+    int64 id = 1;
+    string Employee = 2;
+    string Name = 3;
+    string Status = 4;
+}
+
+service MultiAssignmentService {
+
+    rpc MultiAssignmentGet(MultiAssignmentRequest) returns (MultiAssignment) {
+        option (google.api.http) = {
+            get: "/api/multiassignments/{id}"
+        };
+    };
+
+    rpc MultiAssignmentsGet(MultiAssignmentsRequest) returns (MultiAssignmentsResponse) {
+        option (google.api.http) = {
+            get: "/api/multiassignments"
+        };
+    };
+
+    rpc MultiAssignmentCreate(MultiAssignmentRequestCreate) returns (MultiAssignmentResponse) {
+        option (google.api.http) = {
+            post: "/api/multiassignments"
+            body: "*"
+        };
+    };
+
+    rpc MultiAssignmentUpdate(MultiAssignmentRequestUpdate) returns (MultiAssignmentResponse) {
+        option (google.api.http) = {
+            put: "/api/multiassignments/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/multiassignments
+    GET /api/multiassignments/:id
+    POST /api/multiassignments
+    PUT /api/multiassignments/:id
+    DELETE /api/multiassignments/:id
+
+    POST /api/multiassignments/close/:id
+*/

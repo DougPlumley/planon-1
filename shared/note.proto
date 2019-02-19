@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message Note {
+    int64 id = 1;
+    string BltExpOption = 2;
+    string Bulletin = 3;
+    google.protobuf.Timestamp ExpireDate = 4;
+    string NoteBuilding = 5;
+    google.protobuf.Timestamp NoteDate = 6;
+    string NoteEntity = 7;
+    string NoteEquip = 8;
+    string NoteFloor = 9;
+    string NoteKey = 10;
+    string NoteKey1 = 11;
+    string NoteKey2 = 12;
+    string NoteKey3 = 13;
+    string NoteKey4 = 14;
+    int64 NotePhase = 15;
+    string NoteRoom = 16;
+    string NoteSite = 17;
+    string NoteUser = 18;
+    int64 NumberOfDays = 19;
+    string PageFlag = 20;
+    string PrintFlag = 21;
+    string PrivateFlag = 22;
+    string Text = 23;
+    string Title = 24;
+    string WoFlag = 25;
+    int64 MobileRow = 26;
+    google.protobuf.Timestamp MobileDate = 27;
+}
+
+message NoteRequest {
+    string id = 1;
+}
+
+message NoteResponse {
+    string message = 1;
+    Note note = 2;
+}
+
+message NoteQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message NotesRequest {
+    NoteQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message NotesResponse {
+    repeated Note notes = 1;
+}
+
+message NoteRequestCreate {
+    int64 id = 1;
+    string BltExpOption = 2;
+    string Bulletin = 3;
+    google.protobuf.Timestamp ExpireDate = 4;
+    string NoteBuilding = 5;
+    google.protobuf.Timestamp NoteDate = 6;
+    string NoteEntity = 7;
+    string NoteEquip = 8;
+    string NoteFloor = 9;
+    string NoteKey = 10;
+    string NoteKey1 = 11;
+    string NoteKey2 = 12;
+    string NoteKey3 = 13;
+    string NoteKey4 = 14;
+    int64 NotePhase = 15;
+    string NoteRoom = 16;
+    string NoteSite = 17;
+    string NoteUser = 18;
+    int64 NumberOfDays = 19;
+    string PageFlag = 20;
+    string PrintFlag = 21;
+    string PrivateFlag = 22;
+    string Text = 23;
+    string Title = 24;
+    string WoFlag = 25;
+    int64 MobileRow = 26;
+    google.protobuf.Timestamp MobileDate = 27;
+}
+
+/* NoteRequestUpdate */
+message NoteRequestUpdate {
+    int64 id = 1;
+    string BltExpOption = 2;
+    string Bulletin = 3;
+    google.protobuf.Timestamp ExpireDate = 4;
+    string NoteBuilding = 5;
+    google.protobuf.Timestamp NoteDate = 6;
+    string NoteEntity = 7;
+    string NoteEquip = 8;
+    string NoteFloor = 9;
+    string NoteKey = 10;
+    string NoteKey1 = 11;
+    string NoteKey2 = 12;
+    string NoteKey3 = 13;
+    string NoteKey4 = 14;
+    int64 NotePhase = 15;
+    string NoteRoom = 16;
+    string NoteSite = 17;
+    string NoteUser = 18;
+    int64 NumberOfDays = 19;
+    string PageFlag = 20;
+    string PrintFlag = 21;
+    string PrivateFlag = 22;
+    string Text = 23;
+    string Title = 24;
+    string WoFlag = 25;
+    int64 MobileRow = 26;
+    google.protobuf.Timestamp MobileDate = 27;
+}
+
+// service NoteService {
+
+//     rpc NoteGet(NoteRequest) returns (Note) {
+//         option (google.api.http) = {
+//             get: "/api/notes/{id}"
+//         };
+//     };
+
+//     rpc NotesGet(NotesRequest) returns (NotesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/notes"
+//         };
+//     };
+
+//     rpc NoteCreate(NoteRequestCreate) returns (NoteResponse) {
+//         option (google.api.http) = {
+//             post: "/api/notes"
+//             body: "*"
+//         };
+//     };
+
+//     rpc NoteUpdate(NoteRequestUpdate) returns (NoteResponse) {
+//         option (google.api.http) = {
+//             put: "/api/notes/{id}"
+//             body: "*"
+//         };
+//     };
+// }
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/notes
+    GET /api/notes/:id
+    POST /api/notes
+    PUT /api/notes/:id
+    DELETE /api/notes/:id
+
+    POST /api/notes/close/:id
+*/

@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "common.proto";
+import "accountsegment1.proto";
+import "accountsegment2.proto";
+import "accountsegment3.proto";
+import "accountsegment4.proto";
+import "accountsegment5.proto";
+import "accountsegment6.proto";
+
+
+/*Account is a part of transaction of Parent such as Work Order, do not need specific server for itself*/
+
+message Account {
+	int64 id = 1;
+    int64 objectId = 3;
+    AccountSegment1 acctSegment1 = 4;
+    AccountSegment2 acctSegment2 = 5;
+    AccountSegment3 acctSegment3 = 6;
+    AccountSegment4 acctSegment4 = 7;
+    AccountSegment5 acctSegment5 = 8;
+    AccountSegment6 acctSegment6 = 9;
+    float  percent = 10;
+    string attribute1 = 11;
+    string attribute2 = 12;
+    string attribute3 = 13;
+    string coaName = 14;
+}
+
+message AccountUpdate {
+	int64 id = 1;
+    int64 objectId = 3;
+    string acctSegment1 = 4;
+    string acctSegment2 = 5;
+    string acctSegment3 = 6;
+    string acctSegment4 = 7;
+    string acctSegment5 = 8;
+    string acctSegment6 = 9;
+    float percent = 10;
+    string attribute1 = 11;
+    string attribute2 = 12;
+    string attribute3 = 13;
+    string coaName = 14;
+    string crudStatus =15;
+}
+
+
+/*
+message AccountRequest {
+    string id = 1;
+}
+
+message AccountResponse {
+    string message = 1;
+    Account account = 2;
+}
+
+message AccountQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message AccountsRequest {
+    AccountQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message AccountsResponse {
+    repeated Account accounts = 1;
+}
+
+message AccountRequestCreate {
+	int64 id = 1;
+    int64 AcctGroupId = 2;
+    int64 ObjectId = 3;
+    string AcctSegment1 = 4;
+    string AcctSegment2 = 5;
+    string AcctSegment3 = 6;
+    string AcctSegment4 = 7;
+    string AcctSegment5 = 8;
+    string AcctSegment6 = 9;
+    int64 Percent = 10;
+    string Attribute1 = 11;
+    string Attribute2 = 12;
+    string Attribute3 = 13;
+    string CoaName = 14;
+}
+*/
+/* AccountRequestUpdate */
+/*
+message AccountRequestUpdate {
+	int64 id = 1;
+    int64 AcctGroupId = 2;
+    int64 ObjectId = 3;
+    string AcctSegment1 = 4;
+    string AcctSegment2 = 5;
+    string AcctSegment3 = 6;
+    string AcctSegment4 = 7;
+    string AcctSegment5 = 8;
+    string AcctSegment6 = 9;
+    int64 Percent = 10;
+    string Attribute1 = 11;
+    string Attribute2 = 12;
+    string Attribute3 = 13;
+    string CoaName = 14;
+}
+
+service AccountService {
+
+    rpc AccountGet(AccountRequest) returns (Account) {
+        option (google.api.http) = {
+            get: "/api/accounts/{id}"
+        };
+    };
+
+    rpc AccountsGet(AccountsRequest) returns (AccountsResponse) {
+        option (google.api.http) = {
+            get: "/api/accounts"
+        };
+    };
+
+    rpc AccountCreate(AccountRequestCreate) returns (AccountResponse) {
+        option (google.api.http) = {
+            post: "/api/accounts"
+            body: "*"
+        };
+    };
+
+    rpc AccountUpdate(AccountRequestUpdate) returns (AccountResponse) {
+        option (google.api.http) = {
+            put: "/api/accounts/{id}"
+            body: "*"
+        };
+    };
+}
+*/
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/accounts
+    GET /api/accounts/:id
+    POST /api/accounts
+    PUT /api/accounts/:id
+    DELETE /api/accounts/:id
+
+    POST /api/accounts/close/:id
+*/

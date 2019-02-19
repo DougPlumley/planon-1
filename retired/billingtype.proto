@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+
+message BillingType {
+	int64 id = 1;
+    string BillingType = 2;
+    int64 CreditPercent = 3;
+    string CreditBillingCode = 4;
+    int64 InvoicePercent = 5;
+    string InvoiceBillingCode = 6;
+    int64 LaborPercent = 7;
+    string LaborBillCode = 8;
+    int64 MaterialPercent = 9;
+    string MaterialBillCode = 10;
+    string EquipBillCode = 11;
+    int64 EquipPercent = 12;
+    string MisccostBillCode = 13;
+    string DefBillYype = 14;
+    string DefBilling = 15;
+}
+
+message BillingTypeRequest {
+    string id = 1;
+}
+
+message BillingTypeResponse {
+    string message = 1;
+    BillingType billingtype = 2;
+}
+
+message BillingTypeQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message BillingTypesRequest {
+    BillingTypeQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message BillingTypesResponse {
+    repeated BillingType billingtypes = 1;
+}
+
+message BillingTypeRequestCreate {
+	int64 id = 1;
+    string BillingType = 2;
+    int64 CreditPercent = 3;
+    string CreditBillingCode = 4;
+    int64 InvoicePercent = 5;
+    string InvoiceBillingCode = 6;
+    int64 LaborPercent = 7;
+    string LaborBillCode = 8;
+    int64 MaterialPercent = 9;
+    string MaterialBillCode = 10;
+    string EquipBillCode = 11;
+    int64 EquipPercent = 12;
+    string MisccostBillCode = 13;
+    string DefBillYype = 14;
+    string DefBilling = 15;
+}
+
+/* BillingTypeRequestUpdate */
+message BillingTypeRequestUpdate {
+	int64 id = 1;
+    string BillingType = 2;
+    int64 CreditPercent = 3;
+    string CreditBillingCode = 4;
+    int64 InvoicePercent = 5;
+    string InvoiceBillingCode = 6;
+    int64 LaborPercent = 7;
+    string LaborBillCode = 8;
+    int64 MaterialPercent = 9;
+    string MaterialBillCode = 10;
+    string EquipBillCode = 11;
+    int64 EquipPercent = 12;
+    string MisccostBillCode = 13;
+    string DefBillYype = 14;
+    string DefBilling = 15;
+}
+
+service BillingTypeService {
+
+    rpc BillingTypeGet(BillingTypeRequest) returns (BillingType) {
+        option (google.api.http) = {
+            get: "/api/billingtypes/{id}"
+        };
+    };
+
+    rpc BillingTypesGet(BillingTypesRequest) returns (BillingTypesResponse) {
+        option (google.api.http) = {
+            get: "/api/billingtypes"
+        };
+    };
+
+    rpc BillingTypeCreate(BillingTypeRequestCreate) returns (BillingTypeResponse) {
+        option (google.api.http) = {
+            post: "/api/billingtypes"
+            body: "*"
+        };
+    };
+
+    rpc BillingTypeUpdate(BillingTypeRequestUpdate) returns (BillingTypeResponse) {
+        option (google.api.http) = {
+            put: "/api/billingtypes/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/billingtypes
+    GET /api/billingtypes/:id
+    POST /api/billingtypes
+    PUT /api/billingtypes/:id
+    DELETE /api/billingtypes/:id
+
+    POST /api/billingtypes/close/:id
+*/
+// import "userinfo.proto";
+// import "response.proto";
+
+
+
+// message BillingType {
+//     int64 id = 1;
+//     string type = 2;
+//     string comments = 3;
+// }
+
+
+// message BillingTypeParameter {
+//     string filter = 1;
+// }
+
+// message BillingTypesRequest {
+//     UserInfo userInfo = 1;
+//     BillingTypeParameter parameter = 2;
+//     int64 pageSize = 3;
+//     int64 pageOffset = 4;
+// }
+
+// message BillingTypesResponse {
+//     Response response = 1;
+//     repeated BillingType billingTypes = 2;
+// }
+
+
+// service BillingTypeService {
+//     rpc BillingTypesGet(BillingTypesRequest) returns (BillingTypesResponse) {
+//         option (google.api.http) = {
+//             get: "/list/billingtype"
+//         };
+//     };
+// }

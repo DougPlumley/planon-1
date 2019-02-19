@@ -1,0 +1,181 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+// import "paycode.proto";
+// import "taskcode.proto";
+// import "shift.proto";
+// import "laborstatus.proto";
+// import "laborclass.proto";
+import "userinfo.proto";
+import "response.proto";
+// import "workorderlist.proto";
+// import "employee.proto";
+import "common.proto";
+import "timeapproval.proto";
+
+// message TimeEntry {
+// 	int64 id = 1;
+//     Employee employee = 2;
+//     WorkOrderList workOrderNumber = 3;
+//     google.protobuf.Timestamp workDate = 4;
+//     float hours = 5;
+//     LaborStatus laborStatus = 6;
+//     PayCode payCode = 7; /*List Item*/
+//     TaskCode taskCode = 8; /*List Item*/
+//     Shift shift = 9; /*List Item*/
+//     LaborClass laborClass = 10; /*List Item*/
+//     bool  workDone = 11;
+//     string commets = 12;
+// }
+
+// message TimeEntryUpdate {
+//     int64 id =1;
+//     string employee = 2;
+//     string workOrderNumber = 3;
+//     google.protobuf.Timestamp workDate = 4;
+//     float hours = 5;
+//     string laborStatus = 6;
+//     string payCode = 7; 
+//     string taskCode = 8; 
+//     string shift = 9; 
+//     string laborClass = 10; 
+//     bool  workDone = 11;
+//     string commets = 12;
+// }
+
+/*Fetch single labor by id*/
+message FetchTimeEntryRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+}
+
+message FetchTimeEntryResponse {
+    Response response = 1;
+    TimeEntry timeEntry = 2;
+}
+
+/*Fetch list of labor by patameters*/
+/*
+ - Supervisor can fetch timecard for another employee
+ - currently if fetch by a date range.
+*/
+message TimeEntryParameter {
+    string employee = 1;
+    DateRange dateRange = 2;
+}
+
+message FetchTimeEntriesRequest {
+    UserInfo userInfo = 1;
+    TimeEntryParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message FetchTimeEntriesResponse {
+    Response response = 1;
+    repeated TimeEntry timeEntries = 2;
+}
+
+/* Create Labor*/
+
+message CreateTimeEntryResponse {
+    Response response = 1;
+    TimeEntry timeEntry =2;
+}
+
+message CreateTimeEntryRequest {
+    UserInfo userInfo = 1;
+    TimeEntryUpdate timeEntry =2;
+}
+
+/*Update Labor*/
+
+message UpdateTimeEntryResponse {
+    Response response = 1;
+    TimeEntry timeEntry =2;
+}
+
+message UpdateTimeEntryRequest {
+    UserInfo userInfo = 1;
+    TimeEntryUpdate timeEntry =2;
+}
+
+/*Bulk Update(submit timecard)*/
+
+message BulkUpdateTimeEntry
+{
+    string LaborStatus = 1;
+}
+
+message BulkUpdateTimeEntryRequest {
+    UserInfo userInfo = 1;
+    repeated int64 id =2 ;
+    BulkUpdateTimeEntry bulkUpdateTimeEntry =3;
+}
+
+message BulkUpdateTimeEntryResponse {
+    Response response = 1;
+}
+
+/* Delete Labor*/
+message DeleteTimeEntryRequest {
+    UserInfo userInfo = 1;
+    int64 id =2 ;
+
+}
+message DeleteTimeEntryResponse {
+    Response response = 1;
+}
+
+// service TimeEntryService {
+
+//     /*Obtain time entries*/
+//     rpc TimeEntriesGet(FetchTimeEntryRequest) returns (FetchTimeEntriesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/timeentry"
+//         };
+//     };
+
+//     /*Obtain a time entry by id*/
+//     rpc TimeEntryGet(FetchTimeEntryRequest) returns (FetchTimeEntryResponse) {
+//         option (google.api.http) = {
+//             get: "/api/timeentry/{id}"
+//         };
+//     };
+    
+//     /*Create a new time(labor) entry*/
+//     //rpc LaborCreate(CreateTimeEntryRequest) returns (CreateTimeEntryResponse) {
+//     rpc TimeEntryCreate(CreateTimeEntryRequest) returns (CreateTimeEntryResponse) {
+//         option (google.api.http) = {
+//             post: "/api/timeentry"
+//             body: "*"
+//         };
+//     };
+    
+//     /*Update a time(labor) entry*/
+//     //rpc LaborUpdate(UpdateTimeEntryRequest) returns (UpdateTimeEntryResponse) {
+//     rpc TimeEntryUpdate(UpdateTimeEntryRequest) returns (UpdateTimeEntryResponse) {
+//         option (google.api.http) = {
+//             put: "/api/timeentry"
+//             body: "*"
+//         };
+//     };
+
+//     /*Bulk update time entries*/
+//     rpc TimeEntryBulkUpdate(BulkUpdateTimeEntryRequest) returns (BulkUpdateTimeEntryResponse) {
+//         option (google.api.http) = {
+//             put: "/api/timeentry/bulk"
+//             body: "*"
+//         };
+//     };
+
+//     /*Delete a time entry*/
+//     rpc TimeEntryDelete(DeleteTimeEntryRequest) returns (DeleteTimeEntryResponse) {
+//         option (google.api.http) = {
+//             delete: "/api/timeentry/{id}"
+//         };
+//     };
+// }
+
+

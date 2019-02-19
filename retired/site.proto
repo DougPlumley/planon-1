@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+message Site {
+    int64 id = 1;
+    string Site = 2;
+    string Description = 3;
+    string Active = 4;
+    string Status = 5;
+}
+
+message SiteRequest {
+    string id = 1;
+}
+
+message SiteResponse {
+    string message = 1;
+    Site site = 2;
+}
+
+message SiteQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message SitesRequest {
+    SiteQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message SitesResponse {
+    repeated Site sites = 1;
+}
+
+message SiteRequestCreate {
+    int64 id = 1;
+    string Site = 2;
+    string Description = 3;
+    string Active = 4;
+    string Status = 5;
+}
+
+/* SiteRequestUpdate */
+message SiteRequestUpdate {
+    int64 id = 1;
+    string Site = 2;
+    string Description = 3;
+    string Active = 4;
+    string Status = 5;
+}
+
+service SiteService {
+
+    rpc SiteGet(SiteRequest) returns (Site) {
+        option (google.api.http) = {
+            get: "/api/sites/{id}"
+        };
+    };
+
+    rpc SitesGet(SitesRequest) returns (SitesResponse) {
+        option (google.api.http) = {
+            get: "/api/sites"
+        };
+    };
+
+    rpc SiteCreate(SiteRequestCreate) returns (SiteResponse) {
+        option (google.api.http) = {
+            post: "/api/sites"
+            body: "*"
+        };
+    };
+
+    rpc SiteUpdate(SiteRequestUpdate) returns (SiteResponse) {
+        option (google.api.http) = {
+            put: "/api/sites/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/sites
+    GET /api/sites/:id
+    POST /api/sites
+    PUT /api/sites/:id
+    DELETE /api/sites/:id
+
+    POST /api/sites/close/:id
+*/

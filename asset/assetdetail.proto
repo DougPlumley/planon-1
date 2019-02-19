@@ -1,0 +1,163 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+import "site.proto";
+import "building.proto";
+import "floor.proto";
+import "room.proto";
+import "zone.proto";
+import "assettype.proto";
+import "assetgroup.proto";
+import "assetkeyword.proto";
+import "assetclass.proto";
+import "assetstatus.proto";
+import "manufacturer.proto";
+import "assetcondition.proto";
+import "rentaltype.proto";
+import "attachment.proto";
+//import "assetrental.proto";
+import "assetreading.proto";
+
+
+message AssetDetail {
+    /*Primary key, will be null when Create*/
+    int64 id = 1;
+    string asset = 2;
+    string description = 3 ;
+    AssetType assetype = 4;
+    AssetKeyword assetKeyword= 5;
+    AssetClass assetClass = 6;
+    Manufacturer manufacturer = 7;
+    string model = 8;
+    string serialNo = 9;
+    string barcode =10;
+    string assetNo = 11;
+    /*Location*/
+    Site site = 12;
+    Building building = 13;
+    Floor floor = 14;
+    Room room = 15;
+    Zone zone = 16;
+    AssetGroup assetGroup = 17;
+    string criticality = 18;
+    AssetCondition condition = 19;
+    AssetStatus status = 20;
+    RentalType rentalType =21;
+    float rentalRate =22;
+    float  cost = 23;
+    google.protobuf.Timestamp warrantyDate = 24;
+    repeated Attachment attachments = 25;
+
+}
+/* For Asset Serach*/
+message AssetDetailQueryParameter {
+    int64  id =1;
+    string asset = 2;
+    string description = 3 ;
+    string assetype = 4;
+    string assetKeyword= 5;
+    string assetClass = 6;
+    string manufacturer = 7;
+    string model = 8;
+    string serialNo = 9;
+    string barcode =10;
+    string assetNo = 11;
+    string site = 12;
+    string building = 13;
+    string floor = 14;
+    string room = 15;
+    string zone = 16;
+    string assetGroup = 17;
+    string criticality = 18;
+    string condition = 19;
+    string status = 20;
+    string rentalType =21;
+}
+/*For Create and Update Asset*/
+message AssetDetailUpdate {
+    int64 id = 1;
+    string asset = 2;
+    string description = 3 ;
+    string assetype = 4;
+    string assetKeyword= 5;
+    string assetClass = 6;
+    string manufacturer = 7;
+    string model = 8;
+    string serialNo = 9;
+    string barcode =10;
+    string assetNo = 11;
+    string site = 12;
+    string building = 13;
+    string floor = 14;
+    string room = 15;
+    string zone = 16;
+    string assetGroup = 17;
+    string criticality = 18;
+    string condition = 19;
+    string status = 20;
+    string rentalType =21;
+    float rentalRate =22;
+    float  cost = 23;
+    google.protobuf.Timestamp warrantyDate = 24;
+    repeated AttachmentUpdate attachments =25;
+    repeated AssetReadingUpdate reading = 26;
+}
+
+
+
+/* Ftech Asset By Asset Id*/
+message AssetDetailRequest {
+  UserInfo userInfo = 1;
+  int64 id =2;
+}
+
+message AssetDetailResponse {
+    Response response = 1;
+    AssetDetail asset = 3;
+  }
+  
+
+/*Get List of Assets */
+message AssetDetailsRequest {
+    UserInfo userInfo = 1;
+    AssetDetailQueryParameter parameter =2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message AssetDetailsResponse {
+    Response response = 1;
+    repeated AssetDetail assets =2;
+}
+
+/*Create Asset*/
+message CreateAssetDetailRequest{
+    UserInfo userInfo = 1;
+    AssetDetailUpdate asset = 2;
+}
+
+message CreateAssetDetailResponse{
+    Response response = 1;
+    AssetDetail asset = 2;
+}
+
+/*Update Asset*/
+message UpdateAssetDetailRequest{
+    UserInfo userInfo = 1;
+    int64 id = 2;
+    AssetDetailUpdate asset = 3;
+}
+
+message UpdateAssetDetailResponse{
+    Response response = 1;
+    AssetDetail asset = 2;
+}
+
+
+
+
+
+

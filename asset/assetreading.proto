@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+import "assetcondition.proto";
+import "assetconditionum.proto";
+
+
+message AssetReading {
+    int64 id = 1;
+    string workOrderNumber = 2;
+    AssetCondition conditionType = 3;
+    AssetConditionUM conditionUM = 4;
+    google.protobuf.Timestamp readingDate = 5;
+    float asFoundReading = 6;
+    float reading = 7;
+    google.protobuf.Timestamp enterDate = 8;
+    string enterUser = 9;
+}
+
+/*For Craete and Update*/
+message AssetReadingUpdate {
+    int64 id = 1; // Reading Id
+    string workOrderNumber = 2;
+    string conditionType = 3;
+    string conditionUM = 4;
+    google.protobuf.Timestamp readingDate = 5;
+    float asFoundReading = 6;
+    float reading = 7;
+    string crudStatus =8;  // Create, Update,Delete, Read
+}
+
+
+/*Obtain list of reading by Asset Id*/
+message AssetReadingGetRequest{
+    UserInfo userinfo = 1 ;
+    int64 assetId =2;
+}
+
+message AssetReadingGetResponse{
+    Response response = 1;
+    repeated AssetReading assetReadings =2;
+}
+
+/*Update reading*/
+message AssetReadingUpdateRequest{
+    UserInfo userinfo = 1 ;
+    int64 assetId =2;
+    repeated AssetReadingUpdate readings =3;
+}
+
+message AssetReadingUpdateResponse{
+    Response response = 1;
+}
+
+
+
+
+
+
+
+

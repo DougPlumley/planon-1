@@ -1,0 +1,258 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message PurchaseOrder {
+    int64 id = 1;
+    string UnivObjCls = 2;
+    string MatlBuilding = 3;
+    string MatlObjCls = 4;
+    google.protobuf.Timestamp CurRequireDate = 5;
+    string WoNumber = 6;
+    string Warehouse = 7;
+    string VendorPartNumber = 8;
+    string Um = 9;
+    string Taxable = 10;
+    string Status = 11;
+    google.protobuf.Timestamp RequireDatePoco = 12;
+    google.protobuf.Timestamp RequireDate = 13;
+    int64 ReleaseNo = 14;
+    google.protobuf.Timestamp ReceiveDate = 15;
+    int64 QtyReturned = 16;
+    int64 QtyReceived = 17;
+    int64 QtyPoco = 18;
+    int64 QtyOrdered = 19;
+    int64 QtyMatched = 20;
+    int64 QtyInvoiced = 21;
+    int64 QtyCredited = 22;
+    google.protobuf.Timestamp PromiseDate = 23;
+    string Priority = 24;
+    int64 PricePoco = 25;
+    int64 Price = 26;
+    string PreqNo = 27;
+    int64 PreqLineNo = 28;
+    string Ponumber = 29;
+    string PocoNumber = 30;
+    string PlacedUser = 31;
+    google.protobuf.Timestamp PlacedDate = 32;
+    string PartType = 33;
+    string PartNumber = 34;
+    google.protobuf.Timestamp NextContactDate = 35;
+    string MfrSubstitution = 36;
+    string MfrPartNumber = 37;
+    string MfrBrand = 38;
+    string Mfr = 39;
+    int64 LineNo = 40;
+    google.protobuf.Timestamp LastContactDate = 41;
+    int64 Freight = 42;
+    google.protobuf.Timestamp ExtractDate = 43;
+    string Description = 44;
+    string DeliverTo = 45;
+    string Crew = 46;
+    string Commodity = 47;
+    string Comments = 48;
+    string CloseUser = 49;
+    google.protobuf.Timestamp CloseDate = 50;
+    string ByPhone = 51;
+    string ByFaxPhone = 52;
+    string ByFax = 53;
+    int64 AmtPaid = 54;
+    int64 AmtInvoiced = 55;
+    int64 AmtApSent = 56;
+    int64 AmtApproved = 57;
+    string Advise = 58;
+}
+
+message PurchaseOrderRequest {
+    string id = 1;
+}
+
+message PurchaseOrderResponse {
+    string message = 1;
+    PurchaseOrder purchaseOrder = 2;
+}
+
+message PurchaseOrderQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message PurchaseOrdersRequest {
+    PurchaseOrderQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message PurchaseOrdersResponse {
+    repeated PurchaseOrder purchaseOrders = 1;
+}
+
+message PurchaseOrderRequestCreate {
+    int64 id = 1;
+    string UnivObjCls = 2;
+    string MatlBuilding = 3;
+    string MatlObjCls = 4;
+    google.protobuf.Timestamp CurRequireDate = 5;
+    string WoNumber = 6;
+    string Warehouse = 7;
+    string VendorPartNumber = 8;
+    string Um = 9;
+    string Taxable = 10;
+    string Status = 11;
+    google.protobuf.Timestamp RequireDatePoco = 12;
+    google.protobuf.Timestamp RequireDate = 13;
+    int64 ReleaseNo = 14;
+    google.protobuf.Timestamp ReceiveDate = 15;
+    int64 QtyReturned = 16;
+    int64 QtyReceived = 17;
+    int64 QtyPoco = 18;
+    int64 QtyOrdered = 19;
+    int64 QtyMatched = 20;
+    int64 QtyInvoiced = 21;
+    int64 QtyCredited = 22;
+    google.protobuf.Timestamp PromiseDate = 23;
+    string Priority = 24;
+    int64 PricePoco = 25;
+    int64 Price = 26;
+    string PreqNo = 27;
+    int64 PreqLineNo = 28;
+    string Ponumber = 29;
+    string PocoNumber = 30;
+    string PlacedUser = 31;
+    google.protobuf.Timestamp PlacedDate = 32;
+    string PartType = 33;
+    string PartNumber = 34;
+    google.protobuf.Timestamp NextContactDate = 35;
+    string MfrSubstitution = 36;
+    string MfrPartNumber = 37;
+    string MfrBrand = 38;
+    string Mfr = 39;
+    int64 LineNo = 40;
+    google.protobuf.Timestamp LastContactDate = 41;
+    int64 Freight = 42;
+    google.protobuf.Timestamp ExtractDate = 43;
+    string Description = 44;
+    string DeliverTo = 45;
+    string Crew = 46;
+    string Commodity = 47;
+    string Comments = 48;
+    string CloseUser = 49;
+    google.protobuf.Timestamp CloseDate = 50;
+    string ByPhone = 51;
+    string ByFaxPhone = 52;
+    string ByFax = 53;
+    int64 AmtPaid = 54;
+    int64 AmtInvoiced = 55;
+    int64 AmtApSent = 56;
+    int64 AmtApproved = 57;
+    string Advise = 58;
+}
+
+/* PurchaseOrderRequestUpdate */
+message PurchaseOrderRequestUpdate {
+    int64 id = 1;
+    string UnivObjCls = 2;
+    string MatlBuilding = 3;
+    string MatlObjCls = 4;
+    google.protobuf.Timestamp CurRequireDate = 5;
+    string WoNumber = 6;
+    string Warehouse = 7;
+    string VendorPartNumber = 8;
+    string Um = 9;
+    string Taxable = 10;
+    string Status = 11;
+    google.protobuf.Timestamp RequireDatePoco = 12;
+    google.protobuf.Timestamp RequireDate = 13;
+    int64 ReleaseNo = 14;
+    google.protobuf.Timestamp ReceiveDate = 15;
+    int64 QtyReturned = 16;
+    int64 QtyReceived = 17;
+    int64 QtyPoco = 18;
+    int64 QtyOrdered = 19;
+    int64 QtyMatched = 20;
+    int64 QtyInvoiced = 21;
+    int64 QtyCredited = 22;
+    google.protobuf.Timestamp PromiseDate = 23;
+    string Priority = 24;
+    int64 PricePoco = 25;
+    int64 Price = 26;
+    string PreqNo = 27;
+    int64 PreqLineNo = 28;
+    string Ponumber = 29;
+    string PocoNumber = 30;
+    string PlacedUser = 31;
+    google.protobuf.Timestamp PlacedDate = 32;
+    string PartType = 33;
+    string PartNumber = 34;
+    google.protobuf.Timestamp NextContactDate = 35;
+    string MfrSubstitution = 36;
+    string MfrPartNumber = 37;
+    string MfrBrand = 38;
+    string Mfr = 39;
+    int64 LineNo = 40;
+    google.protobuf.Timestamp LastContactDate = 41;
+    int64 Freight = 42;
+    google.protobuf.Timestamp ExtractDate = 43;
+    string Description = 44;
+    string DeliverTo = 45;
+    string Crew = 46;
+    string Commodity = 47;
+    string Comments = 48;
+    string CloseUser = 49;
+    google.protobuf.Timestamp CloseDate = 50;
+    string ByPhone = 51;
+    string ByFaxPhone = 52;
+    string ByFax = 53;
+    int64 AmtPaid = 54;
+    int64 AmtInvoiced = 55;
+    int64 AmtApSent = 56;
+    int64 AmtApproved = 57;
+    string Advise = 58;
+}
+
+service PurchaseOrderService {
+
+    /*Obtain a purchase order by id*/
+    rpc PurchaseOrderGet(PurchaseOrderRequest) returns (PurchaseOrder) {
+        option (google.api.http) = {
+            get: "/api/purchaseorders/{id}"
+        };
+    };
+
+    /*Obtain a list of purchase orders*/
+    rpc PurchaseOrdersGet(PurchaseOrdersRequest) returns (PurchaseOrdersResponse) {
+        option (google.api.http) = {
+            get: "/api/purchaseorders"
+        };
+    };
+
+    /*Update a purchase order*/
+    rpc PurchaseOrderUpdate(PurchaseOrderRequestUpdate) returns (PurchaseOrderResponse) {
+        option (google.api.http) = {
+            put: "/api/purchaseorders/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create a new purchase order*/
+    rpc PurchaseOrderCreate(PurchaseOrderRequestCreate) returns (PurchaseOrderResponse) {
+        option (google.api.http) = {
+            post: "/api/purchaseorders"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/purchaseorders
+    GET /api/purchaseorders/:id
+    POST /api/purchaseorders
+    PUT /api/purchaseorders/:id
+    DELETE /api/purchaseorders/:id
+
+    POST /api/purchaseorders/close/:id
+*/

@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+
+message ProjectPhaseStatus {
+    int64 id = 1;
+    string Status = 2;
+    int64 Comments = 3;
+    string Active = 4;
+}
+
+message ProjectPhaseStatusRequest {
+    string id = 1;
+}
+
+message ProjectPhaseStatusResponse {
+    string message = 1;
+    ProjectPhaseStatus projectphasestatus = 2;
+}
+
+message ProjectPhaseStatusQuery {
+    repeated int64 statusFilters = 1;
+    repeated string projectPhaseStatus = 2;
+}
+
+message ProjectPhaseStatusesRequest {
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message ProjectPhaseStatusesResponse {
+    repeated ProjectPhaseStatus projectPhaseStatuses = 1;
+}
+
+/* ProjectPhaseStatusRequestUpdate */
+// message ProjectPhaseStatusRequestCreate {
+//     int64 id = 1;
+//     string Status = 2;
+//     int64 Comments = 3;
+//     string Active = 4;
+// }
+
+/* ProjectPhaseStatusRequestUpdate */
+// message ProjectPhaseStatusRequestUpdate {
+//     int64 id = 1;
+//     string Status = 2;
+//     int64 Comments = 3;
+//     string Active = 4;
+// }
+
+// service ProjectPhaseStatusService {
+
+//     rpc ProjectPhaseStatusGet(ProjectPhaseStatusRequest) returns (ProjectPhaseStatus) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasestatuses/{id}"
+//         };
+//     };
+
+//     rpc ProjectPhaseStatusesGet(ProjectPhaseStatusesRequest) returns (ProjectPhaseStatusesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasestatuses"
+//         };
+//     };
+
+//     // rpc ProjectPhaseStatusCreate(ProjectPhaseStatusRequestCreate) returns (ProjectPhaseStatusResponse) {
+//     //     option (google.api.http) = {
+//     //         post: "/api/projectphasestatuses"
+//     //         body: "*"
+//     //     };
+//     // };
+
+//     // rpc ProjectPhaseStatusUpdate(ProjectPhaseStatusRequestUpdate) returns (ProjectPhaseStatusResponse) {
+//     //     option (google.api.http) = {
+//     //         put: "/api/projectphasestatuses/{id}"
+//     //         body: "*"
+//     //     };
+//     // };
+// }
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/projectphasestatuses
+    GET /api/projectphasestatuses/:id
+    POST /api/projectphasestatuses
+    PUT /api/projectphasestatuses/:id
+    DELETE /api/projectphasestatuses/:id
+
+    POST /api/projectphasestatuses/close/:id
+*/

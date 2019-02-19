@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+import "employee.proto";
+import "workorderlist.proto";
+import "warehouse.proto";
+import "partissueitem.proto";
+import "common.proto";
+
+message PartIssue{
+    int64 id = 1;
+    Employee issuedTo =2;
+    string issueNo =3;
+    google.protobuf.Timestamp issueDate = 4;
+    WorkOrderList workOrder = 5;
+    Warehouse warehouse =6;
+    google.protobuf.Timestamp enterDate = 7;
+    string enterUser =8;
+    /*Part Request Information*/
+    string mdNumber = 9;
+    Employee requester = 10;
+    string deliveryInstruction =11;
+    google.protobuf.Timestamp requestDate = 12;
+
+    // relationships
+    repeated PartIssueItem items =13;
+}
+
+
+message PartIssueUpdate{
+    int64 id = 1;
+    string issuedTo =2;
+    string issueNo =3;
+    google.protobuf.Timestamp issueDate = 4;
+    string workOrder = 5;
+    string warehouse =6;
+    string mdNumber = 7;
+    repeated PartIssueItemUpdate items =13;
+}
+
+message PartIssueQueryParameter{
+    int64 id = 1;
+    string issuedTo =2;
+    string issueNo =3;
+    DateRange issueDate = 4;
+    string workOrder = 5;
+    string warehouse =6;
+    string mdNumber = 7;
+    DateRange requestDate = 8;
+}
+
+
+
+
+
+/* Search Part Issue */
+
+message PartIssuesRequest {
+    UserInfo userInfo = 1;
+    PartIssueQueryParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PartIssuesResponse {
+    Response response = 1;
+    repeated PartIssue partIssues = 2;
+}
+
+/*Get Part Issue By ID*/
+message PartIssueRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+}
+message PartIssueResponse {
+    Response response = 1;
+    repeated PartIssue partIssue = 2;
+}
+
+
+/*Create Part Issue*/
+message PartIssueCreateRequest {
+    UserInfo userInfo = 1;
+    PartIssueUpdate partRequest = 2;
+}
+message PartIssueCreateResponse {
+    Response response = 1;
+    PartIssue partIssue = 2;
+}
+
+
+/*Update part Issue*/
+message PartIssueUpdateRequest {
+    UserInfo userInfo = 1;
+    int64 id = 2;
+    PartIssueUpdate partIssue = 3;
+}
+message PartIssueUpdateResponse {
+    Response response = 1;
+    PartIssue partIssue = 2;
+}
+
+
+service PartIssueService {
+
+    /*Obtain a Maintenance Issue by id*/
+    rpc AssetGet(PartIssueRequest) returns (PartIssueResponse) {
+        option (google.api.http) = {
+            get: "/api/partissue/{id}"
+        };
+    };
+
+    /*Update a Maintenance Issue*/
+    rpc PartIssueUpdate(PartIssueUpdateRequest) returns (PartIssueUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/partissue/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create a Maintenance Issue*/
+    rpc PartIssueCreate(PartIssueCreateRequest) returns (PartIssueCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/partissue"
+            body: "*"
+        };
+    };
+
+    /*Obtain for Maintenance Issue(s)*/
+    rpc PartIssuesGET(PartIssuesRequest) returns (PartIssuesResponse) {
+        option (google.api.http) = {
+            get: "/api/partissue"
+        };
+    };
+
+}
+

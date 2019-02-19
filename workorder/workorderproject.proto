@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "projectstatus.proto";
+import "employee.proto";
+import "site.proto";
+import "building.proto";
+import "requester.proto";
+import "assetlist.proto";
+import "maintenancetype.proto";
+import "priority.proto";
+import "billingtype.proto";
+import "account.proto";
+import "document.proto";
+import "workorderprojectphase.proto";
+//import "floor.proto";
+//import "room.proto";
+
+message WorkOrderProject {
+    int64 id = 1;
+    string active = 2; /* from projectstatus active flag*/
+    string reqNumber = 3;
+    string description = 4;
+    string projectManager = 5;
+    Employee assignedTo = 6; /* list */
+    Site site = 7; /* list */
+    Building building = 8; /* list */
+    Requester requester = 9; /* list */
+    string email = 10;
+    string telephone = 11;
+    google.protobuf.Timestamp dueDate = 12;
+    AssetList asset = 13; /* list */
+    google.protobuf.Timestamp customerStartDate = 14;
+    google.protobuf.Timestamp customerDueDate = 15;
+    MaintenanceType maintenanceType = 16 ; /* list */
+    Priority priority = 17;  /* list */
+    ProjectStatus projectStatus = 18; /* from projectstatus status*/
+    BillingType billingType = 19; /*list*/
+    repeated Account accounts = 20; /*relationship attribute to show account details*/
+    repeated WorkOrderProjectPhase projectPhases = 21;
+    repeated Document documents = 22;
+}

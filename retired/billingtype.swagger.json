@@ -1,0 +1,360 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "billingtype.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/billingtypes": {
+      "get": {
+        "operationId": "BillingTypesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillingTypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BillingTypeService"
+        ]
+      },
+      "post": {
+        "operationId": "BillingTypeCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillingTypeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillingTypeRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "BillingTypeService"
+        ]
+      }
+    },
+    "/api/billingtypes/{id}": {
+      "get": {
+        "operationId": "BillingTypeGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillingType"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BillingTypeService"
+        ]
+      },
+      "put": {
+        "operationId": "BillingTypeUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillingTypeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillingTypeRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "BillingTypeService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BillingType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BillingType": {
+          "type": "string"
+        },
+        "CreditPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CreditBillingCode": {
+          "type": "string"
+        },
+        "InvoicePercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "InvoiceBillingCode": {
+          "type": "string"
+        },
+        "LaborPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LaborBillCode": {
+          "type": "string"
+        },
+        "MaterialPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MaterialBillCode": {
+          "type": "string"
+        },
+        "EquipBillCode": {
+          "type": "string"
+        },
+        "EquipPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MisccostBillCode": {
+          "type": "string"
+        },
+        "DefBillYype": {
+          "type": "string"
+        },
+        "DefBilling": {
+          "type": "string"
+        }
+      }
+    },
+    "BillingTypeQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BillingTypeRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BillingType": {
+          "type": "string"
+        },
+        "CreditPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CreditBillingCode": {
+          "type": "string"
+        },
+        "InvoicePercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "InvoiceBillingCode": {
+          "type": "string"
+        },
+        "LaborPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LaborBillCode": {
+          "type": "string"
+        },
+        "MaterialPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MaterialBillCode": {
+          "type": "string"
+        },
+        "EquipBillCode": {
+          "type": "string"
+        },
+        "EquipPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MisccostBillCode": {
+          "type": "string"
+        },
+        "DefBillYype": {
+          "type": "string"
+        },
+        "DefBilling": {
+          "type": "string"
+        }
+      }
+    },
+    "BillingTypeRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BillingType": {
+          "type": "string"
+        },
+        "CreditPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CreditBillingCode": {
+          "type": "string"
+        },
+        "InvoicePercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "InvoiceBillingCode": {
+          "type": "string"
+        },
+        "LaborPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LaborBillCode": {
+          "type": "string"
+        },
+        "MaterialPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MaterialBillCode": {
+          "type": "string"
+        },
+        "EquipBillCode": {
+          "type": "string"
+        },
+        "EquipPercent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MisccostBillCode": {
+          "type": "string"
+        },
+        "DefBillYype": {
+          "type": "string"
+        },
+        "DefBilling": {
+          "type": "string"
+        }
+      },
+      "title": "BillingTypeRequestUpdate"
+    },
+    "BillingTypeResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "billingtype": {
+          "$ref": "#/definitions/BillingType"
+        }
+      }
+    },
+    "BillingTypesResponse": {
+      "type": "object",
+      "properties": {
+        "billingtypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillingType"
+          }
+        }
+      }
+    }
+  }
+}

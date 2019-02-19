@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+
+
+message BillingType {
+    int64 id = 1;
+    string type = 2;
+    string comments = 3;
+}
+
+
+message BillingTypeParameter {
+    int64 id = 1;
+    string type = 2;
+    string comments = 3;
+}
+
+message BillingTypesRequest {
+    UserInfo userInfo = 1;
+    BillingTypeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message BillingTypesResponse {
+    Response response = 1;
+    repeated BillingType billingTypes = 2;
+}
+
+// service BillingTypeService {
+//     rpc BillingTypesGet(BillingTypesRequest) returns (BillingTypesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/billingtype"
+//         };
+//     };
+// }
+

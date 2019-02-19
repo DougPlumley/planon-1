@@ -1,0 +1,173 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message PartRequest {
+    int64 id = 1;
+    string Bin = 2;
+    string Description = 3;
+    google.protobuf.Timestamp ExtractDate = 4;
+    int64 Freight = 5;
+    string IssueNo = 6;
+    string ListType = 7;
+    string MarkupCode = 8;
+    int64 MaterialPercent = 9;
+    string PartLoc1 = 10;
+    string PartLoc2 = 11;
+    string PartLoc3 = 12;
+    string PartLoc4 = 13;
+    string PartLoc5 = 14;
+    string PartNumber = 15;
+    int64 QtyReturned = 16;
+    int64 Quantity = 17;
+    string Um = 18;
+    int64 UnitPrice = 19;
+    string Warehouse = 20;
+    string WoNumber = 21;
+    int64 ReturnedExtracted = 22;
+    int64 PoLineNo = 23;
+    string MatlObjCls = 24;
+    string MatlNuilding = 25;
+    string PoNumber = 26;
+    int64 ReleaseNo = 27;
+    int64 BillingTypeId = 28;
+    int64 LastQtyReturned = 29;
+    google.protobuf.Timestamp MobileDate = 30;
+    string LotNumber = 31;
+}
+
+message PartRequestRequest {
+    string id = 1;
+}
+
+message PartRequestResponse {
+    string message = 1;
+    PartRequest partrequest = 2;
+}
+
+message PartRequestQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message PartRequestsRequest {
+    PartRequestQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message PartRequestsResponse {
+    repeated PartRequest partrequests = 1;
+}
+
+message PartRequestRequestCreate {
+    int64 id = 1;
+    string Bin = 2;
+    string Description = 3;
+    google.protobuf.Timestamp ExtractDate = 4;
+    int64 Freight = 5;
+    string IssueNo = 6;
+    string ListType = 7;
+    string MarkupCode = 8;
+    int64 MaterialPercent = 9;
+    string PartLoc1 = 10;
+    string PartLoc2 = 11;
+    string PartLoc3 = 12;
+    string PartLoc4 = 13;
+    string PartLoc5 = 14;
+    string PartNumber = 15;
+    int64 QtyReturned = 16;
+    int64 Quantity = 17;
+    string Um = 18;
+    int64 UnitPrice = 19;
+    string Warehouse = 20;
+    string WoNumber = 21;
+    int64 ReturnedExtracted = 22;
+    int64 PoLineNo = 23;
+    string MatlObjCls = 24;
+    string MatlNuilding = 25;
+    string PoNumber = 26;
+    int64 ReleaseNo = 27;
+    int64 BillingTypeId = 28;
+    int64 LastQtyReturned = 29;
+    google.protobuf.Timestamp MobileDate = 30;
+    string LotNumber = 31;
+}
+
+/* PartRequestRequestUpdate */
+message PartRequestRequestUpdate {
+    int64 id = 1;
+    string Bin = 2;
+    string Description = 3;
+    google.protobuf.Timestamp ExtractDate = 4;
+    int64 Freight = 5;
+    string IssueNo = 6;
+    string ListType = 7;
+    string MarkupCode = 8;
+    int64 MaterialPercent = 9;
+    string PartLoc1 = 10;
+    string PartLoc2 = 11;
+    string PartLoc3 = 12;
+    string PartLoc4 = 13;
+    string PartLoc5 = 14;
+    string PartNumber = 15;
+    int64 QtyReturned = 16;
+    int64 Quantity = 17;
+    string Um = 18;
+    int64 UnitPrice = 19;
+    string Warehouse = 20;
+    string WoNumber = 21;
+    int64 ReturnedExtracted = 22;
+    int64 PoLineNo = 23;
+    string MatlObjCls = 24;
+    string MatlNuilding = 25;
+    string PoNumber = 26;
+    int64 ReleaseNo = 27;
+    int64 BillingTypeId = 28;
+    int64 LastQtyReturned = 29;
+    google.protobuf.Timestamp MobileDate = 30;
+    string LotNumber = 31;
+}
+
+service PartRequestService {
+
+    rpc PartRequestGet(PartRequestRequest) returns (PartRequest) {
+        option (google.api.http) = {
+            get: "/api/partrequests/{id}"
+        };
+    };
+
+    rpc PartRequestsGet(PartRequestsRequest) returns (PartRequestsResponse) {
+        option (google.api.http) = {
+            get: "/api/partrequests"
+        };
+    };
+
+    rpc PartRequestCreate(PartRequestRequestCreate) returns (PartRequestResponse) {
+        option (google.api.http) = {
+            post: "/api/partrequests"
+            body: "*"
+        };
+    };
+
+    rpc PartRequestUpdate(PartRequestRequestUpdate) returns (PartRequestResponse) {
+        option (google.api.http) = {
+            put: "/api/partrequests/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/partrequests
+    GET /api/partrequests/:id
+    POST /api/partrequests
+    PUT /api/partrequests/:id
+    DELETE /api/partrequests/:id
+
+    POST /api/partrequests/close/:id
+*/

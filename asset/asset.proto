@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "assetdetail.proto";
+import "assetrental.proto";
+import "assetreading.proto";
+
+
+service AssetDetailService {
+    
+    /*Obtain an asset by id*/
+    rpc AssetDetailGet(AssetDetailRequest) returns (AssetDetailResponse) {
+        option (google.api.http) = {
+            get: "/api/asset/{id}"
+        };
+    };
+
+    /*Obtain list of Assets*/
+    rpc AssetDetailsGET(AssetDetailsRequest) returns (AssetDetailsResponse) {
+        option (google.api.http) = {
+            get: "/api/asset"
+        };
+    };
+
+    /*Update an asset*/
+    rpc AssetDetailUpdate(UpdateAssetDetailRequest) returns (UpdateAssetDetailResponse) {
+        option (google.api.http) = {
+            put: "/api/asset/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create an asset*/
+    rpc AssetDetailCreate(CreateAssetDetailRequest) returns (CreateAssetDetailResponse) {
+        option (google.api.http) = {
+            post: "/api/asset"
+            body: "*"
+        };
+    };
+
+}
+
+
+service AssetRentalService {
+    
+    /*Obtain rental by rental id*/
+    rpc AssetRentalGet(AssetRentalFetchByIDRequest) returns (AssetRentalFetchByIDResponse) {
+        option (google.api.http) = {
+            get: "/api/assetrental/{id}"
+        };
+    };
+
+    /*Obtain rental by asset Id*/
+    rpc AssetAssetRentalsGet(AssetRentalFetchByAssetIDRequest) returns (AssetRentalFetchByAssetIDResponse) {
+        option (google.api.http) = {
+            get: "/api/assetassetrental/{assetId}"
+        };
+    };
+
+
+    /*Search for asset rental(s)*/
+    rpc AssetRentalsSearch(AssetRentalSearchRequest) returns (AssetRentalSearchResponse) {
+        option (google.api.http) = {
+            get: "/api/assetrental"
+        };
+    };
+
+    /*Update rental information for an asset*/
+    rpc AssetRentalUpdate(AssetRentalUpdateRequest) returns (AssetRentalUpdateResponse) {
+        option (google.api.http) = {
+            put: "/api/assetrental/{id}"
+            body: "*"
+        };
+    };
+    
+    /*Create a new asset rental*/
+    rpc AssetRentalRentalCreate(AssetRentalCreateRequest) returns (AssetRentalCreateResponse) {
+        option (google.api.http) = {
+            post: "/api/assetrental"
+            body: "*"
+        };
+    };
+
+}
+
+service AssetReadingService {
+    
+    /*Obtain readings of an asset by asset id*/
+    rpc AssetReadingsGet(AssetReadingGetRequest) returns (AssetReadingGetResponse) {
+        option (google.api.http) = {
+            get: "/api/assetreading/{assetId}"
+        };
+    };
+
+    /*Update a Reading*/
+    rpc AssetReadingsUpdate(AssetReadingUpdateRequest) returns (AssetReadingUpdateResponse) {
+        option (google.api.http) = {
+            post: "/api/assetreading"
+            body: "*"
+        };
+    };
+
+}

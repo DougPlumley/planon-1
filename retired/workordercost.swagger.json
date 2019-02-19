@@ -1,0 +1,303 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "workordercost.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/workordercosts": {
+      "get": {
+        "operationId": "WorkOrderCostsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderCostsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "WorkOrderCostService"
+        ]
+      },
+      "post": {
+        "operationId": "WorkOrderCostCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderCostResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WorkOrderCostRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "WorkOrderCostService"
+        ]
+      }
+    },
+    "/api/workordercosts/{id}": {
+      "get": {
+        "operationId": "WorkOrderCostGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderCost"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WorkOrderCostService"
+        ]
+      },
+      "put": {
+        "operationId": "WorkOrderCostUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderCostResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WorkOrderCostRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "WorkOrderCostService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "WorkOrderCost": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActAdj": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActEquipment": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActLabor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActMaterial": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActPo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActLaborHours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActMiscCosts": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "WorkOrderCostQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "WorkOrderCostRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActAdj": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActEquipment": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActLabor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActMaterial": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActPo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActLaborHours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActMiscCosts": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "WorkOrderCostRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActAdj": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActEquipment": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActLabor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActMaterial": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActPo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActLaborHours": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActMiscCosts": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "title": "WorkOrderCostRequestUpdate"
+    },
+    "WorkOrderCostResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "workOrderCost": {
+          "$ref": "#/definitions/WorkOrderCost"
+        }
+      }
+    },
+    "WorkOrderCostsResponse": {
+      "type": "object",
+      "properties": {
+        "workOrderCosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WorkOrderCost"
+          }
+        }
+      }
+    }
+  }
+}

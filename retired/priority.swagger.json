@@ -1,0 +1,483 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "priority.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/priorities": {
+      "get": {
+        "operationId": "PrioritiesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PrioritiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PriorityService"
+        ]
+      },
+      "post": {
+        "operationId": "PriorityCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PriorityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PriorityRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "PriorityService"
+        ]
+      }
+    },
+    "/api/priorities/{id}": {
+      "get": {
+        "operationId": "PriorityGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Priority"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PriorityService"
+        ]
+      },
+      "put": {
+        "operationId": "PriorityUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PriorityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PriorityRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "PriorityService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PrioritiesResponse": {
+      "type": "object",
+      "properties": {
+        "priorities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Priority"
+          }
+        }
+      }
+    },
+    "Priority": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "AvailSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorB": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorG": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorR": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "GreyColor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "GroupId": {
+          "type": "string"
+        },
+        "GroupMgr": {
+          "type": "string"
+        },
+        "GroupName": {
+          "type": "string"
+        },
+        "HatchColor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HatchPattern": {
+          "type": "string"
+        },
+        "HatchScale": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HeadCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HegisCode": {
+          "type": "string"
+        },
+        "IsDept": {
+          "type": "string"
+        },
+        "LevelNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MinSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PlanId": {
+          "type": "string"
+        },
+        "ReportsTo": {
+          "type": "string"
+        },
+        "FillCode": {
+          "type": "string"
+        }
+      }
+    },
+    "PriorityQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PriorityRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "AvailSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorB": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorG": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorR": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "GreyColor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "GroupId": {
+          "type": "string"
+        },
+        "GroupMgr": {
+          "type": "string"
+        },
+        "GroupName": {
+          "type": "string"
+        },
+        "HatchColor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HatchPattern": {
+          "type": "string"
+        },
+        "HatchScale": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HeadCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HegisCode": {
+          "type": "string"
+        },
+        "IsDept": {
+          "type": "string"
+        },
+        "LevelNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MinSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PlanId": {
+          "type": "string"
+        },
+        "ReportsTo": {
+          "type": "string"
+        },
+        "FillCode": {
+          "type": "string"
+        }
+      }
+    },
+    "PriorityRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AcctSegment1": {
+          "type": "string"
+        },
+        "AcctSegment2": {
+          "type": "string"
+        },
+        "AcctSegment3": {
+          "type": "string"
+        },
+        "AcctSegment4": {
+          "type": "string"
+        },
+        "AcctSegment5": {
+          "type": "string"
+        },
+        "AcctSegment6": {
+          "type": "string"
+        },
+        "AvailSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorB": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorG": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ColorR": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "GreyColor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "GroupId": {
+          "type": "string"
+        },
+        "GroupMgr": {
+          "type": "string"
+        },
+        "GroupName": {
+          "type": "string"
+        },
+        "HatchColor": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HatchPattern": {
+          "type": "string"
+        },
+        "HatchScale": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HeadCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "HegisCode": {
+          "type": "string"
+        },
+        "IsDept": {
+          "type": "string"
+        },
+        "LevelNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MinSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PlanId": {
+          "type": "string"
+        },
+        "ReportsTo": {
+          "type": "string"
+        },
+        "FillCode": {
+          "type": "string"
+        }
+      },
+      "title": "PriorityRequestUpdate"
+    },
+    "PriorityResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "priority": {
+          "$ref": "#/definitions/Priority"
+        }
+      }
+    }
+  }
+}

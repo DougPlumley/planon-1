@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message AssetStatus {
+    int64 id = 1;
+    string Status = 2;
+    string description = 3;
+    bool active = 4;
+}
+
+message AssetStatusParameter {
+    int64 id = 1;
+    string Status = 2;
+    string description = 3;
+    bool active = 4;
+}
+
+message AssetStatusesRequest {
+    UserInfo userInfo = 1;
+    AssetStatusParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message AssetStatusesResponse {
+    Response response = 1;
+    repeated AssetStatus assetStatuses = 2;
+}
+
+
+// service AssetStatusService {
+//     rpc AssetStatusesGet(AssetStatusesRequest) returns (AssetStatusesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/assetstatus"
+//         };
+//     };
+// }

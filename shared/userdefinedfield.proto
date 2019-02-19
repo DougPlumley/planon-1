@@ -1,0 +1,227 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+// import "google/protobuf/timestamp.proto";
+
+message UserDefinedField {
+    int64 id = 1;
+    string attribute1 = 2;
+    string attribute2 = 3;
+    string attribute3 = 4;
+    string attribute4 = 5;
+    string attribute5 = 6;
+    string attribute6 = 7;
+    string attribute7 = 8;
+    string attribute8 = 9;
+    string attribute9 = 10;
+    string attribute10 = 11;
+    string attribute11 = 12;
+    string attribute12 = 13;
+    string attribute13 = 14;
+    string attribute14 = 15;
+    string attribute15 = 16;
+    string attribute16 = 17;
+    string attribute17 = 18;
+    string attribute18 = 19;
+    string attribute19 = 20;
+    string attribute20 = 21;
+    string attribute21 = 22;
+    string attribute22 = 23;
+    string attribute23 = 24;
+    string attribute24 = 25;
+    string attribute25 = 26;
+    string attribute26 = 27;
+    string attribute27 = 28;
+    string attribute28 = 29;
+    string attribute29 = 30;
+    string attribute30 = 31;
+}
+
+message UserDefinedFieldCreate {
+    int64 id = 1;
+    string attribute1 = 2;
+    string attribute2 = 3;
+    string attribute3 = 4;
+    string attribute4 = 5;
+    string attribute5 = 6;
+    string attribute6 = 7;
+    string attribute7 = 8;
+    string attribute8 = 9;
+    string attribute9 = 10;
+    string attribute10 = 11;
+    string attribute11 = 12;
+    string attribute12 = 13;
+    string attribute13 = 14;
+    string attribute14 = 15;
+    string attribute15 = 16;
+    string attribute16 = 17;
+    string attribute17 = 18;
+    string attribute18 = 19;
+    string attribute19 = 20;
+    string attribute20 = 21;
+    string attribute21 = 22;
+    string attribute22 = 23;
+    string attribute23 = 24;
+    string attribute24 = 25;
+    string attribute25 = 26;
+    string attribute26 = 27;
+    string attribute27 = 28;
+    string attribute28 = 29;
+    string attribute29 = 30;
+    string attribute30 = 31;
+}
+
+/* UserDefinedFieldRequestUpdate */
+message UserDefinedFieldUpdate {
+    int64 id = 1;
+    string attribute1 = 2;
+    string attribute2 = 3;
+    string attribute3 = 4;
+    string attribute4 = 5;
+    string attribute5 = 6;
+    string attribute6 = 7;
+    string attribute7 = 8;
+    string attribute8 = 9;
+    string attribute9 = 10;
+    string attribute10 = 11;
+    string attribute11 = 12;
+    string attribute12 = 13;
+    string attribute13 = 14;
+    string attribute14 = 15;
+    string attribute15 = 16;
+    string attribute16 = 17;
+    string attribute17 = 18;
+    string attribute18 = 19;
+    string attribute19 = 20;
+    string attribute20 = 21;
+    string attribute21 = 22;
+    string attribute22 = 23;
+    string attribute23 = 24;
+    string attribute24 = 25;
+    string attribute25 = 26;
+    string attribute26 = 27;
+    string attribute27 = 28;
+    string attribute28 = 29;
+    string attribute29 = 30;
+    string attribute30 = 31;
+}
+
+
+/*Create*/
+message UserDefinedFieldCreateRequest {
+    UserInfo userInfo = 1;
+    int64 workOrderId = 2;
+    UserDefinedFieldCreate userDefinedField = 3;
+}
+
+message UserDefinedFieldCreateResponse {
+    Response response =1;
+    UserDefinedField userDefinedField = 2;
+}
+
+/*Update*/
+message UserDefinedFieldUpdateRequest {
+    UserInfo userInfo = 1;
+    int64 workOrderId = 2;
+    UserDefinedFieldCreate userDefinedField = 3;
+}
+
+message UserDefinedFieldUpdateResponse {
+    Response response =1;
+    UserDefinedField userDefinedField = 2;
+}
+
+
+// service UserDefinedFieldService {
+ 
+//     /*Create new record*/
+//     rpc UserDefinedFieldCreate(UserDefinedFieldCreateRequest) returns (UserDefinedFieldCreateResponse) {
+//         option (google.api.http) = {
+//             post: "/api/userdefinedfields"
+//             body: "*"
+//         };
+//     };
+//     /*Update new record*/
+//     rpc UserDefinedFieldUpdate(UserDefinedFieldCreateRequest) returns (UserDefinedFieldUpdateResponse) {
+//         option (google.api.http) = {
+//             put: "/api/userdefinedfield/{workOrderId}"
+//             body: "*"
+//         };
+//     };
+// }
+
+
+
+
+/*
+message UserDefinedFieldCreateRequest {
+    UserInfo userInfo = 1;
+    UserDefinedFieldCreate userDefinedField = 2;
+}
+
+message UserDefinedFieldCreateResponse {
+    Response response =1;
+    UserDefinedField userDefinedField = 2;
+}
+
+message UserDefinedFieldQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message UserDefinedFieldsRequest {
+    UserDefinedFieldQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message UserDefinedFieldsResponse {
+    repeated UserDefinedField userDefinedFields = 1;
+}
+
+
+
+
+service UserDefinedFieldService {
+
+    rpc UserDefinedFieldGet(UserDefinedFieldRequest) returns (UserDefinedField) {
+        option (google.api.http) = {
+            get: "/api/userdefinedfields/{id}"
+        };
+    };
+
+    rpc UserDefinedFieldsGet(UserDefinedFieldsRequest) returns (UserDefinedFieldsResponse) {
+        option (google.api.http) = {
+            get: "/api/userdefinedfields"
+        };
+    };
+
+    rpc UserDefinedFieldCreate(UserDefinedFieldRequestCreate) returns (UserDefinedFieldResponse) {
+        option (google.api.http) = {
+            post: "/api/userdefinedfields"
+            body: "*"
+        };
+    };
+
+    rpc UserDefinedFieldUpdate(UserDefinedFieldRequestUpdate) returns (UserDefinedFieldResponse) {
+        option (google.api.http) = {
+            put: "/api/userdefinedfields/{id}"
+            body: "*"
+        };
+    };
+}
+*/
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/userdefinedfields
+    GET /api/userdefinedfields/:id
+    POST /api/userdefinedfields
+    PUT /api/userdefinedfields/:id
+    DELETE /api/userdefinedfields/:id
+
+    POST /api/userdefinedfields/close/:id
+*/

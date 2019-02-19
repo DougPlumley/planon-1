@@ -1,0 +1,932 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "labor.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/timeapproval": {
+      "get": {
+        "summary": "Obtain a list of time approval requests",
+        "operationId": "TimeApprovalsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TimeApprovalsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "parameter.workDate.dateFrom",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "parameter.workDate.dateTo",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "parameter.employee",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.totalHours",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "name": "parameter.status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.supervisor",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TimeApprovalService"
+        ]
+      },
+      "put": {
+        "summary": "Approve or reject a time approval request",
+        "operationId": "TimeApprovalUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateTimeApprovalResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateTimeApprovalRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TimeApprovalService"
+        ]
+      }
+    },
+    "/api/timeapproval/{id}": {
+      "get": {
+        "summary": "Obtain a time approval request by id",
+        "operationId": "TimeApprovalGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TimeApprovalResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TimeApprovalService"
+        ]
+      }
+    },
+    "/api/timeentry": {
+      "get": {
+        "summary": "Obtain time entries",
+        "operationId": "TimeEntriesGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/FetchTimeEntriesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "TimeEntryService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new time(labor) entry",
+        "operationId": "TimeEntryCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateTimeEntryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateTimeEntryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TimeEntryService"
+        ]
+      },
+      "put": {
+        "summary": "Update a time(labor) entry",
+        "operationId": "TimeEntryUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateTimeEntryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateTimeEntryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TimeEntryService"
+        ]
+      }
+    },
+    "/api/timeentry/bulk": {
+      "put": {
+        "summary": "Bulk update time entries",
+        "operationId": "TimeEntryBulkUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BulkUpdateTimeEntryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BulkUpdateTimeEntryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TimeEntryService"
+        ]
+      }
+    },
+    "/api/timeentry/{id}": {
+      "get": {
+        "summary": "Obtain a time entry by id",
+        "operationId": "TimeEntryGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/FetchTimeEntryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TimeEntryService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a time entry",
+        "operationId": "TimeEntryDelete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeleteTimeEntryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TimeEntryService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BulkUpdateTimeEntry": {
+      "type": "object",
+      "properties": {
+        "LaborStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "BulkUpdateTimeEntryRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "bulkUpdateTimeEntry": {
+          "$ref": "#/definitions/BulkUpdateTimeEntry"
+        }
+      }
+    },
+    "BulkUpdateTimeEntryResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        }
+      }
+    },
+    "CreateTimeEntryRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "timeEntry": {
+          "$ref": "#/definitions/TimeEntryUpdate"
+        }
+      }
+    },
+    "CreateTimeEntryResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "timeEntry": {
+          "$ref": "#/definitions/TimeEntry"
+        }
+      }
+    },
+    "DateRange": {
+      "type": "object",
+      "properties": {
+        "dateFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dateTo": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "DeleteTimeEntryResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        }
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        }
+      }
+    },
+    "FetchTimeEntriesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "timeEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeEntry"
+          }
+        }
+      }
+    },
+    "FetchTimeEntryResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "timeEntry": {
+          "$ref": "#/definitions/TimeEntry"
+        }
+      }
+    },
+    "LaborClass": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "LaborStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "supervisorRejection": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "PayCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payCode": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "responseCode": {
+          "$ref": "#/definitions/ResponseCode"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseCode": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "EXCEPTION",
+        "UNKNOW"
+      ],
+      "default": "SUCCESS"
+    },
+    "Shift": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "TaskCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "crew": {
+          "type": "string"
+        }
+      }
+    },
+    "TimeApproval": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "dateDescription": {
+          "type": "string"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "totalHours": {
+          "type": "number",
+          "format": "float"
+        },
+        "status": {
+          "type": "string"
+        },
+        "approvalOrRejectAll": {
+          "type": "string"
+        },
+        "rejectReason": {
+          "$ref": "#/definitions/LaborStatus"
+        },
+        "supervisor": {
+          "$ref": "#/definitions/Employee"
+        },
+        "timeEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeEntry"
+          }
+        }
+      }
+    },
+    "TimeApprovalQueryParameter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "workDate": {
+          "$ref": "#/definitions/DateRange"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "totalHours": {
+          "type": "number",
+          "format": "float"
+        },
+        "status": {
+          "type": "string"
+        },
+        "supervisor": {
+          "type": "string"
+        }
+      }
+    },
+    "TimeApprovalResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "timeApproval": {
+          "$ref": "#/definitions/TimeApproval"
+        }
+      }
+    },
+    "TimeApprovalUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "dateDescription": {
+          "type": "string"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "totalHours": {
+          "type": "number",
+          "format": "float"
+        },
+        "status": {
+          "type": "string"
+        },
+        "approvalOrRejectAll": {
+          "type": "string"
+        },
+        "rejectReason": {
+          "type": "string"
+        },
+        "timeEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeEntryUpdate"
+          }
+        }
+      }
+    },
+    "TimeApprovalsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "timeApprovals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeApproval"
+          }
+        }
+      }
+    },
+    "TimeEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "workOrderNumber": {
+          "$ref": "#/definitions/WorkOrderList"
+        },
+        "workDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "laborStatus": {
+          "$ref": "#/definitions/LaborStatus"
+        },
+        "payCode": {
+          "$ref": "#/definitions/PayCode"
+        },
+        "taskCode": {
+          "$ref": "#/definitions/TaskCode"
+        },
+        "shift": {
+          "$ref": "#/definitions/Shift"
+        },
+        "laborClass": {
+          "$ref": "#/definitions/LaborClass"
+        },
+        "workDone": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "commets": {
+          "type": "string"
+        },
+        "approvalOrReject": {
+          "type": "string"
+        },
+        "rejectReason": {
+          "$ref": "#/definitions/LaborStatus"
+        }
+      }
+    },
+    "TimeEntryUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "workDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "laborStatus": {
+          "type": "string"
+        },
+        "payCode": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "shift": {
+          "type": "string"
+        },
+        "laborClass": {
+          "type": "string"
+        },
+        "workDone": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "commets": {
+          "type": "string"
+        },
+        "approvalOrReject": {
+          "type": "string"
+        },
+        "rejectReason": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateTimeApprovalRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "timeApproval": {
+          "$ref": "#/definitions/TimeApprovalUpdate"
+        }
+      }
+    },
+    "UpdateTimeApprovalResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "timeApproval": {
+          "$ref": "#/definitions/TimeApproval"
+        }
+      }
+    },
+    "UpdateTimeEntryRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "timeEntry": {
+          "$ref": "#/definitions/TimeEntryUpdate"
+        }
+      }
+    },
+    "UpdateTimeEntryResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "timeEntry": {
+          "$ref": "#/definitions/TimeEntry"
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        }
+      }
+    },
+    "WorkOrderList": {
+      "type": "object",
+      "properties": {
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "crew": {
+          "type": "string"
+        },
+        "assignedTo": {
+          "type": "string"
+        },
+        "payCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "equipment": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "reqType": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

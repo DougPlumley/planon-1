@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Commodity {
+    int64 id = 1;
+	string commodity = 2;
+    string description = 3;
+}
+
+message CommodityParameter {
+    int64 id = 1;
+	string commodity = 2;
+    string description = 3;
+}
+
+message CommoditiesRequest {
+    UserInfo userInfo = 1;
+    CommodityParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message CommoditiesResponse {
+    Response response = 1;
+    repeated Commodity Commodities = 2;
+}
+
+// service CommodityService {
+//     rpc CommoditysGet(CommoditiesRequest) returns (CommoditiesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/commodity"
+//         };
+//     };
+// }

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+
+message AccountSegment6 {
+    int64 id = 1;
+    string accountSegment = 2;
+    string description = 3;
+}
+
+message AccountSegment6Parameter {
+    int64 id = 1;
+    string accountSegment = 2;
+    string description = 3;
+}
+
+
+message AccountSegments6Request {
+    UserInfo userInfo = 1;
+    AccountSegment6Parameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message AccountSegments6Response {
+    Response response = 1;
+    repeated AccountSegment6 accountSegments = 2;
+}

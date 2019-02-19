@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message AssetList {
+    int64 id = 1;
+    string asset = 2;
+    string description = 3 ;
+    string assetType = 4;
+    string rentalType = 5;
+    string rentalRate = 6;
+    string assetClass = 7;
+    string barcode = 8;
+    string site = 9;
+    string building = 10;
+    string floor = 11;
+    string room =12;
+    string status=13;
+    bool active =14; 
+}
+
+message AssetListParameter {
+    
+    string asset = 2;
+    string description = 3 ;
+    string assetType = 4;
+    string rentalType = 5;
+    string rentalRate = 6;
+    string assetClass = 7;
+    string barcode = 8;
+    string site = 9;
+    string building = 10;
+    string floor = 11;
+    string room =12; 
+    string status=13;
+    bool active =14; 
+}
+
+
+/*
+message AssetListQueryParameter {
+    string filter = 1;
+}
+*/
+
+message AssetListRequest {
+    UserInfo userInfo = 1;
+    AssetListParameter queryParameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message AssetListResponse {
+    Response response = 1;
+    repeated AssetList assets = 2;
+}

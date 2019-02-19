@@ -1,0 +1,1754 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "asset.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/asset": {
+      "get": {
+        "summary": "Obtain list of Assets",
+        "operationId": "AssetDetailsGET",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetDetailsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "parameter.asset",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.description",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.assetype",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.assetKeyword",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.assetClass",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.manufacturer",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.model",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.serialNo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.barcode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.assetNo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.site",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.building",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.floor",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.room",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.zone",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.assetGroup",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.criticality",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.condition",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.rentalType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      },
+      "post": {
+        "summary": "Create an asset",
+        "operationId": "AssetDetailCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateAssetDetailResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateAssetDetailRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      }
+    },
+    "/api/asset/{id}": {
+      "get": {
+        "summary": "Obtain an asset by id",
+        "operationId": "AssetDetailGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetDetailResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      },
+      "put": {
+        "summary": "Update an asset",
+        "operationId": "AssetDetailUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateAssetDetailResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateAssetDetailRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetDetailService"
+        ]
+      }
+    },
+    "/api/assetassetrental/{assetId}": {
+      "get": {
+        "summary": "Obtain rental by asset Id",
+        "operationId": "AssetAssetRentalsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalFetchByAssetIDResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      }
+    },
+    "/api/assetreading": {
+      "post": {
+        "summary": "Update a Reading",
+        "operationId": "AssetReadingsUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetReadingUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetReadingUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetReadingService"
+        ]
+      }
+    },
+    "/api/assetreading/{assetId}": {
+      "get": {
+        "summary": "Obtain readings of an asset by asset id",
+        "operationId": "AssetReadingsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetReadingGetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userinfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userinfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetReadingService"
+        ]
+      }
+    },
+    "/api/assetrental": {
+      "get": {
+        "summary": "Search for asset rental(s)",
+        "operationId": "AssetRentalsSearch",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalSearchResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "assetRental.asset",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "assetRental.employee",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "assetRental.workOrder",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "assetRental.hours",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "name": "assetRental.rate",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "name": "assetRental.date.dateFrom",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "assetRental.date.dateTo",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "assetRental.rentType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "assetRental.requestType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "assetRental.taskCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new asset rental",
+        "operationId": "AssetRentalRentalCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetRentalCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      }
+    },
+    "/api/assetrental/{id}": {
+      "get": {
+        "summary": "Obtain rental by rental id",
+        "operationId": "AssetRentalGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalFetchByIDResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      },
+      "put": {
+        "summary": "Update rental information for an asset",
+        "operationId": "AssetRentalUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssetRentalUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetRentalUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetRentalService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AssetClass": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "class": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetCondition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "group": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetConditionUM": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "um": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "Primary key, will be null when Create"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetype": {
+          "$ref": "#/definitions/AssetType"
+        },
+        "assetKeyword": {
+          "$ref": "#/definitions/AssetKeyword"
+        },
+        "assetClass": {
+          "$ref": "#/definitions/AssetClass"
+        },
+        "manufacturer": {
+          "$ref": "#/definitions/Manufacturer"
+        },
+        "model": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "assetNo": {
+          "type": "string"
+        },
+        "site": {
+          "$ref": "#/definitions/Site",
+          "title": "Location"
+        },
+        "building": {
+          "$ref": "#/definitions/Building"
+        },
+        "floor": {
+          "$ref": "#/definitions/Floor"
+        },
+        "room": {
+          "$ref": "#/definitions/Room"
+        },
+        "zone": {
+          "$ref": "#/definitions/Zone"
+        },
+        "assetGroup": {
+          "$ref": "#/definitions/AssetGroup"
+        },
+        "criticality": {
+          "type": "string"
+        },
+        "condition": {
+          "$ref": "#/definitions/AssetCondition"
+        },
+        "status": {
+          "$ref": "#/definitions/AssetStatus"
+        },
+        "rentalType": {
+          "$ref": "#/definitions/RentalType"
+        },
+        "rentalRate": {
+          "type": "number",
+          "format": "float"
+        },
+        "cost": {
+          "type": "number",
+          "format": "float"
+        },
+        "warrantyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Attachment"
+          }
+        }
+      }
+    },
+    "AssetDetailQueryParameter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetype": {
+          "type": "string"
+        },
+        "assetKeyword": {
+          "type": "string"
+        },
+        "assetClass": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "assetNo": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "assetGroup": {
+          "type": "string"
+        },
+        "criticality": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "rentalType": {
+          "type": "string"
+        }
+      },
+      "title": "For Asset Serach"
+    },
+    "AssetDetailResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetail"
+        }
+      }
+    },
+    "AssetDetailUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetype": {
+          "type": "string"
+        },
+        "assetKeyword": {
+          "type": "string"
+        },
+        "assetClass": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "assetNo": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "assetGroup": {
+          "type": "string"
+        },
+        "criticality": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "rentalType": {
+          "type": "string"
+        },
+        "rentalRate": {
+          "type": "number",
+          "format": "float"
+        },
+        "cost": {
+          "type": "number",
+          "format": "float"
+        },
+        "warrantyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AttachmentUpdate"
+          }
+        },
+        "reading": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetReadingUpdate"
+          }
+        }
+      },
+      "title": "For Create and Update Asset"
+    },
+    "AssetDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetDetail"
+          }
+        }
+      }
+    },
+    "AssetGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "group": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetKeyword": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "keyword": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "assetType": {
+          "type": "string"
+        },
+        "rentalType": {
+          "type": "string"
+        },
+        "rentalRate": {
+          "type": "string"
+        },
+        "assetClass": {
+          "type": "string"
+        },
+        "barcode": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "AssetReading": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "conditionType": {
+          "$ref": "#/definitions/AssetCondition"
+        },
+        "conditionUM": {
+          "$ref": "#/definitions/AssetConditionUM"
+        },
+        "readingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "asFoundReading": {
+          "type": "number",
+          "format": "float"
+        },
+        "reading": {
+          "type": "number",
+          "format": "float"
+        },
+        "enterDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "enterUser": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetReadingGetResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetReadings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetReading"
+          }
+        }
+      }
+    },
+    "AssetReadingUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "conditionType": {
+          "type": "string"
+        },
+        "conditionUM": {
+          "type": "string"
+        },
+        "readingDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "asFoundReading": {
+          "type": "number",
+          "format": "float"
+        },
+        "reading": {
+          "type": "number",
+          "format": "float"
+        },
+        "crudStatus": {
+          "type": "string"
+        }
+      },
+      "title": "For Craete and Update"
+    },
+    "AssetReadingUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userinfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "assetId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "readings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetReadingUpdate"
+          }
+        }
+      },
+      "title": "Update reading"
+    },
+    "AssetReadingUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        }
+      }
+    },
+    "AssetRental": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetList"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "workOrder": {
+          "$ref": "#/definitions/WorkOrderList"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "rate": {
+          "type": "number",
+          "format": "float"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rentType": {
+          "$ref": "#/definitions/RentalType"
+        },
+        "requestType": {
+          "$ref": "#/definitions/RequestType"
+        },
+        "taskCode": {
+          "$ref": "#/definitions/TaskCode"
+        },
+        "percent": {
+          "type": "number",
+          "format": "float"
+        },
+        "FuelCharge": {
+          "type": "number",
+          "format": "float"
+        },
+        "Miles": {
+          "type": "number",
+          "format": "float"
+        },
+        "MileageRate": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "AssetRentalCreateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      }
+    },
+    "AssetRentalCreateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      }
+    },
+    "AssetRentalFetchByAssetIDResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetRental"
+          }
+        }
+      }
+    },
+    "AssetRentalFetchByIDResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRental"
+        }
+      }
+    },
+    "AssetRentalSearch": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "workOrder": {
+          "type": "string"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "rate": {
+          "type": "number",
+          "format": "float"
+        },
+        "date": {
+          "$ref": "#/definitions/DateRange"
+        },
+        "rentType": {
+          "type": "string"
+        },
+        "requestType": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetRentalSearchResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRentals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetRental"
+          }
+        }
+      }
+    },
+    "AssetRentalUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "type": "string"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "workOrder": {
+          "type": "string"
+        },
+        "hours": {
+          "type": "number",
+          "format": "float"
+        },
+        "rate": {
+          "type": "number",
+          "format": "float"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rentType": {
+          "type": "string"
+        },
+        "requestType": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "percent": {
+          "type": "number",
+          "format": "float"
+        },
+        "FuelCharge": {
+          "type": "number",
+          "format": "float"
+        },
+        "Miles": {
+          "type": "number",
+          "format": "float"
+        },
+        "MileageRate": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "AssetRentalUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      },
+      "title": "Rental Update"
+    },
+    "AssetRentalUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "assetRental": {
+          "$ref": "#/definitions/AssetRentalUpdate"
+        }
+      }
+    },
+    "AssetStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "AssetType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Attachment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        }
+      }
+    },
+    "AttachmentUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "fileInfo": {
+          "$ref": "#/definitions/FileInfo"
+        },
+        "CRUDStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "Building": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "building": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "abbrevation": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "siteId": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateAssetDetailRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetailUpdate"
+        }
+      },
+      "title": "Create Asset"
+    },
+    "CreateAssetDetailResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetail"
+        }
+      }
+    },
+    "DateRange": {
+      "type": "object",
+      "properties": {
+        "dateFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dateTo": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        }
+      }
+    },
+    "FileInfo": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "blobContent": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "Floor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "buildingId": {
+          "type": "string"
+        }
+      }
+    },
+    "Manufacturer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "RentalType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "responseCode": {
+          "$ref": "#/definitions/ResponseCode"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseCode": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "EXCEPTION",
+        "UNKNOW"
+      ],
+      "default": "SUCCESS"
+    },
+    "Room": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "room": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "floorId": {
+          "type": "string"
+        }
+      }
+    },
+    "Site": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "site": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "TaskCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "crew": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateAssetDetailRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetailUpdate"
+        }
+      },
+      "title": "Update Asset"
+    },
+    "UpdateAssetDetailResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "asset": {
+          "$ref": "#/definitions/AssetDetail"
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        }
+      }
+    },
+    "WorkOrderList": {
+      "type": "object",
+      "properties": {
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "crew": {
+          "type": "string"
+        },
+        "assignedTo": {
+          "type": "string"
+        },
+        "payCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "equipment": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "reqType": {
+          "type": "string"
+        }
+      }
+    },
+    "Zone": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "zone": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

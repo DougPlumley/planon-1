@@ -1,0 +1,817 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "purchaseorder.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/purchaseorders": {
+      "get": {
+        "summary": "Obtain a list of purchase orders",
+        "operationId": "PurchaseOrdersGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseOrdersResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PurchaseOrderService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new purchase order",
+        "operationId": "PurchaseOrderCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PurchaseOrderRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "PurchaseOrderService"
+        ]
+      }
+    },
+    "/api/purchaseorders/{id}": {
+      "get": {
+        "summary": "Obtain a purchase order by id",
+        "operationId": "PurchaseOrderGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseOrder"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PurchaseOrderService"
+        ]
+      },
+      "put": {
+        "summary": "Update a purchase order",
+        "operationId": "PurchaseOrderUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PurchaseOrderResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PurchaseOrderRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "PurchaseOrderService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PurchaseOrder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UnivObjCls": {
+          "type": "string"
+        },
+        "MatlBuilding": {
+          "type": "string"
+        },
+        "MatlObjCls": {
+          "type": "string"
+        },
+        "CurRequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "VendorPartNumber": {
+          "type": "string"
+        },
+        "Um": {
+          "type": "string"
+        },
+        "Taxable": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "RequireDatePoco": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReceiveDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "QtyReturned": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyReceived": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyPoco": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyOrdered": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyMatched": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyInvoiced": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyCredited": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PromiseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "PricePoco": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Price": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PreqNo": {
+          "type": "string"
+        },
+        "PreqLineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Ponumber": {
+          "type": "string"
+        },
+        "PocoNumber": {
+          "type": "string"
+        },
+        "PlacedUser": {
+          "type": "string"
+        },
+        "PlacedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PartType": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "NextContactDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "MfrSubstitution": {
+          "type": "string"
+        },
+        "MfrPartNumber": {
+          "type": "string"
+        },
+        "MfrBrand": {
+          "type": "string"
+        },
+        "Mfr": {
+          "type": "string"
+        },
+        "LineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LastContactDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Freight": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ExtractDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DeliverTo": {
+          "type": "string"
+        },
+        "Crew": {
+          "type": "string"
+        },
+        "Commodity": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ByPhone": {
+          "type": "string"
+        },
+        "ByFaxPhone": {
+          "type": "string"
+        },
+        "ByFax": {
+          "type": "string"
+        },
+        "AmtPaid": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtInvoiced": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtApSent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtApproved": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Advise": {
+          "type": "string"
+        }
+      }
+    },
+    "PurchaseOrderQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PurchaseOrderRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UnivObjCls": {
+          "type": "string"
+        },
+        "MatlBuilding": {
+          "type": "string"
+        },
+        "MatlObjCls": {
+          "type": "string"
+        },
+        "CurRequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "VendorPartNumber": {
+          "type": "string"
+        },
+        "Um": {
+          "type": "string"
+        },
+        "Taxable": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "RequireDatePoco": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReceiveDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "QtyReturned": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyReceived": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyPoco": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyOrdered": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyMatched": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyInvoiced": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyCredited": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PromiseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "PricePoco": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Price": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PreqNo": {
+          "type": "string"
+        },
+        "PreqLineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Ponumber": {
+          "type": "string"
+        },
+        "PocoNumber": {
+          "type": "string"
+        },
+        "PlacedUser": {
+          "type": "string"
+        },
+        "PlacedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PartType": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "NextContactDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "MfrSubstitution": {
+          "type": "string"
+        },
+        "MfrPartNumber": {
+          "type": "string"
+        },
+        "MfrBrand": {
+          "type": "string"
+        },
+        "Mfr": {
+          "type": "string"
+        },
+        "LineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LastContactDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Freight": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ExtractDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DeliverTo": {
+          "type": "string"
+        },
+        "Crew": {
+          "type": "string"
+        },
+        "Commodity": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ByPhone": {
+          "type": "string"
+        },
+        "ByFaxPhone": {
+          "type": "string"
+        },
+        "ByFax": {
+          "type": "string"
+        },
+        "AmtPaid": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtInvoiced": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtApSent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtApproved": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Advise": {
+          "type": "string"
+        }
+      }
+    },
+    "PurchaseOrderRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UnivObjCls": {
+          "type": "string"
+        },
+        "MatlBuilding": {
+          "type": "string"
+        },
+        "MatlObjCls": {
+          "type": "string"
+        },
+        "CurRequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "WoNumber": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "VendorPartNumber": {
+          "type": "string"
+        },
+        "Um": {
+          "type": "string"
+        },
+        "Taxable": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "RequireDatePoco": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RequireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ReleaseNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ReceiveDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "QtyReturned": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyReceived": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyPoco": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyOrdered": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyMatched": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyInvoiced": {
+          "type": "string",
+          "format": "int64"
+        },
+        "QtyCredited": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PromiseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Priority": {
+          "type": "string"
+        },
+        "PricePoco": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Price": {
+          "type": "string",
+          "format": "int64"
+        },
+        "PreqNo": {
+          "type": "string"
+        },
+        "PreqLineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Ponumber": {
+          "type": "string"
+        },
+        "PocoNumber": {
+          "type": "string"
+        },
+        "PlacedUser": {
+          "type": "string"
+        },
+        "PlacedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PartType": {
+          "type": "string"
+        },
+        "PartNumber": {
+          "type": "string"
+        },
+        "NextContactDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "MfrSubstitution": {
+          "type": "string"
+        },
+        "MfrPartNumber": {
+          "type": "string"
+        },
+        "MfrBrand": {
+          "type": "string"
+        },
+        "Mfr": {
+          "type": "string"
+        },
+        "LineNo": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LastContactDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Freight": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ExtractDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DeliverTo": {
+          "type": "string"
+        },
+        "Crew": {
+          "type": "string"
+        },
+        "Commodity": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ByPhone": {
+          "type": "string"
+        },
+        "ByFaxPhone": {
+          "type": "string"
+        },
+        "ByFax": {
+          "type": "string"
+        },
+        "AmtPaid": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtInvoiced": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtApSent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AmtApproved": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Advise": {
+          "type": "string"
+        }
+      },
+      "title": "PurchaseOrderRequestUpdate"
+    },
+    "PurchaseOrderResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "purchaseOrder": {
+          "$ref": "#/definitions/PurchaseOrder"
+        }
+      }
+    },
+    "PurchaseOrdersResponse": {
+      "type": "object",
+      "properties": {
+        "purchaseOrders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PurchaseOrder"
+          }
+        }
+      }
+    }
+  }
+}

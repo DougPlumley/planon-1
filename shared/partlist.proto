@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+
+
+message PartList{
+    int64 id = 1;
+    string partNumber = 2;
+    string partDescription =3;
+}
+
+message PartSearchList {
+    int64 id = 1;
+    string partNumber = 2;
+    string partDescription =3;
+    string warehouse = 4;
+    string commodity = 5;
+    string um = 6;
+    string partType = 7;
+    string partStatus = 8;
+    float  price =9;
+    float  quantityReserved =10;
+    float  quantityOnHand =11;
+    float  quantityOnOrder =12;
+    float  quantityAvaialble =13;
+    string category1 =14;
+    string category2 =15;
+    string category3 =16;
+    string category4 =17;
+    string category5 =18;
+    string manufacturer =19;
+    string vebdorPartNumber =20;
+    bool   hasPartImage =21;
+    string defaultBin =22;
+}
+
+message PartSearchListParameter{
+    string searchTerm = 1;
+    string warehouse = 2;
+    string category1 = 3;
+    string category2 = 4;
+    string category3 = 5;
+    string category4 = 6;
+    string category5 = 7;
+    string commodity = 8;
+}
+
+message PartSearchListRequest {
+    UserInfo userinfo =1;
+    PartSearchListParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PartSearchListResponse{
+    Response response =1;
+    repeated PartSearchList parts = 2;
+}
+
+/*
+service PartListService {
+     rpc PartSearchList(PartSearchListRequest) returns (PartSearchListResponse) {
+         option (google.api.http) = {
+             get: "/api/partlist"
+         };
+     };
+ }
+*/

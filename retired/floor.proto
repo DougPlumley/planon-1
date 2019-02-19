@@ -1,0 +1,245 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message Floor {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Floor = 4;
+    string Description = 5;	
+    string Status = 6;
+    string Active = 7;
+    string FloorType = 8;
+    google.protobuf.Timestamp CloseDate = 9;
+    string CloseUser = 10;
+    int64 UsableSqft = 11;
+    string SqrFeetSource = 12;
+    int64 Sqft1 = 13;
+    int64 Sqft2 = 14;
+    int64 Sqft3 = 15;
+    int64 Sqft4 = 16;
+    int64 Sqft5 = 17;
+    int64 NonUsableSqft = 18;
+    int64 NonCarpetedSqft = 19;
+    int64 InteriorSqft = 20;
+    int64 CarpetedSqft = 21;
+    int64 GrossSqft = 22;
+    int64 CoreSqft = 23;
+    string CadDrawing = 24;
+    string Dwf = 25;
+    string WebImage = 26;
+    string ImageName = 27;
+    google.protobuf.Timestamp AvailDate = 28;
+    string PlanId = 29;
+    string Owned = 30;
+    int64 MobileRow = 31;
+    string Attribute1 = 32;
+    string Attribute2 = 33;
+    string Attribute3 = 34;
+    string Attribute4 = 35;
+    string Attribute5 = 36;
+    string Attribute6 = 37;
+    string Attribute7 = 38;
+    string Attribute8 = 39;
+    string Attribute9 = 40;
+    string Attribute10 = 41;
+    string Attribute11 = 42;
+    string Attribute12 = 43;
+    string Attribute13 = 44;
+    string Attribute14 = 45;
+    string Attribute15 = 46;
+    string Attribute16 = 47;
+    string Attribute17 = 48;
+    string Attribute18 = 49;
+    string Attribute19 = 50;
+    string Attribute20 = 51;
+    string Attribute21 = 52;
+    string Attribute22 = 53;
+    string Attribute23 = 54;
+    string Attribute24 = 55;
+}
+
+message FloorRequest {
+    string id = 1;
+}
+
+message FloorResponse {
+    string message = 1;
+    Floor floor = 2;
+}
+
+message FloorQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message FloorsRequest {
+    FloorQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message FloorsResponse {
+    repeated Floor floors = 1;
+}
+
+message FloorRequestCreate {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Floor = 4;
+    string Description = 5;	
+    string Status = 6;
+    string Active = 7;
+    string FloorType = 8;
+    google.protobuf.Timestamp CloseDate = 9;
+    string CloseUser = 10;
+    int64 UsableSqft = 11;
+    string SqrFeetSource = 12;
+    int64 Sqft1 = 13;
+    int64 Sqft2 = 14;
+    int64 Sqft3 = 15;
+    int64 Sqft4 = 16;
+    int64 Sqft5 = 17;
+    int64 NonUsableSqft = 18;
+    int64 NonCarpetedSqft = 19;
+    int64 InteriorSqft = 20;
+    int64 CarpetedSqft = 21;
+    int64 GrossSqft = 22;
+    int64 CoreSqft = 23;
+    string CadDrawing = 24;
+    string Dwf = 25;
+    string WebImage = 26;
+    string ImageName = 27;
+    google.protobuf.Timestamp AvailDate = 28;
+    string PlanId = 29;
+    string Owned = 30;
+    int64 MobileRow = 31;
+    string Attribute1 = 32;
+    string Attribute2 = 33;
+    string Attribute3 = 34;
+    string Attribute4 = 35;
+    string Attribute5 = 36;
+    string Attribute6 = 37;
+    string Attribute7 = 38;
+    string Attribute8 = 39;
+    string Attribute9 = 40;
+    string Attribute10 = 41;
+    string Attribute11 = 42;
+    string Attribute12 = 43;
+    string Attribute13 = 44;
+    string Attribute14 = 45;
+    string Attribute15 = 46;
+    string Attribute16 = 47;
+    string Attribute17 = 48;
+    string Attribute18 = 49;
+    string Attribute19 = 50;
+    string Attribute20 = 51;
+    string Attribute21 = 52;
+    string Attribute22 = 53;
+    string Attribute23 = 54;
+    string Attribute24 = 55;
+}
+
+/* FloorRequestUpdate */
+message FloorRequestUpdate {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Floor = 4;
+    string Description = 5;	
+    string Status = 6;
+    string Active = 7;
+    string FloorType = 8;
+    google.protobuf.Timestamp CloseDate = 9;
+    string CloseUser = 10;
+    int64 UsableSqft = 11;
+    string SqrFeetSource = 12;
+    int64 Sqft1 = 13;
+    int64 Sqft2 = 14;
+    int64 Sqft3 = 15;
+    int64 Sqft4 = 16;
+    int64 Sqft5 = 17;
+    int64 NonUsableSqft = 18;
+    int64 NonCarpetedSqft = 19;
+    int64 InteriorSqft = 20;
+    int64 CarpetedSqft = 21;
+    int64 GrossSqft = 22;
+    int64 CoreSqft = 23;
+    string CadDrawing = 24;
+    string Dwf = 25;
+    string WebImage = 26;
+    string ImageName = 27;
+    google.protobuf.Timestamp AvailDate = 28;
+    string PlanId = 29;
+    string Owned = 30;
+    int64 MobileRow = 31;
+    string Attribute1 = 32;
+    string Attribute2 = 33;
+    string Attribute3 = 34;
+    string Attribute4 = 35;
+    string Attribute5 = 36;
+    string Attribute6 = 37;
+    string Attribute7 = 38;
+    string Attribute8 = 39;
+    string Attribute9 = 40;
+    string Attribute10 = 41;
+    string Attribute11 = 42;
+    string Attribute12 = 43;
+    string Attribute13 = 44;
+    string Attribute14 = 45;
+    string Attribute15 = 46;
+    string Attribute16 = 47;
+    string Attribute17 = 48;
+    string Attribute18 = 49;
+    string Attribute19 = 50;
+    string Attribute20 = 51;
+    string Attribute21 = 52;
+    string Attribute22 = 53;
+    string Attribute23 = 54;
+    string Attribute24 = 55;
+}
+
+service FloorService {
+
+    rpc FloorGet(FloorRequest) returns (Floor) {
+        option (google.api.http) = {
+            get: "/api/floors/{id}"
+        };
+    };
+
+    rpc FloorsGet(FloorsRequest) returns (FloorsResponse) {
+        option (google.api.http) = {
+            get: "/api/floors"
+        };
+    };
+
+    rpc FloorCreate(FloorRequestCreate) returns (FloorResponse) {
+        option (google.api.http) = {
+            post: "/api/floors"
+            body: "*"
+        };
+    };
+
+    rpc FloorUpdate(FloorRequestUpdate) returns (FloorResponse) {
+        option (google.api.http) = {
+            put: "/api/floors/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/floors
+    GET /api/floors/:id
+    POST /api/floors
+    PUT /api/floors/:id
+    DELETE /api/floors/:id
+
+    POST /api/floors/close/:id
+*/

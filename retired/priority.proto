@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+message Priority {
+	int64 id = 1;
+    string AcctSegment1 = 2;
+    string AcctSegment2 = 3;
+    string AcctSegment3 = 4;
+    string AcctSegment4 = 5;
+    string AcctSegment5 = 6;
+    string AcctSegment6 = 7;
+    int64 AvailSqft = 8;
+    int64 ColorB = 9;
+    int64 ColorG = 10;
+    int64 ColorR = 11;
+    string Description = 12;
+    int64 GreyColor = 13;
+    string GroupId = 14;
+    string GroupMgr = 15;
+    string GroupName = 16;
+    int64 HatchColor = 17;
+    string HatchPattern = 18;
+    int64 HatchScale = 19;
+    int64 HeadCount = 20;
+    string HegisCode = 21;
+    string IsDept = 22;
+    int64 LevelNo = 23;
+    int64 MinSqft = 24;
+    string PlanId = 25;
+    string ReportsTo = 26;
+    string FillCode = 27;
+}
+
+message PriorityRequest {
+    string id = 1;
+}
+
+message PriorityResponse {
+    string message = 1;
+    Priority priority = 2;
+}
+
+message PriorityQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message PrioritiesRequest {
+    PriorityQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message PrioritiesResponse {
+    repeated Priority priorities = 1;
+}
+
+message PriorityRequestCreate {
+	int64 id = 1;
+    string AcctSegment1 = 2;
+    string AcctSegment2 = 3;
+    string AcctSegment3 = 4;
+    string AcctSegment4 = 5;
+    string AcctSegment5 = 6;
+    string AcctSegment6 = 7;
+    int64 AvailSqft = 8;
+    int64 ColorB = 9;
+    int64 ColorG = 10;
+    int64 ColorR = 11;
+    string Description = 12;
+    int64 GreyColor = 13;
+    string GroupId = 14;
+    string GroupMgr = 15;
+    string GroupName = 16;
+    int64 HatchColor = 17;
+    string HatchPattern = 18;
+    int64 HatchScale = 19;
+    int64 HeadCount = 20;
+    string HegisCode = 21;
+    string IsDept = 22;
+    int64 LevelNo = 23;
+    int64 MinSqft = 24;
+    string PlanId = 25;
+    string ReportsTo = 26;
+    string FillCode = 27;
+}
+
+/* PriorityRequestUpdate */
+message PriorityRequestUpdate {
+	int64 id = 1;
+    string AcctSegment1 = 2;
+    string AcctSegment2 = 3;
+    string AcctSegment3 = 4;
+    string AcctSegment4 = 5;
+    string AcctSegment5 = 6;
+    string AcctSegment6 = 7;
+    int64 AvailSqft = 8;
+    int64 ColorB = 9;
+    int64 ColorG = 10;
+    int64 ColorR = 11;
+    string Description = 12;
+    int64 GreyColor = 13;
+    string GroupId = 14;
+    string GroupMgr = 15;
+    string GroupName = 16;
+    int64 HatchColor = 17;
+    string HatchPattern = 18;
+    int64 HatchScale = 19;
+    int64 HeadCount = 20;
+    string HegisCode = 21;
+    string IsDept = 22;
+    int64 LevelNo = 23;
+    int64 MinSqft = 24;
+    string PlanId = 25;
+    string ReportsTo = 26;
+    string FillCode = 27;
+}
+
+service PriorityService {
+
+    rpc PriorityGet(PriorityRequest) returns (Priority) {
+        option (google.api.http) = {
+            get: "/api/priorities/{id}"
+        };
+    };
+
+    rpc PrioritiesGet(PrioritiesRequest) returns (PrioritiesResponse) {
+        option (google.api.http) = {
+            get: "/api/priorities"
+        };
+    };
+
+    rpc PriorityCreate(PriorityRequestCreate) returns (PriorityResponse) {
+        option (google.api.http) = {
+            post: "/api/priorities"
+            body: "*"
+        };
+    };
+
+    rpc PriorityUpdate(PriorityRequestUpdate) returns (PriorityResponse) {
+        option (google.api.http) = {
+            put: "/api/priorities/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/priorities
+    GET /api/priorities/:id
+    POST /api/priorities
+    PUT /api/priorities/:id
+    DELETE /api/priorities/:id
+
+    POST /api/priorities/close/:id
+*/

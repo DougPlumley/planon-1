@@ -1,0 +1,856 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "partissue.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/partissue": {
+      "get": {
+        "summary": "Obtain for Maintenance Issue(s)",
+        "operationId": "PartIssuesGET",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartIssuesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "parameter.issuedTo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.issueNo",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.issueDate.dateFrom",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "parameter.issueDate.dateTo",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "parameter.workOrder",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.warehouse",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.mdNumber",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parameter.requestDate.dateFrom",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "parameter.requestDate.dateTo",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "PartIssueService"
+        ]
+      },
+      "post": {
+        "summary": "Create a Maintenance Issue",
+        "operationId": "PartIssueCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartIssueCreateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartIssueCreateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PartIssueService"
+        ]
+      }
+    },
+    "/api/partissue/{id}": {
+      "get": {
+        "summary": "Obtain a Maintenance Issue by id",
+        "operationId": "AssetGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartIssueResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "userInfo.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userInfo.appId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PartIssueService"
+        ]
+      },
+      "put": {
+        "summary": "Update a Maintenance Issue",
+        "operationId": "PartIssueUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PartIssueUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartIssueUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PartIssueService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Commodity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "commodity": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "DateRange": {
+      "type": "object",
+      "properties": {
+        "dateFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dateTo": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "employee": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        }
+      }
+    },
+    "PartBinList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "bin": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "quantityOnHand": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "PartCategory1": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory2": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory3": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory4": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartCategory5": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PartIssue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "issuedTo": {
+          "$ref": "#/definitions/Employee"
+        },
+        "issueNo": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "workOrder": {
+          "$ref": "#/definitions/WorkOrderList"
+        },
+        "warehouse": {
+          "$ref": "#/definitions/Warehouse"
+        },
+        "enterDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "enterUser": {
+          "type": "string"
+        },
+        "mdNumber": {
+          "type": "string",
+          "title": "Part Request Information"
+        },
+        "requester": {
+          "$ref": "#/definitions/Employee"
+        },
+        "deliveryInstruction": {
+          "type": "string"
+        },
+        "requestDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartIssueItem"
+          },
+          "title": "relationships"
+        }
+      }
+    },
+    "PartIssueCreateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "partRequest": {
+          "$ref": "#/definitions/PartIssueUpdate"
+        }
+      },
+      "title": "Create Part Issue"
+    },
+    "PartIssueCreateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partIssue": {
+          "$ref": "#/definitions/PartIssue"
+        }
+      }
+    },
+    "PartIssueItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "issueNo": {
+          "type": "string"
+        },
+        "partNumber": {
+          "$ref": "#/definitions/PartList"
+        },
+        "partDescription": {
+          "type": "string"
+        },
+        "unitOfMeasure": {
+          "$ref": "#/definitions/UnitOfMeasure"
+        },
+        "quantityIssued": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityReturned": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityRequest": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityReserved": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnHand": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnOrder": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityAvailable": {
+          "type": "number",
+          "format": "float"
+        },
+        "unitPrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "commodity": {
+          "$ref": "#/definitions/Commodity"
+        },
+        "bin": {
+          "$ref": "#/definitions/PartBinList"
+        },
+        "partType": {
+          "$ref": "#/definitions/PartType"
+        },
+        "partCategory1": {
+          "$ref": "#/definitions/PartCategory1"
+        },
+        "partCategory2": {
+          "$ref": "#/definitions/PartCategory2"
+        },
+        "partCategory3": {
+          "$ref": "#/definitions/PartCategory3"
+        },
+        "partCategory4": {
+          "$ref": "#/definitions/PartCategory4"
+        },
+        "partCategory5": {
+          "$ref": "#/definitions/PartCategory5"
+        },
+        "partId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "hasImage": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "PartIssueItemUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "issueNo": {
+          "type": "string"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "partDescription": {
+          "type": "string"
+        },
+        "unitOfMeasure": {
+          "type": "string"
+        },
+        "quantityIssued": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityReturned": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityToReturn": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityRequest": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityReserved": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnHand": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityOnOrder": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantityAvailable": {
+          "type": "number",
+          "format": "float"
+        },
+        "unitPrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "bin": {
+          "type": "string"
+        },
+        "binToReturn": {
+          "type": "string"
+        },
+        "crudStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "PartIssueQueryParameter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "issuedTo": {
+          "type": "string"
+        },
+        "issueNo": {
+          "type": "string"
+        },
+        "issueDate": {
+          "$ref": "#/definitions/DateRange"
+        },
+        "workOrder": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "mdNumber": {
+          "type": "string"
+        },
+        "requestDate": {
+          "$ref": "#/definitions/DateRange"
+        }
+      }
+    },
+    "PartIssueResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partIssue": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartIssue"
+          }
+        }
+      }
+    },
+    "PartIssueUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "issuedTo": {
+          "type": "string"
+        },
+        "issueNo": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "workOrder": {
+          "type": "string"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "mdNumber": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartIssueItemUpdate"
+          }
+        }
+      }
+    },
+    "PartIssueUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userInfo": {
+          "$ref": "#/definitions/UserInfo"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "partIssue": {
+          "$ref": "#/definitions/PartIssueUpdate"
+        }
+      },
+      "title": "Update part Issue"
+    },
+    "PartIssueUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partIssue": {
+          "$ref": "#/definitions/PartIssue"
+        }
+      }
+    },
+    "PartIssuesResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/Response"
+        },
+        "partIssues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartIssue"
+          }
+        }
+      }
+    },
+    "PartList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "partNumber": {
+          "type": "string"
+        },
+        "partDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "PartType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "partType": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "responseCode": {
+          "$ref": "#/definitions/ResponseCode"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponseCode": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "EXCEPTION",
+        "UNKNOW"
+      ],
+      "default": "SUCCESS"
+    },
+    "UnitOfMeasure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "um": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        }
+      }
+    },
+    "Warehouse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "warehouse": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "WorkOrderList": {
+      "type": "object",
+      "properties": {
+        "workOrderNumber": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "crew": {
+          "type": "string"
+        },
+        "assignedTo": {
+          "type": "string"
+        },
+        "payCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "building": {
+          "type": "string"
+        },
+        "floor": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "equipment": {
+          "type": "string"
+        },
+        "taskCode": {
+          "type": "string"
+        },
+        "reqType": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

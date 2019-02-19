@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+
+message ProjectPhaseTaskList {
+    int64 id = 1;
+    string TaskList = 2;
+    int64 Phase = 3;
+    string ReqNumber = 4;
+}
+
+message ProjectPhaseTaskListRequest {
+    string id = 1;
+}
+
+message ProjectPhaseTaskListResponse {
+    string message = 1;
+    ProjectPhaseTaskList projectphasetasklist = 2;
+}
+
+message ProjectPhaseTaskListQuery {
+    repeated int64 statusFilters = 1;
+    repeated string projectPhaseTaskList = 2;
+}
+
+message ProjectPhaseTaskListsRequest {
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message ProjectPhaseTaskListsResponse {
+    repeated ProjectPhaseTaskList projectPhaseTaskLists = 1;
+}
+
+/* ProjectPhaseTaskListRequestUpdate */
+message ProjectPhaseTaskListRequestCreate {
+    int64 id = 1;
+    string TaskList = 2;
+    int64 Phase = 3;
+    string ReqNumber = 4;
+}
+
+/* ProjectPhaseTaskListRequestUpdate */
+message ProjectPhaseTaskListRequestUpdate {
+    int64 id = 1;
+    string TaskList = 2;
+    int64 Phase = 3;
+    string ReqNumber = 4;
+}
+
+// service ProjectPhaseTaskListService {
+
+//     rpc ProjectPhaseTaskListGet(ProjectPhaseTaskListRequest) returns (ProjectPhaseTaskList) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasetasklists/{id}"
+//         };
+//     };
+
+//     rpc ProjectPhaseTaskListsGet(ProjectPhaseTaskListsRequest) returns (ProjectPhaseTaskListsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/projectphasetasklists"
+//         };
+//     };
+
+//     rpc ProjectPhaseTaskListCreate(ProjectPhaseTaskListRequestCreate) returns (ProjectPhaseTaskListResponse) {
+//         option (google.api.http) = {
+//             post: "/api/projectphasetasklists"
+//             body: "*"
+//         };
+//     };
+
+//     rpc ProjectPhaseTaskListUpdate(ProjectPhaseTaskListRequestUpdate) returns (ProjectPhaseTaskListResponse) {
+//         option (google.api.http) = {
+//             put: "/api/projectphasetasklists/{id}"
+//             body: "*"
+//         };
+//     };
+// }
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/projectphasetasklists
+    GET /api/projectphasetasklists/:id
+    POST /api/projectphasetasklists
+    PUT /api/projectphasetasklists/:id
+    DELETE /api/projectphasetasklists/:id
+
+    POST /api/projectphasetasklists/close/:id
+*/

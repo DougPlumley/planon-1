@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message RequestType {
+    int64 id = 1;
+	string type = 2;
+    string comments = 3;
+}
+
+message RequestTypeParameter {
+    int64 id = 1;
+	string type = 2;
+    string comments = 3;
+}
+
+message RequestTypesRequest {
+    UserInfo userInfo = 1;
+    RequestTypeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message  RequestTypesResponse {
+    Response response = 1;
+    repeated RequestType requestTypes = 2;
+}
+
+
+// service RequestTypeService {
+//     rpc RequestTypesGet(RequestTypesRequest) returns (RequestTypesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/requesttype"
+//         };
+//     };
+// }

@@ -1,0 +1,1062 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "room.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/rooms": {
+      "get": {
+        "operationId": "RoomsGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RoomsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "RoomService"
+        ]
+      },
+      "post": {
+        "operationId": "RoomCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RoomResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoomRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "RoomService"
+        ]
+      }
+    },
+    "/api/rooms/{id}": {
+      "get": {
+        "operationId": "RoomGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Room"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RoomService"
+        ]
+      },
+      "put": {
+        "operationId": "RoomUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RoomResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoomRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "RoomService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Room": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Room": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "Acctsegment1": {
+          "type": "string"
+        },
+        "Acctsegment2": {
+          "type": "string"
+        },
+        "Acctsegment3": {
+          "type": "string"
+        },
+        "Acctsegment4": {
+          "type": "string"
+        },
+        "Acctsegment5": {
+          "type": "string"
+        },
+        "Acctsegment6": {
+          "type": "string"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "RoomSort": {
+          "type": "string"
+        },
+        "SpaceCoordinator": {
+          "type": "string"
+        },
+        "SpRequestorId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SqrFeet": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AltRoomName": {
+          "type": "string"
+        },
+        "ApportionSpace": {
+          "type": "string"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "Capacity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Charge": {
+          "type": "string"
+        },
+        "ChargeTo": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "ContactPerson": {
+          "type": "string"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CostRec": {
+          "type": "string"
+        },
+        "DedThruDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "DedUseCode": {
+          "type": "string"
+        },
+        "ExtraCol1": {
+          "type": "string"
+        },
+        "ExtraCol2": {
+          "type": "string"
+        },
+        "FunctionalUse": {
+          "type": "string"
+        },
+        "GroupNid": {
+          "type": "string"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Occupants": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OccupyGroup": {
+          "type": "string"
+        },
+        "OwnerGroup": {
+          "type": "string"
+        },
+        "RoomId": {
+          "type": "string"
+        },
+        "Seating": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SpaceSubCategory": {
+          "type": "string"
+        },
+        "SpCellular": {
+          "type": "string"
+        },
+        "SpDepartment": {
+          "type": "string"
+        },
+        "SpEmail": {
+          "type": "string"
+        },
+        "SpFax": {
+          "type": "string"
+        },
+        "SpMailCode": {
+          "type": "string"
+        },
+        "SpNeedNotification": {
+          "type": "string"
+        },
+        "SpPager": {
+          "type": "string"
+        },
+        "SpShift": {
+          "type": "string"
+        },
+        "SpTelephone": {
+          "type": "string"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WillShare": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "FamisCadStatus": {
+          "type": "string"
+        },
+        "LastSurveyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastSurveyUser": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      }
+    },
+    "RoomQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RoomRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Room": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "Acctsegment1": {
+          "type": "string"
+        },
+        "Acctsegment2": {
+          "type": "string"
+        },
+        "Acctsegment3": {
+          "type": "string"
+        },
+        "Acctsegment4": {
+          "type": "string"
+        },
+        "Acctsegment5": {
+          "type": "string"
+        },
+        "Acctsegment6": {
+          "type": "string"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "RoomSort": {
+          "type": "string"
+        },
+        "SpaceCoordinator": {
+          "type": "string"
+        },
+        "SpRequestorId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SqrFeet": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AltRoomName": {
+          "type": "string"
+        },
+        "ApportionSpace": {
+          "type": "string"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "Capacity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Charge": {
+          "type": "string"
+        },
+        "ChargeTo": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "ContactPerson": {
+          "type": "string"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CostRec": {
+          "type": "string"
+        },
+        "DedThruDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "DedUseCode": {
+          "type": "string"
+        },
+        "ExtraCol1": {
+          "type": "string"
+        },
+        "ExtraCol2": {
+          "type": "string"
+        },
+        "FunctionalUse": {
+          "type": "string"
+        },
+        "GroupNid": {
+          "type": "string"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Occupants": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OccupyGroup": {
+          "type": "string"
+        },
+        "OwnerGroup": {
+          "type": "string"
+        },
+        "RoomId": {
+          "type": "string"
+        },
+        "Seating": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SpaceSubCategory": {
+          "type": "string"
+        },
+        "SpCellular": {
+          "type": "string"
+        },
+        "SpDepartment": {
+          "type": "string"
+        },
+        "SpEmail": {
+          "type": "string"
+        },
+        "SpFax": {
+          "type": "string"
+        },
+        "SpMailCode": {
+          "type": "string"
+        },
+        "SpNeedNotification": {
+          "type": "string"
+        },
+        "SpPager": {
+          "type": "string"
+        },
+        "SpShift": {
+          "type": "string"
+        },
+        "SpTelephone": {
+          "type": "string"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WillShare": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "FamisCadStatus": {
+          "type": "string"
+        },
+        "LastSurveyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastSurveyUser": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      }
+    },
+    "RoomRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "Building": {
+          "type": "string"
+        },
+        "Floor": {
+          "type": "string"
+        },
+        "Room": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "Acctsegment1": {
+          "type": "string"
+        },
+        "Acctsegment2": {
+          "type": "string"
+        },
+        "Acctsegment3": {
+          "type": "string"
+        },
+        "Acctsegment4": {
+          "type": "string"
+        },
+        "Acctsegment5": {
+          "type": "string"
+        },
+        "Acctsegment6": {
+          "type": "string"
+        },
+        "Billing": {
+          "type": "string"
+        },
+        "ChargeSourceId": {
+          "type": "string"
+        },
+        "Department": {
+          "type": "string"
+        },
+        "InteriorSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupCode": {
+          "type": "string"
+        },
+        "RoomSort": {
+          "type": "string"
+        },
+        "SpaceCoordinator": {
+          "type": "string"
+        },
+        "SpRequestorId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SqrFeet": {
+          "type": "string",
+          "format": "int64"
+        },
+        "AltRoomName": {
+          "type": "string"
+        },
+        "ApportionSpace": {
+          "type": "string"
+        },
+        "CadDrawing": {
+          "type": "string"
+        },
+        "Capacity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CarpetedSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Charge": {
+          "type": "string"
+        },
+        "ChargeTo": {
+          "type": "string"
+        },
+        "CloseDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CloseUser": {
+          "type": "string"
+        },
+        "ContactPerson": {
+          "type": "string"
+        },
+        "CoreSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "CostRec": {
+          "type": "string"
+        },
+        "DedThruDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "DedUseCode": {
+          "type": "string"
+        },
+        "ExtraCol1": {
+          "type": "string"
+        },
+        "ExtraCol2": {
+          "type": "string"
+        },
+        "FunctionalUse": {
+          "type": "string"
+        },
+        "GroupNid": {
+          "type": "string"
+        },
+        "NonUsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Occupants": {
+          "type": "string",
+          "format": "int64"
+        },
+        "OccupyGroup": {
+          "type": "string"
+        },
+        "OwnerGroup": {
+          "type": "string"
+        },
+        "RoomId": {
+          "type": "string"
+        },
+        "Seating": {
+          "type": "string",
+          "format": "int64"
+        },
+        "SpaceSubCategory": {
+          "type": "string"
+        },
+        "SpCellular": {
+          "type": "string"
+        },
+        "SpDepartment": {
+          "type": "string"
+        },
+        "SpEmail": {
+          "type": "string"
+        },
+        "SpFax": {
+          "type": "string"
+        },
+        "SpMailCode": {
+          "type": "string"
+        },
+        "SpNeedNotification": {
+          "type": "string"
+        },
+        "SpPager": {
+          "type": "string"
+        },
+        "SpShift": {
+          "type": "string"
+        },
+        "SpTelephone": {
+          "type": "string"
+        },
+        "UsableSqft": {
+          "type": "string",
+          "format": "int64"
+        },
+        "WillShare": {
+          "type": "string"
+        },
+        "ImageName": {
+          "type": "string"
+        },
+        "WebImage": {
+          "type": "string"
+        },
+        "Dwf": {
+          "type": "string"
+        },
+        "FamisCadStatus": {
+          "type": "string"
+        },
+        "LastSurveyDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastSurveyUser": {
+          "type": "string"
+        },
+        "MobileRow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      },
+      "title": "RoomRequestUpdate"
+    },
+    "RoomResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "room": {
+          "$ref": "#/definitions/Room"
+        }
+      }
+    },
+    "RoomsResponse": {
+      "type": "object",
+      "properties": {
+        "rooms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Room"
+          }
+        }
+      }
+    }
+  }
+}

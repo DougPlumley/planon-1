@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message AssetKeyword {
+    int64 id = 1;
+	string keyword = 2;
+    string comments = 3;
+}
+
+message AssetKeywordParameter {
+    int64 id = 1;
+	string keyword = 2;
+    string comments = 3;
+}
+
+message AssetKeywordsRequest {
+    UserInfo userInfo = 1;
+    AssetKeywordParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message AssetKeywordsResponse {
+    Response response = 1;
+    repeated AssetKeyword assetKeywords = 2;
+}
+
+// service AssetKeywordService {
+//     rpc AssetKeywordsGet(AssetKeywordsRequest) returns (AssetKeywordsResponse) {
+//         option (google.api.http) = {
+//             get: "/api/assetkeyword"
+//         };
+//     };
+// }
+

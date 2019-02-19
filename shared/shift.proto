@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Shift {
+    int64 id = 1;
+    string shift = 2;
+    string comments = 3; 
+}
+
+message ShiftParameter {
+    int64 id = 1;
+    string shift = 2;
+    string comments = 3; 
+}
+
+message ShiftRequest {
+    UserInfo userInfo = 1;
+    ShiftParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message ShiftResponse {
+    Response response = 1;
+    repeated Shift shifts = 2;
+}
+
+// service ShiftService {
+//     rpc ShiftGet(ShiftRequest) returns (ShiftResponse) {
+//         option (google.api.http) = {
+//             get: "/api/shift"
+//         };
+//     };
+// }
+

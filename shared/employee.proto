@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message Employee {
+    int64 id = 1;
+    string employee = 2;
+    string name = 3 ;
+    string email = 4;
+    string telephone = 5;
+    string team = 6; 
+}
+
+
+message EmployeeParameter {
+    int64 id = 1;
+    string employee = 2;
+    string name = 3 ;
+    string email = 4;
+    string telephone = 5;
+    string team = 6; 
+    string active =7;
+}
+
+message EmployeesRequest {
+    UserInfo userInfo = 1;
+    EmployeeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message EmployeesResponse {
+    Response response = 1;
+    repeated Employee employees = 2;
+}
+
+
+// service EmployeeService {
+//     rpc EmployeesGet(EmployeesRequest) returns (EmployeesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/employee"
+//         };
+//     };
+// }
+

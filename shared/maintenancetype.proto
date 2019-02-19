@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message MaintenanceType {
+	int64 id = 1;
+    string type = 2;
+    string comments = 3;
+}
+
+
+message MaintenanceTypeParameter {
+	int64 id = 1;
+    string type = 2;
+    string comments = 3;
+}
+
+message MaintenanceTypesRequest {
+    UserInfo userInfo = 1;
+    MaintenanceTypeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message MaintenanceTypesResponse {
+    Response response = 1;
+    repeated MaintenanceType maintenanceTypes = 2;
+}
+
+
+// service MaintenanceTypeService {
+//     rpc MaintenanceTypesGet(MaintenanceTypesRequest) returns (MaintenanceTypesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/maintenancetype"
+//         };
+//     };
+// }

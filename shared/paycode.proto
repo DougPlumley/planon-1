@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message PayCode {
+    int64 id = 1;
+	string payCode = 2;
+    string comments = 3;
+}
+
+message PayCodeParameter {
+    int64 id = 1;
+	string payCode = 2;
+    string comments = 3;
+}
+
+message PayCodesRequest {
+    UserInfo userInfo = 1;
+    PayCodeParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PayCodesResponse {
+    Response response = 1;
+    repeated PayCode paycodes = 2;
+}
+
+// service PayCodeService {
+//     rpc PayCodesGet(PayCodesRequest) returns (PayCodesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/paycode"
+//         };
+//     };
+// }

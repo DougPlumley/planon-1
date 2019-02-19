@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message UnitOfMeasure {
+    int64 id = 1;
+	string um = 2;
+    string description = 3;
+}
+
+message UnitOfMeasureParameter {
+    int64 id = 1;
+	string um = 2;
+    string description = 3;
+}
+
+message UnitOfMeasuresRequest {
+    UserInfo userInfo = 1;
+    UnitOfMeasureParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message UnitOfMeasuresResponse {
+    Response response = 1;
+    repeated UnitOfMeasure unitOfMeasures = 2;
+}
+
+// service UnitOfMeasureService {
+//     rpc UnitOfMeasuresGet(UnitOfMeasuresRequest) returns (UnitOfMeasuresResponse) {
+//         option (google.api.http) = {
+//             get: "/api/unitofmeasure"
+//         };
+//     };
+// }

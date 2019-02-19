@@ -1,0 +1,350 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message Room {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Floor = 4;
+    string Room = 5;
+    string Description = 6;	
+    string Status = 7;
+    string Active = 8;
+    string Acctsegment1 = 9;
+    string Acctsegment2 = 10;
+    string Acctsegment3 = 11;
+    string Acctsegment4 = 12;
+    string Acctsegment5 = 13;
+    string Acctsegment6 = 14;
+    string Billing = 15;
+    string ChargeSourceId = 16;
+    string Department = 17;
+    int64 InteriorSqft = 18;
+    string MarkupCode = 19;
+    string RoomSort = 20;
+    string SpaceCoordinator = 21;
+    int64 SpRequestorId = 22;
+    int64 SqrFeet = 23;
+    string AltRoomName = 24;
+    string ApportionSpace = 25;
+    string CadDrawing = 26;
+    int64 Capacity = 27;
+    int64 CarpetedSqft = 28;
+    string Charge = 29;
+    string ChargeTo = 30;
+    google.protobuf.Timestamp CloseDate = 31;
+    string CloseUser = 32;
+    string ContactPerson = 33;
+    int64 CoreSqft = 34;
+    string CostRec = 35;
+    google.protobuf.Timestamp DedThruDate = 36;
+    string DedUseCode = 37;
+    string ExtraCol1 = 38;
+    string ExtraCol2 = 39;
+    string FunctionalUse = 40;
+    string GroupNid = 41;
+    int64 NonUsableSqft = 42;
+    int64 Occupants = 43;
+    string OccupyGroup = 44;
+    string OwnerGroup = 45;
+    string RoomId = 46;
+    int64 Seating = 47;
+    string SpaceSubCategory = 48;
+    string SpCellular = 49;
+    string SpDepartment = 50;
+    string SpEmail = 51;
+    string SpFax = 52;
+    string SpMailCode = 53;
+    string SpNeedNotification = 54;
+    string SpPager = 55;
+    string SpShift = 56;
+    string SpTelephone = 57;
+    int64 UsableSqft = 58;
+    string WillShare = 59;
+    string ImageName = 60;
+    string WebImage = 61;
+    string Dwf = 62;
+    string FamisCadStatus = 63;
+    google.protobuf.Timestamp LastSurveyDate = 64;
+    string LastSurveyUser = 65;
+    int64 MobileRow = 66;
+    string Attribute1 = 67;
+    string Attribute2 = 68;
+    string Attribute3 = 69;
+    string Attribute4 = 70;
+    string Attribute5 = 71;
+    string Attribute6 = 72;
+    string Attribute7 = 73;
+    string Attribute8 = 74;
+    string Attribute9 = 75;
+    string Attribute10 = 76;
+    string Attribute11 = 77;
+    string Attribute12 = 78;
+    string Attribute13 = 79;
+    string Attribute14 = 80;
+    string Attribute15 = 81;
+    string Attribute16 = 82;
+    string Attribute17 = 83;
+    string Attribute18 = 84;
+    string Attribute19 = 85;
+    string Attribute20 = 86;
+    string Attribute21 = 87;
+    string Attribute22 = 88;
+    string Attribute23 = 89;
+    string Attribute24 = 90;
+}
+
+message RoomRequest {
+    string id = 1;
+}
+
+message RoomResponse {
+    string message = 1;
+    Room room = 2;
+}
+
+message RoomQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message RoomsRequest {
+    RoomQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message RoomsResponse {
+    repeated Room rooms = 1;
+}
+
+message RoomRequestCreate {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Floor = 4;
+    string Room = 5;
+    string Description = 6;	
+    string Status = 7;
+    string Active = 8;
+    string Acctsegment1 = 9;
+    string Acctsegment2 = 10;
+    string Acctsegment3 = 11;
+    string Acctsegment4 = 12;
+    string Acctsegment5 = 13;
+    string Acctsegment6 = 14;
+    string Billing = 15;
+    string ChargeSourceId = 16;
+    string Department = 17;
+    int64 InteriorSqft = 18;
+    string MarkupCode = 19;
+    string RoomSort = 20;
+    string SpaceCoordinator = 21;
+    int64 SpRequestorId = 22;
+    int64 SqrFeet = 23;
+    string AltRoomName = 24;
+    string ApportionSpace = 25;
+    string CadDrawing = 26;
+    int64 Capacity = 27;
+    int64 CarpetedSqft = 28;
+    string Charge = 29;
+    string ChargeTo = 30;
+    google.protobuf.Timestamp CloseDate = 31;
+    string CloseUser = 32;
+    string ContactPerson = 33;
+    int64 CoreSqft = 34;
+    string CostRec = 35;
+    google.protobuf.Timestamp DedThruDate = 36;
+    string DedUseCode = 37;
+    string ExtraCol1 = 38;
+    string ExtraCol2 = 39;
+    string FunctionalUse = 40;
+    string GroupNid = 41;
+    int64 NonUsableSqft = 42;
+    int64 Occupants = 43;
+    string OccupyGroup = 44;
+    string OwnerGroup = 45;
+    string RoomId = 46;
+    int64 Seating = 47;
+    string SpaceSubCategory = 48;
+    string SpCellular = 49;
+    string SpDepartment = 50;
+    string SpEmail = 51;
+    string SpFax = 52;
+    string SpMailCode = 53;
+    string SpNeedNotification = 54;
+    string SpPager = 55;
+    string SpShift = 56;
+    string SpTelephone = 57;
+    int64 UsableSqft = 58;
+    string WillShare = 59;
+    string ImageName = 60;
+    string WebImage = 61;
+    string Dwf = 62;
+    string FamisCadStatus = 63;
+    google.protobuf.Timestamp LastSurveyDate = 64;
+    string LastSurveyUser = 65;
+    int64 MobileRow = 66;
+    string Attribute1 = 67;
+    string Attribute2 = 68;
+    string Attribute3 = 69;
+    string Attribute4 = 70;
+    string Attribute5 = 71;
+    string Attribute6 = 72;
+    string Attribute7 = 73;
+    string Attribute8 = 74;
+    string Attribute9 = 75;
+    string Attribute10 = 76;
+    string Attribute11 = 77;
+    string Attribute12 = 78;
+    string Attribute13 = 79;
+    string Attribute14 = 80;
+    string Attribute15 = 81;
+    string Attribute16 = 82;
+    string Attribute17 = 83;
+    string Attribute18 = 84;
+    string Attribute19 = 85;
+    string Attribute20 = 86;
+    string Attribute21 = 87;
+    string Attribute22 = 88;
+    string Attribute23 = 89;
+    string Attribute24 = 90;
+}
+
+/* RoomRequestUpdate */
+message RoomRequestUpdate {
+	int64 id = 1;
+    string Site = 2;
+    string Building = 3;
+    string Floor = 4;
+    string Room = 5;
+    string Description = 6;	
+    string Status = 7;
+    string Active = 8;
+    string Acctsegment1 = 9;
+    string Acctsegment2 = 10;
+    string Acctsegment3 = 11;
+    string Acctsegment4 = 12;
+    string Acctsegment5 = 13;
+    string Acctsegment6 = 14;
+    string Billing = 15;
+    string ChargeSourceId = 16;
+    string Department = 17;
+    int64 InteriorSqft = 18;
+    string MarkupCode = 19;
+    string RoomSort = 20;
+    string SpaceCoordinator = 21;
+    int64 SpRequestorId = 22;
+    int64 SqrFeet = 23;
+    string AltRoomName = 24;
+    string ApportionSpace = 25;
+    string CadDrawing = 26;
+    int64 Capacity = 27;
+    int64 CarpetedSqft = 28;
+    string Charge = 29;
+    string ChargeTo = 30;
+    google.protobuf.Timestamp CloseDate = 31;
+    string CloseUser = 32;
+    string ContactPerson = 33;
+    int64 CoreSqft = 34;
+    string CostRec = 35;
+    google.protobuf.Timestamp DedThruDate = 36;
+    string DedUseCode = 37;
+    string ExtraCol1 = 38;
+    string ExtraCol2 = 39;
+    string FunctionalUse = 40;
+    string GroupNid = 41;
+    int64 NonUsableSqft = 42;
+    int64 Occupants = 43;
+    string OccupyGroup = 44;
+    string OwnerGroup = 45;
+    string RoomId = 46;
+    int64 Seating = 47;
+    string SpaceSubCategory = 48;
+    string SpCellular = 49;
+    string SpDepartment = 50;
+    string SpEmail = 51;
+    string SpFax = 52;
+    string SpMailCode = 53;
+    string SpNeedNotification = 54;
+    string SpPager = 55;
+    string SpShift = 56;
+    string SpTelephone = 57;
+    int64 UsableSqft = 58;
+    string WillShare = 59;
+    string ImageName = 60;
+    string WebImage = 61;
+    string Dwf = 62;
+    string FamisCadStatus = 63;
+    google.protobuf.Timestamp LastSurveyDate = 64;
+    string LastSurveyUser = 65;
+    int64 MobileRow = 66;
+    string Attribute1 = 67;
+    string Attribute2 = 68;
+    string Attribute3 = 69;
+    string Attribute4 = 70;
+    string Attribute5 = 71;
+    string Attribute6 = 72;
+    string Attribute7 = 73;
+    string Attribute8 = 74;
+    string Attribute9 = 75;
+    string Attribute10 = 76;
+    string Attribute11 = 77;
+    string Attribute12 = 78;
+    string Attribute13 = 79;
+    string Attribute14 = 80;
+    string Attribute15 = 81;
+    string Attribute16 = 82;
+    string Attribute17 = 83;
+    string Attribute18 = 84;
+    string Attribute19 = 85;
+    string Attribute20 = 86;
+    string Attribute21 = 87;
+    string Attribute22 = 88;
+    string Attribute23 = 89;
+    string Attribute24 = 90;
+}
+
+service RoomService {
+
+    rpc RoomGet(RoomRequest) returns (Room) {
+        option (google.api.http) = {
+            get: "/api/rooms/{id}"
+        };
+    };
+
+    rpc RoomsGet(RoomsRequest) returns (RoomsResponse) {
+        option (google.api.http) = {
+            get: "/api/rooms"
+        };
+    };
+
+    rpc RoomCreate(RoomRequestCreate) returns (RoomResponse) {
+        option (google.api.http) = {
+            post: "/api/rooms"
+            body: "*"
+        };
+    };
+
+    rpc RoomUpdate(RoomRequestUpdate) returns (RoomResponse) {
+        option (google.api.http) = {
+            put: "/api/rooms/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/rooms
+    GET /api/rooms/:id
+    POST /api/rooms
+    PUT /api/rooms/:id
+    DELETE /api/rooms/:id
+
+    POST /api/rooms/close/:id
+*/

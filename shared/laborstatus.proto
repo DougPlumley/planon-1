@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message LaborStatus {
+    int64 id = 1;
+	string status = 2;
+    string comments = 3;
+    bool active = 4 ;
+    bool supervisorRejection = 5;
+}
+
+
+message LaborStatusParameter {
+    int64 id = 1;
+	string status = 2;
+    string comments = 3;
+    bool active = 4 ;
+    bool supervisorRejection = 5;
+}
+
+message LaborStatusRequest {
+    UserInfo userInfo = 1;
+    LaborStatusParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message LaborStatusResponse {
+    Response response = 1;
+    repeated LaborStatus laborStatuses = 2;
+}
+
+
+// service LaborStatusService {
+//     rpc LaborStatusGet(LaborStatusRequest) returns (LaborStatusResponse) {
+//         option (google.api.http) = {
+//             get: "/api/laborstatus"
+//         };
+//     };
+// }

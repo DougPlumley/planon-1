@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "userinfo.proto";
+import "response.proto";
+
+message PartStatus {
+    int64 id = 1;
+	string status = 2;
+    string comments = 3;
+    bool active = 4;
+}
+
+message PartStatusParameter {
+    int64 id = 1;
+	string status = 2;
+    string comments = 3;
+    bool active = 4;
+}
+
+message PartStatusesRequest {
+    UserInfo userInfo = 1;
+    PartStatusParameter parameter = 2;
+    int64 pageSize = 3;
+    int64 pageOffset = 4;
+}
+
+message PartStatusesResponse {
+    Response response = 1;
+    repeated PartStatus partStatuses = 2;
+}
+
+// service ParStatusService {
+//     rpc ParStatusesGet(ParStatusesRequest) returns (ParStatusesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/partstatus"
+//         };
+//     };
+// }

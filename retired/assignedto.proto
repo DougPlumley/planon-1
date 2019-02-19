@@ -1,0 +1,471 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+message AssignedTo {
+	int64 id = 1;
+    int64 ActualPayrate = 2;
+    string Address1 = 3;
+    string Address2 = 4;
+    string Address3 = 5;
+    int64 ApprovalLimit = 6;
+    google.protobuf.Timestamp BirthDate = 7;
+    string BuyerFlag = 8;
+    string CellularNumber = 9;
+    string Company = 10;
+    int64 CompTimeAccrued = 11;
+    string Skill = 12;
+    string Team = 13;
+    string Crib = 14;
+    string Dln = 15;
+    string DrivingClass = 16;
+    string Email = 17;
+    string Emergency = 18;
+    string Employee = 19;
+    string EmpId = 20;
+    int64 EmpRecNum = 21;
+    string FaxNumber = 22;
+    google.protobuf.Timestamp HireDate = 23;
+    string JobTitle = 24;
+    string JobType = 25;
+    string LaborClass = 26;
+    google.protobuf.Timestamp LastAccrualDate = 27;
+    string LastAccrualUser = 28;
+    int64 LeaveType1AccrualRate = 29;
+    int64 LeaveType1Accrued = 30;
+    int64 LeaveType1BeforeAccrual = 31;
+    int64 LeaveType1BeforeReduction = 32;
+    int64 LeaveType2AccrualRate = 33;
+    int64 LeaveType2Accrued = 34;
+    int64 LeaveType2BeforeAccrual = 35;
+    int64 LeaveType2BeforeReduction = 36;
+    int64 LeaveType3AccrualRate = 37;
+    int64 LeaveType3Accrued = 38;
+    int64 LeaveType3BeforeAccrual = 39;
+    int64 LeaveType3BeforeReduction = 40;
+    int64 LeaveType4AccrualRate = 41;
+    int64 LeaveType4Accrued = 42;
+    int64 LeaveType4BeforeAccrual = 43;
+    int64 LeaveType4BeforeReduction = 44;
+    int64 LeaveType5AccrualRate = 45;
+    int64 LeaveType5Accrued = 46;
+    int64 LeaveType5BeforeAccrual = 47;
+    int64 LeaveType5BeforeReduction = 48;
+    int64 LeaveType6AccrualRate = 49;
+    int64 LeaveType6Accrued = 50;
+    int64 LeaveType6BeforeAccrual = 51;
+    int64 LeaveType6BeforeReduction = 52;
+    string Locker = 53;
+    string MailCode = 54;
+    string Name = 55;
+    google.protobuf.Timestamp NormalStart = 56;
+    google.protobuf.Timestamp NormalStop = 57;
+    google.protobuf.Timestamp NoteDate = 58;
+    string NoteUser = 59;
+    string Pager = 60;
+    string PayrollFlag = 61;
+    string PayrollNumber = 62;
+    int64 Rate = 63;
+    string ResourceCalendar = 64;
+    string Shift = 65;
+    string Site = 66;
+    string SocSecNo = 67;
+    string Supervisor = 68;
+    string Telephone = 69;
+    google.protobuf.Timestamp TerminationDate = 70;
+    string TimecardEntry = 71;
+    string UserId = 72;
+    string Warehouse = 73;
+    string WorkGroup = 74;
+    string Acctsegment1 = 75;
+    string Acctsegment2 = 76;
+    string Acctsegment3 = 77;
+    string Acctsegment4 = 78;
+    string Acctsegment5 = 79;
+    string Acctsegment6 = 80;
+    google.protobuf.Timestamp HrisDate = 81;
+    string Source = 82;
+    string Status = 83;
+    string SupervisorCompany = 84;
+    int64 NoOfWwfs = 85;
+    string ValidateLaborSite = 86;
+    int64 BaseMarkupRate = 87;
+    int64 MarkupForSupv = 88;
+    int64 BaseFringeRate = 89;
+    int64 FringeForOt = 90;
+    string UserName = 91;
+    string Passwd = 92;
+    string Inventory = 93;
+    string PhysicalCount = 94;
+    string SsoConn = 95;
+    string EmailPswd = 96;
+    string MeterRead = 97;
+    google.protobuf.Timestamp MobileDate = 98;
+    string PpnetworkId = 99;
+    string EmergencyContactPhone = 100;
+    string EmergencyContactSecondary = 101;
+    string EmployeeContactPhoneSecond = 102;
+    string Endorsements = 103;
+    string EmergencyContactCellPhone = 104;
+    string EmergencyContactCellSecond = 105;
+    string AttachFile = 106;
+    string Attribute1 = 107;
+    string Attribute2 = 108;
+    string Attribute3 = 109;
+    string Attribute4 = 110;
+    string Attribute5 = 111;
+    string Attribute6 = 112;
+    string Attribute7 = 113;
+    string Attribute8 = 114;
+    string Attribute9 = 115;
+    string Attribute10 = 116;
+    string Attribute11 = 117;
+    string Attribute12 = 118;
+    string Attribute13 = 119;
+    string Attribute14 = 120;
+    string Attribute15 = 121;
+    string Attribute16 = 122;
+    string Attribute17 = 123;
+    string Attribute18 = 124;
+    string Attribute19 = 125;
+    string Attribute20 = 126;
+    string Attribute21 = 127;
+    string Attribute22 = 128;
+    string Attribute23 = 129;
+    string Attribute24 = 130;
+}
+
+message AssignedToRequest {
+    string id = 1;
+}
+
+message AssignedToResponse {
+    string message = 1;
+    AssignedTo assignedto = 2;
+}
+
+message AssignedToQuery {
+    repeated int64 statusFilters = 1;
+    repeated string type = 2;
+}
+
+message AssignedTosRequest {
+    AssignedToQuery query = 1;
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message AssignedTosResponse {
+    repeated AssignedTo assignedtos = 1;
+}
+
+message AssignedToRequestCreate {
+
+	int64 id = 1;
+    int64 ActualPayrate = 2;
+    string Address1 = 3;
+    string Address2 = 4;
+    string Address3 = 5;
+    int64 ApprovalLimit = 6;
+    google.protobuf.Timestamp BirthDate = 7;
+    string BuyerFlag = 8;
+    string CellularNumber = 9;
+    string Company = 10;
+    int64 CompTimeAccrued = 11;
+    string Skill = 12;
+    string Team = 13;
+    string Crib = 14;
+    string Dln = 15;
+    string DrivingClass = 16;
+    string Email = 17;
+    string Emergency = 18;
+    string Employee = 19;
+    string EmpId = 20;
+    int64 EmpRecNum = 21;
+    string FaxNumber = 22;
+    google.protobuf.Timestamp HireDate = 23;
+    string JobTitle = 24;
+    string JobType = 25;
+    string LaborClass = 26;
+    google.protobuf.Timestamp LastAccrualDate = 27;
+    string LastAccrualUser = 28;
+    int64 LeaveType1AccrualRate = 29;
+    int64 LeaveType1Accrued = 30;
+    int64 LeaveType1BeforeAccrual = 31;
+    int64 LeaveType1BeforeReduction = 32;
+    int64 LeaveType2AccrualRate = 33;
+    int64 LeaveType2Accrued = 34;
+    int64 LeaveType2BeforeAccrual = 35;
+    int64 LeaveType2BeforeReduction = 36;
+    int64 LeaveType3AccrualRate = 37;
+    int64 LeaveType3Accrued = 38;
+    int64 LeaveType3BeforeAccrual = 39;
+    int64 LeaveType3BeforeReduction = 40;
+    int64 LeaveType4AccrualRate = 41;
+    int64 LeaveType4Accrued = 42;
+    int64 LeaveType4BeforeAccrual = 43;
+    int64 LeaveType4BeforeReduction = 44;
+    int64 LeaveType5AccrualRate = 45;
+    int64 LeaveType5Accrued = 46;
+    int64 LeaveType5BeforeAccrual = 47;
+    int64 LeaveType5BeforeReduction = 48;
+    int64 LeaveType6AccrualRate = 49;
+    int64 LeaveType6Accrued = 50;
+    int64 LeaveType6BeforeAccrual = 51;
+    int64 LeaveType6BeforeReduction = 52;
+    string Locker = 53;
+    string MailCode = 54;
+    string Name = 55;
+    google.protobuf.Timestamp NormalStart = 56;
+    google.protobuf.Timestamp NormalStop = 57;
+    google.protobuf.Timestamp NoteDate = 58;
+    string NoteUser = 59;
+    string Pager = 60;
+    string PayrollFlag = 61;
+    string PayrollNumber = 62;
+    int64 Rate = 63;
+    string ResourceCalendar = 64;
+    string Shift = 65;
+    string Site = 66;
+    string SocSecNo = 67;
+    string Supervisor = 68;
+    string Telephone = 69;
+    google.protobuf.Timestamp TerminationDate = 70;
+    string TimecardEntry = 71;
+    string UserId = 72;
+    string Warehouse = 73;
+    string WorkGroup = 74;
+    string Acctsegment1 = 75;
+    string Acctsegment2 = 76;
+    string Acctsegment3 = 77;
+    string Acctsegment4 = 78;
+    string Acctsegment5 = 79;
+    string Acctsegment6 = 80;
+    google.protobuf.Timestamp HrisDate = 81;
+    string Source = 82;
+    string Status = 83;
+    string SupervisorCompany = 84;
+    int64 NoOfWwfs = 85;
+    string ValidateLaborSite = 86;
+    int64 BaseMarkupRate = 87;
+    int64 MarkupForSupv = 88;
+    int64 BaseFringeRate = 89;
+    int64 FringeForOt = 90;
+    string UserName = 91;
+    string Passwd = 92;
+    string Inventory = 93;
+    string PhysicalCount = 94;
+    string SsoConn = 95;
+    string EmailPswd = 96;
+    string MeterRead = 97;
+    google.protobuf.Timestamp MobileDate = 98;
+    string PpnetworkId = 99;
+    string EmergencyContactPhone = 100;
+    string EmergencyContactSecondary = 101;
+    string EmployeeContactPhoneSecond = 102;
+    string Endorsements = 103;
+    string EmergencyContactCellPhone = 104;
+    string EmergencyContactCellSecond = 105;
+    string AttachFile = 106;
+    string Attribute1 = 107;
+    string Attribute2 = 108;
+    string Attribute3 = 109;
+    string Attribute4 = 110;
+    string Attribute5 = 111;
+    string Attribute6 = 112;
+    string Attribute7 = 113;
+    string Attribute8 = 114;
+    string Attribute9 = 115;
+    string Attribute10 = 116;
+    string Attribute11 = 117;
+    string Attribute12 = 118;
+    string Attribute13 = 119;
+    string Attribute14 = 120;
+    string Attribute15 = 121;
+    string Attribute16 = 122;
+    string Attribute17 = 123;
+    string Attribute18 = 124;
+    string Attribute19 = 125;
+    string Attribute20 = 126;
+    string Attribute21 = 127;
+    string Attribute22 = 128;
+    string Attribute23 = 129;
+    string Attribute24 = 130;
+}
+
+/* AssignedToRequestUpdate */
+message AssignedToRequestUpdate {
+	int64 id = 1;
+    int64 ActualPayrate = 2;
+    string Address1 = 3;
+    string Address2 = 4;
+    string Address3 = 5;
+    int64 ApprovalLimit = 6;
+    google.protobuf.Timestamp BirthDate = 7;
+    string BuyerFlag = 8;
+    string CellularNumber = 9;
+    string Company = 10;
+    int64 CompTimeAccrued = 11;
+    string Skill = 12;
+    string Team = 13;
+    string Crib = 14;
+    string Dln = 15;
+    string DrivingClass = 16;
+    string Email = 17;
+    string Emergency = 18;
+    string Employee = 19;
+    string EmpId = 20;
+    int64 EmpRecNum = 21;
+    string FaxNumber = 22;
+    google.protobuf.Timestamp HireDate = 23;
+    string JobTitle = 24;
+    string JobType = 25;
+    string LaborClass = 26;
+    google.protobuf.Timestamp LastAccrualDate = 27;
+    string LastAccrualUser = 28;
+    int64 LeaveType1AccrualRate = 29;
+    int64 LeaveType1Accrued = 30;
+    int64 LeaveType1BeforeAccrual = 31;
+    int64 LeaveType1BeforeReduction = 32;
+    int64 LeaveType2AccrualRate = 33;
+    int64 LeaveType2Accrued = 34;
+    int64 LeaveType2BeforeAccrual = 35;
+    int64 LeaveType2BeforeReduction = 36;
+    int64 LeaveType3AccrualRate = 37;
+    int64 LeaveType3Accrued = 38;
+    int64 LeaveType3BeforeAccrual = 39;
+    int64 LeaveType3BeforeReduction = 40;
+    int64 LeaveType4AccrualRate = 41;
+    int64 LeaveType4Accrued = 42;
+    int64 LeaveType4BeforeAccrual = 43;
+    int64 LeaveType4BeforeReduction = 44;
+    int64 LeaveType5AccrualRate = 45;
+    int64 LeaveType5Accrued = 46;
+    int64 LeaveType5BeforeAccrual = 47;
+    int64 LeaveType5BeforeReduction = 48;
+    int64 LeaveType6AccrualRate = 49;
+    int64 LeaveType6Accrued = 50;
+    int64 LeaveType6BeforeAccrual = 51;
+    int64 LeaveType6BeforeReduction = 52;
+    string Locker = 53;
+    string MailCode = 54;
+    string Name = 55;
+    google.protobuf.Timestamp NormalStart = 56;
+    google.protobuf.Timestamp NormalStop = 57;
+    google.protobuf.Timestamp NoteDate = 58;
+    string NoteUser = 59;
+    string Pager = 60;
+    string PayrollFlag = 61;
+    string PayrollNumber = 62;
+    int64 Rate = 63;
+    string ResourceCalendar = 64;
+    string Shift = 65;
+    string Site = 66;
+    string SocSecNo = 67;
+    string Supervisor = 68;
+    string Telephone = 69;
+    google.protobuf.Timestamp TerminationDate = 70;
+    string TimecardEntry = 71;
+    string UserId = 72;
+    string Warehouse = 73;
+    string WorkGroup = 74;
+    string Acctsegment1 = 75;
+    string Acctsegment2 = 76;
+    string Acctsegment3 = 77;
+    string Acctsegment4 = 78;
+    string Acctsegment5 = 79;
+    string Acctsegment6 = 80;
+    google.protobuf.Timestamp HrisDate = 81;
+    string Source = 82;
+    string Status = 83;
+    string SupervisorCompany = 84;
+    int64 NoOfWwfs = 85;
+    string ValidateLaborSite = 86;
+    int64 BaseMarkupRate = 87;
+    int64 MarkupForSupv = 88;
+    int64 BaseFringeRate = 89;
+    int64 FringeForOt = 90;
+    string UserName = 91;
+    string Passwd = 92;
+    string Inventory = 93;
+    string PhysicalCount = 94;
+    string SsoConn = 95;
+    string EmailPswd = 96;
+    string MeterRead = 97;
+    google.protobuf.Timestamp MobileDate = 98;
+    string PpnetworkId = 99;
+    string EmergencyContactPhone = 100;
+    string EmergencyContactSecondary = 101;
+    string EmployeeContactPhoneSecond = 102;
+    string Endorsements = 103;
+    string EmergencyContactCellPhone = 104;
+    string EmergencyContactCellSecond = 105;
+    string AttachFile = 106;
+    string Attribute1 = 107;
+    string Attribute2 = 108;
+    string Attribute3 = 109;
+    string Attribute4 = 110;
+    string Attribute5 = 111;
+    string Attribute6 = 112;
+    string Attribute7 = 113;
+    string Attribute8 = 114;
+    string Attribute9 = 115;
+    string Attribute10 = 116;
+    string Attribute11 = 117;
+    string Attribute12 = 118;
+    string Attribute13 = 119;
+    string Attribute14 = 120;
+    string Attribute15 = 121;
+    string Attribute16 = 122;
+    string Attribute17 = 123;
+    string Attribute18 = 124;
+    string Attribute19 = 125;
+    string Attribute20 = 126;
+    string Attribute21 = 127;
+    string Attribute22 = 128;
+    string Attribute23 = 129;
+    string Attribute24 = 130;
+}
+
+service AssignedToService {
+
+    rpc AssignedToGet(AssignedToRequest) returns (AssignedTo) {
+        option (google.api.http) = {
+            get: "/api/assignedtos/{id}"
+        };
+    };
+
+    rpc AssignedTosGet(AssignedTosRequest) returns (AssignedTosResponse) {
+        option (google.api.http) = {
+            get: "/api/assignedtos"
+        };
+    };
+
+    rpc AssignedToCreate(AssignedToRequestCreate) returns (AssignedToResponse) {
+        option (google.api.http) = {
+            post: "/api/assignedtos"
+            body: "*"
+        };
+    };
+
+    rpc AssignedToUpdate(AssignedToRequestUpdate) returns (AssignedToResponse) {
+        option (google.api.http) = {
+            put: "/api/assignedtos/{id}"
+            body: "*"
+        };
+    };
+}
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/assignedtos
+    GET /api/assignedtos/:id
+    POST /api/assignedtos
+    PUT /api/assignedtos/:id
+    DELETE /api/assignedtos/:id
+
+    POST /api/assignedtos/close/:id
+*/

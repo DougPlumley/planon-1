@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/timestamp.proto";
+
+message ProjectStatus {
+    int64 id = 1;
+    string Status = 2;
+    int64 Comments = 3;
+    string Active = 4;
+}
+
+message ProjectStatusRequest {
+    string id = 1;
+}
+
+message ProjectStatusResponse {
+    string message = 1;
+    ProjectStatus projectstatus = 2;
+}
+
+message ProjectStatusQuery {
+    repeated int64 statusFilters = 1;
+    repeated string projectStatus = 2;
+}
+
+message ProjectStatusesRequest {
+    int64 pageSize = 2;
+    int64 pageOffset = 3;
+}
+
+message ProjectStatusesResponse {
+    repeated ProjectStatus projectStatuses = 1;
+}
+
+/* ProjectStatusRequestUpdate */
+// message ProjectStatusRequestCreate {
+//     int64 id = 1;
+//     string Status = 2;
+//     int64 Comments = 3;
+//     string Active = 4;
+// }
+
+/* ProjectStatusRequestUpdate */
+// message ProjectStatusRequestUpdate {
+//     int64 id = 1;
+//     string Status = 2;
+//     int64 Comments = 3;
+//     string Active = 4;
+// }
+
+// service ProjectStatusService {
+
+//     rpc ProjectStausGet(ProjectStatusRequest) returns (ProjectStatus) {
+//         option (google.api.http) = {
+//             get: "/api/projectstatuses/{id}"
+//         };
+//     };
+
+//     rpc ProjectStatusesGet(ProjectStatusesRequest) returns (ProjectStatusesResponse) {
+//         option (google.api.http) = {
+//             get: "/api/projectstatuses"
+//         };
+//     };
+
+//     // rpc ProjectStatusCreate(ProjectStatusRequestCreate) returns (ProjectStatusResponse) {
+//     //     option (google.api.http) = {
+//     //         post: "/api/projectstatuses"
+//     //         body: "*"
+//     //     };
+//     // };
+
+//     // rpc ProjectStatusUpdate(ProjectStatusRequestUpdate) returns (ProjectStatusResponse) {
+//     //     option (google.api.http) = {
+//     //         put: "/api/projectstatuses/{id}"
+//     //         body: "*"
+//     //     };
+//     // };
+// }
+
+/*
+
+    CRUD - Create, Read, Update Delete
+
+    GET /api/projectstatuses
+    GET /api/projectstatuses/:id
+    POST /api/projectstatuses
+    PUT /api/projectstatuses/:id
+    DELETE /api/projectstatuses/:id
+
+    POST /api/projectstatuses/close/:id
+*/

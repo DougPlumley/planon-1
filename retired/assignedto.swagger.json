@@ -1,0 +1,1509 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "assignedto.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/assignedtos": {
+      "get": {
+        "operationId": "AssignedTosGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssignedTosResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query.statusFilters",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "query.type",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pageOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "AssignedToService"
+        ]
+      },
+      "post": {
+        "operationId": "AssignedToCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssignedToResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssignedToRequestCreate"
+            }
+          }
+        ],
+        "tags": [
+          "AssignedToService"
+        ]
+      }
+    },
+    "/api/assignedtos/{id}": {
+      "get": {
+        "operationId": "AssignedToGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssignedTo"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssignedToService"
+        ]
+      },
+      "put": {
+        "operationId": "AssignedToUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AssignedToResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssignedToRequestUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "AssignedToService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AssignedTo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActualPayrate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Address3": {
+          "type": "string"
+        },
+        "ApprovalLimit": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BirthDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "BuyerFlag": {
+          "type": "string"
+        },
+        "CellularNumber": {
+          "type": "string"
+        },
+        "Company": {
+          "type": "string"
+        },
+        "CompTimeAccrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Skill": {
+          "type": "string"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Crib": {
+          "type": "string"
+        },
+        "Dln": {
+          "type": "string"
+        },
+        "DrivingClass": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Emergency": {
+          "type": "string"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "EmpId": {
+          "type": "string"
+        },
+        "EmpRecNum": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FaxNumber": {
+          "type": "string"
+        },
+        "HireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "JobTitle": {
+          "type": "string"
+        },
+        "JobType": {
+          "type": "string"
+        },
+        "LaborClass": {
+          "type": "string"
+        },
+        "LastAccrualDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastAccrualUser": {
+          "type": "string"
+        },
+        "LeaveType1AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Locker": {
+          "type": "string"
+        },
+        "MailCode": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "NormalStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NormalStop": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteUser": {
+          "type": "string"
+        },
+        "Pager": {
+          "type": "string"
+        },
+        "PayrollFlag": {
+          "type": "string"
+        },
+        "PayrollNumber": {
+          "type": "string"
+        },
+        "Rate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ResourceCalendar": {
+          "type": "string"
+        },
+        "Shift": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "SocSecNo": {
+          "type": "string"
+        },
+        "Supervisor": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "TerminationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TimecardEntry": {
+          "type": "string"
+        },
+        "UserId": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "WorkGroup": {
+          "type": "string"
+        },
+        "Acctsegment1": {
+          "type": "string"
+        },
+        "Acctsegment2": {
+          "type": "string"
+        },
+        "Acctsegment3": {
+          "type": "string"
+        },
+        "Acctsegment4": {
+          "type": "string"
+        },
+        "Acctsegment5": {
+          "type": "string"
+        },
+        "Acctsegment6": {
+          "type": "string"
+        },
+        "HrisDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Source": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "SupervisorCompany": {
+          "type": "string"
+        },
+        "NoOfWwfs": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ValidateLaborSite": {
+          "type": "string"
+        },
+        "BaseMarkupRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupForSupv": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BaseFringeRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FringeForOt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UserName": {
+          "type": "string"
+        },
+        "Passwd": {
+          "type": "string"
+        },
+        "Inventory": {
+          "type": "string"
+        },
+        "PhysicalCount": {
+          "type": "string"
+        },
+        "SsoConn": {
+          "type": "string"
+        },
+        "EmailPswd": {
+          "type": "string"
+        },
+        "MeterRead": {
+          "type": "string"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PpnetworkId": {
+          "type": "string"
+        },
+        "EmergencyContactPhone": {
+          "type": "string"
+        },
+        "EmergencyContactSecondary": {
+          "type": "string"
+        },
+        "EmployeeContactPhoneSecond": {
+          "type": "string"
+        },
+        "Endorsements": {
+          "type": "string"
+        },
+        "EmergencyContactCellPhone": {
+          "type": "string"
+        },
+        "EmergencyContactCellSecond": {
+          "type": "string"
+        },
+        "AttachFile": {
+          "type": "string"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      }
+    },
+    "AssignedToQuery": {
+      "type": "object",
+      "properties": {
+        "statusFilters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AssignedToRequestCreate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActualPayrate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Address3": {
+          "type": "string"
+        },
+        "ApprovalLimit": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BirthDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "BuyerFlag": {
+          "type": "string"
+        },
+        "CellularNumber": {
+          "type": "string"
+        },
+        "Company": {
+          "type": "string"
+        },
+        "CompTimeAccrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Skill": {
+          "type": "string"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Crib": {
+          "type": "string"
+        },
+        "Dln": {
+          "type": "string"
+        },
+        "DrivingClass": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Emergency": {
+          "type": "string"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "EmpId": {
+          "type": "string"
+        },
+        "EmpRecNum": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FaxNumber": {
+          "type": "string"
+        },
+        "HireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "JobTitle": {
+          "type": "string"
+        },
+        "JobType": {
+          "type": "string"
+        },
+        "LaborClass": {
+          "type": "string"
+        },
+        "LastAccrualDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastAccrualUser": {
+          "type": "string"
+        },
+        "LeaveType1AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Locker": {
+          "type": "string"
+        },
+        "MailCode": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "NormalStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NormalStop": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteUser": {
+          "type": "string"
+        },
+        "Pager": {
+          "type": "string"
+        },
+        "PayrollFlag": {
+          "type": "string"
+        },
+        "PayrollNumber": {
+          "type": "string"
+        },
+        "Rate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ResourceCalendar": {
+          "type": "string"
+        },
+        "Shift": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "SocSecNo": {
+          "type": "string"
+        },
+        "Supervisor": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "TerminationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TimecardEntry": {
+          "type": "string"
+        },
+        "UserId": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "WorkGroup": {
+          "type": "string"
+        },
+        "Acctsegment1": {
+          "type": "string"
+        },
+        "Acctsegment2": {
+          "type": "string"
+        },
+        "Acctsegment3": {
+          "type": "string"
+        },
+        "Acctsegment4": {
+          "type": "string"
+        },
+        "Acctsegment5": {
+          "type": "string"
+        },
+        "Acctsegment6": {
+          "type": "string"
+        },
+        "HrisDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Source": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "SupervisorCompany": {
+          "type": "string"
+        },
+        "NoOfWwfs": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ValidateLaborSite": {
+          "type": "string"
+        },
+        "BaseMarkupRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupForSupv": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BaseFringeRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FringeForOt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UserName": {
+          "type": "string"
+        },
+        "Passwd": {
+          "type": "string"
+        },
+        "Inventory": {
+          "type": "string"
+        },
+        "PhysicalCount": {
+          "type": "string"
+        },
+        "SsoConn": {
+          "type": "string"
+        },
+        "EmailPswd": {
+          "type": "string"
+        },
+        "MeterRead": {
+          "type": "string"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PpnetworkId": {
+          "type": "string"
+        },
+        "EmergencyContactPhone": {
+          "type": "string"
+        },
+        "EmergencyContactSecondary": {
+          "type": "string"
+        },
+        "EmployeeContactPhoneSecond": {
+          "type": "string"
+        },
+        "Endorsements": {
+          "type": "string"
+        },
+        "EmergencyContactCellPhone": {
+          "type": "string"
+        },
+        "EmergencyContactCellSecond": {
+          "type": "string"
+        },
+        "AttachFile": {
+          "type": "string"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      }
+    },
+    "AssignedToRequestUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ActualPayrate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Address3": {
+          "type": "string"
+        },
+        "ApprovalLimit": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BirthDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "BuyerFlag": {
+          "type": "string"
+        },
+        "CellularNumber": {
+          "type": "string"
+        },
+        "Company": {
+          "type": "string"
+        },
+        "CompTimeAccrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Skill": {
+          "type": "string"
+        },
+        "Team": {
+          "type": "string"
+        },
+        "Crib": {
+          "type": "string"
+        },
+        "Dln": {
+          "type": "string"
+        },
+        "DrivingClass": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Emergency": {
+          "type": "string"
+        },
+        "Employee": {
+          "type": "string"
+        },
+        "EmpId": {
+          "type": "string"
+        },
+        "EmpRecNum": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FaxNumber": {
+          "type": "string"
+        },
+        "HireDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "JobTitle": {
+          "type": "string"
+        },
+        "JobType": {
+          "type": "string"
+        },
+        "LaborClass": {
+          "type": "string"
+        },
+        "LastAccrualDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastAccrualUser": {
+          "type": "string"
+        },
+        "LeaveType1AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType1BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType2BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType3BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType4BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType5BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6AccrualRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6Accrued": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6BeforeAccrual": {
+          "type": "string",
+          "format": "int64"
+        },
+        "LeaveType6BeforeReduction": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Locker": {
+          "type": "string"
+        },
+        "MailCode": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "NormalStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NormalStop": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "NoteUser": {
+          "type": "string"
+        },
+        "Pager": {
+          "type": "string"
+        },
+        "PayrollFlag": {
+          "type": "string"
+        },
+        "PayrollNumber": {
+          "type": "string"
+        },
+        "Rate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ResourceCalendar": {
+          "type": "string"
+        },
+        "Shift": {
+          "type": "string"
+        },
+        "Site": {
+          "type": "string"
+        },
+        "SocSecNo": {
+          "type": "string"
+        },
+        "Supervisor": {
+          "type": "string"
+        },
+        "Telephone": {
+          "type": "string"
+        },
+        "TerminationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TimecardEntry": {
+          "type": "string"
+        },
+        "UserId": {
+          "type": "string"
+        },
+        "Warehouse": {
+          "type": "string"
+        },
+        "WorkGroup": {
+          "type": "string"
+        },
+        "Acctsegment1": {
+          "type": "string"
+        },
+        "Acctsegment2": {
+          "type": "string"
+        },
+        "Acctsegment3": {
+          "type": "string"
+        },
+        "Acctsegment4": {
+          "type": "string"
+        },
+        "Acctsegment5": {
+          "type": "string"
+        },
+        "Acctsegment6": {
+          "type": "string"
+        },
+        "HrisDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Source": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "SupervisorCompany": {
+          "type": "string"
+        },
+        "NoOfWwfs": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ValidateLaborSite": {
+          "type": "string"
+        },
+        "BaseMarkupRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "MarkupForSupv": {
+          "type": "string",
+          "format": "int64"
+        },
+        "BaseFringeRate": {
+          "type": "string",
+          "format": "int64"
+        },
+        "FringeForOt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UserName": {
+          "type": "string"
+        },
+        "Passwd": {
+          "type": "string"
+        },
+        "Inventory": {
+          "type": "string"
+        },
+        "PhysicalCount": {
+          "type": "string"
+        },
+        "SsoConn": {
+          "type": "string"
+        },
+        "EmailPswd": {
+          "type": "string"
+        },
+        "MeterRead": {
+          "type": "string"
+        },
+        "MobileDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PpnetworkId": {
+          "type": "string"
+        },
+        "EmergencyContactPhone": {
+          "type": "string"
+        },
+        "EmergencyContactSecondary": {
+          "type": "string"
+        },
+        "EmployeeContactPhoneSecond": {
+          "type": "string"
+        },
+        "Endorsements": {
+          "type": "string"
+        },
+        "EmergencyContactCellPhone": {
+          "type": "string"
+        },
+        "EmergencyContactCellSecond": {
+          "type": "string"
+        },
+        "AttachFile": {
+          "type": "string"
+        },
+        "Attribute1": {
+          "type": "string"
+        },
+        "Attribute2": {
+          "type": "string"
+        },
+        "Attribute3": {
+          "type": "string"
+        },
+        "Attribute4": {
+          "type": "string"
+        },
+        "Attribute5": {
+          "type": "string"
+        },
+        "Attribute6": {
+          "type": "string"
+        },
+        "Attribute7": {
+          "type": "string"
+        },
+        "Attribute8": {
+          "type": "string"
+        },
+        "Attribute9": {
+          "type": "string"
+        },
+        "Attribute10": {
+          "type": "string"
+        },
+        "Attribute11": {
+          "type": "string"
+        },
+        "Attribute12": {
+          "type": "string"
+        },
+        "Attribute13": {
+          "type": "string"
+        },
+        "Attribute14": {
+          "type": "string"
+        },
+        "Attribute15": {
+          "type": "string"
+        },
+        "Attribute16": {
+          "type": "string"
+        },
+        "Attribute17": {
+          "type": "string"
+        },
+        "Attribute18": {
+          "type": "string"
+        },
+        "Attribute19": {
+          "type": "string"
+        },
+        "Attribute20": {
+          "type": "string"
+        },
+        "Attribute21": {
+          "type": "string"
+        },
+        "Attribute22": {
+          "type": "string"
+        },
+        "Attribute23": {
+          "type": "string"
+        },
+        "Attribute24": {
+          "type": "string"
+        }
+      },
+      "title": "AssignedToRequestUpdate"
+    },
+    "AssignedToResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "assignedto": {
+          "$ref": "#/definitions/AssignedTo"
+        }
+      }
+    },
+    "AssignedTosResponse": {
+      "type": "object",
+      "properties": {
+        "assignedtos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssignedTo"
+          }
+        }
+      }
+    }
+  }
+}
